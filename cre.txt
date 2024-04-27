@@ -1,0 +1,112 @@
+para ingresar a la base de datos dentro del servidor MySQL:
+User: radius
+Pass: T#t#r$0&
+
+para ingresar al servidor
+ip 45.230.197.20
+Usuario: ingenieria
+Password: t3cn0l0g14
+
+
+Usuario: 
+ingenieria
+Password: 
+t3cn0l0g14
+t3cn0l0g14
+t3cn0l0g14
+45.230.197.20
+t3cn0l0g14
+45.230.197.20
+
+tunnel ssh
+ssh -L 3307:localhost:3306 ingenieria@45.230.197.20 -p 22
+
+0: 
+0: 4014
+
+
+
+<?php
+
+// Configuración de la conexión
+$routerIP = '45.230.198.10'; // IP del router MikroTik
+$port = '89'; // Puerto del router MikroTik
+$apiUser = 'lgonzalo'; // Nombre de usuario
+$apiPass = 'gonzalo'; // Contraseña
+
+// Construir la URL de la API HTTP
+$urlLogin = "http://$routerIP:$port/webfig/login.cgi?username=$apiUser&password=$apiPass";
+
+// Iniciar sesión en el router MikroTik
+$session = file_get_contents($urlLogin);
+
+// Solicitar la lista de VLAN
+$urlVLANs = "http://$routerIP:$port/webfig/#Interfaces.VLAN";
+$vlanList = file_get_contents($urlVLANs);
+
+// Imprimir la lista de VLAN
+echo $vlanList;
+
+?>
+
+
+
+
+SELECT * FROM radius.radacct where username like '%11070@05010208%'
+order by acctstarttime DESC;
+
+delete from	radius.radacct where radacctid= '3336804';
+
+
+SELECT * FROM radius.radacct limit 50000;
+
+SELECT distinct username, count(username) FROM radius.radacct group by username limit 50000;
+SELECT username,  nasportid, acctstarttime, nasipaddress FROM radius.radacct where username like '%11412@05010203%' ORDER BY acctstarttime DESC limit 1;
+SELECT distinct username, nasportid FROM radius.radacct where username like '%421@06010316%';
+SELECT distinct username,  count(nasportid) FROM radius.radacct where username like '%421@06010316%' group by nasportid,username limit 50000;
+SELECT distinct username, count(nasportid) FROM radius.radacct where nasportid like '%DESLT_HUAYCAN_3056%' group by nasportid,username;
+
+SELECT distinct  nasportid FROM radius.radacct  limit 50000;
+
+
+
+
+
+SELECT ra.username, ra.nasportid, ra.acctstarttime, ra.nasipaddress 
+FROM radius.radacct ra
+INNER JOIN (
+    SELECT username, MAX(acctstarttime) AS max_acctstarttime
+    FROM radius.radacct
+    GROUP BY username
+) max_dates ON ra.username = max_dates.username AND ra.acctstarttime = max_dates.max_acctstarttime
+LIMIT 30000;
+
+
+SELECT ra.username, ra.nasportid, ra.acctstarttime, ra.nasipaddress
+FROM radius.radacct ra
+INNER JOIN (
+    SELECT username, MAX(acctstarttime) AS max_acctstarttime
+    FROM radius.radacct
+    GROUP BY username
+) max_dates ON ra.username = max_dates.username AND ra.acctstarttime = max_dates.max_acctstarttime;
+
+
+
+SELECT ra.username, COUNT(ra.username) AS num_sessions, MAX(ra.acctstarttime) AS last_session_time
+FROM radius.radacct ra
+GROUP BY ra.username
+LIMIT 50000;
+SELECT username,  nasportid, acctstarttime, nasipaddress FROM radius.radacct where username like '%11070@05010208%' ORDER BY acctstarttime DESC limit 1;
+SELECT ra.username, COUNT(ra.username) AS num_sessions, MAX(ra.acctstarttime) AS last_session_time, ra.nasipaddress AS last_ip_address
+FROM radius.radacct ra
+INNER JOIN (
+    SELECT username, MAX(acctstarttime) AS max_acctstarttime
+    FROM radius.radacct
+    GROUP BY username
+) max_dates ON ra.username = max_dates.username AND ra.acctstarttime = max_dates.max_acctstarttime
+GROUP BY ra.username, ra.nasipaddress
+having ra.username like '11070@05010208'
+LIMIT 50000;
+
+
+

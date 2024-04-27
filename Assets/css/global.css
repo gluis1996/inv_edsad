@@ -1,0 +1,4 @@
+/* Archivo CSS global */
+.select2-container {
+    z-index: 99999; /* Ajusta este valor según sea necesario */
+}

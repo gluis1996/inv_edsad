@@ -1,0 +1,18 @@
+<div class='row'>
+    <button type='button' class='btn btn-dark btn_detale_instalacion' 
+            data-toggle='modal' data-target='#modal_detalle_instalacion' 
+            idinstalacion='".$response[$i]['id']."'>
+        <i class="fa fa-signal" aria-hidden="true"></i>
+    </button>
+    
+    <button type='button' class='btn btn-dark btn_estado_instalacion' 
+            data-toggle='modal' data-target='#modal_estado_instalacion' 
+            idinstalacion='".$response[$i]['Abonado']."'>
+        <i class="fa fa-signal" aria-hidden="true"></i>
+    </button>
+</div>
+
+   
+
+
+<div class='row'><button type='button' class='btn btn-dark tbl_radcheck ' data-toggle='modal' data-target='#modal_detalle_cambioEquipo' plan='".$item['plan']."' value='".$item['value']."' username='".$item['username']."'><i class='fas fa-eye'></i></button><button type='button' class='btn btn-primary btn_raddact' data-toggle='modal' data-target='#modal_listado_consumo' username='".$item['username']."'><i class='fa fa-rss'></i></button><button type='button' class='btn btn-warning btn_registrar_atc' data-toggle='modal' data-target='#modal_registrar_atc' username='".$item['username']."'><i class='fa fa-file' aria-hidden='true' ></i></button><button type='button' class='btn btn-danger btnEliminarRadius' deleteusername='".$item['username']."'><i class='fa fa-trash'></i></button></div>
