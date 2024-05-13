@@ -31,24 +31,8 @@
                 </a>
             </li>
 
-            
-            <li class="nav-header">REGISTRAR MARCA</li>
-            <li class="">
-                <a href="registroequipos" class="nav-link">
-                    <i class="fa-brands fa-instalod"></i>
-                    <p>REGISTRAR MARCA</p>
-                </a>
-            </li>
 
-            
-            <li class="nav-header">REGISTRAR MODELO</li>
-            <li class="">
-                <a href="registroequipos" class="nav-link">
-                    <i class="fa-brands fa-instalod"></i>
-                    <p>REGISTRAR MODELO</p>
-                </a>
-            </li>
-          
+       
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

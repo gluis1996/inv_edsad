@@ -21,18 +21,22 @@
     <section class="content">
 
         <div class="card">
-            <div class="card-header bg-primary text-white"> 
+            <div class="card-header bg-primary text-white">
                 <h3 class="card-title">Formulario Equipos</h3>
             </div>
+
             <div class="card-body">
+
                 <div class="row">
+
+                    <!-- FORMULARIO REGISTRAR EQUIPO -->
                     <div class="col-md-6">
                         <div class="form-group">
                             <!-- <label for="cod_pat">Código Patrimonial</label> -->
 
                             <label for="cod_pat">
-                              
-                                <i class="fa fa-id-badge" aria-hidden="true">&nbsp;Código Patrimonial</i> 
+
+                                <i class="fa fa-id-badge" aria-hidden="true">&nbsp;Código Patrimonial</i>
                                 <!-- <i class="fa fa-id-card-o" aria-hidden="true">&nbsp;Código Patrimonial</i> -->
                             </label>
 
@@ -95,116 +99,83 @@
 
                     </div>
                 </div>
+
                 <button type="button" class="btn btn-primary" name="btnRegistrar">Registrar</button>
 
             </div>
         </div>
+    </section>
 
 
-        <!--Modal detalle instalacion-->
-        <div id="modal_detalle_instalacion" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-dialog-centered">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Detalle</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
+    <!-- Modal registrar marca -->
+    <div id="modal_registrar_marca" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registrar Marca</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- Contenido del formulario para registrar la marca -->
+                    <div class="form-group">
+                        <label for="id_prod">ID Producto</label>
+                        <select class="form-control" id="id_prod">
+                            <option value="">Seleccione</option>
+                            <option value="002">002</option>
+                            <option value="001">001</option>
+                        </select>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Codigo</label>
-                            <div class="col-sm-10">
-                                <input class="form-control form-control-sm" id="nodo" type="text" placeholder="Nodo">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Caja</label>
-                            <div class="col-sm-10">
-                                <input class="form-control form-control-sm" id="caja" type="text" placeholder="Caja">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Borne</label>
-                            <div class="col-sm-10">
-                                <input class="form-control form-control-sm" id="borne" type="text" placeholder="Borne">
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Precinto</label>
-                            <div class="col-sm-10">
-                                <input class="form-control form-control-sm" id="precinto" type="text" placeholder="Precinto">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">MAC</label>
-                            <div class="col-sm-10">
-                                <input class="form-control form-control-sm" id="plan" type="text" placeholder="MAC">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Filial</label>
-                            <div class="col-sm-10">
-                                <input class="form-control form-control-sm" id="filial" type="text" placeholder="Filial" disabled>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary btn_instalacion_fo_editar">Editar</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>
+    </div>
 
 
 
 
-
-        <!--Modal Listado consumo-->
-        <div id="modal_estado_instalacion" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-xl modal-dialog-scrollable">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Estado</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <label for="Datos Local">Consumo de Abonado</label>
-                                <table class="table table-bordered table-striped dt-responsive" id="tbl_raddact_estado_instalacion" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th>IP Address</th>
-                                            <th>Start Time</th>
-                                            <th>Stop Time</th>
-                                            <th>Total Time</th>
-                                            <th>Upload (Bytes)</th>
-                                            <th>Download (Bytes)</th>
-                                            <th>Termination</th>
-                                            <th>NAS IP Address</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
+    <!--Modal Listado consumo-->
+    <div id="modal_estado_instalacion" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Estado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <label for="Datos Local">Consumo de Abonado</label>
+                            <table class="table table-bordered table-striped dt-responsive" id="tbl_raddact_estado_instalacion" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>IP Address</th>
+                                        <th>Start Time</th>
+                                        <th>Stop Time</th>
+                                        <th>Total Time</th>
+                                        <th>Upload (Bytes)</th>
+                                        <th>Download (Bytes)</th>
+                                        <th>Termination</th>
+                                        <th>NAS IP Address</th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
+                    </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save Changes</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Changes</button>
                 </div>
             </div>
         </div>
+    </div>
