@@ -67,7 +67,7 @@
         if (isset($_GET['page'])) {
             if ($_GET['page'] == 'pageCambioEquipo' ||
                 $_GET['page'] == 'instalacionfo'    ||
-                $_GET['page'] == 'instalacioneoc'   ||
+                $_GET['page'] == 'registroequipos'   ||
                 $_GET['page'] == 'perfiles'         ||
                 $_GET['page'] == 'Buscarabonado'    ||
                 $_GET['page'] == 'dashboard'        ||
