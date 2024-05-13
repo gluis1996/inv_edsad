@@ -15,11 +15,11 @@
                     <p>DashBoard</p>
                 </a>
             </li>
-            <li class="nav-header">INSTALACION</li>
+            <li class="nav-header">ASIGNACIÓN</li>
             <li class="">
-                <a href="instalacionfo" class="nav-link">
+                <a href="asignacionequipos" class="nav-link">
                     <i class="fa-brands fa-instalod"></i>
-                    <p>INSTALACION FO</p>
+                    <p>Asignación de Equipos</p>
                 </a>
             </li>
 

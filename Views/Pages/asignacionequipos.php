@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Instalacion FTTH</li>
+                        <li class="breadcrumb-item active">Asigancion de Equipos</li>
                     </ol>
                 </div>
             </div>
@@ -25,51 +25,10 @@
                 <h3 class="card-title">Formulario Equipos</h3>
             </div>
 
-            <div class="card-body">
-
+            <div class="card-body" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 <div class="row">
-
-                    <!-- FORMULARIO REGISTRAR EQUIPO -->
+                    <!-- ASIGNACION DE EQUIPOS -->
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <!-- <label for="cod_pat">Código Patrimonial</label> -->
-
-                            <label for="cod_pat">
-
-                                <i class="fa fa-id-badge" aria-hidden="true">&nbsp;Código Patrimonial</i>
-                                <!-- <i class="fa fa-id-card-o" aria-hidden="true">&nbsp;Código Patrimonial</i> -->
-                            </label>
-
-                            <input type="text" id="cod_pat" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="mt">Meta</label>
-                            <input type="text" id="mt" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="vd_util">Vida útil</label>
-                            <input type="text" id="vd_util" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="id_oficina">Estados</label>
-                            <select class="form-control" id="estados">
-                                <option value="">Seleccione</option>
-                                <option value="002">002</option>
-                                <option value="001">001</option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="id_prod">ID Producto</label>
-                            <select class="form-control" id="id_prod">
-                                <option value="">Seleccione</option>
-                                <option value="002">002</option>
-                                <option value="001">001</option>
-                            </select>
-                        </div>
                         <div class="form-group">
                             <label for="id_oficina">ID Oficina</label>
                             <select class="form-control" id="id_oficina">
@@ -80,8 +39,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="id_usuario">ID Usuario</label>
-                            <select class="form-control" id="id_usu">
+                            <label for="id_empleado">ID Empleados</label>
+                            <select class="form-control" id="id_empleado">
                                 <option value="">Seleccione</option>
                                 <option value="002">002</option>
                                 <option value="001">001</option>
@@ -89,52 +48,56 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="id_beneficiario">ID Benediciario</label>
-                            <select class="form-control" id="id_usu">
+                            <label for="id_equipos">ID Equipos</label>
+                            <select class="form-control" id="id_equipos">
                                 <option value="">Seleccione</option>
                                 <option value="002">002</option>
                                 <option value="001">001</option>
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label for="id_usuario">ID usuario</label>
+                            <select class="form-control" id="id_usuario">
+                                <option value="">Seleccione</option>
+                                <option value="002">002</option>
+                                <option value="001">001</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fecha">Fecha de Asignación</label>
+                            <input type="date" id="fecha" name="fecha" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col mt-5" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                        <label for="Datos Local" style="font-weight: bold; font-size: 18px;">Asignación de los Equipos</label>
+                        <table class="table table-bordered table-striped dt-responsive" id="asignacion_equipos" width="100%">
+                            <thead>
+                                <tr>
+                                    <th style="width: 15%; text-align: center;">ID OFICINA</th>
+                                    <th style="width: 15%; text-align: center;">ID EMPLEADO</th>
+                                    <th style="width: 15%; text-align: center;">ID EQUIPOS</th>
+                                    <th style="width: 15%; text-align: center;">ID USUARIO</th>
+                                    <th style="width: 15%; text-align: center;">FECHA DE ASIGNACIÓN</th>
+                                    <th style="width: 25%; text-align: center;">ACCION</th>
+                                </tr>
+                            </thead>
+                            <!-- Contenido de la tabla -->
+                        </table>
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-primary" name="btnRegistrar">Registrar</button>
-
+                <button type="button" class="btn btn-primary" name="btnRegistrar" style="margin-top: 20px;">Registrar</button>
             </div>
+
+            
+
         </div>
     </section>
 
 
-    <!-- Modal registrar marca -->
-    <div id="modal_registrar_marca" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Registrar Marca</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <!-- Contenido del formulario para registrar la marca -->
-                    <div class="form-group">
-                        <label for="id_prod">ID Producto</label>
-                        <select class="form-control" id="id_prod">
-                            <option value="">Seleccione</option>
-                            <option value="002">002</option>
-                            <option value="001">001</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
