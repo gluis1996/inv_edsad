@@ -22,31 +22,7 @@
                     <p>INSTALACION FO</p>
                 </a>
             </li>
-            <li class="">
-                <a href="instalacioneoc" class="nav-link">
-                    <i class="fa-brands fa-instalod"></i>
-                    <p>INSTALACION EOC</p>
-                </a>
-            </li>
-            <li class="">
-                <a href="pageCambioEquipo" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>Gestion</p>
-                </a>
-            </li>
-            <li class="nav-header">ADMINISTRACION</li>
-            <li class="nav-item">
-                <a href="perfiles" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>PERFILES</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="Buscarabonado" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>BUSCAR ABONADO</p>
-                </a>
-            </li>
+          
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

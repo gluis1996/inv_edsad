@@ -59,8 +59,7 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
 
-
-    <?php 
+<?php 
     if (isset($_SESSION['iniciarsesion']) && $_SESSION['iniciarsesion'] == 'ok') {
         echo '<div class="wrapper"> ';
         include "Modules/header.php";
@@ -86,6 +85,7 @@
         }
         
     ?>
+
 
     <?php include "Modules/foother.php" ; ?>
     </div>
@@ -136,21 +136,6 @@
     <script src="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/js/dataTables.responsive.min.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/js/responsive.bootstrap5.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/RowGroup-1.5.0/js/dataTables.rowGroup.min.js"></script>
-
-
-
-
-    <script src="Assets/js/listadodatos.js"></script>
-    <script src="Assets/js/parseos.js"></script>
-    <script src="Assets/js/inabilitacione.js"></script>
-    <script src="Assets/js/comboBox.js"></script>
-    <script src="Assets/js/registraronu.js"></script>
-    <script src="Assets/js/busquedaonu.js"></script>
-    <script src="Assets/js/cambioequipo.js"></script>
-    <script src="Assets/js/instalacionEoC.js"></script>
-    <script src="Assets/js/perfiles/perfil.js"></script>
-    <script src="Assets/js/dashboard.js"></script>
-    <script src="Assets/js/buscarabonado.js"></script>
 
 
 </body>

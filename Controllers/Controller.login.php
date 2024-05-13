@@ -8,13 +8,13 @@ class ControllerLogin{
             $usu = $_POST["ingUsuario"];
             $pas = $_POST["ingPassword"];
 
-            $response = ModeloLogin::ModelLogin($usu,$pas);
+            $response = ModeloLogin::ModelLogin($usu,$pas); //asi se llama a la clase estatica
 
             if ($response) {
-                if ($response['user'] == $_POST["ingUsuario"] && $response['accesso']==$_POST["ingPassword"]) {
+                if ($response['user'] == $_POST["ingUsuario"] && $response['contrasena']==$_POST["ingPassword"]) {
                         $_SESSION['iniciarsesion'] = 'ok';
                         $_SESSION['usu'] = $response['user'];
-                        $_SESSION['pass'] = $response['accesso'];
+                        $_SESSION['pass'] = $response['contrasena'];
     
                         echo '<script>
                                 window.location="instalacionfo";
