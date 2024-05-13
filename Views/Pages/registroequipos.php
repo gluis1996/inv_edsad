@@ -86,20 +86,20 @@
 
 
 
-<!-- Modal -->
+<!-- Modal registrar equipos-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
                 <h5 class="modal-title" id="exampleModalLabel">Registrar Equipos Informáticos</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #fff;">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="padding: 20px;">
 
                 <div class="form-group">
-                    <label for="id_prod">ID Modelo</label>
+                    <label for="id_modelo">ID Modelo</label>
                     <select class="form-control" id="id_modelo">
                         <option value="">Seleccione</option>
                         <option value="002">002</option>
@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="mt">COD Patrimonial</label>
+                    <label for="cod_patrimonial">COD Patrimonial</label>
                     <input type="text" id="cod_patrimonial" class="form-control">
                 </div>
 
@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_oficina">Estados</label>
+                    <label for="estados">Estados</label>
                     <select class="form-control" id="estados">
                         <option value="">Seleccione</option>
                         <option value="002">002</option>
@@ -131,7 +131,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_prod">ID Area Usuaria</label>
+                    <label for="id_a_usuaria">ID Area Usuaria</label>
                     <select class="form-control" id="id_a_usuaria">
                         <option value="">Seleccione</option>
                         <option value="002">002</option>
@@ -140,7 +140,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_prod">ID Beneficiario</label>
+                    <label for="id_beneficiarios">ID Beneficiario</label>
                     <select class="form-control" id="id_beneficiarios">
                         <option value="">Seleccione</option>
                         <option value="002">002</option>
@@ -149,12 +149,14 @@
                 </div>
 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Registrar</button>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
+        </div>
     </div>
+</div>
 </div>
 
 
@@ -163,49 +165,51 @@
     <div class="modal-dialog modal-dialog-centered">
 
         <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
                 <h5 class="modal-title">Registrar Marca</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="padding: 20px;">
                 <div class="form-group">
                     <label for="nombre_marca">Nombre de la Marca</label>
                     <input type="text" id="nombre_marca" class="form-control">
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Registrar</button>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
     </div>
 </div>
 
+
+
 <!-- Modal registrar modelo -->
 <div class="modal fade" id="modal_registrar_modelo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
                 <h5 class="modal-title" id="exampleModalLabel">Registrar Modelo</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #fff;">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body" style="padding: 20px;">
                 <div class="form-group">
-                    <label for="mt">Nombre del Modelo</label>
+                    <label for="nombre_modelo">Nombre del Modelo</label>
                     <input type="text" id="nombre_modelo" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="mt">Descripción del Equipo</label>
+                    <label for="descripcion">Descripción del Equipo</label>
                     <input type="text" id="descripcion" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="id_oficina">ID Marca</label>
+                    <label for="id_marca">ID Marca</label>
                     <select class="form-control" id="id_marca">
                         <option value="">Seleccione</option>
                         <option value="002">002</option>
@@ -214,9 +218,9 @@
                 </div>
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Registrar</button>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
     </div>
