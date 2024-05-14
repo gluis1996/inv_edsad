@@ -11,6 +11,9 @@ class conexion {
             die('Error de conexión: ' . $e->getMessage());
         }
     }
+    
 
 
+
+    
 }
