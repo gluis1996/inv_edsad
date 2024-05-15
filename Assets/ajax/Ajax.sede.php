@@ -14,6 +14,8 @@ class ajax_sede{
     public function ajax_registrar_sede(){
         if ($this->estado=='registro_sede') {
             echo 'se va registrar' . $this->nombre;
+        }else{
+            echo 'incorrecto';
         }
 
     }
