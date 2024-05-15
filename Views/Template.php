@@ -66,12 +66,12 @@
         include "Modules/menu.php";
         if (isset($_GET['page'])) {
             if (
-                $_GET['page'] == 'pageCambioEquipo' ||
+                $_GET['page'] == 'pageCambioEquipo'     ||
                 $_GET['page'] == 'asignacionequipos'    || 
-                $_GET['page'] == 'registroequipos'   ||
-                $_GET['page'] == 'perfiles'         ||
-                $_GET['page'] == 'Buscarabonado'    ||
-                $_GET['page'] == 'dashboard'        ||
+                $_GET['page'] == 'registroequipos'      ||
+                $_GET['page'] == 'perfiles'             ||
+                $_GET['page'] == 'Sede'                 ||
+                $_GET['page'] == 'dashboard'            ||
                 $_GET["page"] == "salir"
             ) {
                 include "Pages/" . $_GET['page'] . ".php";
@@ -139,7 +139,7 @@
     <script src="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/js/responsive.bootstrap5.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/RowGroup-1.5.0/js/dataTables.rowGroup.min.js"></script>
 
-
+    <script src="Assets/js/sede.js"></script>
 
 </body>
 

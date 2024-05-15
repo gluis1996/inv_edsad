@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `usuario`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario` (
   `idusuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` text DEFAULT NULL,
+  c
   `user` text DEFAULT NULL,
   `contraseña` text DEFAULT NULL,
   PRIMARY KEY (`idusuario`)
