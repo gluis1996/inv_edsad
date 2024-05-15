@@ -71,6 +71,7 @@
                 $_GET['page'] == 'registroequipos'      ||
                 $_GET['page'] == 'perfiles'             ||
                 $_GET['page'] == 'Sede'                 ||
+                $_GET['page'] == 'empleado'             ||
                 $_GET['page'] == 'dashboard'            ||
                 $_GET["page"] == "salir"
             ) {

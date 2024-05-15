@@ -1,6 +1,6 @@
 <?php
 //controlador
-require_once ('../../Controllers/Controlller.sede.php');
+require_once ('../../Controllers/Controller.sede.php');
 
 //Modelo
 require_once ('../../Model/Modelo.sede.php');
