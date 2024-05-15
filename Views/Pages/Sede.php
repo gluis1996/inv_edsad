@@ -26,27 +26,22 @@
             </div>
             <div class="card-body">
 
-                <button type="button" class="form-control">listar</button>
-
+                <div class="col-2">
+                    <!-- Button para abrir el modal -->
+                    <button type="button" class="btn btn-primary mb-2"  data-toggle="modal" data-target="#modal_registrar_sede">
+                        Registrar Nueva Sede
+                    </button>
+                </div>
 
 
                 <div class="card">
                     <div class="col">
-                        <label for="Datos Local">INSTALACIONES FTTH</label>
-                        <table class="table table-bordered table-striped dt-responsive" id="tb_dash_instalacion_fo" width="100%">
+                        <label for="Datos Local">Lsta de Sedes</label>
+                        <table class="table table-bordered table-striped dt-responsive" id="tb_lista_sede" width="100%">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>FECHA</th>
-                                    <th>OPERADOR</th>
-                                    <th>FILIAL</th>
-                                    <th>ORDEN</th>
-                                    <th>ABONADO</th>
-                                    <th>CODIGO ABONADO</th>
-                                    <th>CAJA</th>
-                                    <th>BORNE</th>
-                                    <th>PRECINTO</th>
-                                    <th>MAC</th>
+                                    <th>Nombre</th>
                                 </tr>
                             </thead>
                         </table>
@@ -64,4 +59,29 @@
 
     </section>
     <!-- /.content -->
+</div>
+
+
+<!-- Modal registrar Sede -->
+<div id="modal_registrar_sede" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">Registrar Sede</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-group">
+                    <label for="nombre_marca">Nombre de la Sede</label>
+                    <input type="text" id="nombre_sede" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_registrarSede" style="background-color: #007bff; color: #fff;">Registrar</button>
+            </div>
+        </div>
+    </div>
 </div>
