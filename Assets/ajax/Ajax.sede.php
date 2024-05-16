@@ -5,7 +5,6 @@ require_once ('../../Controllers/Controlller.sede.php');
 //Modelo
 require_once ('../../Model/Modelo.sede.php');
 
-
 class ajax_sede{
     public $id;
     public $nombre;
