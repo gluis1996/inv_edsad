@@ -1,10 +1,10 @@
 <?php
 
-class controller_empleado{
+class controller_usuario{
 
     public static function controller_listar(){
-        $res = modelo_empleado::model_listar();
+        $res = modelo_usuario::model_listar();
         return $res;
     }
 
-} 
+}

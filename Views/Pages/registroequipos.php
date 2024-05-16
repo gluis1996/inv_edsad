@@ -43,13 +43,13 @@
                         </button>
                     </div>
 
-                    <div class="col-2">
-                        <!-- Button trigger modal -->
-                        <!-- Button registrar modelo -->
+                    <!-- <div class="col-2">
+                        Button trigger modal 
+                        Button registrar modelo 
                         <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modal_registrar_modelo">
                             Registrar Modelo
                         </button>
-                    </div>
+                    </div> -->
                 </div>
 
 
@@ -59,16 +59,12 @@
                         <thead>
                             <tr>
                                 <th style="width: 5%; text-align: center;">ID EQUIPOS</th>
-                                <th style="width: 10%; text-align: center;">COD PATRIMONIAL</th>
-                                <th style="width: 5%; text-align: center;">AÑO DE AQUISICIÓN</th>
-                                <th style="width: 10%; text-align: center;">META</th>
-                                <th style="width: 10%; text-align: center;">VIDA ÚTIL</th>
-                                <th style="width: 15%; text-align: center;">ESTADO</th>
-                                <th style="width: 5%; text-align: center;">ID MODELO</th>
-                                <th style="width: 5%; text-align: center;">ID AREA USUARIA</th>
-                                <th style="width: 5%; text-align: center;">ID BENEFICIARIO</th>
+                                <th style="width: 15%; text-align: center;">MODELO</th>
+                                <th style="width: 25%; text-align: center;">DESCRIPCIÓN</th>
+                                <th style="width: 10%; text-align: center;">FECHA DE REGISTRO</th>
+                                <th style="width: 15%; text-align: center;">MARCA</th>
 
-                                <th style="width: 45%; text-align: center;">ACCIÓN</th>
+                                <th style="width: 40%; text-align: center;">ACCIÓN</th>
                                 <!-- donde iran los botones para cada fila eliminar Actualizar-->
                             </tr>
                         </thead>
@@ -97,65 +93,45 @@
                 </button>
             </div>
             <div class="modal-body" style="padding: 20px;">
-
+                <!-- INICIO -->
                 <div class="form-group">
-                    <label for="id_modelo">ID Modelo</label>
-                    <select class="form-control" id="id_modelo">
-                        <option value="">Seleccione</option>
-                        <option value="002">002</option>
-                        <option value="001">001</option>
-                    </select>
+                    <label for="cod_patrimonial">Modelo</label>
+                    <input type="text" id="modelo" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="cod_patrimonial">COD Patrimonial</label>
-                    <input type="text" id="cod_patrimonial" class="form-control">
+                    <label for="cod_patrimonial">Descripcion</label>
+                    <input type="text" id="descripcion" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="mt">Meta</label>
-                    <input type="text" id="mt" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="vd_util">Vida útil</label>
-                    <input type="text" id="vd_util" class="form-control">
+                    <label for="fecha">Fecha de Registro</label>
+                    <input type="date" id="fecha" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="estados">Estados</label>
-                    <select class="form-control" id="estados">
-                        <option value="">Seleccione</option>
-                        <option value="002">002</option>
-                        <option value="001">001</option>
-                    </select>
-                </div>
+                    <label for="id_marca">Marca</label>
+                    <div class="input-group">
+                        <select id="id_marca" class="form-control custom-select">
+                            <option value="1">Selecccione</option>
+                            <option value="2">Marca 1</option>
+                            <option value="3">Marca 2</option>
 
-                <div class="form-group">
-                    <label for="id_a_usuaria">ID Area Usuaria</label>
-                    <select class="form-control" id="id_a_usuaria">
-                        <option value="">Seleccione</option>
-                        <option value="002">002</option>
-                        <option value="001">001</option>
-                    </select>
+                        </select>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="id_beneficiarios">ID Beneficiario</label>
-                    <select class="form-control" id="id_beneficiarios">
-                        <option value="">Seleccione</option>
-                        <option value="002">002</option>
-                        <option value="001">001</option>
-                    </select>
-                </div>
-
+                <!-- FIN  -->
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
                 <button type="button" class="btn btn-primary" style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
-        </div>
     </div>
+</div>
 </div>
 </div>
 
@@ -187,7 +163,7 @@
 
 
 <!-- Modal registrar modelo -->
-<div class="modal fade" id="modal_registrar_modelo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="modal_registrar_modelo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="border-radius: 10px;">
             <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
@@ -224,4 +200,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

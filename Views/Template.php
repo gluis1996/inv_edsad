@@ -33,10 +33,10 @@
     <link rel="stylesheet" href="Views/Resources/plugins/summernote/summernote-bs4.min.css">
 
     <!-- cards -->
-    <link rel="stylesheet" href="Assets/css/card.css">
+    <!-- <link rel="stylesheet" href="Assets/css/card.css"> -->
 
     <!-- cards -->
-    <link rel="stylesheet" href="Assets/css/card2.css">
+    <!-- <link rel="stylesheet" href="Assets/css/card2.css"> -->
 
     <!-- DataTables -->
     <link href="Views/Resources/plugins/datatablesv2/Bootstrap-5-5.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -72,6 +72,9 @@
                 $_GET['page'] == 'perfiles'             ||
                 $_GET['page'] == 'Sede'                 ||
                 $_GET['page'] == 'empleado'             ||
+                $_GET['page'] == 'usuario'              ||
+                $_GET['page'] == 'oficina'              ||
+                $_GET['page'] == 'beneficiario'         ||
                 $_GET['page'] == 'dashboard'            ||
                 $_GET["page"] == "salir"
             ) {
@@ -141,6 +144,10 @@
     <script src="Views/Resources/plugins/datatablesv2/RowGroup-1.5.0/js/dataTables.rowGroup.min.js"></script>
 
     <script src="Assets/js/sede.js"></script>
+    <script src="Assets/js/empleado.js"></script>
+    <script src="Assets/js/usuario.js"></script>
+    <script src="Assets/js/oficina.js"></script>
+    <script src="Assets/js/beneficiario.js"></script>
 
 </body>
 

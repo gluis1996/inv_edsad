@@ -1,9 +1,9 @@
+
 $(document).ready(function () { 
 
     $('#btn_registrarSede').click(function (e) {
         e.preventDefault();
-        var nombre_empleado = $('#nombre_sede').val();
-        
+        var nombre_sede = $('#nombre_sede').val();
         
         const data = {
             registro_sede : 'registro_sede',

@@ -6,7 +6,7 @@ require_once ('../../Controllers/Controller.empleado.php');
 require_once ('../../Model/Modelo.empleado.php');
 
 
-class ajax_sede{
+class ajax_empleado{
     public $id;
     public $nombre;
     public $accion;
@@ -22,7 +22,7 @@ class ajax_sede{
 
 
 if (isset($_POST['registro_empleado'])) {
-    $res = new ajax_sede();
+    $res = new ajax_empleado();
     $res->accion = $_POST['registro_empleado'];
     $res->nombre = $_POST['nombre_empleado'];
     $res->ajax_registrar_empleado();

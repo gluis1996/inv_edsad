@@ -22,66 +22,148 @@
 
         <div class="card">
             <div class="card-header bg-primary text-white">
-                <h3 class="card-title">Formulario Equipos</h3>
+                <h3 class="card-title">Formulario Asignación de Equipos</h3>
             </div>
 
             <div class="card-body" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 <div class="row">
                     <!-- ASIGNACION DE EQUIPOS -->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="id_oficina">ID Oficina</label>
-                            <select class="form-control" id="id_oficina">
-                                <option value="">Seleccione</option>
-                                <option value="002">002</option>
-                                <option value="001">001</option>
-                            </select>
+                    <div class="row">
+                        <!-- Primera columna -->
+                        <div class="col-md-6">
+                            <!-- Contenido de la primera columna -->
+                            <!-- Sedes -->
+                            <div class="form-group">
+                                <label for="id_sede">Sedes</label>
+                                <div class="input-group">
+                                    <select id="id_sede" class="form-control custom-select">
+                                        <option value="1">Seleccione</option>
+                                        <option value="2">Sede 1</option>
+                                        <option value="3">Sede 2</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Equipos -->
+                            <div class="form-group">
+                                <label for="id_equipo">Equipos</label>
+                                <div class="input-group">
+                                    <select id="id_equipo" class="form-control custom-select">
+                                        <option value="1">Seleccione</option>
+                                        <option value="2">Equipo 1</option>
+                                        <option value="3">Equipo 2</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Empleados -->
+                            <div class="form-group">
+                                <label for="id_empleado">Empleados</label>
+                                <div class="input-group">
+                                    <select id="id_empleado" class="form-control custom-select">
+                                        <option value="1">Seleccione</option>
+                                        <option value="2">Empleado 1</option>
+                                        <option value="3">Empleado 2</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- COD Patrimonial -->
+                            <div class="form-group">
+                                <label for="cod_patrimonial">COD Patrimonial</label>
+                                <input type="text" id="cod_patrimonial" class="form-control">
+                            </div>
+                            
+                            <!-- Fecha de Asignación -->
+                            <div class="form-group">
+                                <label for="fecha">Fecha de Asignación</label>
+                                <input type="date" id="fecha" name="fecha" class="form-control">
+                            </div>
+                            
                         </div>
 
-                        <div class="form-group">
-                            <label for="id_empleado">ID Empleados</label>
-                            <select class="form-control" id="id_empleado">
-                                <option value="">Seleccione</option>
-                                <option value="002">002</option>
-                                <option value="001">001</option>
-                            </select>
-                        </div>
+                        <!-- Segunda columna -->
+                        <div class="col-md-6">
+                            <!-- Contenido de la segunda columna -->
+                            <!-- Oficinas -->
+                            <div class="form-group">
+                                <label for="id_oficina">Oficinas</label>
+                                <div class="input-group">
+                                    <select id="id_oficina" class="form-control custom-select">
+                                        <option value="1">Seleccione</option>
+                                        <option value="2">Oficina 1</option>
+                                        <option value="3">Oficina 2</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="id_equipos">ID Equipos</label>
-                            <select class="form-control" id="id_equipos">
-                                <option value="">Seleccione</option>
-                                <option value="002">002</option>
-                                <option value="001">001</option>
-                            </select>
-                        </div>
+                            <!-- Usuarios -->
+                            <div class="form-group">
+                                <label for="id_usuario">Usuarios</label>
+                                <div class="input-group">
+                                    <select id="id_usuario" class="form-control custom-select">
+                                        <option value="1">Seleccione</option>
+                                        <option value="2">Usuario 1</option>
+                                        <option value="3">Usuario 2</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="id_usuario">ID usuario</label>
-                            <select class="form-control" id="id_usuario">
-                                <option value="">Seleccione</option>
-                                <option value="002">002</option>
-                                <option value="001">001</option>
-                            </select>
-                        </div>
+                            <!-- Estados -->
+                            <div class="form-group">
+                                <label for="id_estado">Estados</label>
+                                <div class="input-group">
+                                    <select id="id_estado" class="form-control custom-select">
+                                        <option value="1">Seleccione</option>
+                                        <option value="2">Estado 1</option>
+                                        <option value="3">Estado 2</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="fecha">Fecha de Asignación</label>
-                            <input type="date" id="fecha" name="fecha" class="form-control">
+                            <!-- Vida Útil -->
+                            <div class="form-group">
+                                <label for="vid_util">Vida Útil</label>
+                                <input type="text" id="vid_util" class="form-control">
+                            </div>
+
                         </div>
                     </div>
+
 
                     <div class="col mt-5" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                         <label for="Datos Local" style="font-weight: bold; font-size: 18px;">Asignación de los Equipos</label>
                         <table class="table table-bordered table-striped dt-responsive" id="asignacion_equipos" width="100%">
                             <thead>
                                 <tr>
-                                    <th style="width: 15%; text-align: center;">ID OFICINA</th>
-                                    <th style="width: 15%; text-align: center;">ID EMPLEADO</th>
-                                    <th style="width: 15%; text-align: center;">ID EQUIPOS</th>
-                                    <th style="width: 15%; text-align: center;">ID USUARIO</th>
-                                    <th style="width: 15%; text-align: center;">FECHA DE ASIGNACIÓN</th>
-                                    <th style="width: 25%; text-align: center;">ACCION</th>
+                                    <th style="width: 5%; text-align: center;">ID DETALLE</th>
+                                    <th style="width: 10%; text-align: center;">SEDES</th>
+                                    <th style="width: 10%; text-align: center;">OFICINAS</th>
+                                    <th style="width: 10%; text-align: center;">EQUIPOS</th>
+                                    <th style="width: 10%; text-align: center;">USUARIOS</th>
+                                    <th style="width: 10%; text-align: center;">EMPLEADOS</th>
+                                    <th style="width: 5%; text-align: center;">COD PATRIMONIAL</th>
+                                    <th style="width: 5%; text-align: center;">VIDA UTÍL</th>
+                                    <th style="width: 10%; text-align: center;">ESTADOS</th>
+                                    <th style="width: 30%; text-align: center;">ACCION</th>
                                 </tr>
                             </thead>
                             <!-- Contenido de la tabla -->
@@ -92,7 +174,7 @@
                 <button type="button" class="btn btn-primary" name="btnRegistrar" style="margin-top: 20px;">Registrar</button>
             </div>
 
-            
+
 
         </div>
     </section>
