@@ -1,7 +1,7 @@
 <?php
 require_once ('conexion.php');
 
-class modelo_empleado{
+class modelo_usuario{
 
     public static function model_buscar(){
         
@@ -9,14 +9,13 @@ class modelo_empleado{
 
     public static function model_listar(){
         try {
-            $sql = "SELECT *FROM empleado;";
+            $sql = "SELECT *FROM usuario;";
             $stmp = conexion::conectar()->prepare($sql);
             $stmp->execute();
             return $stmp->fetchAll();
         } catch (PDOException $th) {
-            return "Modelo empleado ".$th->getMessage();
+            return "Modelo usuario ".$th->getMessage();
         }
-        
     }
 
     public static function model_agregar(){

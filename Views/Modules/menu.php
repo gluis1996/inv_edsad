@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="Oficina" class="nav-link">
+                    <a href="oficina" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>
                         <p>Oficina</p>
                     </a>
