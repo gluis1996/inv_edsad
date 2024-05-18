@@ -96,9 +96,6 @@
                                 <label for="id_oficina">Oficinas</label>
                                 <div class="input-group">
                                     <select id="id_oficina" class="form-control custom-select">
-                                        <option value="1">Seleccione</option>
-                                        <option value="2">Oficina 1</option>
-                                        <option value="3">Oficina 2</option>
                                     </select>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-eye"></i></span>
@@ -148,7 +145,7 @@
 
                     <div class="col mt-5" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                         <label for="Datos Local" style="font-weight: bold; font-size: 18px;">Asignación de los Equipos</label>
-                        <table class="table table-bordered table-striped dt-responsive" id="asignacion_equipos" width="100%">
+                        <table class="table table-bordered table-striped dt-responsive" id="tb_asignacion_equipos" width="100%">
                             <thead>
                                 <tr>
                                     <th style="width: 5%; text-align: center;">ID DETALLE</th>

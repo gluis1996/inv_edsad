@@ -2,17 +2,20 @@
 //controlador
 require_once ('../../Controllers/Controller.asignacion.php');
 require_once ('../../Controllers/Controlller.sede.php');
+require_once ('../../Controllers/Controller.oficina.php');
 
 //Modelo
 require_once ('../../Model/Modelo.detalleAsignacion.php');
 require_once ('../../Model/Modelo.sede.php');
+require_once ('../../Model/Modelo.oficina.php');
 
 class ajax_asignacion{
 
-    public $estado;
+    public $accion;
+    public $id_sede;
 
     public function ajax_listar(){
-        if ($this->estado == 'listarAE') {
+        if ($this->accion == 'listarAE') {
             $response = controller_asignacion::c_listar();
             
             $datosjason = array();
@@ -31,21 +34,20 @@ class ajax_asignacion{
                         "acciones" => "--"
                     );
                 } else {
-                    foreach ($response as $item) {
+                    foreach ($response as $value) {
                         
-
                         $botones = "<div class='col'>  <button type='button' class='btn btn-dark tbl_radcheck ' ><i class='fas fa-eye'></i></button> <button    type='button' class='btn btn-primary btn_raddact' ></i></button> <button type='button'    class='btn btn-warning btn_registrar_atc' ></i></button><button type='button' class='btn btn-danger btnEliminarRadius' ></i></button></div>";
 
                         $datosjason['data'][] = array(
-                            "id_detalle_asignacion" => $item['id_detalle_asignacion'],
-                            "sede_nombres" => $item['sede_nombres'],
-                            "oficina_nombres" => $item['oficina_nombres'],
-                            "equipo" => $item['equipo'],
-                            "usuario_nombre" => $item['usuario_nombre'],
-                            "cod_patrimonial" => $item['cod_patrimonial'],
-                            "vida_util" => $item['vida_util'],
-                            "estado" => $item['estado'],
-                            "fecha_asignacion" => $item['fecha_asignacion'],
+                            "id_detalle_asignacion" => $value['id_detalle_asignacion'],
+                            "sede_nombres" => $value['sede_nombres'],
+                            "oficina_nombres" => $value['oficina_nombres'],
+                            "equipo" => $value['equipo'],
+                            "usuario_nombre" => $value['usuario_nombre'],
+                            "cod_patrimonial" => $value['cod_patrimonial'],
+                            "vida_util" => $value['vida_util'],
+                            "estado" => $value['estado'],
+                            "fecha_asignacion" => $value['fecha_asignacion'],
                             "acciones" => $botones
                         );
                     }
@@ -57,23 +59,36 @@ class ajax_asignacion{
 
 
     public function ajax_listar_sede(){
-        if ($this->estado == 'listar_sede_en_select') {
+        if ($this->accion == 'listar_sede_en_select') {
             $response = controller_sede::controller_listar();
             echo json_encode($response);
         }
     }
     
+    public function ajax_listar_oficinas(){
+        if ($this->accion == 'listar_oficinas_por_sede') {
+            $response = controller_oficina::c_listar_oficina($this->id_sede);
+            echo json_encode($response);
+        }
+    }
 
 }
 
 if (isset($_POST['listarAE'])) {
     $res = new ajax_asignacion();
-    $res->estado = $_POST['listarAE'];
+    $res->accion = $_POST['listarAE'];
     $res->ajax_listar();
 }
 
 if (isset($_POST['listar_sede_en_select'])) {
     $res = new ajax_asignacion();
-    $res->estado = $_POST['listar_sede_en_select'];
+    $res->accion = $_POST['listar_sede_en_select'];
     $res->ajax_listar_sede();
+}
+
+if (isset($_POST['listar_oficinas_por_sede'])) {
+    $res = new ajax_asignacion();
+    $res->accion = $_POST['listar_oficinas_por_sede'];
+    $res->id_sede = $_POST['id_sede'];
+    $res->ajax_listar_oficinas();
 }

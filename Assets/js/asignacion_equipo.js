@@ -4,34 +4,33 @@ $(document).ready(function () {
 
     listar();
     llenar_select_sede();
+    llenar_select_oficina();
 
 })
 
 //listara todo
-
 function listar() {
     const data = {
         listarAE: 'listarAE',
     }
-    console.log(data);
-    $.ajax({
-        url: "Assets/ajax/Ajax.asignacion.php",
-        data: data,
-        type: 'POST',
-        success: function (response) {
-            //var j = JSON.parse(response);
-            console.log(response);
-        }
-    })
+    // console.log(data);
+    // $.ajax({
+    //     url: "Assets/ajax/Ajax.asignacion.php",
+    //     data: data,
+    //     type: 'POST',
+    //     success: function (response) {
+    //         //var j = JSON.parse(response);
+    //         console.log(response);
+    //     }
+    // })
 
-    $('#asignacion_equipos').DataTable({
+    $('#tb_asignacion_equipos').DataTable({
         "destroy": true,
         "ajax": {
             "url": "Assets/ajax/Ajax.asignacion.php",
             "type": "POST",
             "data": data
         },
-
         "paging": true,       // Quitar paginación
         "searching": true,    // Quitar barra de búsqueda
         "info": true,         // Quitar información de registros
@@ -50,7 +49,6 @@ function listar() {
             { "data": "estado" },
             { "data": "fecha_asignacion" },
             { "data": "acciones" }
-
         ],
         "dom": 'lfrtip', // Eliminar algunos elementos de la interfaz
         "language": {
@@ -71,29 +69,25 @@ function listar() {
 }
 
 function llenar_select_sede() {
-
     const data = {
         listar_sede_en_select: 'listar_sede_en_select',
     };
-
     $.ajax({
         type: 'POST',
         data: data,
         url: "Assets/ajax/Ajax.asignacion.php",
         success: function (respose) {
             var js = JSON.parse(respose);
-
             $.each(js, function (index, fila) {
                 $("#id_sede").append('<option value="' + fila.idsedes + '">' + fila.nombres + '</option>');
             });
         }
     })
-
 }
 
 
 function llenar_select_oficina() {
-    const id_sede = $("#id_sede").val();
+    const id_sede =  $("#id_sede").val();
 
     if (id_sede) {
         const data = {
@@ -112,7 +106,7 @@ function llenar_select_oficina() {
                 $("#id_oficina").empty().append('<option value="">Seleccione una oficina</option>');
 
                 $.each(js, function (index, fila) {
-                    $("#id_oficina").append('<option value="' + fila.idoficina + '">' + fila.nombre_oficina + '</option>');
+                    $("#id_oficina").append('<option value="' + fila.idoficinas + '">' + fila.nombres + '</option>');
                 });
             }
         });

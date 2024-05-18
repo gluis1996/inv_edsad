@@ -4,7 +4,7 @@ require_once ('conexion.php');
 
 class modelo_detalleAsignacion{
 
-    public static function model_buscar(){
+    public static function model_buscar($data){
         
     }
 
@@ -19,15 +19,15 @@ class modelo_detalleAsignacion{
         }
     }
 
-    public static function model_agregar(){
+    public static function model_agregar($data){
         
     }
 
-    public static function model_eliminar(){
+    public static function model_eliminar($data){
         
     }
 
-    public static function model_actualizar(){
+    public static function model_actualizar($data){
         
     }
 
