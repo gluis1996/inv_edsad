@@ -9,7 +9,7 @@ class modelo_empleado{
 
     public static function model_listar(){
         try {
-            $sql = "SELECT *FROM empleado;";
+            $sql = "SELECT *FROM empleados;";
             $stmp = conexion::conectar()->prepare($sql);
             $stmp->execute();
             return $stmp->fetchAll();

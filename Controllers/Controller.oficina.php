@@ -1,7 +1,5 @@
 <?php
 
-
-
 class controller_oficina{
 
     public static function c_listar_oficina($data){

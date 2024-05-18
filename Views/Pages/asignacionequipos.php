@@ -50,8 +50,6 @@
                                 <div class="input-group">
                                     <select id="id_equipo" class="form-control custom-select">
                                         <option value="1">Seleccione</option>
-                                        <option value="2">Equipo 1</option>
-                                        <option value="3">Equipo 2</option>
                                     </select>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-eye"></i></span>
@@ -64,9 +62,6 @@
                                 <label for="id_empleado">Empleados</label>
                                 <div class="input-group">
                                     <select id="id_empleado" class="form-control custom-select">
-                                        <option value="1">Seleccione</option>
-                                        <option value="2">Empleado 1</option>
-                                        <option value="3">Empleado 2</option>
                                     </select>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-eye"></i></span>
@@ -96,6 +91,7 @@
                                 <label for="id_oficina">Oficinas</label>
                                 <div class="input-group">
                                     <select id="id_oficina" class="form-control custom-select">
+                                        <option value="">Seleccionar</option>
                                     </select>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-eye"></i></span>
@@ -103,7 +99,7 @@
                                 </div>
                             </div>
 
-                            <!-- Usuarios -->
+                            <!-- Usuarios
                             <div class="form-group">
                                 <label for="id_usuario">Usuarios</label>
                                 <div class="input-group">
@@ -116,16 +112,16 @@
                                         <span class="input-group-text"><i class="fas fa-eye"></i></span>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!-- Estados -->
                             <div class="form-group">
                                 <label for="id_estado">Estados</label>
                                 <div class="input-group">
                                     <select id="id_estado" class="form-control custom-select">
-                                        <option value="1">Seleccione</option>
-                                        <option value="2">Estado 1</option>
-                                        <option value="3">Estado 2</option>
+                                        <option value="">Seleccione</option>
+                                        <option value="OPERATIVO">OPERATIVO</option>
+                                        <option value="INOPERATIVO">INOPERATIVO</option>
                                     </select>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-eye"></i></span>
@@ -148,16 +144,17 @@
                         <table class="table table-bordered table-striped dt-responsive" id="tb_asignacion_equipos" width="100%">
                             <thead>
                                 <tr>
-                                    <th style="width: 5%; text-align: center;">ID DETALLE</th>
-                                    <th style="width: 10%; text-align: center;">SEDES</th>
-                                    <th style="width: 10%; text-align: center;">OFICINAS</th>
-                                    <th style="width: 10%; text-align: center;">EQUIPOS</th>
+                                    <th style="width: 5%; text-align: center;">ID</th>
+                                    <th style="width: 5%; text-align: center;">SEDES</th>
+                                    <th style="width: 15%; text-align: center;">OFICINAS</th>
+                                    <th style="width: 15%; text-align: center;">EQUIPOS</th>
                                     <th style="width: 10%; text-align: center;">USUARIOS</th>
                                     <th style="width: 10%; text-align: center;">EMPLEADOS</th>
-                                    <th style="width: 5%; text-align: center;">COD PATRIMONIAL</th>
+                                    <th style="width: 5%; text-align: center;">COD P.</th>
                                     <th style="width: 5%; text-align: center;">VIDA UTÍL</th>
                                     <th style="width: 10%; text-align: center;">ESTADOS</th>
-                                    <th style="width: 30%; text-align: center;">ACCION</th>
+                                    <th style="width: 10%; text-align: center;">FECHA</th>
+                                    <th style="width: 10%; text-align: center;">ACCION</th>
                                 </tr>
                             </thead>
                             <!-- Contenido de la tabla -->

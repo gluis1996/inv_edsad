@@ -4,7 +4,13 @@ $(document).ready(function () {
 
     listar();
     llenar_select_sede();
-    llenar_select_oficina();
+    llenar_select_equipo();
+    llenar_select_empleado();
+    // Añadir evento change al select de sedes
+    $("#id_sede").change(function() {
+        llenar_select_oficina();
+    });
+
 
 })
 
@@ -13,16 +19,6 @@ function listar() {
     const data = {
         listarAE: 'listarAE',
     }
-    // console.log(data);
-    // $.ajax({
-    //     url: "Assets/ajax/Ajax.asignacion.php",
-    //     data: data,
-    //     type: 'POST',
-    //     success: function (response) {
-    //         //var j = JSON.parse(response);
-    //         console.log(response);
-    //     }
-    // })
 
     $('#tb_asignacion_equipos').DataTable({
         "destroy": true,
@@ -44,6 +40,7 @@ function listar() {
             { "data": "oficina_nombres" },
             { "data": "equipo" },
             { "data": "usuario_nombre" },
+            { "data": "empleado_nombre" },
             { "data": "cod_patrimonial" },
             { "data": "vida_util" },
             { "data": "estado" },
@@ -68,6 +65,7 @@ function listar() {
     });
 }
 
+
 function llenar_select_sede() {
     const data = {
         listar_sede_en_select: 'listar_sede_en_select',
@@ -84,7 +82,6 @@ function llenar_select_sede() {
         }
     })
 }
-
 
 function llenar_select_oficina() {
     const id_sede =  $("#id_sede").val();
@@ -114,4 +111,39 @@ function llenar_select_oficina() {
         // Si no hay una sede seleccionada, limpiar el select de oficinas
         $("#id_oficina").empty().append('<option value="">Seleccione una oficina</option>');
     }
+}
+
+function llenar_select_equipo() {
+    const data = {
+        listar_equipo: 'listar_equipo',
+    };
+    $.ajax({
+        type: 'POST',
+        data: data,
+        url: "Assets/ajax/Ajax.asignacion.php",
+        success: function (respose) {
+            var js = JSON.parse(respose);
+            $.each(js, function (index, fila) {
+                $("#id_equipo").append('<option value="' + fila.idequipos + '">' + fila.descripcion + " - " + fila.modelo+ " - "+fila.nombre+'</option>');
+            });
+            $("#id_equipo").select2();
+        }
+    })
+}
+
+function llenar_select_empleado() {
+    const data = {
+        listar_empleado: 'listar_empleado',
+    };
+    $.ajax({
+        type: 'POST',
+        data: data,
+        url: "Assets/ajax/Ajax.asignacion.php",
+        success: function (respose) {
+            var js = JSON.parse(respose);
+            $.each(js, function (index, fila) {
+                $("#id_empleado").append('<option value="' + fila.idempleado + '">' + fila.nombres +'</option>');
+            });
+        }
+    })
 }

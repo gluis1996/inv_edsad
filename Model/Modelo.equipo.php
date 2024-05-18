@@ -8,7 +8,14 @@ class modelo_equipo{
     }
 
     public static function model_listar(){
-        
+        try {
+            $sql = "call sp_listar_equipos();";
+            $call = conexion::conectar()->prepare($sql);
+            $call->execute();
+            return $call->fetchAll();
+        } catch (PDOException $e) {
+            return "Erro: ".$e->getMessage();
+        }
     }
 
     public static function model_agregar(){

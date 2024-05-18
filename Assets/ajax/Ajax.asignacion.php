@@ -3,11 +3,15 @@
 require_once ('../../Controllers/Controller.asignacion.php');
 require_once ('../../Controllers/Controlller.sede.php');
 require_once ('../../Controllers/Controller.oficina.php');
+require_once ('../../Controllers/Controller.equipo.php');
+require_once ('../../Controllers/Controller.empleado.php');
 
 //Modelo
 require_once ('../../Model/Modelo.detalleAsignacion.php');
 require_once ('../../Model/Modelo.sede.php');
 require_once ('../../Model/Modelo.oficina.php');
+require_once ('../../Model/Modelo.equipo.php');
+require_once ('../../Model/Modelo.empleado.php');
 
 class ajax_asignacion{
 
@@ -26,7 +30,8 @@ class ajax_asignacion{
                         "sede_nombres" => "--",
                         "oficina_nombres" => "--",
                         "equipo" => "--",
-                        "usuario_nombre" => "--",
+                        "usuario_nombre" => "--", 
+                        "empleado_nombre" => "--",
                         "cod_patrimonial" => "--",
                         "vida_util" => "--",
                         "estado" => "--",
@@ -44,6 +49,7 @@ class ajax_asignacion{
                             "oficina_nombres" => $value['oficina_nombres'],
                             "equipo" => $value['equipo'],
                             "usuario_nombre" => $value['usuario_nombre'],
+                            "empleado_nombre" => $value['empleado_nombre'],
                             "cod_patrimonial" => $value['cod_patrimonial'],
                             "vida_util" => $value['vida_util'],
                             "estado" => $value['estado'],
@@ -72,6 +78,20 @@ class ajax_asignacion{
         }
     }
 
+    public function ajax_lista_equipo(){
+        if ($this->accion == 'listar_equipo') {
+            $response = controller_equipo::c_listar();
+            echo json_encode($response);
+        }
+    }
+
+    public function ajax_lista_empleado(){
+        if ($this->accion == 'listar_empleado') {
+            $response = controller_empleado::c_listar();
+            echo json_encode($response);
+        }
+    }
+
 }
 
 if (isset($_POST['listarAE'])) {
@@ -91,4 +111,16 @@ if (isset($_POST['listar_oficinas_por_sede'])) {
     $res->accion = $_POST['listar_oficinas_por_sede'];
     $res->id_sede = $_POST['id_sede'];
     $res->ajax_listar_oficinas();
+}
+
+if (isset($_POST['listar_equipo'])) {
+    $res = new ajax_asignacion();
+    $res->accion = $_POST['listar_equipo'];
+    $res->ajax_lista_equipo();
+}
+
+if (isset($_POST['listar_empleado'])) {
+    $res = new ajax_asignacion();
+    $res->accion = $_POST['listar_empleado'];
+    $res->ajax_lista_empleado();
 }
