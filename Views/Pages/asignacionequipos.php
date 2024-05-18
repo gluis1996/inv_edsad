@@ -181,9 +181,6 @@
 
 
 
-
-
-
     <!--Modal Listado consumo-->
     <div id="modal_estado_instalacion" class="modal fade" role="dialog">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">

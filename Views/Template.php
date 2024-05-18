@@ -148,6 +148,7 @@
     <script src="Assets/js/usuario.js"></script>
     <script src="Assets/js/oficina.js"></script>
     <script src="Assets/js/beneficiario.js"></script>
+    <script src="Assets/js/asignacion_equipo.js"></script>
 
 </body>
 
