@@ -37,9 +37,6 @@
                                 <label for="id_sede">Sedes</label>
                                 <div class="input-group">
                                     <select id="id_sede" class="form-control custom-select">
-                                        <option value="1">Seleccione</option>
-                                        <option value="2">Sede 1</option>
-                                        <option value="3">Sede 2</option>
                                     </select>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-eye"></i></span>

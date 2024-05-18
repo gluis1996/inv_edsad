@@ -1,9 +1,9 @@
 
-$(document).ready(function () { 
+$(document).ready(function () {
 
-    
+
     listar();
-
+    llenar_select_sede();
 
 })
 
@@ -31,7 +31,7 @@ function listar() {
             "type": "POST",
             "data": data
         },
-        
+
         "paging": true,       // Quitar paginación
         "searching": true,    // Quitar barra de búsqueda
         "info": true,         // Quitar información de registros
@@ -68,4 +68,56 @@ function listar() {
             }
         }
     });
+}
+
+function llenar_select_sede() {
+
+    const data = {
+        listar_sede_en_select: 'listar_sede_en_select',
+    };
+
+    $.ajax({
+        type: 'POST',
+        data: data,
+        url: "Assets/ajax/Ajax.asignacion.php",
+        success: function (respose) {
+            var js = JSON.parse(respose);
+
+            $.each(js, function (index, fila) {
+                $("#id_sede").append('<option value="' + fila.idsedes + '">' + fila.nombres + '</option>');
+            });
+        }
+    })
+
+}
+
+
+function llenar_select_oficina() {
+    const id_sede = $("#id_sede").val();
+
+    if (id_sede) {
+        const data = {
+            listar_oficinas_por_sede: 'listar_oficinas_por_sede',
+            id_sede: id_sede
+        };
+
+        $.ajax({
+            type: 'POST',
+            data: data,
+            url: "Assets/ajax/Ajax.asignacion.php",
+            success: function (response) {
+                var js = JSON.parse(response);
+
+                // Limpiar las opciones actuales del select de oficinas
+                $("#id_oficina").empty().append('<option value="">Seleccione una oficina</option>');
+
+                $.each(js, function (index, fila) {
+                    $("#id_oficina").append('<option value="' + fila.idoficina + '">' + fila.nombre_oficina + '</option>');
+                });
+            }
+        });
+    } else {
+        // Si no hay una sede seleccionada, limpiar el select de oficinas
+        $("#id_oficina").empty().append('<option value="">Seleccione una oficina</option>');
+    }
 }

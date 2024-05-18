@@ -1,9 +1,11 @@
 <?php
 //controlador
 require_once ('../../Controllers/Controller.asignacion.php');
+require_once ('../../Controllers/Controlller.sede.php');
 
 //Modelo
 require_once ('../../Model/Modelo.detalleAsignacion.php');
+require_once ('../../Model/Modelo.sede.php');
 
 class ajax_asignacion{
 
@@ -53,6 +55,13 @@ class ajax_asignacion{
         }
     }
 
+
+    public function ajax_listar_sede(){
+        if ($this->estado == 'listar_sede_en_select') {
+            $response = controller_sede::controller_listar();
+            echo json_encode($response);
+        }
+    }
     
 
 }
@@ -61,4 +70,10 @@ if (isset($_POST['listarAE'])) {
     $res = new ajax_asignacion();
     $res->estado = $_POST['listarAE'];
     $res->ajax_listar();
+}
+
+if (isset($_POST['listar_sede_en_select'])) {
+    $res = new ajax_asignacion();
+    $res->estado = $_POST['listar_sede_en_select'];
+    $res->ajax_listar_sede();
 }
