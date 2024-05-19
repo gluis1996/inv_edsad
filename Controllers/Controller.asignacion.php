@@ -9,5 +9,9 @@ class controller_asignacion{
         return $response;
     }
 
+    public static function c_registras_detalleasignacion($data){
+        $res = modelo_detalleAsignacion::model_agregar($data);
+        return $res;
+    }
 
 }

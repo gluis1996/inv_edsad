@@ -22,7 +22,7 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">                        
-                        <span class="hidden-xs" id="usuario_sesion" data-usu="<?php echo $_SESSION['usu']; ?>" ><?php echo $_SESSION['usu']; ?></span>
+                        <span class="hidden-xs" id="usuario_sesion" id_lg_usuario ="<?php echo $_SESSION['idusuario'] ;?>" data-usu="<?php echo $_SESSION['usu']; ?>" ><?php echo $_SESSION['usu']; ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-body">

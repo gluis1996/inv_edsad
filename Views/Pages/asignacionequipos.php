@@ -37,6 +37,7 @@
                                 <label for="id_sede">Sedes</label>
                                 <div class="input-group">
                                     <select id="id_sede" class="form-control custom-select">
+                                        <option value="0">Seleccionar</option>
                                     </select>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-eye"></i></span>
@@ -49,7 +50,7 @@
                                 <label for="id_equipo">Equipos</label>
                                 <div class="input-group">
                                     <select id="id_equipo" class="form-control custom-select">
-                                        <option value="1">Seleccione</option>
+                                        <option value="0">Seleccione</option>
                                     </select>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-eye"></i></span>
@@ -62,6 +63,7 @@
                                 <label for="id_empleado">Empleados</label>
                                 <div class="input-group">
                                     <select id="id_empleado" class="form-control custom-select">
+                                        <option value="0">Seleccione</option>
                                     </select>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-eye"></i></span>
@@ -74,13 +76,13 @@
                                 <label for="cod_patrimonial">COD Patrimonial</label>
                                 <input type="text" id="cod_patrimonial" class="form-control">
                             </div>
-                            
+
                             <!-- Fecha de Asignación -->
                             <div class="form-group">
                                 <label for="fecha">Fecha de Asignación</label>
                                 <input type="date" id="fecha" name="fecha" class="form-control">
                             </div>
-                            
+
                         </div>
 
                         <!-- Segunda columna -->
@@ -91,7 +93,7 @@
                                 <label for="id_oficina">Oficinas</label>
                                 <div class="input-group">
                                     <select id="id_oficina" class="form-control custom-select">
-                                        <option value="">Seleccionar</option>
+                                        <option value="0">Seleccionar</option>
                                     </select>
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-eye"></i></span>
@@ -119,7 +121,7 @@
                                 <label for="id_estado">Estados</label>
                                 <div class="input-group">
                                     <select id="id_estado" class="form-control custom-select">
-                                        <option value="">Seleccione</option>
+                                        <option value="0">Seleccione</option>
                                         <option value="OPERATIVO">OPERATIVO</option>
                                         <option value="INOPERATIVO">INOPERATIVO</option>
                                     </select>
@@ -161,12 +163,8 @@
                         </table>
                     </div>
                 </div>
-
-                <button type="button" class="btn btn-primary" name="btnRegistrar" style="margin-top: 20px;">Registrar</button>
+                <button type="button" class="btn btn-primary btnRegistrar_asignacion" name="btnRegistrar_asignacion" style="margin-top: 20px;">Registrar</button>
             </div>
-
-
-
         </div>
     </section>
 

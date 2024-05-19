@@ -13,6 +13,7 @@ class ControllerLogin{
             if ($response) {
                 if ($response['user'] == $_POST["ingUsuario"] && $response['contraseña']==$_POST["ingPassword"]) {
                         $_SESSION['iniciarsesion'] = 'ok';
+                        $_SESSION['idusuario'] = $response['idusuario'];
                         $_SESSION['usu'] = $response['user'];
                         $_SESSION['pass'] = $response['contraseña'];
     
