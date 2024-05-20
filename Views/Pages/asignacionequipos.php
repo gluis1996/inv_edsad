@@ -167,46 +167,81 @@
             </div>
         </div>
     </section>
+</div>
 
 
 
-    <!--Modal Listado consumo-->
-    <div id="modal_estado_instalacion" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Estado</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col">
-                            <label for="Datos Local">Consumo de Abonado</label>
-                            <table class="table table-bordered table-striped dt-responsive" id="tbl_raddact_estado_instalacion" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>IP Address</th>
-                                        <th>Start Time</th>
-                                        <th>Stop Time</th>
-                                        <th>Total Time</th>
-                                        <th>Upload (Bytes)</th>
-                                        <th>Download (Bytes)</th>
-                                        <th>Termination</th>
-                                        <th>NAS IP Address</th>
-                                    </tr>
-                                </thead>
-                            </table>
+<div class="modal fade" id="modal_asignacion_editar" tabindex="-1" role="dialog" aria-labelledby="modal_asignacion_editar_Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_asignacion_editar_Label">Editar Asignación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="id">ID</label>
+                            <input type="text" class="form-control" id="modal_text_asig_id" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="sede">Sede</label>
+                            <select id="modal_select_asig_sede" class="form-control custom-select">
+                                <option value="0">Seleccionar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="oficina">Oficina</label>
+                            <select id="modal_select_asig_oficina" class="form-control custom-select">
+                                <option value="0">Seleccionar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="equipo">Equipo</label>
+                            <input type="text" class="form-control" id="modal_text_asig_equipo" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="usuario">Usuario</label>
+                            <input type="text" class="form-control" id="modal_text_asig_usuario" readonly>
                         </div>
                     </div>
-
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="empleado">Empleado</label>
+                            <select id="modal_select_asig_empleado" class="form-control custom-select">
+                                <option value="0">Seleccionar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cod_patrimonial">COD Patrimonial</label>
+                            <input type="text" class="form-control" id="modal_text_asig_cod_patrimonial" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="vida_util">Vida Útil</label>
+                            <input type="text" class="form-control" id="modal_text_asig_vida_util">
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select id="modal_select_asig_estado" class="form-control custom-select">
+                                <option value="0">Seleccione</option>
+                                <option value="OPERATIVO">OPERATIVO</option>
+                                <option value="INOPERATIVO">INOPERATIVO</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha">Fecha</label>
+                            <input type="date" class="form-control" id="modal_text_asig_fecha">
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save Changes</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary modal_btn_editar_detalle" form="form_editar_asignacion">Guardar cambios</button>
             </div>
         </div>
     </div>
+</div>

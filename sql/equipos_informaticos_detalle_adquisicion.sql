@@ -18,29 +18,39 @@ USE `equipos_informaticos`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `detalle_adquisicion`
 --
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `detalle_adquisicion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuario` (
-  `idusuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` text DEFAULT NULL,
-  `user` text DEFAULT NULL,
-  `contraseña` text DEFAULT NULL,
-  PRIMARY KEY (`idusuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `detalle_adquisicion` (
+  `id_detalle_aquisicion` int(11) NOT NULL AUTO_INCREMENT,
+  `id_area_usuaria` int(11) DEFAULT NULL,
+  `idbeneficiario` int(11) DEFAULT NULL,
+  `idequipos` int(11) DEFAULT NULL,
+  `idmeta` int(11) DEFAULT NULL,
+  `anio_aquisicion` year(4) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_detalle_aquisicion`),
+  KEY `id_area_usuaria` (`id_area_usuaria`),
+  KEY `idequipos` (`idequipos`),
+  KEY `idbeneficiario` (`idbeneficiario`),
+  KEY `idmeta` (`idmeta`),
+  CONSTRAINT `detalle_adquisicion_ibfk_1` FOREIGN KEY (`id_area_usuaria`) REFERENCES `a_usuaria` (`id_area_usuaria`),
+  CONSTRAINT `detalle_adquisicion_ibfk_2` FOREIGN KEY (`idequipos`) REFERENCES `equipos` (`idequipos`),
+  CONSTRAINT `detalle_adquisicion_ibfk_3` FOREIGN KEY (`idbeneficiario`) REFERENCES `beneficiario` (`idbeneficiario`),
+  CONSTRAINT `detalle_adquisicion_ibfk_4` FOREIGN KEY (`idmeta`) REFERENCES `meta` (`idmeta`)
+) ENGINE=InnoDB AUTO_INCREMENT=261 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `detalle_adquisicion`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'administrado','admin','admin'),(2,'gonzalo','lgonzalo','1234');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+LOCK TABLES `detalle_adquisicion` WRITE;
+/*!40000 ALTER TABLE `detalle_adquisicion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detalle_adquisicion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-20  1:51:23
+-- Dump completed on 2024-05-20  1:51:21

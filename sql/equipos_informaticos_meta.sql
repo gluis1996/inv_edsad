@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `equipos_informaticos` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+CREATE DATABASE  IF NOT EXISTS `equipos_informaticos` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `equipos_informaticos`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: localhost    Database: equipos_informaticos
 -- ------------------------------------------------------
--- Server version	5.5.5-10.4.32-MariaDB
+-- Server version	5.5.5-10.4.24-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,37 +18,27 @@ USE `equipos_informaticos`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `detalle_equipos`
+-- Table structure for table `meta`
 --
 
-DROP TABLE IF EXISTS `detalle_equipos`;
+DROP TABLE IF EXISTS `meta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `detalle_equipos` (
-  `id_detalle_equipo` int(11) NOT NULL AUTO_INCREMENT,
-  `idoficinas` int(11) DEFAULT NULL,
-  `idempleado` int(11) DEFAULT NULL,
-  `idequipos` int(11) DEFAULT NULL,
-  `idusuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_detalle_equipo`),
-  UNIQUE KEY `idoficinas` (`idoficinas`,`idempleado`,`idequipos`,`idusuario`),
-  KEY `idempleado` (`idempleado`),
-  KEY `idequipos` (`idequipos`),
-  KEY `idusuario` (`idusuario`),
-  CONSTRAINT `detalle_equipos_ibfk_1` FOREIGN KEY (`idoficinas`) REFERENCES `oficina` (`idoficinas`),
-  CONSTRAINT `detalle_equipos_ibfk_2` FOREIGN KEY (`idempleado`) REFERENCES `empleados` (`idempleado`),
-  CONSTRAINT `detalle_equipos_ibfk_3` FOREIGN KEY (`idequipos`) REFERENCES `equipos` (`idequipos`),
-  CONSTRAINT `detalle_equipos_ibfk_4` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `meta` (
+  `idmeta` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` text DEFAULT NULL,
+  PRIMARY KEY (`idmeta`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `detalle_equipos`
+-- Dumping data for table `meta`
 --
 
-LOCK TABLES `detalle_equipos` WRITE;
-/*!40000 ALTER TABLE `detalle_equipos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `detalle_equipos` ENABLE KEYS */;
+LOCK TABLES `meta` WRITE;
+/*!40000 ALTER TABLE `meta` DISABLE KEYS */;
+INSERT INTO `meta` VALUES (1,'001'),(2,'008 PUR'),(3,'sin meta'),(4,'007 PUR'),(5,'002'),(6,'08 PUR'),(7,' 008 PUR'),(8,'sin meta');
+/*!40000 ALTER TABLE `meta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -60,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-14 17:22:03
+-- Dump completed on 2024-05-20  1:51:21

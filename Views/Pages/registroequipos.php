@@ -55,7 +55,7 @@
 
                 <div class="col mt-5">
                     <label for="Datos Local">Equipos registrados</label>
-                    <table class="table table-bordered table-striped dt-responsive" id="registrar_equipos" width="100%">
+                    <table class="table table-bordered table-striped dt-responsive" id="tb_listar_equipos" width="100%">
                         <thead>
                             <tr>
                                 <th style="width: 5%; text-align: center;">ID EQUIPOS</th>

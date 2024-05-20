@@ -1,4 +1,24 @@
-/* Archivo CSS global */
-.select2-container {
-    z-index: 99999; /* Ajusta este valor según sea necesario */
+.modal {
+    z-index: 1050; /* Valor por defecto de Bootstrap, ajústalo si es necesario */
+}
+
+.select2-container--open {
+    z-index: 1060; /* Valor superior al del modal */
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+
+
+/* Añadir al final de styles.css */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.fade-in.show {
+    opacity: 1;
 }

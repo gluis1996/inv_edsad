@@ -9,7 +9,7 @@ class modelo_equipo{
 
     public static function model_listar(){
         try {
-            $sql = "call sp_listar_equipos();";
+            $sql = "call sp_listar_equipo();";
             $call = conexion::conectar()->prepare($sql);
             $call->execute();
             return $call->fetchAll();

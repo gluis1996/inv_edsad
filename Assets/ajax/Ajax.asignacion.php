@@ -16,6 +16,7 @@ require_once ('../../Model/Modelo.empleado.php');
 class ajax_asignacion{
 
     public $accion;
+    public $id_detalle_asignacion;
     public $id_sede;
     public $idoficinas;
     public $idequipos;
@@ -49,7 +50,8 @@ class ajax_asignacion{
                 } else {
                     foreach ($response as $value) {
                         $unique_id = "detalle_id_" . $value['id_detalle_asignacion'];
-                        $botones = "<div class='col'><button type='button' class='btn btn-primary btn_raddact' id='".$unique_id."' ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btnEliminarRadius' id='".$unique_id."' ><i class='fas fa-trash-alt'></i></button></div>";
+                        $elimianr_id = "eliminar_id_" . $value['id_detalle_asignacion'];
+                        $botones = "<div class='col'><button type='button' class='btn btn-primary' id ='".$unique_id."' id_detalle_asignacion='".$value['id_detalle_asignacion']."' data-toggle='modal' data-target='#modal_asignacion_editar' ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_detalle_asignacion' id='".$elimianr_id."' id_detalle_asignacion='".$value['id_detalle_asignacion']."'><i class='fas fa-trash-alt'></i></button></div>";
 
                         $datosjason['data'][] = array(
                             "id_detalle_asignacion" => $value['id_detalle_asignacion'],
@@ -119,6 +121,48 @@ class ajax_asignacion{
         }
     }
 
+    public function ajax_asignacion_eliminar(){
+        
+        if ($this->accion == 'as_eleminar') {
+            $data = array(
+                'id_detalle_asignacion' => $this->id_detalle_asignacion,
+            );
+
+            $response = controller_asignacion::c_eliminar_detalleasignacion($data);
+            echo  $response;
+        }
+    }
+
+    public function ajax_asignacion_buscar(){
+        
+        if ($this->accion == 'as_buscar') {
+            $data = array(
+                'id_detalle_asignacion' => $this->id_detalle_asignacion,
+            );
+            //echo json_encode($data);
+            $response = controller_asignacion::c_buscar_detalleasignacion($data);
+            echo  json_encode($response);
+        }
+    }
+    public function ajax_asignacion_editar(){
+        
+        if ($this->accion == 'asigancion_editar') {
+            $data = array(
+                'p_id_detalle_asignacion' => $this->id_detalle_asignacion,
+                'p_idsedes' => $this->id_sede,
+                'p_idoficinas' => $this->idoficinas,
+                'p_idusuario' => $this->idusuario,
+                'p_idempleado' => $this->idempleado,
+                'p_vida_util' => $this->vida_util,
+                'p_estado' => $this->estado,
+                'p_fecha_asignacion' => $this->fecha_asignacion
+            );
+            //echo json_encode($data);
+            $response = controller_asignacion::c_actulizar_detalleasignacion($data);
+            echo  json_encode($response);
+        }
+    }
+
 }
 
 if (isset($_POST['listarAE'])) {
@@ -165,4 +209,33 @@ if (isset($_POST['as_registrar'])) {
     $res->estado = $_POST['id_estado'];
     $res->fecha_asignacion = $_POST['fecha'];
     $res->ajax_asignacion_registrar();
+}
+
+if (isset($_POST['asigancion_editar'])) {
+    $res = new ajax_asignacion();    
+    $res->accion = $_POST['asigancion_editar'];
+    $res->id_detalle_asignacion = $_POST['idregistro'];  
+    $res->id_sede = $_POST['modal_select_asig_sede'];
+    $res->idoficinas = $_POST['modal_select_asig_oficina'];
+    $res->idusuario = $_POST['id_usuario'];
+    $res->idempleado = $_POST['modal_select_asig_empleado'];
+    $res->vida_util = $_POST['modal_text_asig_vida_util'];
+    $res->estado = $_POST['modal_select_asig_estado'];
+    $res->fecha_asignacion = $_POST['modal_text_asig_fecha'];
+    $res->ajax_asignacion_editar();
+}
+
+if (isset($_POST['as_eleminar'])) {
+    $res = new ajax_asignacion();
+    $res->accion = $_POST['as_eleminar'];
+    $res->id_detalle_asignacion = $_POST['id_detalle_asignacion'];
+    $res->ajax_asignacion_eliminar();
+}
+
+
+if (isset($_POST['as_buscar'])) {
+    $res = new ajax_asignacion();
+    $res->accion = $_POST['as_buscar'];
+    $res->id_detalle_asignacion = $_POST['id_detalle_asignacion'];
+    $res->ajax_asignacion_buscar();
 }

@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `equipos_informaticos` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+CREATE DATABASE  IF NOT EXISTS `equipos_informaticos` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `equipos_informaticos`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: localhost    Database: equipos_informaticos
 -- ------------------------------------------------------
--- Server version	5.5.5-10.4.32-MariaDB
+-- Server version	5.5.5-10.4.24-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +28,7 @@ CREATE TABLE `a_usuaria` (
   `id_area_usuaria` int(11) NOT NULL AUTO_INCREMENT,
   `nombres` text DEFAULT NULL,
   PRIMARY KEY (`id_area_usuaria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,7 @@ CREATE TABLE `a_usuaria` (
 
 LOCK TABLES `a_usuaria` WRITE;
 /*!40000 ALTER TABLE `a_usuaria` DISABLE KEYS */;
+INSERT INTO `a_usuaria` VALUES (1,'AREA DE INFORMÁTICA'),(2,'DIRECCIÓN ACADEMICA'),(3,'DIRECCIÓN ACADÉMICA'),(4,'DIRECCIÓN GENERAL'),(5,'IMAGEN'),(6,'JEFATURA DE CARRERAS'),(7,'SIN AREA USUARIA');
 /*!40000 ALTER TABLE `a_usuaria` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-14 17:22:04
+-- Dump completed on 2024-05-20  1:51:21

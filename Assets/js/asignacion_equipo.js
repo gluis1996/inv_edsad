@@ -3,10 +3,12 @@ $(document).ready(function () {
     llenar_select_sede();
     llenar_select_equipo();
     llenar_select_empleado();
+
     // Añadir evento change al select de sedes
     $("#id_sede").change(function () {
-        llenar_select_oficina();
+        llenar_select_oficina('id_sede', 'id_oficina');
     });
+
 
     $(".btnRegistrar_asignacion").click(function (e) {
         e.preventDefault();
@@ -38,7 +40,7 @@ $(document).ready(function () {
             if (response != "ok") {
                 Swal.fire({
                     title: "Oppps....",
-                    text: response ,
+                    text: response,
                     icon: "error",
                 });
             } else {
@@ -46,19 +48,182 @@ $(document).ready(function () {
                     title: "Success",
                     text: "Registrado exitosamente el equipo",
                     icon: "success",
-                });           
+                });
+                listar();
+                limpiar();
             }
         });
     });
 
-    //Activar o desactivar del ml
-    $('#tb_asignacion_equipos').on("click","[id^='detalle_id_']",function (e){
+    //Eliminar Registro.
+    $('#tb_asignacion_equipos').on("click", "[id^='eliminar_id_']", function (e) {
         e.preventDefault();
-        var id = $(this).attr("id");
+        var id = $(this).attr("id_detalle_asignacion");
         console.log(id);
+
+        const data = {
+            as_eleminar: 'as_eleminar',
+            id_detalle_asignacion: id,
+        }
+
+        Swal.fire({
+            title: "Estas seguro",
+            text: "¡No podrás revertir esto!!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, eliminar esto!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post("Assets/ajax/Ajax.asignacion.php", data, function (response) {
+                    if (response != "ok") {
+                        Swal.fire({
+                            title: "Oppps....",
+                            text: response,
+                            icon: "error",
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Deleted",
+                            text: "Eliminado exitosamente",
+                            icon: "success",
+                        });
+                        // Eliminar la fila con transición
+                        var row = $(e.target).closest('tr');
+                        row.addClass('fade-out');
+                        setTimeout(function () {
+                            var table = $('#tb_asignacion_equipos').DataTable();
+                            table.row(row).remove().draw();
+                        }, 500); // Esperar a que la animación termine
+                    }
+                })
+            }
+        })
+
+
     })
 
+    //llenar datos en el modal editar registro
+    $('#tb_asignacion_equipos').on("click", "[id^='detalle_id_']", function (e) {
+        e.preventDefault();
+        var id = $(this).attr("id_detalle_asignacion");
+        console.log(id);
 
+        const data = {
+            as_buscar: 'as_buscar',
+            id_detalle_asignacion: id,
+        }
+        //console.log(data);
+
+        $.post("Assets/ajax/Ajax.asignacion.php", data, function (response) {
+            var jsonResponse = JSON.parse(response);
+            // console.log(response);
+            // console.log(jsonResponse.idoficina);
+            $('#modal_text_asig_id').val(jsonResponse.idregistro);
+            $('#modal_text_asig_cod_patrimonial').val(jsonResponse.cod_patrimonial);
+            $('#modal_text_asig_vida_util').val(jsonResponse.vidautil);
+            $('#modal_text_asig_equipo').val(jsonResponse.equipo);
+            $('#modal_select_asig_estado').val(jsonResponse.estado);
+            $('#modal_text_asig_usuario').val(jsonResponse.usuario);
+            $('#modal_text_asig_fecha').val(jsonResponse.fecha);
+
+            $('#modal_select_asig_sede').empty();
+            $('#modal_select_asig_oficina').empty();
+            $('#modal_select_asig_empleado').empty();
+
+            // Iterar sobre los empleados y agregarlos al select
+            jsonResponse.sede.forEach(function (sede) {
+                $('#modal_select_asig_sede').append($('<option>', {
+                    value: sede.idsedes,
+                    text: sede.nombres
+                }));
+            });
+
+            // Iterar sobre los empleados y agregarlos al select
+            jsonResponse.oficina.forEach(function (oficina) {
+                $('#modal_select_asig_oficina').append($('<option>', {
+                    value: oficina.idoficinas,
+                    text: oficina.nombres
+                }));
+            });
+
+            // Iterar sobre los empleados y agregarlos al select
+            jsonResponse.empleados.forEach(function (empleados) {
+                $('#modal_select_asig_empleado').append($('<option>', {
+                    value: empleados.idempleado,
+                    text: empleados.nombres
+                }));
+            });
+
+            $('#modal_select_asig_sede').val(jsonResponse.idsede);
+            $('#modal_select_asig_oficina').val(jsonResponse.idoficina);
+            $('#modal_select_asig_empleado').val(jsonResponse.idempleado);
+
+
+        });
+        // Añadir evento change al select de sedes
+        $("#modal_select_asig_sede").change(function () {
+            llenar_select_oficina('modal_select_asig_sede', 'modal_select_asig_oficina');
+        });
+
+    })
+
+    $('.modal_btn_editar_detalle').click(function (e) {
+        e.preventDefault();
+        var idregistro = $('#modal_text_asig_id').val();
+        var modal_select_asig_sede = $('#modal_select_asig_sede').val();
+        var modal_select_asig_oficina = $('#modal_select_asig_oficina').val();
+        var modal_text_asig_equipo = $('#modal_text_asig_equipo').val();
+        var modal_text_asig_usuario = $('#modal_text_asig_usuario').val();
+        var modal_select_asig_empleado = $('#modal_select_asig_empleado').val();
+        var modal_text_asig_cod_patrimonial = $('#modal_text_asig_cod_patrimonial').val();
+        var modal_text_asig_vida_util = $('#modal_text_asig_vida_util').val();
+        var modal_select_asig_estado = $('#modal_select_asig_estado').val();
+        var modal_text_asig_fecha = $('#modal_text_asig_fecha').val();
+        var id_usuario = $("#usuario_sesion").attr("id_lg_usuario");
+
+        const data = {
+            asigancion_editar: 'asigancion_editar',
+            idregistro: idregistro,
+            modal_select_asig_sede: modal_select_asig_sede,
+            modal_select_asig_oficina: modal_select_asig_oficina,
+            modal_text_asig_equipo: modal_text_asig_equipo,
+            modal_text_asig_usuario: modal_text_asig_usuario,
+            modal_select_asig_empleado: modal_select_asig_empleado,
+            modal_text_asig_cod_patrimonial: modal_text_asig_cod_patrimonial,
+            modal_text_asig_vida_util: modal_text_asig_vida_util,
+            modal_select_asig_estado: modal_select_asig_estado,
+            modal_text_asig_fecha: modal_text_asig_fecha,
+            id_usuario:id_usuario
+        };
+
+        console.log(data);
+
+        $.post("Assets/ajax/Ajax.asignacion.php",data,function (response) {  
+            if (response != '"ok"') {
+                Swal.fire({
+                    title: "Oppps....",
+                    text: response,
+                    icon: "error",
+                });
+            } else {
+                $('#modal_asignacion_editar').modal('hide');
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Se guardo cambios",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    $('#modal_asignacion_editar').modal('hide');
+                    listar(); // Llamar a la función listar después de que se cierre el SweetAlert
+                });
+            }
+        })
+
+
+    })
 
 });
 
@@ -83,17 +248,17 @@ function listar() {
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [
-            { data: "id_detalle_asignacion", className: "text-center",},
+            { data: "id_detalle_asignacion", className: "text-center", },
             { data: "sede_nombres" },
             { data: "oficina_nombres" },
             { data: "equipo" },
             { data: "usuario_nombre" },
             { data: "empleado_nombre" },
-            { data: "cod_patrimonial", className: "text-center",},
-            { data: "vida_util", className: "text-center",},
-            { data: "estado" , className: "text-center",},
-            { data: "fecha_asignacion", className: "text-center",},
-            { 
+            { data: "cod_patrimonial", className: "text-center", },
+            { data: "vida_util", className: "text-center", },
+            { data: "estado", className: "text-center", },
+            { data: "fecha_asignacion", className: "text-center", },
+            {
                 data: "acciones",
                 className: "text-center", // Centrar el contenido de la columna
             },
@@ -135,8 +300,8 @@ function llenar_select_sede() {
     });
 }
 
-function llenar_select_oficina() {
-    const id_sede = $("#id_sede").val();
+function llenar_select_oficina(sede, ofi) {
+    const id_sede = $("#" + sede).val();
 
     if (id_sede) {
         const data = {
@@ -152,12 +317,12 @@ function llenar_select_oficina() {
                 var js = JSON.parse(response);
 
                 // Limpiar las opciones actuales del select de oficinas
-                $("#id_oficina")
+                $("#" + ofi)
                     .empty()
                     .append('<option value="">Seleccione una oficina</option>');
 
                 $.each(js, function (index, fila) {
-                    $("#id_oficina").append(
+                    $("#" + ofi).append(
                         '<option value="' +
                         fila.idoficinas +
                         '">' +
@@ -169,7 +334,7 @@ function llenar_select_oficina() {
         });
     } else {
         // Si no hay una sede seleccionada, limpiar el select de oficinas
-        $("#id_oficina")
+        $("#" + ofi)
             .empty()
             .append('<option value="">Seleccione una oficina</option>');
     }
@@ -183,12 +348,18 @@ function llenar_select_equipo() {
         type: "POST",
         data: data,
         url: "Assets/ajax/Ajax.asignacion.php",
-        success: function (respose) {
-            var js = JSON.parse(respose);
+        success: function (response) {
+            var js = JSON.parse(response);
+            var $select = $("#id_equipo");
+            $select.empty(); // Limpia cualquier opción previa
             $.each(js, function (index, fila) {
-                $("#id_equipo").append('<option value="' +fila.idequipos +'">' + fila.descripcion +  " - " +  fila.modelo + " - " + fila.nombre + "</option>" );
+                $select.append('<option value="' + fila.idequipos + '">' + fila.descripcion + " - " + fila.modelo + " - " + fila.nombre + "</option>");
             });
-            $("#id_equipo").select2();
+
+            // Inicializar select2 y establecer el dropdownParent
+            $select.select2({
+                dropdownParent: $('body') // Esto asegura que el dropdown no se superponga incorrectamente
+            });
         },
     });
 }
@@ -204,7 +375,7 @@ function llenar_select_empleado() {
         success: function (respose) {
             var js = JSON.parse(respose);
             $.each(js, function (index, fila) {
-                $("#id_empleado").append('<option value="' +fila.idempleado +'">' +fila.nombres +"</option>"
+                $("#id_empleado").append('<option value="' + fila.idempleado + '">' + fila.nombres + "</option>"
                 );
             });
         },

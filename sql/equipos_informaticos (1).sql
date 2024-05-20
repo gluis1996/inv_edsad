@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 16-05-2024 a las 03:34:15
+-- Tiempo de generación: 20-05-2024 a las 01:53:15
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -20,6 +20,177 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `equipos_informaticos`
 --
+CREATE DATABASE IF NOT EXISTS `equipos_informaticos` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `equipos_informaticos`;
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+DROP PROCEDURE IF EXISTS `GetOficinasBySede`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetOficinasBySede` (IN `p_idsede` INT)   BEGIN
+    SELECT * FROM oficina WHERE idsedes = p_idsede;
+END$$
+
+DROP PROCEDURE IF EXISTS `sp_actualizar_detalle_asignacion`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_actualizar_detalle_asignacion` (IN `p_id_detalle_asignacion` INT, IN `p_idsedes` INT, IN `p_idoficinas` INT, IN `p_idusuario` INT, IN `p_idempleado` INT, IN `p_vida_util` TEXT, IN `p_estado` TEXT, IN `p_fecha_asignacion` DATE)   BEGIN
+  -- Verificar si alguno de los campos está vacío
+    IF p_idsedes IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idsedes está vacío';
+    ELSEIF p_idoficinas IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idoficinas está vacío';
+    ELSEIF p_idusuario IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idusuario está vacío';
+    ELSEIF p_idempleado IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idempleado está vacío';
+    ELSEIF p_vida_util IS NULL OR p_vida_util = '' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo vida_util está vacío';
+    ELSEIF p_estado IS NULL OR p_estado = '' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo estado está vacío';
+    ELSEIF p_fecha_asignacion IS NULL OR p_fecha_asignacion = '0000-00-00' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error: La fecha de asignación no es válida.';
+    ELSE
+        -- Si no hay errores, realizar la actualización
+        UPDATE `equipos_informaticos`.`detalle_asignacion`
+        SET
+            `idsedes` = p_idsedes,
+            `idoficinas` = p_idoficinas,
+            `idusuario` = p_idusuario,
+            `idempleado` = p_idempleado,
+            `vida_util` = p_vida_util,
+            `estado` = p_estado,
+            `fecha_asignacion` = p_fecha_asignacion
+        WHERE `id_detalle_asignacion` = p_id_detalle_asignacion;
+
+    END IF;
+END$$
+
+DROP PROCEDURE IF EXISTS `sp_buscar_detalle_asginacion`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_buscar_detalle_asginacion` (IN `p_id_detalle_asignacion` INT)   BEGIN
+SELECT 
+        da.id_detalle_asignacion,
+        s.nombres AS sede_nombres,
+        o.nombres AS oficina_nombres,
+        CONCAT(e.descripcion, ' ', e.modelo) AS equipo,
+        u.nombre AS usuario_nombre,
+        da.cod_patrimonial,
+        da.vida_util,
+        da.estado,
+        em.nombres as empleado_nombre,
+        da.idempleado,
+        da.idsedes,
+        da.idoficinas,
+        da.fecha_asignacion
+    FROM detalle_asignacion da
+    INNER JOIN sede s ON s.idsedes = da.idsedes
+    INNER JOIN oficina o ON o.idoficinas = da.idoficinas
+    INNER JOIN equipos e ON e.idequipos = da.idequipos
+    INNER JOIN usuario u ON u.idusuario = da.idusuario
+    INNER JOIN empleados em ON em.idempleado = da.idempleado
+    where da.id_detalle_asignacion = p_id_detalle_asignacion ;
+END$$
+
+DROP PROCEDURE IF EXISTS `sp_insert_detalle_asignacion`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insert_detalle_asignacion` (IN `p_idsedes` INT, IN `p_idoficinas` INT, IN `p_idequipos` INT, IN `p_idusuario` INT, IN `p_idempleado` INT, IN `p_cod_patrimonial` TEXT, IN `p_vida_util` TEXT, IN `p_estado` TEXT, IN `p_fecha_asignacion` DATE)   BEGIN
+   -- Handler para capturar violaciones de clave foránea
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+    BEGIN
+        GET DIAGNOSTICS CONDITION 1
+        @p1 = RETURNED_SQLSTATE, @p2 = MESSAGE_TEXT;
+
+        IF @p2 LIKE '%foreign key constraint fails (`equipos_informaticos`.`detalle_asignacion`, CONSTRAINT `detalle_asignacion_ibfk_2` FOREIGN KEY (`idoficinas`) REFERENCES `oficina` (`idoficinas`))%' THEN
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La oficina especificada no existe.';
+        ELSEIF @p2 LIKE '%foreign key constraint fails (`equipos_informaticos`.`detalle_asignacion`, CONSTRAINT `detalle_asignacion_ibfk_1` FOREIGN KEY (`idsedes`) REFERENCES `sedes` (`idsedes`))%' THEN
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La sede especificada no existe.';
+        ELSEIF @p2 LIKE '%foreign key constraint fails (`equipos_informaticos`.`detalle_asignacion`, CONSTRAINT `detalle_asignacion_ibfk_3` FOREIGN KEY (`idequipos`) REFERENCES `equipos` (`idequipos`))%' THEN
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El equipo especificado no existe.';
+        ELSEIF @p2 LIKE '%foreign key constraint fails (`equipos_informaticos`.`detalle_asignacion`, CONSTRAINT `detalle_asignacion_ibfk_4` FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`idusuario`))%' THEN
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El usuario especificado no existe.';
+        ELSEIF @p2 LIKE '%foreign key constraint fails (`equipos_informaticos`.`detalle_asignacion`, CONSTRAINT `detalle_asignacion_ibfk_5` FOREIGN KEY (`idempleado`) REFERENCES `empleados` (`idempleado`))%' THEN
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El empleado especificado no existe.';
+        ELSE
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = @p2;
+        END IF;
+    END;
+
+    -- Verificar si alguno de los campos está vacío
+    IF p_idsedes IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idsedes está vacío';
+    ELSEIF p_idoficinas IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idoficinas está vacío';
+    ELSEIF p_idequipos IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idequipos está vacío';
+    ELSEIF p_idusuario IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idusuario está vacío';
+    ELSEIF p_idempleado IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idempleado está vacío';
+    ELSEIF p_cod_patrimonial IS NULL OR p_cod_patrimonial = '' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo cod_patrimonial está vacío';
+    ELSEIF p_vida_util IS NULL OR p_vida_util = '' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo vida_util está vacío';
+    ELSEIF p_estado IS NULL OR p_estado = '' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo estado está vacío';
+    ELSEIF p_fecha_asignacion IS NULL OR p_fecha_asignacion = '0000-00-00' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error: La fecha de asignación no es válida.';
+    ELSE
+        -- Si todos los campos están llenos y la fecha es válida, realizar la inserción
+        INSERT INTO `equipos_informaticos`.`detalle_asignacion` (
+            `idsedes`,
+            `idoficinas`,
+            `idequipos`,
+            `idusuario`,
+            `idempleado`,
+            `cod_patrimonial`,
+            `vida_util`,
+            `estado`,
+            `fecha_asignacion`
+        ) VALUES (
+            p_idsedes, p_idoficinas, p_idequipos, p_idusuario, p_idempleado, p_cod_patrimonial, p_vida_util, p_estado, p_fecha_asignacion
+        );
+    END IF;
+END$$
+
+DROP PROCEDURE IF EXISTS `sp_listar_equipo`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listar_equipo` ()   BEGIN
+SELECT
+eq.idequipos,
+eq.modelo,
+eq.descripcion,
+eq.fecha_registro,
+m.nombre
+FROM equipos_informaticos.equipos eq
+inner join marca m on m.idmarca=eq.idmarca;
+END$$
+
+DROP PROCEDURE IF EXISTS `sp_listar_equipos`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_listar_equipos` ()   BEGIN
+    SELECT ei.idequipos, ei.modelo, ei.descripcion, ei.fecha_registro, m.nombre 
+    FROM equipos_informaticos.equipos ei
+    INNER JOIN marca m ON m.idmarca = ei.idmarca;
+END$$
+
+DROP PROCEDURE IF EXISTS `sp_obtener_detalle_asignacion`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_obtener_detalle_asignacion` ()   BEGIN
+    SELECT 
+        da.id_detalle_asignacion,
+        s.nombres AS sede_nombres,
+        o.nombres AS oficina_nombres,
+        CONCAT(e.descripcion, ' ', e.modelo) AS equipo,
+        u.nombre AS usuario_nombre,
+        da.cod_patrimonial,
+        da.vida_util,
+        da.estado,
+        em.nombres as empleado_nombre,
+        da.fecha_asignacion
+    FROM detalle_asignacion da
+    INNER JOIN sede s ON s.idsedes = da.idsedes
+    INNER JOIN oficina o ON o.idoficinas = da.idoficinas
+    INNER JOIN equipos e ON e.idequipos = da.idequipos
+    INNER JOIN usuario u ON u.idusuario = da.idusuario
+    INNER JOIN empleados em ON em.idempleado = da.idempleado;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -27,6 +198,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `a_usuaria`
 --
 
+DROP TABLE IF EXISTS `a_usuaria`;
 CREATE TABLE `a_usuaria` (
   `id_area_usuaria` int(11) NOT NULL,
   `nombres` text DEFAULT NULL
@@ -51,6 +223,7 @@ INSERT INTO `a_usuaria` (`id_area_usuaria`, `nombres`) VALUES
 -- Estructura de tabla para la tabla `beneficiario`
 --
 
+DROP TABLE IF EXISTS `beneficiario`;
 CREATE TABLE `beneficiario` (
   `idbeneficiario` int(11) NOT NULL,
   `nombre` text DEFAULT NULL
@@ -77,10 +250,12 @@ INSERT INTO `beneficiario` (`idbeneficiario`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `detalle_adquisicion`
 --
 
+DROP TABLE IF EXISTS `detalle_adquisicion`;
 CREATE TABLE `detalle_adquisicion` (
   `id_detalle_aquisicion` int(11) NOT NULL,
   `id_area_usuaria` int(11) DEFAULT NULL,
   `idbeneficiario` int(11) DEFAULT NULL,
+  `idequipos` int(11) DEFAULT NULL,
   `idmeta` int(11) DEFAULT NULL,
   `anio_aquisicion` year(4) DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL
@@ -92,6 +267,7 @@ CREATE TABLE `detalle_adquisicion` (
 -- Estructura de tabla para la tabla `detalle_asignacion`
 --
 
+DROP TABLE IF EXISTS `detalle_asignacion`;
 CREATE TABLE `detalle_asignacion` (
   `id_detalle_asignacion` int(11) NOT NULL,
   `idsedes` int(11) DEFAULT NULL,
@@ -99,11 +275,47 @@ CREATE TABLE `detalle_asignacion` (
   `idequipos` int(11) DEFAULT NULL,
   `idusuario` int(11) DEFAULT NULL,
   `idempleado` int(11) DEFAULT NULL,
-  `cod_patrimonial` int(11) DEFAULT NULL,
+  `cod_patrimonial` text NOT NULL,
   `vida_util` text DEFAULT NULL,
   `estado` text DEFAULT NULL,
   `fecha_asignacion` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `detalle_asignacion`
+--
+
+INSERT INTO `detalle_asignacion` (`id_detalle_asignacion`, `idsedes`, `idoficinas`, `idequipos`, `idusuario`, `idempleado`, `cod_patrimonial`, `vida_util`, `estado`, `fecha_asignacion`) VALUES
+(8346, 2, 22, 3, 2, 15, '202120214xa', '1', 'OPERATIVO', '2024-05-19'),
+(8348, 2, 22, 4, 2, 31, '2020202020xd', '3 años', 'OPERATIVO', '2024-05-19');
+
+--
+-- Disparadores `detalle_asignacion`
+--
+DROP TRIGGER IF EXISTS `after_detalle_asignacion_delete`;
+DELIMITER $$
+CREATE TRIGGER `after_detalle_asignacion_delete` AFTER DELETE ON `detalle_asignacion` FOR EACH ROW BEGIN
+    INSERT INTO historial_asignacion (id_detalle_asignacion, idsedes, idoficinas, idequipos, idusuario, idempleado, cod_patrimonial, vida_util, estado, fecha_asignacion, accion)
+    VALUES (OLD.id_detalle_asignacion, OLD.idsedes, OLD.idoficinas, OLD.idequipos, OLD.idusuario, OLD.idempleado, OLD.cod_patrimonial, OLD.vida_util, 'eliminado', OLD.fecha_asignacion, 'DELETE');
+END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `after_detalle_asignacion_insert`;
+DELIMITER $$
+CREATE TRIGGER `after_detalle_asignacion_insert` AFTER INSERT ON `detalle_asignacion` FOR EACH ROW BEGIN
+    INSERT INTO historial_asignacion (id_detalle_asignacion, idsedes, idoficinas, idequipos, idusuario, idempleado, cod_patrimonial, vida_util, estado, fecha_asignacion, accion)
+    VALUES (NEW.id_detalle_asignacion, NEW.idsedes, NEW.idoficinas, NEW.idequipos, NEW.idusuario, NEW.idempleado, NEW.cod_patrimonial, NEW.vida_util, NEW.estado, NEW.fecha_asignacion, 'INSERT');
+END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `after_detalle_asignacion_update`;
+DELIMITER $$
+CREATE TRIGGER `after_detalle_asignacion_update` AFTER UPDATE ON `detalle_asignacion` FOR EACH ROW BEGIN
+    INSERT INTO historial_asignacion (id_detalle_asignacion, idsedes, idoficinas, idequipos, idusuario, idempleado, cod_patrimonial, vida_util, estado, fecha_asignacion, accion)
+    VALUES (OLD.id_detalle_asignacion, OLD.idsedes, OLD.idoficinas, OLD.idequipos, OLD.idusuario, OLD.idempleado, OLD.cod_patrimonial, OLD.vida_util, 'actualizado', OLD.fecha_asignacion, 'UPDATE');
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -111,6 +323,7 @@ CREATE TABLE `detalle_asignacion` (
 -- Estructura de tabla para la tabla `empleados`
 --
 
+DROP TABLE IF EXISTS `empleados`;
 CREATE TABLE `empleados` (
   `idempleado` int(11) NOT NULL,
   `nombres` text DEFAULT NULL
@@ -197,6 +410,7 @@ INSERT INTO `empleados` (`idempleado`, `nombres`) VALUES
 -- Estructura de tabla para la tabla `equipos`
 --
 
+DROP TABLE IF EXISTS `equipos`;
 CREATE TABLE `equipos` (
   `idequipos` int(11) NOT NULL,
   `modelo` text DEFAULT NULL,
@@ -500,9 +714,91 @@ INSERT INTO `equipos` (`idequipos`, `modelo`, `descripcion`, `fecha_registro`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `historial_asignacion`
+--
+
+DROP TABLE IF EXISTS `historial_asignacion`;
+CREATE TABLE `historial_asignacion` (
+  `id_historial` int(11) NOT NULL,
+  `id_detalle_asignacion` int(11) DEFAULT NULL,
+  `idsedes` int(11) DEFAULT NULL,
+  `idoficinas` int(11) DEFAULT NULL,
+  `idequipos` int(11) DEFAULT NULL,
+  `idusuario` int(11) DEFAULT NULL,
+  `idempleado` int(11) DEFAULT NULL,
+  `cod_patrimonial` text DEFAULT NULL,
+  `vida_util` text DEFAULT NULL,
+  `estado` text DEFAULT NULL,
+  `fecha_asignacion` date DEFAULT NULL,
+  `accion` varchar(20) DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `historial_asignacion`
+--
+
+INSERT INTO `historial_asignacion` (`id_historial`, `id_detalle_asignacion`, `idsedes`, `idoficinas`, `idequipos`, `idusuario`, `idempleado`, `cod_patrimonial`, `vida_util`, `estado`, `fecha_asignacion`, `accion`, `fecha`) VALUES
+(1, 8340, 1, 2, 1, 1, 10, '123434523535', 'asdasd', 'INOPERATIVO', '2024-05-19', 'INSERT', '2024-05-19 17:44:46'),
+(2, 8319, 2, 31, 3, 1, 13, 'asfasdfasdf', 'fasdfsad', 'eliminado', '2024-05-17', 'DELETE', '2024-05-19 18:10:13'),
+(3, 8326, 2, 27, 3, 1, 1, '20202', '2020', 'eliminado', '0000-00-00', 'DELETE', '2024-05-19 18:10:16'),
+(4, 8327, 2, 28, 3, 1, 10, 'asd', '2020', 'eliminado', '0000-00-00', 'DELETE', '2024-05-19 18:10:27'),
+(5, 8328, 2, 29, 2, 1, 12, 'asda', 'sadas', 'eliminado', '2024-05-18', 'DELETE', '2024-05-19 18:10:33'),
+(6, 8329, 1, 3, 1, 1, 5, '123123', '1231', 'eliminado', '2024-05-18', 'DELETE', '2024-05-19 18:10:36'),
+(7, 8331, 1, 5, 2, 1, 6, 'asdas', 'sadsad', 'eliminado', '2024-05-15', 'DELETE', '2024-05-19 18:10:38'),
+(8, 8330, 1, 5, 3, 1, 5, 'asdsa', 'asdsa', 'eliminado', '2024-05-14', 'DELETE', '2024-05-19 18:11:11'),
+(9, 8332, 2, 27, 1, 1, 5, 'asdfsd', 'sdfasdf', 'eliminado', '2024-05-18', 'DELETE', '2024-05-19 18:11:15'),
+(10, 8333, 1, 6, 3, 1, 5, 'sdfsad', 'asdfsad', 'eliminado', '2024-05-17', 'DELETE', '2024-05-19 18:11:19'),
+(11, 8334, 2, 26, 2, 1, 7, 'asdasd', 'asdasd', 'eliminado', '2024-05-06', 'DELETE', '2024-05-19 18:11:23'),
+(12, 8335, 3, 75, 1, 1, 4, 'asd', 'asdsa', 'eliminado', '2024-05-03', 'DELETE', '2024-05-19 18:11:26'),
+(13, 8336, 2, 26, 2, 1, 3, 'asdasd', 'adsad', 'eliminado', '2024-05-17', 'DELETE', '2024-05-19 18:15:58'),
+(14, 8337, 1, 3, 1, 1, 4, 'asdasd', 'asdsa', 'eliminado', '2024-05-25', 'DELETE', '2024-05-19 18:16:01'),
+(15, 8339, 2, 24, 4, 1, 4, 'asdfsad', 'fasdf', 'eliminado', '2024-05-18', 'DELETE', '2024-05-19 18:16:04'),
+(16, 8340, 1, 2, 1, 1, 10, '123434523535', 'asdasd', 'eliminado', '2024-05-19', 'DELETE', '2024-05-19 18:19:41'),
+(17, 8341, 1, 4, 2, 1, 3, 'asdsad', 'sadsa', 'OPERATIVO', '2024-05-20', 'INSERT', '2024-05-19 18:19:55'),
+(18, 8342, 2, 23, 2, 1, 6, 'asdasd', 'asdsad', 'INOPERATIVO', '2024-05-19', 'INSERT', '2024-05-19 18:20:50'),
+(19, 8343, 3, 75, 2, 1, 4, '234243', '24234', 'INOPERATIVO', '2024-05-23', 'INSERT', '2024-05-19 18:24:10'),
+(20, 8343, 3, 75, 2, 1, 4, '234243', '24234', 'eliminado', '2024-05-23', 'DELETE', '2024-05-19 18:24:14'),
+(21, 8341, 1, 4, 2, 1, 3, 'asdsad', 'sadsa', 'eliminado', '2024-05-20', 'DELETE', '2024-05-19 18:24:21'),
+(22, 8342, 2, 23, 2, 1, 6, 'asdasd', 'asdsad', 'eliminado', '2024-05-19', 'DELETE', '2024-05-19 18:39:24'),
+(23, 8338, 1, 7, 2, 1, 3, 'asfsda', 'asfads', 'eliminado', '2024-05-17', 'DELETE', '2024-05-19 18:40:54'),
+(24, 8344, 1, 4, 2, 1, 5, 'asd', '121', 'INOPERATIVO', '2024-05-16', 'INSERT', '2024-05-19 18:41:56'),
+(25, 8345, 1, 3, 4, 1, 8, 'asd', 'asdasd', 'INOPERATIVO', '2024-05-13', 'INSERT', '2024-05-19 23:31:31'),
+(26, 8346, 2, 30, 3, 1, 11, '202120214xa', '3 años', 'INOPERATIVO', '2024-05-19', 'INSERT', '2024-05-20 00:15:36'),
+(27, 8347, 2, 27, 5, 1, 6, '30201020', '20 AÑOS', 'INOPERATIVO', '2024-05-19', 'INSERT', '2024-05-20 00:29:14'),
+(28, 8347, 2, 27, 5, 1, 6, '30201020', '20 AÑOS', 'eliminado', '2024-05-19', 'DELETE', '2024-05-20 00:29:28'),
+(29, 8346, 2, 30, 3, 1, 11, '202120214xa', '3 años', 'actualizado', '2024-05-19', 'UPDATE', '2024-05-20 02:05:45'),
+(30, 8346, 2, 30, 3, 2, 11, '202120214xa', '3', 'actualizado', '2024-05-18', 'UPDATE', '2024-05-20 02:06:20'),
+(31, 8346, 3, 75, 3, 2, 18, '202120214xa', '2', 'actualizado', '2024-05-18', 'UPDATE', '2024-05-20 02:10:01'),
+(32, 8346, 2, 22, 3, 2, 52, '202120214xa', '2', 'actualizado', '2024-05-18', 'UPDATE', '2024-05-20 02:12:34'),
+(33, 8346, 3, 77, 3, 2, 33, '202120214xa', '2', 'actualizado', '2024-05-07', 'UPDATE', '2024-05-20 02:17:12'),
+(34, 8346, 3, 77, 3, 2, 33, '202120214xa', '2', 'actualizado', '2024-05-07', 'UPDATE', '2024-05-20 02:17:20'),
+(35, 8346, 3, 77, 3, 2, 33, '202120214xa', '2', 'actualizado', '2024-05-14', 'UPDATE', '2024-05-20 02:17:51'),
+(36, 8346, 3, 77, 3, 2, 33, '202120214xa', '2', 'actualizado', '2024-05-14', 'UPDATE', '2024-05-20 02:18:27'),
+(37, 8346, 3, 77, 3, 2, 33, '202120214xa', '2', 'actualizado', '2024-05-14', 'UPDATE', '2024-05-20 02:18:46'),
+(38, 8346, 3, 77, 3, 2, 33, '202120214xa', '2', 'actualizado', '2024-05-14', 'UPDATE', '2024-05-20 02:22:07'),
+(39, 8345, 1, 3, 4, 1, 8, 'asd', 'asdasd', 'actualizado', '2024-05-13', 'UPDATE', '2024-05-20 02:36:19'),
+(40, 8344, 1, 4, 2, 1, 5, 'asd', '121', 'actualizado', '2024-05-16', 'UPDATE', '2024-05-20 02:40:32'),
+(41, 8345, 1, 3, 4, 2, 8, 'asd', '0', 'actualizado', '2024-05-13', 'UPDATE', '2024-05-20 03:22:51'),
+(42, 8344, 2, 27, 2, 2, 7, 'asd', '20', 'actualizado', '2024-05-19', 'UPDATE', '2024-05-20 03:23:25'),
+(43, 8345, 1, 3, 4, 2, 8, 'asd', '0', 'actualizado', '2024-05-13', 'UPDATE', '2024-05-20 03:24:36'),
+(44, 8345, 1, 3, 4, 2, 8, 'asd', '0', 'actualizado', '2024-05-13', 'UPDATE', '2024-05-20 03:25:15'),
+(45, 8345, 1, 3, 4, 2, 8, 'asd', '0', 'actualizado', '2024-05-13', 'UPDATE', '2024-05-20 03:25:19'),
+(46, 8344, 2, 27, 2, 2, 7, 'asd', '20', 'actualizado', '2024-05-19', 'UPDATE', '2024-05-20 03:27:07'),
+(47, 8348, 2, 22, 4, 2, 31, '2020202020xd', '3 años', 'OPERATIVO', '2024-05-19', 'INSERT', '2024-05-20 03:39:14'),
+(48, 8344, 2, 27, 2, 2, 7, 'asd', '20', 'eliminado', '2024-05-19', 'DELETE', '2024-05-20 03:39:50'),
+(49, 8345, 1, 3, 4, 2, 8, 'asd', '0', 'eliminado', '2024-05-13', 'DELETE', '2024-05-20 03:39:57'),
+(50, 8349, 1, 6, 6, 2, 8, '3303030303xd', '4 años', 'OPERATIVO', '2024-05-19', 'INSERT', '2024-05-20 03:41:56'),
+(51, 8346, 3, 77, 3, 2, 33, '202120214xa', '2', 'actualizado', '2024-05-14', 'UPDATE', '2024-05-20 03:44:01'),
+(52, 8349, 1, 6, 6, 2, 8, '3303030303xd', '4 años', 'eliminado', '2024-05-19', 'DELETE', '2024-05-20 03:47:13');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `marca`
 --
 
+DROP TABLE IF EXISTS `marca`;
 CREATE TABLE `marca` (
   `idmarca` int(11) NOT NULL,
   `nombre` text DEFAULT NULL
@@ -583,10 +879,25 @@ INSERT INTO `marca` (`idmarca`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `meta`
 --
 
+DROP TABLE IF EXISTS `meta`;
 CREATE TABLE `meta` (
   `idmeta` int(11) NOT NULL,
   `nombre` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `meta`
+--
+
+INSERT INTO `meta` (`idmeta`, `nombre`) VALUES
+(1, '001'),
+(2, '008 PUR'),
+(3, 'sin meta'),
+(4, '007 PUR'),
+(5, '002'),
+(6, '08 PUR'),
+(7, ' 008 PUR'),
+(8, 'sin meta');
 
 -- --------------------------------------------------------
 
@@ -594,6 +905,7 @@ CREATE TABLE `meta` (
 -- Estructura de tabla para la tabla `oficina`
 --
 
+DROP TABLE IF EXISTS `oficina`;
 CREATE TABLE `oficina` (
   `idoficinas` int(11) NOT NULL,
   `nombres` text DEFAULT NULL,
@@ -697,6 +1009,7 @@ INSERT INTO `oficina` (`idoficinas`, `nombres`, `idsedes`) VALUES
 -- Estructura de tabla para la tabla `sede`
 --
 
+DROP TABLE IF EXISTS `sede`;
 CREATE TABLE `sede` (
   `idsedes` int(11) NOT NULL,
   `nombres` text DEFAULT NULL
@@ -717,6 +1030,7 @@ INSERT INTO `sede` (`idsedes`, `nombres`) VALUES
 -- Estructura de tabla para la tabla `usuario`
 --
 
+DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `idusuario` int(11) NOT NULL,
   `nombre` text DEFAULT NULL,
@@ -729,7 +1043,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `user`, `contraseña`) VALUES
-(1, 'administrado', 'admin', 'admin');
+(1, 'administrado', 'admin', 'admin'),
+(2, 'gonzalo', 'lgonzalo', '1234');
 
 --
 -- Índices para tablas volcadas
@@ -753,6 +1068,7 @@ ALTER TABLE `beneficiario`
 ALTER TABLE `detalle_adquisicion`
   ADD PRIMARY KEY (`id_detalle_aquisicion`),
   ADD KEY `id_area_usuaria` (`id_area_usuaria`),
+  ADD KEY `idequipos` (`idequipos`),
   ADD KEY `idbeneficiario` (`idbeneficiario`),
   ADD KEY `idmeta` (`idmeta`);
 
@@ -761,7 +1077,7 @@ ALTER TABLE `detalle_adquisicion`
 --
 ALTER TABLE `detalle_asignacion`
   ADD PRIMARY KEY (`id_detalle_asignacion`),
-  ADD UNIQUE KEY `idsedes` (`idsedes`,`idoficinas`,`idequipos`,`idusuario`,`idempleado`),
+  ADD UNIQUE KEY `idsedes` (`idsedes`,`idoficinas`,`idequipos`,`idusuario`,`idempleado`,`cod_patrimonial`(50)) USING BTREE,
   ADD KEY `idoficinas` (`idoficinas`),
   ADD KEY `idequipos` (`idequipos`),
   ADD KEY `idusuario` (`idusuario`),
@@ -779,6 +1095,12 @@ ALTER TABLE `empleados`
 ALTER TABLE `equipos`
   ADD PRIMARY KEY (`idequipos`),
   ADD KEY `idmarca` (`idmarca`);
+
+--
+-- Indices de la tabla `historial_asignacion`
+--
+ALTER TABLE `historial_asignacion`
+  ADD PRIMARY KEY (`id_historial`);
 
 --
 -- Indices de la tabla `marca`
@@ -831,13 +1153,13 @@ ALTER TABLE `beneficiario`
 -- AUTO_INCREMENT de la tabla `detalle_adquisicion`
 --
 ALTER TABLE `detalle_adquisicion`
-  MODIFY `id_detalle_aquisicion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detalle_aquisicion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_asignacion`
 --
 ALTER TABLE `detalle_asignacion`
-  MODIFY `id_detalle_asignacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detalle_asignacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8350;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
@@ -852,6 +1174,12 @@ ALTER TABLE `equipos`
   MODIFY `idequipos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=287;
 
 --
+-- AUTO_INCREMENT de la tabla `historial_asignacion`
+--
+ALTER TABLE `historial_asignacion`
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
@@ -861,7 +1189,7 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT de la tabla `meta`
 --
 ALTER TABLE `meta`
-  MODIFY `idmeta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idmeta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `oficina`
@@ -879,7 +1207,7 @@ ALTER TABLE `sede`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -890,8 +1218,9 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `detalle_adquisicion`
   ADD CONSTRAINT `detalle_adquisicion_ibfk_1` FOREIGN KEY (`id_area_usuaria`) REFERENCES `a_usuaria` (`id_area_usuaria`),
-  ADD CONSTRAINT `detalle_adquisicion_ibfk_2` FOREIGN KEY (`idbeneficiario`) REFERENCES `beneficiario` (`idbeneficiario`),
-  ADD CONSTRAINT `detalle_adquisicion_ibfk_3` FOREIGN KEY (`idmeta`) REFERENCES `meta` (`idmeta`);
+  ADD CONSTRAINT `detalle_adquisicion_ibfk_2` FOREIGN KEY (`idequipos`) REFERENCES `equipos` (`idequipos`),
+  ADD CONSTRAINT `detalle_adquisicion_ibfk_3` FOREIGN KEY (`idbeneficiario`) REFERENCES `beneficiario` (`idbeneficiario`),
+  ADD CONSTRAINT `detalle_adquisicion_ibfk_4` FOREIGN KEY (`idmeta`) REFERENCES `meta` (`idmeta`);
 
 --
 -- Filtros para la tabla `detalle_asignacion`
