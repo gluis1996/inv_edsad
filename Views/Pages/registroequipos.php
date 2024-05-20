@@ -63,7 +63,6 @@
                                 <th style="width: 25%; text-align: center;">DESCRIPCIÓN</th>
                                 <th style="width: 10%; text-align: center;">FECHA DE REGISTRO</th>
                                 <th style="width: 15%; text-align: center;">MARCA</th>
-
                                 <th style="width: 40%; text-align: center;">ACCIÓN</th>
                                 <!-- donde iran los botones para cada fila eliminar Actualizar-->
                             </tr>
@@ -110,13 +109,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_marca">Marca</label>
+                    <label for="modal_select_id_marca">Marca</label>
                     <div class="input-group">
-                        <select id="id_marca" class="form-control custom-select">
+                        <select id="modal_select_id_marca" class="form-control custom-select">
                             <option value="1">Selecccione</option>
-                            <option value="2">Marca 1</option>
-                            <option value="3">Marca 2</option>
-
                         </select>
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-eye"></i></span>

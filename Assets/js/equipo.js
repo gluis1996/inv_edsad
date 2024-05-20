@@ -27,16 +27,11 @@ function listar_equipo() {
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [
-            { data: "id_detalle_asignacion", className: "text-center", },
-            { data: "sede_nombres" },
-            { data: "oficina_nombres" },
-            { data: "equipo" },
-            { data: "usuario_nombre" },
-            { data: "empleado_nombre" },
-            { data: "cod_patrimonial", className: "text-center", },
-            { data: "vida_util", className: "text-center", },
-            { data: "estado", className: "text-center", },
-            { data: "fecha_asignacion", className: "text-center", },
+            { data: "idequipos", className: "text-center",},
+            { data: "modelo" },
+            { data: "descripcion" },
+            { data: "fecha_registro" },
+            { data: "nombre" , className: "text-center",},
             {
                 data: "acciones",
                 className: "text-center", // Centrar el contenido de la columna
@@ -56,6 +51,26 @@ function listar_equipo() {
                 next: "Siguiente",
                 previous: "Anterior",
             },
+        },
+    });
+}
+
+
+
+function llenar_select_equipo_marca() {
+    const data = {
+        equipos_l: "listar_empleado",
+    };
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: "Assets/ajax/Ajax.asignacion.php",
+        success: function (respose) {
+            var js = JSON.parse(respose);
+            $.each(js, function (index, fila) {
+                $("#modal_select_id_marca").append('<option value="' + fila.idempleado + '">' + fila.nombres + "</option>"
+                );
+            });
         },
     });
 }

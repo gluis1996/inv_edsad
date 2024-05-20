@@ -51,7 +51,7 @@ class ajax_asignacion{
                     foreach ($response as $value) {
                         $unique_id = "detalle_id_" . $value['id_detalle_asignacion'];
                         $elimianr_id = "eliminar_id_" . $value['id_detalle_asignacion'];
-                        $botones = "<div class='col'><button type='button' class='btn btn-primary' id ='".$unique_id."' id_detalle_asignacion='".$value['id_detalle_asignacion']."' data-toggle='modal' data-target='#modal_asignacion_editar' ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_detalle_asignacion' id='".$elimianr_id."' id_detalle_asignacion='".$value['id_detalle_asignacion']."'><i class='fas fa-trash-alt'></i></button></div>";
+                        $botones = "<div class='col'><button type='button' class='btn btn-primary' id ='".$unique_id."' id_detalle_asignacion='".$value['id_detalle_asignacion']."' data-toggle='modal' data-target='#modal_asignacion_editar'><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_detalle_asignacion' id='".$elimianr_id."' id_detalle_asignacion='".$value['id_detalle_asignacion']."'><i class='fas fa-trash-alt'></i></button></div>";
 
                         $datosjason['data'][] = array(
                             "id_detalle_asignacion" => $value['id_detalle_asignacion'],
