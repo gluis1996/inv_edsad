@@ -3,6 +3,55 @@ $(document).ready(function () {
 
     listar_equipo();
     llenar_select_equipo_marca();
+    $(".btn_modal_registrar").click(function(){
+        $("#modal_equipo_registrar").modal('show');
+    });
+
+
+    $(".btn_equipo_rgistrar_marca").click(function(){
+        $("#modal_registrar_marca").modal('show');
+    });
+
+    //registar equipo
+    $('.btn_regitrar_equipo').click(function (e) {
+        e.preventDefault();
+        var e_modelo = $('#modal_equipo_modelo').val();
+        var e_descripcion = $('#modal_equipo_descripcion').val();
+        var e_fecha = $('#modal_equipo_fecha').val();
+        var e_marca = $('#modal_select_id_marca').val();
+
+
+        const data = {
+            registrar_equipo : 'registrar_equipo',
+            e_modelo : e_modelo,
+            e_descripcion : e_descripcion,
+            e_fecha : e_fecha,
+            e_marca : e_marca,
+        }
+
+        $.post("Assets/ajax/Ajax.equipo.php",data,function (response) {
+            if (response != "ok") {
+                Swal.fire({
+                    title: "Oppps....",
+                    text: response,
+                    icon: "error",
+                });
+            } else {
+                Swal.fire({
+                    title: "Success",
+                    text: "Registrado exitosamente el equipo",
+                    icon: "success",
+                });
+                $("#modal_equipo_registrar").modal('hide');
+                listar_equipo();
+            }
+        });
+        
+    })
+
+    
+
+
 
 })
 

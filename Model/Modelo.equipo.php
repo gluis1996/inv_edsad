@@ -16,10 +16,27 @@ class modelo_equipo{
         } catch (PDOException $e) {
             return "Erro: ".$e->getMessage();
         }
+        
     }
 
-    public static function model_agregar(){
-        
+    public static function model_agregar($data){
+        try {
+            $sql = "call insertar_equipo(?,?,?,?);";
+            $call = conexion::conectar()->prepare($sql);
+            $call->bindParam(1,$data['p_modelo'],PDO::PARAM_STR);
+            $call->bindParam(2,$data['p_descripcion'],PDO::PARAM_STR);
+            $call->bindParam(3,$data['p_fecha_registro'],PDO::PARAM_STR);
+            $call->bindParam(4,$data['p_idmarca'],PDO::PARAM_STR);
+            if ($call->execute()) {
+                return 'ok';
+            } else {
+                return 'fallo';
+            }
+            
+            
+        } catch (PDOException $e) {
+            return "Erro: ".$e->getMessage();
+        }
     }
 
     public static function model_eliminar(){

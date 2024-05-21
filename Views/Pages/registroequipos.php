@@ -31,14 +31,14 @@
                     <div class="col-2">
                         <!-- Button trigger modal -->
                         <!-- Button registrar equipo -->
-                        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-primary mb-2 btn_modal_registrar">
                             Registrar Equipo
                         </button>
                     </div>
 
                     <div class="col-2">
                         <!-- Button para abrir el modal -->
-                        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modal_registrar_marca">
+                        <button type="button" class="btn btn-primary mb-2 btn_equipo_rgistrar_marca">
                             Registrar Marca
                         </button>
                     </div>
@@ -82,7 +82,7 @@
 
 
 <!-- Modal registrar equipos-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_equipo_registrar" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="border-radius: 10px;">
             <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
@@ -95,17 +95,17 @@
                 <!-- INICIO -->
                 <div class="form-group">
                     <label for="cod_patrimonial">Modelo</label>
-                    <input type="text" id="modelo" class="form-control">
+                    <input type="text" id="modal_equipo_modelo" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label for="cod_patrimonial">Descripcion</label>
-                    <input type="text" id="descripcion" class="form-control">
+                    <input type="text" id="modal_equipo_descripcion" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label for="fecha">Fecha de Registro</label>
-                    <input type="date" id="fecha" class="form-control">
+                    <input type="date" id="modal_equipo_fecha" class="form-control">
                 </div>
 
                 <div class="form-group">
@@ -123,7 +123,7 @@
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="button" class="btn btn-primary" style="background-color: #007bff; color: #fff;">Registrar</button>
+                <button type="button" class="btn btn-primary btn_regitrar_equipo" style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
     </div>
