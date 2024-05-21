@@ -1,7 +1,8 @@
 
-$(document).ready(function () { 
+$(document).ready(function () {
 
     listar_equipo();
+    llenar_select_equipo_marca();
 
 })
 
@@ -11,6 +12,16 @@ function listar_equipo() {
     const data = {
         listar_equipo: "listar_equipo",
     };
+    // console.log(data);
+    $.ajax({
+        url: "Assets/ajax/Ajax.equipo.php",
+        data: data,
+        type: 'POST',
+        success: function (response) {
+            console.log(response);
+        }
+    })
+
 
     $("#tb_listar_equipos").DataTable({
         destroy: true,
@@ -27,11 +38,11 @@ function listar_equipo() {
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [
-            { data: "idequipos", className: "text-center",},
+            { data: "idequipos", className: "text-center", },
             { data: "modelo" },
             { data: "descripcion" },
             { data: "fecha_registro" },
-            { data: "nombre" , className: "text-center",},
+            { data: "nombre", className: "text-center", },
             {
                 data: "acciones",
                 className: "text-center", // Centrar el contenido de la columna
@@ -59,16 +70,16 @@ function listar_equipo() {
 
 function llenar_select_equipo_marca() {
     const data = {
-        equipos_l: "listar_empleado",
+        equipos_llenar_select_marca: "equipos_llenar_select_marca",
     };
     $.ajax({
         type: "POST",
         data: data,
-        url: "Assets/ajax/Ajax.asignacion.php",
-        success: function (respose) {
-            var js = JSON.parse(respose);
+        url: "Assets/ajax/Ajax.equipo.php",
+        success: function (response) {
+            var js = JSON.parse(response);
             $.each(js, function (index, fila) {
-                $("#modal_select_id_marca").append('<option value="' + fila.idempleado + '">' + fila.nombres + "</option>"
+                $("#modal_select_id_marca").append('<option value="' + fila.idmarca + '">' + fila.nombre + "</option>"
                 );
             });
         },
