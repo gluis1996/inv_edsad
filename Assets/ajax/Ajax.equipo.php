@@ -33,7 +33,9 @@ class ajax_equipo{
             } else {
                 foreach ($response as $value) {
                     $idequipo = "idequipo_".$value['idequipos'];
-                    $botones = "<div class='col'><button type='button' class='btn btn-primary' id='".$idequipo."' data-toggle='modal' data-target='#modal_equipo_editar'><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger'><i class='fas fa-trash-alt'></i></button></div>";
+                    $idequipo_eliminar = "idequipoeliminar_".$value['idequipos'];
+
+                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_modal_editar_equipo' id='".$idequipo."' idequipo ='".$value['idequipos']."'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger' id ='".$idequipo_eliminar."' id_eliminar_eqp='".$value['idequipos']."'><i class='fas fa-trash-alt'></i></button></div>";
 
                     $datosjason['data'][] = array(
                         "idequipos" => $value['idequipos'],
@@ -71,6 +73,53 @@ class ajax_equipo{
         }
     }
 
+
+    public function ajax_equipo_editar_equipo(){
+        if ($this->accion== 'editar_equipo') {
+            $data = array(
+                'p_idequipos' => $this->id_equipo,
+                'p_modelo' => $this->modelo,
+                'p_descripcion' => $this->descripcion,
+                'p_fecha_registro' => $this->fecha_registro,
+                'p_idmarca' => $this->idmarca
+            );
+
+            $response = controller_equipo::c_editar($data);
+            echo $response;
+        }
+    }
+
+
+    public function ajac_equipo_registrar_marca(){
+        if ($this->accion== 'registrar_equipo_marca') {
+            $data = array(
+                'p_marca' => $this->idmarca
+            );
+
+            $response = controller_marca::c_marca_registrar($data);
+            echo $response;
+        }
+    }
+    public function ajac_buscar_equipo_marca(){
+        if ($this->accion== 'buscar_equipo_marca') {
+            $data = array(
+                'idequipos' => $this->id_equipo
+            );
+
+            $response = controller_equipo::c_buscar($data);
+            echo json_encode($response);
+        }
+    }
+
+
+    public function ajax_equipo_eliminar_equipo(){
+        if ($this->accion== 'eliminar_equipo') {
+            $data = array('idequipos' => $this->id_equipo);
+            $response = controller_equipo::c_eliminar($data);
+            echo $response;
+        }
+    }
+
 }
 
 
@@ -96,3 +145,36 @@ if (isset($_POST['registrar_equipo'])) {
     $res->idmarca = $_POST['e_marca'];
     $res->ajax_equipo_registrar_equipo();
 }
+
+if (isset($_POST['registrar_equipo_marca'])) {
+    $res = new ajax_equipo();
+    $res->accion = $_POST['registrar_equipo_marca'];
+    $res->idmarca = $_POST['e_marca'];
+    $res->ajac_equipo_registrar_marca();
+}
+
+if (isset($_POST['buscar_equipo_marca'])) {
+    $res = new ajax_equipo();
+    $res->accion = $_POST['buscar_equipo_marca'];
+    $res->id_equipo = $_POST['id_equipo'];
+    $res->ajac_buscar_equipo_marca();
+}
+
+if (isset($_POST['editar_equipo'])) {
+    $res = new ajax_equipo();
+    $res->accion = $_POST['editar_equipo'];
+    $res->id_equipo = $_POST['idequipos'];
+    $res->modelo = $_POST['e_modelo'];
+    $res->descripcion = $_POST['e_descripcion'];
+    $res->fecha_registro = $_POST['e_fecha'];
+    $res->idmarca = $_POST['e_marca'];
+    $res->ajax_equipo_editar_equipo();
+}
+
+if (isset($_POST['eliminar_equipo'])) {
+    $res = new ajax_equipo();
+    $res->accion = $_POST['eliminar_equipo'];
+    $res->id_equipo = $_POST['idequipos'];
+    $res->ajax_equipo_eliminar_equipo();
+}
+

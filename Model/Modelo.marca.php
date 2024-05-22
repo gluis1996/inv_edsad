@@ -18,8 +18,21 @@ class modelo_marca{
         }
     }
 
-    public static function model_agregar(){
-        
+    public static function model_agregar($data){
+        try {
+            $sql = "call sp_marca_registrar(?);";
+            $call = conexion::conectar()->prepare($sql);
+            $call->bindParam(1,$data['p_marca'],PDO::PARAM_STR);
+            if ($call->execute()) {
+                return 'ok';
+            } else {
+                return 'fallo';
+            }
+            
+            
+        } catch (PDOException $e) {
+            return "Erro: ".$e->getMessage();
+        }
     }
 
     public static function model_eliminar(){

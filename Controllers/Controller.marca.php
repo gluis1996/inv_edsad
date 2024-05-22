@@ -7,6 +7,10 @@ class controller_marca{
         $response = modelo_marca::model_listar();
         return $response;
     }
+    public static function c_marca_registrar($data){
+        $response = modelo_marca::model_agregar($data);
+        return $response;
+    }
 
 
 }
