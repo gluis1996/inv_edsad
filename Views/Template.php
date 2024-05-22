@@ -75,6 +75,7 @@
                 $_GET['page'] == 'usuario'              ||
                 $_GET['page'] == 'oficina'              ||
                 $_GET['page'] == 'beneficiario'         ||
+                $_GET['page'] == 'meta'                 ||
                 $_GET['page'] == 'dashboard'            ||
                 $_GET["page"] == "salir"
             ) {
@@ -150,6 +151,7 @@
     <script src="Assets/js/asignacion_equipo.js"></script>
     <script src="Assets/js/equipo.js"></script>
     <script src="Assets/js/empleado.js"></script>
+    <script src="Assets/js/meta.js"></script>
 
 </body>
 

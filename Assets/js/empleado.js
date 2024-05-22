@@ -22,7 +22,7 @@ $(document).ready(function () {
             } else {
                 Swal.fire({
                     title: "Success",
-                    text: "Agregados exitosamente",
+                    text: "Empleado registrado exitosamente",
                     icon: "success",
                 });
                 listar();
@@ -32,9 +32,6 @@ $(document).ready(function () {
 
 
     })
-
-
-
 
 
     //llenar datos en el modal editar registro
