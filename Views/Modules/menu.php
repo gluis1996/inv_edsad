@@ -32,9 +32,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="a" class="nav-link">
+                    <a href="historico" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>
-                        <p>Asignación02</p>
+                        <p>Historico de Equipo</p>
                     </a>
                 </li>
 
