@@ -34,7 +34,7 @@ $(document).ready(function () {
     })
 
 
-    //llenar datos en el modal editar registro
+    //listar equipos por cada empleado
     $('#tb_registrar_empleados').on("click", ".btn_listar_equipo_empleado", function (e) {
         e.preventDefault();
         var id = $(this).attr('id_empleado');
@@ -146,7 +146,7 @@ function listar() {
 
 
 
-//listara todo
+//listara eq por empleado
 function listar_equipo_empleado(id) {
     const data = {
         listar_equipo_empleado: "listar_equipo_empleado",

@@ -53,3 +53,34 @@ END //
 DELIMITER ;
 
 -------------------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE obtener_oficinas_y_sedes()
+BEGIN
+    SELECT 
+        o.idoficinas,
+        o.nombres AS nombre_oficina,
+        s.nombres AS nombre_sede
+    FROM 
+        oficina o
+    INNER JOIN 
+        sede s ON s.idsedes = o.idsedes;
+END 
+// DELIMITER ;
+------------------------------------------------------------------------
+DELIMITER //
+
+CREATE PROCEDURE insertar_meta (
+    IN p_nombre VARCHAR(255)
+)
+BEGIN
+    -- Verificar si el campo está vacío o nulo
+    IF p_nombre IS NULL OR p_nombre = '' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo nombre no puede estar vacío';
+    ELSE
+        -- Insertar el registro si el campo es válido
+        INSERT INTO meta (nombre) VALUES (p_nombre);
+    END IF;
+END //
+
+DELIMITER ;
+------------------------------------------------------------------------

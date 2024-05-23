@@ -9,7 +9,7 @@ class modelo_sede{
 
     public static function model_listar(){
         try {
-            $sql = "SELECT *FROM sede;";
+            $sql = "select * from sede;";
             $stmp = conexion::conectar()->prepare($sql);
             $stmp->execute();
             return $stmp->fetchAll();

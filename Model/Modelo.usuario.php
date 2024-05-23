@@ -9,7 +9,7 @@ class modelo_usuario{
 
     public static function model_listar(){
         try {
-            $sql = "SELECT *FROM usuario;";
+            $sql = "select * from usuario;";
             $stmp = conexion::conectar()->prepare($sql);
             $stmp->execute();
             return $stmp->fetchAll();

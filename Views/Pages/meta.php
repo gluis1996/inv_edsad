@@ -40,7 +40,7 @@
 
                 <div class="col mt-5">
                     <label for="Datos Local">Registro de Metas</label>
-                    <table class="table table-bordered table-striped dt-responsive" id="tb_registrar_empleados" width="100%">
+                    <table class="table table-bordered table-striped dt-responsive" id="tb_lista_meta" width="100%">
                         <thead>
                             <tr>
                                 <th style="width: 10%; text-align: center;">ID META</th>

@@ -9,22 +9,56 @@ class ajax_sede
 {
     public $id;
     public $nombre;
-    public $estado;
+    public $accion;
 
     public function ajax_registrar_sede()
     {
-        if ($this->estado == 'registro_sede') {
+        if ($this->accion == 'registro_sede') {
             echo 'se va registrar' . $this->nombre;
 
         }else{
             echo 'incorrecto';
         }
     }
+    
+    public function ajax_listar_sede(){
+        if ($this->accion=='listasede') {
+           $response = controller_sede::controller_listar();
+           $datosjason = array();
+
+            if (empty($response)) {
+                $datosjason['data'][] = array(
+                    "idsede" => "--",
+                    "nombresed" => "--",
+                    "acciones" => "--"
+                );
+            } else {
+                foreach ($response as $value) {
+                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_listar_equipo_empleado' id_sed='".$value['idsedes']."' data-toggle='modal' data-target='#modal_listar_empleado'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_empleado' id_sedels='".$value['idsedes']."' ><i class='fas fa-trash-alt'></i></button></div>";
+
+                    $datosjason['data'][] = array(
+                        "idsede" => $value['idsedes'],
+                        "nombresed" =>  $value['nombres'],
+                        "acciones" => $botones
+                    );
+                }
+            }
+            echo json_encode($datosjason);
+        }
+    }
 }
 
+//registrar
 if (isset($_POST['registro_sede'])) {
     $res = new ajax_sede();
-    $res->estado = $_POST['registro_sede'];
+    $res->accion = $_POST['registro_sede'];
     $res->nombre = $_POST['nombre_sede'];
     $res->ajax_registrar_sede();
+}
+//listar
+if (isset($_POST['lista_sede'])) {
+    $res = new ajax_sede;
+    $res->accion = $_POST['lista_sede'];
+    $res->ajax_listar_sede();
+    
 }

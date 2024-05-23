@@ -3,19 +3,20 @@ require_once ('conexion.php');
 
 class modelo_oficina{
 
-    public static function model_buscar($data){
-        try {
-            $sql = "call GetOficinasBySede(?);";
-            $call = conexion::conectar()->prepare($sql);
-            $call->bindParam(1,$data,PDO::PARAM_STR);
-            $call->execute();
-            return $call->fetchAll();
-        } catch (PDOException $e) {
-            return "Error : ".$e->getMessage();
-        }
+    public static function model_buscar(){
+
     }
 
     public static function model_listar(){
+        try {
+            $sql = "call obtener_oficinas_y_sedes();";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->execute();
+            return $stmp->fetchAll();
+        } catch (PDOException $th) {
+            return "Modelo Meta ".$th->getMessage();
+        }
+        
         
     }
 

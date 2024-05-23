@@ -37,7 +37,7 @@
 
                 <div class="card">
                     <div class="col">
-                        <label for="Datos Local">Lsta de Sedes</label>
+                        <label for="Datos Local">Lista de Sedes</label>
                         <table class="table table-bordered table-striped dt-responsive" id="tb_lista_sede" width="100%">
                             <thead>
                                 <tr>

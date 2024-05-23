@@ -25,8 +25,38 @@ class ajax_usuario{
             $response = controller_usuario::controller_agregar_usuario($data);
             echo $response;
             
-        } 
-         
+        }    
+    }
+
+    public function ajax_listar_usuario(){
+        if ($this->accion=='listausuario') {
+           $response = controller_usuario::controller_listar();
+           $datosjason = array();
+
+            if (empty($response)) {
+                $datosjason['data'][] = array(
+                    "idusuario" => "--",
+                    "nombres" => "--",
+                    "user" => "--",
+                    "contraseña" => "--",
+                    "acciones" => "--"
+                );
+            } else {
+                foreach ($response as $value) {
+
+                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_listar_equipo_empleado' id_usu='".$value['idusuario']."' data-toggle='modal' data-target='#modal_listar_empleado'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_empleado' id_usuario_ls='".$value['idusuario']."' ><i class='fas fa-trash-alt'></i></button></div>";
+
+                    $datosjason['data'][] = array(
+                        "idusuario" => $value['idusuario'],
+                        "nombres" =>  $value['nombre'],
+                        "user" =>  $value['user'],
+                        "contraseña" =>  $value['contraseña'],
+                        "acciones" => $botones
+                    );
+                }
+            }
+            echo json_encode($datosjason);
+        }
     }
     
 
@@ -39,5 +69,13 @@ if (isset($_POST['registro_usuario'])) {
     $res->user = $_POST['user'];
     $res->contraseña = $_POST['contra'];
     $res->ajax_registrar_usuario();
+    
+}
+
+//listar
+if (isset($_POST['lista_usuario'])) { //
+    $res = new ajax_usuario;
+    $res->accion = $_POST['lista_usuario']; //accion= 'te quirerop',
+    $res->ajax_listar_usuario();
     
 }

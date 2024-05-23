@@ -107,7 +107,7 @@ if (isset($_POST['registro_empleado'])) {
     $res->ajax_registrar_empleado();
     
 }
-
+//listar
 if (isset($_POST['lista_empleado'])) {
     $res = new ajax_empleado();
     $res->accion = $_POST['lista_empleado'];
@@ -122,7 +122,7 @@ if (isset($_POST['listar_equipo_empleado'])) {
     $res->ajax_listar_equipo_empleado();
     
 }
-
+//eliminar
 if (isset($_POST['id_eliminar_empleado'])) { //
     $res = new ajax_empleado();
     $res->accion = $_POST['id_eliminar_empleado']; //accion= 'te quirerop',
