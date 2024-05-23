@@ -77,6 +77,7 @@
                 $_GET['page'] == 'beneficiario'         ||
                 $_GET['page'] == 'dashboard'            ||
                 $_GET['page'] == 'historico'            ||
+                $_GET['page'] == 'adquisicionequipos'   ||
                 $_GET["page"] == "salir"
             ) {
                 include "Pages/" . $_GET['page'] . ".php";
