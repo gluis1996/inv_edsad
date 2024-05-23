@@ -13,10 +13,26 @@ $(document).ready(function () {
             contra : contraseña,
 
         }
+    
+    
 
         $.post('Assets/ajax/Ajax.usuario.php', data, function (response) {
             console.log(response);
-
+            if (response.trim() !== "ok") {
+                Swal.fire({
+                    title: "Oppps....",
+                    text: response,
+                    icon: "error",
+                });
+            } else {
+                Swal.fire({
+                    title: "Success",
+                    text: "Usuario registrado exitosamente",
+                    icon: "success",
+                });
+               // listar();
+            } 
+            // console.log(data);
         })
     })
 

@@ -88,15 +88,13 @@ class ajax_empleado{
 
     
     public function ajax_eliminar_empleado(){
-        if ($this->accion=='id_eliminar_empleado') {
+        if ($this->accion=='te_extraño') {
             $data = array(
-                'idempleado'=>$this->id
+                'tambien_te_Extraña'=>$this->id
             );
-
-            $response = controller_empleado::c_listar_equipo_empleado($data);
+            $response = controller_empleado::c_eliminar_empleado($data);
             echo $response;
         }
-
     }
 
 }
@@ -125,9 +123,9 @@ if (isset($_POST['listar_equipo_empleado'])) {
     
 }
 
-if (isset($_POST['id_eliminar_empleado'])) {
+if (isset($_POST['id_eliminar_empleado'])) { //
     $res = new ajax_empleado();
-    $res->accion = $_POST['id_eliminar_empleado'];
+    $res->accion = $_POST['id_eliminar_empleado']; //accion= 'te quirerop',
     $res->id = $_POST['idempleado'];
     $res->ajax_eliminar_empleado();
     

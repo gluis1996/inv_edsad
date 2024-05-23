@@ -49,7 +49,7 @@ class modelo_empleado{
         try {
             $sql = "DELETE FROM empleados WHERE idempleado=?";
             $stmp = conexion::conectar()->prepare($sql);
-            $stmp->bindParam(1,$data['idempleado'],PDO::PARAM_STR);
+            $stmp->bindParam(1,$data['tambien_te_Extraña'],PDO::PARAM_STR);
             
             if ($stmp->execute()) {
                 return 'ok';

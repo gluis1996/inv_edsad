@@ -43,37 +43,52 @@ $(document).ready(function () {
 
     })
 
+    //ELIMINAR
     //llenar datos en el modal editar registro  /// captura los id de lo botones
     $('#tb_registrar_empleados').on("click", ".btn_eliminar_empleado", function (e) {
         e.preventDefault();
         var id = $(this).attr('id_empleado_el');
-        console.log(id);
+        //console.log(id);  ---> se utiliza para verificar si le esta asignando el id del empleado
         const data = {
-            id_eliminar_empleado : 'id_eliminar_empleado',
+            id_eliminar_empleado : 'te_extraño',
             idempleado : id,
         }
-        $.post('Assets/ajax/Ajax.empleado.php', data, function (response) {
-            if (response != "ok") {
-                Swal.fire({
-                    title: "Oppps....",
-                    text: response,
-                    icon: "error",
-                });
-            } else {
-                Swal.fire({
-                    title: "Deleted",
-                    text: "Eliminado exitosamente",
-                    icon: "success",
-                });
-                // Eliminar la fila con transición
-                var row = $(e.target).closest('tr');
-                row.addClass('fade-out');
-                setTimeout(function () {
-                    var table = $('#tb_registrar_empleados').DataTable();
-                    table.row(row).remove().draw();
-                }, 500); // Esperar a que la animación termine
-            }            
-
+        //una solicitud POS es lo que se envia al servidor 
+//////////////////////////////////////////////////////////////////
+        Swal.fire({
+            title: "Estas seguro",
+            text: "¡No podrás revertir esto!!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, eliminar esto!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post('Assets/ajax/Ajax.empleado.php', data, function (response) {
+                    if (response != "ok") {
+                        Swal.fire({
+                            title: "Oppps....",
+                            text: response,
+                            icon: "error",
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Deleted",
+                            text: "Eliminado exitosamente",
+                            icon: "success",
+                        });
+                        // Eliminar la fila con transición
+                        var row = $(e.target).closest('tr');
+                        row.addClass('fade-out');
+                        setTimeout(function () {
+                            var table = $('#tb_registrar_empleados').DataTable();
+                            table.row(row).remove().draw();
+                        }, 500); // Esperar a que la animación termine
+                    }            
+        
+                })
+            }
         })
     })
 

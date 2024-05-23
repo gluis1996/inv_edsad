@@ -1,9 +1,9 @@
 <?php
 //controlador
-//require_once ('../../Controllers/controller.usuario.php');
+require_once ('../../Controllers/controller.usuario.php');
 
 //Modelo
-//require_once ('../../Model/Modelo.usuario.php');
+require_once ('../../Model/Modelo.usuario.php');
 
 
 class ajax_usuario{
@@ -15,15 +15,18 @@ class ajax_usuario{
 
     public function ajax_registrar_usuario(){
         if ($this->accion == 'registro_usuario') {
-            // echo '<ul>';
-            // echo '<li>Nombre: ' . $this->nombre . '</li>';
-            // echo '<li>Usuario: ' . $this->user . '</li>';
-            // echo '<li>Contraseña: ' . $this->contraseña . '</li>';
-            // echo '</ul>';
-            echo 'se va registrar ' . $this->user;
-        } else {
-            echo 'incorrecto';
-        }
+            $data = array (
+                'nombre_usuario' =>$this->nombre,
+                'user' =>$this->user,
+                'contraseña' =>$this->contraseña,
+
+            );
+
+            $response = controller_usuario::controller_agregar_usuario($data);
+            echo $response;
+            
+        } 
+         
     }
     
 

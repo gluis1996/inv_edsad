@@ -18,7 +18,22 @@ class modelo_usuario{
         }
     }
 
-    public static function model_agregar(){
+    public static function model_agregar($data){
+        try {
+            $sql = "CALL insertar_usuario(?,?,?);";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1,$data['nombre'],PDO::PARAM_STR);
+            $stmp->bindParam(2,$data['user'],PDO::PARAM_STR);
+            $stmp->bindParam(3,$data['contraseña'],PDO::PARAM_STR);
+            if ($stmp->execute()) {
+                return 'ok';
+            } else {
+                return 'fallo';
+            }
+            
+        } catch (PDOException $th) {
+            return "Modelo Usuario ".$th->getMessage();
+        }
         
     }
 
