@@ -20,7 +20,21 @@ class modelo_oficina{
         
     }
 
-    public static function model_agregar(){
+    public static function model_agregar($data){
+        try {
+            $sql = "CALL insertar_oficina(?,?);";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1,$data['nombre_oficina'],PDO::PARAM_STR);
+            $stmp->bindParam(2,$data['idsede'],PDO::PARAM_STR);
+            if ($stmp->execute()) {
+                return 'ok';
+            } else {
+                return 'fallo';
+            }
+            
+        } catch (PDOException $th) {
+            return "Modelo oficina ".$th->getMessage();
+        }
         
     }
 

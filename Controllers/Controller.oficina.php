@@ -6,5 +6,10 @@ class controller_oficina{
         $response = modelo_oficina::model_listar();
         return $response;
     }
+    
+    public static function controller_agregar_oficina($data){
+        $res = modelo_oficina::model_agregar($data);
+        return $res;
+    }
 
 }

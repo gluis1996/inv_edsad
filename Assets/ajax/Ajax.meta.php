@@ -14,7 +14,7 @@ class ajax_meta{
     public function ajax_registrar_meta(){
         if ($this->accion=='registrometa') {
             $data = array(
-                'nombremeta'=> $this->nombre
+                'nombre_meta'=> $this->nombre
             );
 
             $response = controller_meta::controller_agregar_meta($data);

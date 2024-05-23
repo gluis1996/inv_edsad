@@ -64,7 +64,7 @@
 </div>
 
 
-<!-- Modal registrar Sede -->
+<!-- Modal registrar oficina -->
 <div id="modal_registrar_oficina" class="modal fade" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
 

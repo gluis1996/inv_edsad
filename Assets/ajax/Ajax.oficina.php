@@ -15,11 +15,14 @@ class ajax_oficina
 
     public function ajax_registrar_oficina()
     {
-        if ($this->accion == 'registro_oficina') {
-            echo 'se va registrar ' . $this->nombre;
-        } else {
-            echo 'incorrecto';
-        }
+        if ($this->accion == 'registroOficina') {
+            $data = array(
+                'nombre_oficina' =>$this->nombre,
+                'idsede' =>$this->idsede,
+            );
+           $response = controller_oficina::controller_agregar_oficina($data);
+           echo $response; 
+        } 
     }
 
     public function ajax_listar_ofina(){

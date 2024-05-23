@@ -8,12 +8,26 @@ $(document).ready(function () {
         var nombre_sede = $('#nombre_sede').val();
         
         const data = {
-            registro_sede : 'registro_sede',
-            nombre_sede : nombre_sede,
+            registro_sede : 'registroSede',
+            nombrexsede : nombre_sede,
         }
 
         $.post('Assets/ajax/Ajax.sede.php', data, function (response) {
             console.log(response);
+            if (response.trim() !== "ok") {
+                Swal.fire({
+                    title: "Oppps....",
+                    text: response,
+                    icon: "error",
+                });
+            } else {
+                Swal.fire({
+                    title: "Success",
+                    text: "Sede registrado exitosamente",
+                    icon: "success",
+                });
+                listarS();
+            }  
 
         })
     })

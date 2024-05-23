@@ -13,12 +13,13 @@ class ajax_sede
 
     public function ajax_registrar_sede()
     {
-        if ($this->accion == 'registro_sede') {
-            echo 'se va registrar' . $this->nombre;
-
-        }else{
-            echo 'incorrecto';
+        if ($this->accion == 'registroSede') {
+           $data = array(
+            'nombre_sede' =>$this->nombre
+           );
         }
+        $response  = controller_sede::controller_agregar_sede($data);
+        echo $response;
     }
     
     public function ajax_listar_sede(){
@@ -52,7 +53,7 @@ class ajax_sede
 if (isset($_POST['registro_sede'])) {
     $res = new ajax_sede();
     $res->accion = $_POST['registro_sede'];
-    $res->nombre = $_POST['nombre_sede'];
+    $res->nombre = $_POST['nombrexsede'];
     $res->ajax_registrar_sede();
 }
 //listar

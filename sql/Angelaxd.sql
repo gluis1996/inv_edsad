@@ -84,3 +84,35 @@ END //
 
 DELIMITER ;
 ------------------------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE insertar_oficina (
+    IN p_nombres TEXT,
+    IN p_idsedes INT
+)
+BEGIN
+    -- Verificar si los campos nombres e idsedes están vacíos o nulos
+    IF p_nombres IS NULL OR p_nombres = '' OR
+       p_idsedes IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Los campos nombres e idsedes no pueden estar vacíos';
+    ELSE
+        -- Insertar el registro si los campos son válidos
+        INSERT INTO oficina (nombres, idsedes) VALUES (p_nombres, p_idsedes);
+    END IF;
+END 
+//DELIMITER ;
+------------------------------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE insertar_sede (
+    IN p_nombres TEXT
+)
+BEGIN
+    -- Verificar si el campo nombres está vacío o nulo
+    IF p_nombres IS NULL OR p_nombres = '' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo nombres no puede estar vacío';
+    ELSE
+        -- Insertar el registro si el campo es válido
+        INSERT INTO sede (nombres) VALUES (p_nombres);
+    END IF;
+END 
+// DELIMITER ;
+------------------------------------------------------------------------

@@ -9,13 +9,27 @@ $(document).ready(function () {
         var idsede = $('#id_sede').val();
         
         const data = {
-            registro_oficina : 'registro_oficina',
+            registro_oficina : 'registroOficina',
             nombre_oficina : nombre_oficina,
             id_sede : idsede,
         }
 
         $.post('Assets/ajax/Ajax.oficina.php', data, function (response) {
             console.log(response);
+            if (response.trim() !== "ok") {
+                Swal.fire({
+                    title: "Oppps....",
+                    text: response,
+                    icon: "error",
+                });
+            } else {
+                Swal.fire({
+                    title: "Success",
+                    text: "Oficina registrado exitosamente",
+                    icon: "success",
+                });
+                listarO();
+            } 
 
         })
     })

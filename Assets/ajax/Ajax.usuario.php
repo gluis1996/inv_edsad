@@ -16,9 +16,10 @@ class ajax_usuario{
     public function ajax_registrar_usuario(){
         if ($this->accion == 'registro_usuario') {
             $data = array (
-                'nombre_usuario' =>$this->nombre,
+                'nombre' =>$this->nombre,
                 'user' =>$this->user,
                 'contraseña' =>$this->contraseña,
+                
 
             );
 
