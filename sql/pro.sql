@@ -31,17 +31,16 @@ DELIMITER ;
 
 
 
-DELIMITER $$
-CREATE PROCEDURE sp_listar_historial_asignacion(IN p_patrimonial text)
+CREATE PROCEDURE `sp_listar_historial_asignacion`(IN p_patrimonial text)
 BEGIN
     SELECT 
 ha.id_historial,
 ha.id_detalle_asignacion,
-s.nombres,
-ofi.nombres,
-concat(eq.modelo, "  ", eq.descripcion, "  ", ma.nombre),
-usu.nombre,
-em.nombres,
+s.nombres as nombre_sede,
+ofi.nombres as nombre_oficina,
+concat(eq.modelo, "  ", eq.descripcion, "  ", ma.nombre) as equipo,
+usu.nombre as nombre_usuario,
+em.nombres as nombre_empleado,
 ha.cod_patrimonial,
 ha.vida_util,
 ha.estado,
@@ -55,8 +54,33 @@ inner join equipos eq on eq.idequipos=ha.idequipos
 inner join usuario usu on usu.idusuario = ha.idusuario
 inner join empleados em on em.idempleado = ha.idempleado
 inner join marca ma on ma. idmarca = eq.idmarca
-where ha.cod_patrimonial = p_patrimonial;
-END$$
+where ha.cod_patrimonial = p_patrimonial
+order by ha.fecha desc;
+END
+
+
+///TRIGGER para detalle asignacion
+DROP TRIGGER IF EXISTS `after_detalle_asignacion_delete`;
+DELIMITER $$
+CREATE TRIGGER `after_detalle_asignacion_delete` AFTER DELETE ON `detalle_asignacion` FOR EACH ROW BEGIN
+    INSERT INTO historial_asignacion (id_detalle_asignacion, idsedes, idoficinas, idequipos, idusuario, idempleado, cod_patrimonial, vida_util, estado, fecha_asignacion, accion)
+    VALUES (OLD.id_detalle_asignacion, OLD.idsedes, OLD.idoficinas, OLD.idequipos, OLD.idusuario, OLD.idempleado, OLD.cod_patrimonial, OLD.vida_util, 'eliminado', OLD.fecha_asignacion, 'DELETE');
+END
+$$
 DELIMITER ;
-
-
+DROP TRIGGER IF EXISTS `after_detalle_asignacion_insert`;
+DELIMITER $$
+CREATE TRIGGER `after_detalle_asignacion_insert` AFTER INSERT ON `detalle_asignacion` FOR EACH ROW BEGIN
+    INSERT INTO historial_asignacion (id_detalle_asignacion, idsedes, idoficinas, idequipos, idusuario, idempleado, cod_patrimonial, vida_util, estado, fecha_asignacion, accion)
+    VALUES (NEW.id_detalle_asignacion, NEW.idsedes, NEW.idoficinas, NEW.idequipos, NEW.idusuario, NEW.idempleado, NEW.cod_patrimonial, NEW.vida_util, NEW.estado, NEW.fecha_asignacion, 'INSERT');
+END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `after_detalle_asignacion_update`;
+DELIMITER $$
+CREATE TRIGGER `after_detalle_asignacion_update` AFTER UPDATE ON `detalle_asignacion` FOR EACH ROW BEGIN
+    INSERT INTO historial_asignacion (id_detalle_asignacion, idsedes, idoficinas, idequipos, idusuario, idempleado, cod_patrimonial, vida_util, estado, fecha_asignacion, accion)
+    VALUES (OLD.id_detalle_asignacion, OLD.idsedes, OLD.idoficinas, OLD.idequipos, OLD.idusuario, OLD.idempleado, OLD.cod_patrimonial, OLD.vida_util, 'actualizado', OLD.fecha_asignacion, 'UPDATE');
+END
+$$
+DELIMITER ;

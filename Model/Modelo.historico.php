@@ -7,7 +7,7 @@ class modelo_historico{
         try {
             $sql = "call sp_listar_historial_asignacion(?);";
             $stmp = conexion::conectar()->prepare($sql);
-            $stmp = 
+            $stmp->bindParam(1, $data['id_historico'], PDO::PARAM_STR);
             $stmp->execute();
             return $stmp->fetchAll();
         } catch (PDOException $th) {
