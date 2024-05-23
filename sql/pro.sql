@@ -30,3 +30,33 @@ END$$
 DELIMITER ;
 
 
+
+DELIMITER $$
+CREATE PROCEDURE sp_listar_historial_asignacion(IN p_patrimonial text)
+BEGIN
+    SELECT 
+ha.id_historial,
+ha.id_detalle_asignacion,
+s.nombres,
+ofi.nombres,
+concat(eq.modelo, "  ", eq.descripcion, "  ", ma.nombre),
+usu.nombre,
+em.nombres,
+ha.cod_patrimonial,
+ha.vida_util,
+ha.estado,
+ha.fecha_asignacion,
+ha.accion,
+ha.fecha
+FROM equipos_informaticos.historial_asignacion  ha
+inner join sede s on s.idsedes = ha.idsedes
+inner join oficina ofi on ofi.idoficinas=ha.idsedes
+inner join equipos eq on eq.idequipos=ha.idequipos
+inner join usuario usu on usu.idusuario = ha.idusuario
+inner join empleados em on em.idempleado = ha.idempleado
+inner join marca ma on ma. idmarca = eq.idmarca
+where ha.cod_patrimonial = p_patrimonial;
+END$$
+DELIMITER ;
+
+

@@ -50,7 +50,7 @@ $(document).ready(function () {
     })
 
 
-    //registar equipo
+    //registar marca
     $('.btn_registrar_marca').click(function (e) {
         e.preventDefault();
         var e_marca = $('#modal_nombre_marca').val();
@@ -60,7 +60,11 @@ $(document).ready(function () {
             e_marca: e_marca,
         }
 
+        console.log(data);
+
+
         $.post("Assets/ajax/Ajax.equipo.php", data, function (response) {
+            console.log(response);
             if (response != "ok") {
                 Swal.fire({
                     title: "Oppps....",
@@ -112,7 +116,7 @@ $(document).ready(function () {
 
     })
 
-    //Eliminar Empleado
+    //Eliminar equipo
     $('#tb_listar_equipos').on("click", "[id^='idequipoeliminar_']", function (e) {
         e.preventDefault();
         var idequipo = $(this).attr('id_eliminar_eqp');
@@ -121,32 +125,44 @@ $(document).ready(function () {
             idequipos: idequipo,
         }
 
-        console.log(data);
-        $.post("Assets/ajax/Ajax.equipo.php", data, function (response) {
-            console.log(response);
-            if (response != "ok") {
-                Swal.fire({
-                    title: "Oppps....",
-                    text: response,
-                    icon: "error",
-                });
-            } else {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Se elimino Exitosamente",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                // Eliminar la fila con transición
-                var row = $(e.target).closest('tr');
-                row.addClass('fade-out');
-                setTimeout(function () {
-                    var table = $('#tb_listar_equipos').DataTable();
-                    table.row(row).remove().draw();
-                }, 500); // Esperar a que la animación termine
+        Swal.fire({
+            title: "Estas seguro",
+            text: "¡No podrás revertir esto!!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, eliminar esto!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post("Assets/ajax/Ajax.equipo.php", data, function (response) {
+                    console.log(response);
+                    if (response != "ok") {
+                        Swal.fire({
+                            title: "Oppps....",
+                            text: response,
+                            icon: "error",
+                        });
+                    } else {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Se elimino Exitosamente",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        // Eliminar la fila con transición
+                        var row = $(e.target).closest('tr');
+                        row.addClass('fade-out');
+                        setTimeout(function () {
+                            var table = $('#tb_listar_equipos').DataTable();
+                            table.row(row).remove().draw();
+                        }, 500); // Esperar a que la animación termine
+                    }
+                })
             }
-        });
+        })
+
     })
 
 
