@@ -45,7 +45,7 @@ class ajax_usuario{
             } else {
                 foreach ($response as $value) {
 
-                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_listar_equipo_empleado' id_usu='".$value['idusuario']."' data-toggle='modal' data-target='#modal_listar_empleado'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_empleado' id_usuario_ls='".$value['idusuario']."' ><i class='fas fa-trash-alt'></i></button></div>";
+                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_listar_equipo_empleado' id_usu='".$value['idusuario']."' data-toggle='modal' data-target='#modal_listar_empleado'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_usuario' id_usuario_ls='".$value['idusuario']."' ><i class='fas fa-trash-alt'></i></button></div>";
 
                     $datosjason['data'][] = array(
                         "idusuario" => $value['idusuario'],
@@ -57,6 +57,16 @@ class ajax_usuario{
                 }
             }
             echo json_encode($datosjason);
+        }
+    }
+
+    public function ajax_eliminar_usuario(){
+        if ($this->accion=='eliminarUsuario') {
+            $data = array(
+                'idusu'=>$this->id
+            );
+            $response = controller_usuario::controller_eliminar_usuario($data);
+            echo $response;
         }
     }
     
@@ -78,5 +88,13 @@ if (isset($_POST['lista_usuario'])) { //
     $res = new ajax_usuario;
     $res->accion = $_POST['lista_usuario']; //accion= 'te quirerop',
     $res->ajax_listar_usuario();
+    
+}
+//eliminar
+if (isset($_POST['eliminar_usuario'])) { //
+    $res = new ajax_usuario();
+    $res->accion = $_POST['eliminar_usuario']; //accion= 'te quirerop',
+    $res->id = $_POST['idusuario'];
+    $res->ajax_eliminar_usuario();
     
 }

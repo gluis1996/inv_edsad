@@ -13,7 +13,7 @@ class controller_usuario{
     }
 
 
-    public static function c_eliminar_empleado($data){
+    public static function controller_eliminar_usuario($data){
         $res = modelo_usuario::model_eliminar($data);
         return $res;
     }

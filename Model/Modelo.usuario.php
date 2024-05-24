@@ -37,7 +37,21 @@ class modelo_usuario{
         
     }
 
-    public static function model_eliminar(){
+    public static function model_eliminar($data){
+        try {
+            $sql = "delete from usuario where idusuario=?;";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1,$data['idusu'],PDO::PARAM_STR);
+            
+            if ($stmp->execute()) {
+                return 'ok';
+            } else {
+                return 'fallo';
+            }
+            
+        } catch (PDOException $th) {
+            return "Modelo usuario ".$th->getMessage();
+        }
         
     }
 

@@ -40,13 +40,13 @@
 
                 <div class="col mt-5">
                     <label for="Datos Local">Registro de Empleados</label>
-                    <table class="table table-bordered table-striped dt-responsive" id="tb_registrar_empleados" width="100%">
+                    <table class="table table-bordered table-striped dt-responsive" id="tb_registrar_empleados" width="50%">
                         <thead>
                             <tr>
-                                <th style="width: 10%; text-align: center;">ID EMPLEADO</th>
-                                <th style="width: 50%; text-align: center;">NOMBRE DEL EMPLEADO</th>
+                                <th style="width: 5%; text-align: center;">ID EMPLEADO</th>
+                                <th style="width: 30; text-align: center;">NOMBRE DEL EMPLEADO</th>
 
-                                <th style="width: 40%; text-align: center;">ACCIÓN</th>
+                                <th style="width: 15%; text-align: center;">ACCIÓN</th>
                                 <!-- donde iran los botones para cada fila eliminar Actualizar-->
                             </tr>
                         </thead>

@@ -96,8 +96,6 @@ $(document).ready(function () {
 
 })
 
-
-
 //listara todo
 function listar() {
     const data = {
@@ -143,7 +141,6 @@ function listar() {
         },
     });
 }
-
 
 
 //listara eq por empleado

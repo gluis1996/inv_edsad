@@ -87,3 +87,53 @@ function listarB (){
         },
     });
 }
+
+
+//ELIMINAR
+    //llenar datos en el modal editar registro  /// captura los id de lo botones
+    $('#tb_lista_beneficiario').on("click", ".btn_eliminar_benef", function (e) {
+        e.preventDefault();
+        var id = $(this).attr('id_bf');
+        console.log(id);  //---> se utiliza para verificar si le esta asignando el id del empleado
+        
+        const data = {
+            eliminar_beneficiario : 'eliminarB',
+            idbeneficiario : id,
+        }
+       // una solicitud POS es lo que se envia al servidor 
+        Swal.fire({
+            title: "Estas seguro",
+            text: "¡No podrás revertir esto!!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, eliminar esto!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post('Assets/ajax/Ajax.beneficiario.php', data, function (response) {
+                    if (response.trim() != "ok") {
+                        Swal.fire({
+                            title: "Oppps....",
+                            text: response,
+                            icon: "error",
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Deleted",
+                            text: "Eliminado exitosamente",
+                            icon: "success",
+                        });
+                        // Eliminar la fila con transición
+                        var row = $(e.target).closest('tr');
+                        row.addClass('fade-out');
+                        setTimeout(function () {
+                            var table = $('#tb_lista_beneficiario').DataTable();
+                            table.row(row).remove().draw();
+                        }, 500); // Esperar a que la animación termine
+                    }            
+        
+                })
+            }
+        })
+    })

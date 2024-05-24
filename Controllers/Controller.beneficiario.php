@@ -13,4 +13,9 @@ class controller_beneficiario
         $res = modelo_beneficario::model_agregar($data);
         return $res;
     }
+
+    public static function controller_eliminar_beneficiario($data){
+        $res = modelo_beneficario::model_eliminar($data);
+        return $res;
+    }
 }
