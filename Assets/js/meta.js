@@ -33,6 +33,62 @@ $(document).ready(function () {
     })
 
 
+    //ELIMINAR
+    //llenar datos en el modal editar registro  /// captura los id de lo botones
+    $('#tb_lista_meta').on("click", ".btn_eliminar_empleado", function (e) {
+        e.preventDefault();
+        var id = $(this).attr('id_meta_ls');
+        //console.log(id);  ---> se utiliza para verificar si le esta asignando el id del empleado
+        const data = {
+            eliminar_meta : 'eliminarmeta',
+            idmeta : id,
+        }
+
+      //  console.log(data); //verificar
+
+        //una solicitud POS es lo que se envia al servidor 
+        Swal.fire({
+            title: "Estas seguro",
+            text: "¡No podrás revertir esto!!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, eliminar esto!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.post('Assets/ajax/Ajax.meta.php', data, function (response) {
+
+                    //console.log(response); //para ver en la consola
+
+                    if (response.trim() != "ok") {
+                        Swal.fire({
+                            title: "Oppps....",
+                            text: response,
+                            icon: "error",
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Deleted",
+                            text: "Eliminado exitosamente",
+                            icon: "success",
+                        });
+                        // Eliminar la fila con transición
+                        var row = $(e.target).closest('tr');
+                        row.addClass('fade-out');
+                        setTimeout(function () {
+                            var table = $('#tb_lista_meta').DataTable();
+                            table.row(row).remove().draw();
+                        }, 500); // Esperar a que la animación termine
+                    }            
+        
+                })
+            }
+        })
+    })
+
+
 
 })
 

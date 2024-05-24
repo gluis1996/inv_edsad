@@ -38,9 +38,9 @@ class modelo_meta{
 
     public static function model_eliminar($data){
         try {
-            $sql = "DELETE FROM empleados WHERE idempleado=?";
+            $sql = "delete from meta where idmeta = ?";
             $stmp = conexion::conectar()->prepare($sql);
-            $stmp->bindParam(1,$data['tambien_te_Extraña'],PDO::PARAM_STR);
+            $stmp->bindParam(1,$data['idmt'],PDO::PARAM_STR);
             
             if ($stmp->execute()) {
                 return 'ok';
@@ -49,7 +49,7 @@ class modelo_meta{
             }
             
         } catch (PDOException $th) {
-            return "Modelo empleado ".$th->getMessage();
+            return "Modelo Meta ".$th->getMessage();
         }
     }
 

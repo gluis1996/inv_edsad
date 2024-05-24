@@ -54,7 +54,6 @@ $(document).ready(function () {
             idempleado : id,
         }
         //una solicitud POS es lo que se envia al servidor 
-//////////////////////////////////////////////////////////////////
         Swal.fire({
             title: "Estas seguro",
             text: "¡No podrás revertir esto!!",

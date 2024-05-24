@@ -52,13 +52,15 @@ class ajax_meta{
 
 
     
-    public function ajax_eliminar_empleado(){
-        if ($this->accion=='te_extraño') {
+    public function ajax_eliminar_meta(){
+        if ($this->accion=='eliminarmeta') {
             $data = array(
-                'tambien_te_Extraña'=>$this->id
+                'idmt'=>$this->id
             );
-            $response = controller_empleado::c_eliminar_empleado($data);
-            echo $response;
+            $response = controller_meta::controller_eliminar_meta($data);
+           echo $response;
+        //    echo $this->id;
+        
         }
     }
 
@@ -82,11 +84,11 @@ if (isset($_POST['lista_meta'])) {
 }
 
 //eliminar
-if (isset($_POST['id_eliminar_empleado'])) { //
-    $res = new ajax_empleado();
-    $res->accion = $_POST['id_eliminar_empleado']; //accion= 'te quirerop',
-    $res->id = $_POST['idempleado'];
-    $res->ajax_eliminar_empleado();
+if (isset($_POST['eliminar_meta'])) { //
+    $res = new ajax_meta();
+    $res->accion = $_POST['eliminar_meta']; //accion= 'te quirerop',
+    $res->id = $_POST['idmeta'];
+    $res->ajax_eliminar_meta();
     
 }
 

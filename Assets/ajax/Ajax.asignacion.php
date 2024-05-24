@@ -102,7 +102,7 @@ class ajax_asignacion{
     
     public function ajax_listar_oficinas(){
         if ($this->accion == 'listar_oficinas_por_sede') {
-            $response = controller_oficina::c_listar_oficina($this->id_sede);
+            $response = controller_oficina::controller_listar($this->id_sede);
             echo json_encode($response);
         }
     }

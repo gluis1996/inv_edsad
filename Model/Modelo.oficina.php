@@ -38,7 +38,21 @@ class modelo_oficina{
         
     }
 
-    public static function model_eliminar(){
+    public static function model_eliminar($data){
+        try {
+            $sql = "delete from oficina where idoficinas=?";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1,$data['idofi'],PDO::PARAM_STR);
+            
+            if ($stmp->execute()) {
+                return 'ok';
+            } else {
+                return 'fallo';
+            }
+            
+        } catch (PDOException $th) {
+            return "Modelo empleado ".$th->getMessage();
+        }
         
     }
 

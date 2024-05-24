@@ -12,4 +12,9 @@ class controller_oficina{
         return $res;
     }
 
+    public static function controller_eliminar_oficina($data){
+        $res = modelo_oficina::model_eliminar($data);
+        return $res;
+    }
+
 }

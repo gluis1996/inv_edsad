@@ -12,6 +12,11 @@ class controller_sede{
         return $res;
     }
 
+    public static function controller_eliminar_sede($data){
+        $res = modelo_sede::model_eliminar($data);
+        return $res;
+    }
+
 
 }
 

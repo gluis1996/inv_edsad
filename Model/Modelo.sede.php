@@ -34,8 +34,21 @@ class modelo_sede{
         }
     }
 
-    public static function model_eliminar(){
-        
+    public static function model_eliminar($data){
+        try {
+            $sql = "delete from sede where idsedes=?";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1,$data['idsd'],PDO::PARAM_STR);
+            
+            if ($stmp->execute()) {
+                return 'ok';
+            } else {
+                return 'fallo';
+            }
+            
+        } catch (PDOException $th) {
+            return "Modelo Sede ".$th->getMessage();
+        }
     }
 
     public static function model_actualizar(){
