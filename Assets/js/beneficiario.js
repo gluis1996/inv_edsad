@@ -46,7 +46,7 @@ function listarB (){
         data: data,
         type: 'POST',
         success: function (response) {
-            console.log(response);
+            //console.log(response);
         }
     })
     

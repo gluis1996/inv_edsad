@@ -75,29 +75,29 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="area">Area</label>
-                        <select id="area" class="form-control">
-                            <option selected>Seleccionar</option>
+                        <select id="ad_selec_area" class="form-control">
+                            <option value="0" selected>Seleccionar</option>
                             <!-- Add more options as needed -->
                         </select>
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="beneficiario">Beneficiario</label>
-                        <select id="beneficiario" class="form-control">
-                            <option selected>Seleccionar</option>
+                        <label for="ad_beneficiario">Beneficiario</label>
+                        <select id="ad_selec_beneficiario" class="form-control">
+                            <option value="0" selected>Seleccionar</option>
                             <!-- Add more options as needed -->
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="equipo">Equipo</label>
-                        <select id="equipo" class="form-control">
-                            <option selected>Seleccionar</option>
+                        <select id="ad_selec_equipo" class="form-control">
+                            <option value="0" selected>Seleccionar</option>
                             <!-- Add more options as needed -->
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="meta">Meta</label>
-                        <select id="meta" class="form-control">
-                            <option selected>Seleccionar</option>
+                        <select id="ad_selec_meta" class="form-control">
+                            <option value="0" selected>Seleccionar</option>
                             <!-- Add more options as needed -->
                         </select>
                     </div>
@@ -105,25 +105,19 @@
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label for="anioAdquisicion">Año Adquisición</label>
-                        <select id="anioAdquisicion" class="form-control">
-                            <option selected>Seleccionar</option>
-                            <!-- Add more options as needed -->
-                        </select>
+                        <input type="date" class="form-control" id="ad_fecha" >
                     </div>
                     <div class="form-group col-md-3">
                         <label for="cantidad">Cantidad</label>
-                        <select id="cantidad" class="form-control">
-                            <option selected>Seleccionar</option>
-                            <!-- Add more options as needed -->
-                        </select>
+                        <input type="number" class="form-control" id="ad_cantidad" min="1">
                     </div>
                 </div>
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-12 text-center">
-                        <button type="button" class="btn btn-danger mr-2">Clear all</button>
-                        <button type="button" class="btn btn-primary mr-2">Favorite</button>
-                        <button type="button" class="btn btn-info mr-2">All Tickets</button>
-                        <button type="submit" class="btn btn-success">Apply</button>
+                        <button type="button" class="btn btn-danger mr-2 btn_adq_limpiar">Limpiar</button>
+                        <!-- <button type="button" class="btn btn-primary mr-2">Favorite</button>
+                        <button type="button" class="btn btn-info mr-2">All Tickets</button> -->
+                        <button type="submit" class="btn btn-success btn_adq_guardar">Guardar</button>
                     </div>
                 </div>
             </div>

@@ -1,26 +1,144 @@
 $(document).ready(function() {
     listar_adquisicion();
+    adq_llenar_select_area();
+    adq_llenar_select_beneficiario();
+    adq_llenar_select_equipo();
+    adq_llenar_select_meta();
+
+    $('.btn_adq_limpiar').click(function (e) {
+        e.preventDefault();
+        limpiar_adq();
+
+    })
+
+    $('.btn_adq_guardar').click(function (e) {
+        e.preventDefault();
+        var idarea = $('#ad_selec_area').val();
+        var idbeneficiario = $('#ad_selec_beneficiario').val();
+        var idequipo = $('#ad_selec_equipo').val();
+        var idmeta = $('#ad_selec_meta').val();
+        var fecha = $('#ad_fecha').val();
+        var cantidad = $('#ad_cantidad').val();
+
+        if (fecha) {
+            var date = new Date(fecha);
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1; // Los meses van de 0 a 11, sumamos 1
+            var day = date.getDate();
+        } else {
+            alert('Por favor, selecciona una fecha.');
+        }
+
+
+        
+    
+        const data = {
+            adq_registrar: 'adq_registrar',
+            idarea: idarea,
+            idbeneficiario: idbeneficiario,
+            idequipo: idequipo,
+            idmeta: idmeta,
+            fecha: fecha,
+            year: year,
+            month: month,
+            day: day,
+            cantidad: cantidad,
+        };
+        console.log(data);
+
+    })
+
 });
+
 
 function adq_llenar_select_area() {
     const data = {
-        adq_listar_sede_area : "adq_listar_sede_area",
+        ad_area : "ad_area",
     };
     $.ajax({
         type: "POST",
         data: data,
-        url: "Assets/ajax/Ajax.asignacion.php",
+        url: "Assets/ajax/Ajax.adquisicion.php",
         success: function (respose) {
+            //console.log(respose);
             var js = JSON.parse(respose);
             $.each(js, function (index, fila) {
-                $("#id_sede").append(
-                    '<option value="' + fila.idsedes + '">' + fila.nombres + "</option>"
+                $("#ad_selec_area").append(
+                    '<option value="' + fila.id_area_usuaria + '">' + fila.nombres + "</option>"
                 );
             });
         },
     });
 }
 
+function adq_llenar_select_beneficiario() {
+    const data = {
+        ad_beneficiario : "ad_beneficiario",
+    };
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: "Assets/ajax/Ajax.adquisicion.php",
+        success: function (respose) {
+            //console.log(respose);
+            var js = JSON.parse(respose);
+            $.each(js, function (index, fila) {
+                $("#ad_selec_beneficiario").append(
+                    '<option value="' + fila.idbeneficiario + '">' + fila.nombre + "</option>"
+                );
+            });
+        },
+    });
+}
+
+function adq_llenar_select_equipo() {
+    const data = {
+        ad_equipo : "ad_equipo",
+    };
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: "Assets/ajax/Ajax.adquisicion.php",
+        success: function (respose) {
+            //console.log(respose);
+            var js = JSON.parse(respose);
+            $.each(js, function (index, fila) {
+                $("#ad_selec_equipo").append(
+                    '<option value="' + fila.idequipos + '">' + fila.descripcion + " - " + fila.modelo + " - " + fila.nombre + "</option>"
+                );
+            });
+        },
+    });
+}
+
+function adq_llenar_select_meta() {
+    const data = {
+        ad_meta : "ad_meta",
+    };
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: "Assets/ajax/Ajax.adquisicion.php",
+        success: function (respose) {
+            //console.log(respose);
+            var js = JSON.parse(respose);
+            $.each(js, function (index, fila) {
+                $("#ad_selec_meta").append(
+                    '<option value="' + fila.idmeta + '">' + fila.nombre + "</option>"
+                );
+            });
+        },
+    });
+}
+
+function limpiar_adq() {
+    $('#ad_selec_area').val(0);
+    $('#ad_selec_beneficiario').val(0);
+    $('#ad_selec_equipo').val(0);
+    $('#ad_selec_meta').val(0);
+    $('#ad_fecha').val('');
+    $('#ad_cantidad').val('');
+}
 
 
 //listara todo
@@ -34,7 +152,7 @@ function listar_adquisicion() {
         data: data,
         type: 'POST',
         success: function (response) {
-            console.log(response);
+            //console.log(response);
         }
     })
 
