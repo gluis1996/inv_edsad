@@ -27,7 +27,7 @@
 
             <div class="card-body" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
-                <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#modal_adquisicion_registrar">Registrar</button>
+                <button type="button" class="btn btn-success mb-1" data-toggle="modal" data-target="#modal_adquisicion_registrar">Registrar</button>
 
                 <table class="table table-bordered table-striped dt-responsive" id="tbl_detalle_adquisicion" width="100%">
                     <thead>

@@ -3,7 +3,22 @@ $(document).ready(function() {
 });
 
 function adq_llenar_select_area() {
-    
+    const data = {
+        adq_listar_sede_area : "adq_listar_sede_area",
+    };
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: "Assets/ajax/Ajax.asignacion.php",
+        success: function (respose) {
+            var js = JSON.parse(respose);
+            $.each(js, function (index, fila) {
+                $("#id_sede").append(
+                    '<option value="' + fila.idsedes + '">' + fila.nombres + "</option>"
+                );
+            });
+        },
+    });
 }
 
 
