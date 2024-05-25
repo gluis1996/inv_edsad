@@ -83,6 +83,12 @@
                         <p>Sede</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="meta" class="nav-link">
+                        <i class="fa-brands fa-instalod"></i>
+                        <p>Meta</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     <!-- /.sidebar-menu -->

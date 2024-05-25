@@ -64,7 +64,7 @@
 </div>
 
 
-<!-- Modal registrar Sede -->
+<!-- Modal registrar oficina -->
 <div id="modal_registrar_oficina" class="modal fade" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
 
@@ -81,13 +81,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="id_sede">Sedes</label>
+                    <label for="id_oficina_select">Sedes</label>
                     <div class="input-group">
-                        <select id="id_sede" class="form-control custom-select">
-                            <option value="1">Selecccione</option>
-                            <option value="2">Sede 1</option>
-                            <option value="3">Sede 2</option>
-                
+                        <select id="id_oficina_select_2" class="form-control custom-select">
+                            <option value="0">Selecccione</option>
                         </select>
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-eye"></i></span>

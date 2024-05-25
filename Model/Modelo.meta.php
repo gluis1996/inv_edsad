@@ -1,39 +1,30 @@
+
 <?php
 require_once ('conexion.php');
 
-class modelo_empleado{
+class modelo_meta{
 
-    public static function model_buscar($data){
-        try {
-            $sql = "call sp_equipos_asignados_empleados(?);";
-            $stmp = conexion::conectar()->prepare($sql);
-            $stmp->bindParam(1,$data['idempleado'],PDO::PARAM_STR);
-            $stmp->execute();
-            return $stmp->fetchAll();
-        } catch (PDOException $th) {
-            return "Modelo empleado ".$th->getMessage();
-        }
-        
+    public static function model_buscar(){
+
+      
     }
 
     public static function model_listar(){
         try {
-            $sql = "SELECT *FROM empleados;";
+            $sql = "select * from meta;";
             $stmp = conexion::conectar()->prepare($sql);
             $stmp->execute();
             return $stmp->fetchAll();
         } catch (PDOException $th) {
-            return "Modelo empleado ".$th->getMessage();
-        }
-        
-        
+            return "Modelo Meta ".$th->getMessage();
+        }   
     }
 
     public static function model_agregar($data){
         try {
-            $sql = "call InsertarEmpleado(?);";
+            $sql = "CALL insertar_meta(?);";
             $stmp = conexion::conectar()->prepare($sql);
-            $stmp->bindParam(1,$data['empleado_nombre'],PDO::PARAM_STR);
+            $stmp->bindParam(1,$data['nombre_meta'],PDO::PARAM_STR);
             if ($stmp->execute()) {
                 return 'ok';
             } else {
@@ -41,15 +32,15 @@ class modelo_empleado{
             }
             
         } catch (PDOException $th) {
-            return "Modelo empleado ".$th->getMessage();
+            return "Modelo Meta ".$th->getMessage();
         }
     }
 
     public static function model_eliminar($data){
         try {
-            $sql = "DELETE FROM empleados WHERE idempleado=?";
+            $sql = "delete from meta where idmeta = ?";
             $stmp = conexion::conectar()->prepare($sql);
-            $stmp->bindParam(1,$data['tambien_te_Extraña'],PDO::PARAM_STR);
+            $stmp->bindParam(1,$data['idmt'],PDO::PARAM_STR);
             
             if ($stmp->execute()) {
                 return 'ok';
@@ -58,7 +49,7 @@ class modelo_empleado{
             }
             
         } catch (PDOException $th) {
-            return "Modelo empleado ".$th->getMessage();
+            return "Modelo Meta ".$th->getMessage();
         }
     }
 
