@@ -26,8 +26,108 @@
             </div>
 
             <div class="card-body" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                
+
+                <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#modal_adquisicion_registrar">Registrar</button>
+
+                <table class="table table-bordered table-striped dt-responsive" id="tbl_detalle_adquisicion" width="100%">
+                    <thead>
+                        <tr>
+                            <th>ADQUISICION</th>
+                            <th>AREA</th>
+                            <th>BENEFICIARIO</th>
+                            <th>EQUIPOS</th>
+                            <th>META</th>
+                            <th>AÑO ADQUISICION</th>
+                            <th>CANTIDAD</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                </table>
+
+
+
+
+
             </div>
+
+
+
+
         </div>
     </section>
+</div>
+
+
+
+
+
+<!-- Modal registrar Sede -->
+<div id="modal_adquisicion_registrar" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">Registrar Sede</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="area">Area</label>
+                        <select id="area" class="form-control">
+                            <option selected>Seleccionar</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="beneficiario">Beneficiario</label>
+                        <select id="beneficiario" class="form-control">
+                            <option selected>Seleccionar</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="equipo">Equipo</label>
+                        <select id="equipo" class="form-control">
+                            <option selected>Seleccionar</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="meta">Meta</label>
+                        <select id="meta" class="form-control">
+                            <option selected>Seleccionar</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-md-3">
+                        <label for="anioAdquisicion">Año Adquisición</label>
+                        <select id="anioAdquisicion" class="form-control">
+                            <option selected>Seleccionar</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="cantidad">Cantidad</label>
+                        <select id="cantidad" class="form-control">
+                            <option selected>Seleccionar</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-md-12 text-center">
+                        <button type="button" class="btn btn-danger mr-2">Clear all</button>
+                        <button type="button" class="btn btn-primary mr-2">Favorite</button>
+                        <button type="button" class="btn btn-info mr-2">All Tickets</button>
+                        <button type="submit" class="btn btn-success">Apply</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
