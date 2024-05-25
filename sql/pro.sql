@@ -84,3 +84,32 @@ CREATE TRIGGER `after_detalle_asignacion_update` AFTER UPDATE ON `detalle_asigna
 END
 $$
 DELIMITER ;
+
+
+
+
+//////////////////////////
+
+DELIMITER $$
+CREATE PROCEDURE sp_listar_detalle_adquisicion()
+BEGIN
+    select 
+da.id_detalle_aquisicion as id,
+a.id_area_usuaria as area_id,
+a.nombres as area_nombre,
+b.idbeneficiario as idbeneficiario,
+b.nombre as beneficiario_nombre,
+eq.idequipos as equipo_id,
+concat(m.nombre,' ',eq.modelo,' ',eq.descripcion) as equipo,
+me.idmeta as meta_id,
+me.nombre as meta_nombre,
+da.anio_aquisicion as año,
+da.cantidad as cantidad
+from detalle_adquisicion da
+inner join a_usuaria a on da.id_area_usuaria= a.id_area_usuaria
+inner join beneficiario b on b.idbeneficiario=da.idbeneficiario
+inner join equipos eq on eq.idequipos=da.idequipos
+inner join marca m on m.idmarca=eq.idmarca
+inner  join meta me on me.idmeta=da.idmeta;
+END$$
+DELIMITER ;
