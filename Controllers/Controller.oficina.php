@@ -17,4 +17,9 @@ class controller_oficina{
         return $res;
     }
 
+    public static function controller_buscar_oficina($data){
+        $res = modelo_oficina::model_buscar($data);
+        return $res;
+    }
+
 }

@@ -59,8 +59,6 @@
 
 
 
-
-
 <!-- Modal registrar Sede -->
 <div id="modal_adquisicion_registrar" class="modal fade" role="dialog">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -125,3 +123,76 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<!-- Modal Editar -->
+<div id="modal_adquisicion_editar" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">Registrar Sede</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-row">
+                    
+
+                    <div class="form-group col-md-3">
+                        <label for="area">Area</label>
+                        <input type="hidden" id="modal_id_ad">
+                        <select id="modal_edit_ad_selec_area" class="form-control">
+                            <option value="0" selected>Seleccionar</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="ad_beneficiario">Beneficiario</label>
+                        <select id="modal_edit_ad_selec_beneficiario" class="form-control">
+                            <option value="0" selected>Seleccionar</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="equipo">Equipo</label>
+                        <select id="modal_edit_ad_selec_equipo" class="form-control">
+                            <option value="0" selected>Seleccionar</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="meta">Meta</label>
+                        <select id="modal_edit_ad_selec_meta" class="form-control">
+                            <option value="0" selected>Seleccionar</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-md-3">
+                        <label for="anioAdquisicion">Año Adquisición</label>
+                        <input type="date" class="form-control" id="modal_edit_ad_fecha" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="cantidad">Cantidad</label>
+                        <input type="number" class="form-control" id="modal_edit_ad_cantidad" min="1">
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <div class="form-group col-md-12 text-center">
+                        <button type="button" class="btn btn-danger mr-2 btn_adq_limpiar">Limpiar</button>
+                        <!-- <button type="button" class="btn btn-primary mr-2">Favorite</button>
+                        <button type="button" class="btn btn-info mr-2">All Tickets</button> -->
+                        <button type="submit" class="btn btn-success btn_adq_editar">Editar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+        

@@ -113,3 +113,45 @@ inner join marca m on m.idmarca=eq.idmarca
 inner  join meta me on me.idmeta=da.idmeta;
 END$$
 DELIMITER ;
+
+/////////////////////
+DELIMITER //
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insert_detalle_adquisicion`(
+    IN p_id_area_usuaria INT,
+    IN p_idbeneficiario INT,
+    IN p_idequipos INT,
+    IN p_idmeta INT,
+    IN p_anio_aquisicion date,
+    IN p_cantidad INT
+)
+BEGIN
+    -- Verificar si alguno de los campos está vacío
+    IF p_id_area_usuaria IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo id_area_usuaria está vacío';
+    ELSEIF p_idbeneficiario IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idbeneficiario está vacío';
+    ELSEIF p_idequipos IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idequipos está vacío';
+    ELSEIF p_idmeta IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idmeta está vacío';
+    ELSEIF p_anio_aquisicion IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo anio_aquisicion está vacío';
+    ELSEIF p_cantidad IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo cantidad está vacío';
+    ELSE
+        -- Si todos los campos están llenos, realizar la inserción
+        INSERT INTO `equipos_informaticos`.`detalle_adquisicion` (
+            `id_area_usuaria`,
+            `idbeneficiario`,
+            `idequipos`,
+            `idmeta`,
+            `anio_aquisicion`,
+            `cantidad`
+        ) VALUES (
+            p_id_area_usuaria, p_idbeneficiario, p_idequipos, p_idmeta, p_anio_aquisicion, p_cantidad
+        );
+    END IF;
+END //
+
+DELIMITER ;

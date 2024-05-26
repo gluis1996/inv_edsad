@@ -35,7 +35,7 @@ $(document).ready(function () {
             id_usuario: id_usuario,
         };
 
-        // console.log(data);
+        console.log(data);
         $.post("Assets/ajax/Ajax.asignacion.php", data, function (response) {
             if (response != "ok") {
                 Swal.fire({
@@ -53,6 +53,7 @@ $(document).ready(function () {
                 limpiar();
             }
         });
+        
     });
 
     //Eliminar Registro.
@@ -225,13 +226,22 @@ $(document).ready(function () {
 
     })
 
-});
+});///fin dom
+
 
 //listara todo
 function listar() {
     const data = {
         listarAE: "listarAE",
     };
+    // $.ajax({
+    //     url: "Assets/ajax/Ajax.asignacion.php",
+    //     data: data,
+    //     type: 'POST',
+    //     success: function (response) {
+    //         console.log(response);
+    //     }
+    // })
 
     $("#tb_asignacion_equipos").DataTable({
         destroy: true,
@@ -323,11 +333,7 @@ function llenar_select_oficina(sede, ofi) {
 
                 $.each(js, function (index, fila) {
                     $("#" + ofi).append(
-                        '<option value="' +
-                        fila.idoficinas +
-                        '">' +
-                        fila.nombres +
-                        "</option>"
+                        '<option value="' +fila.idoficinas +'">' + fila.nombres + "</option>"
                     );
                 });
             },

@@ -11,6 +11,7 @@ $(document).ready(function() {
 
     })
 
+    //registrar adquisicion
     $('.btn_adq_guardar').click(function (e) {
         e.preventDefault();
         var idarea = $('#ad_selec_area').val();
@@ -20,31 +21,181 @@ $(document).ready(function() {
         var fecha = $('#ad_fecha').val();
         var cantidad = $('#ad_cantidad').val();
 
-        if (fecha) {
-            var date = new Date(fecha);
-            var year = date.getFullYear();
-            var month = date.getMonth() + 1; // Los meses van de 0 a 11, sumamos 1
-            var day = date.getDate();
-        } else {
-            alert('Por favor, selecciona una fecha.');
-        }
-
-
-        
     
         const data = {
-            adq_registrar: 'adq_registrar',
-            idarea: idarea,
-            idbeneficiario: idbeneficiario,
-            idequipo: idequipo,
-            idmeta: idmeta,
-            fecha: fecha,
-            year: year,
-            month: month,
-            day: day,
-            cantidad: cantidad,
+            ad_registrar: 'ad_registrar',
+            ad_area: idarea,
+            ad_beneficiario: idbeneficiario,
+            ad_equipo: idequipo,
+            ad_meta: idmeta,
+            ad_año: fecha,
+            ad_cantidad: cantidad
         };
         console.log(data);
+
+        $.post('Assets/ajax/Ajax.adquisicion.php',data, function (response) {
+            console.log(response);
+            if (response.trim() != "ok") {
+                Swal.fire({
+                    title: "Oppps....",
+                    text: response,
+                    icon: "error",
+                });
+            }else{
+                Swal.fire({
+                    title: "Registrado",
+                    text: "registradi exitosamente",
+                    icon: "success",
+                });
+            }
+        })
+    })
+
+    //Eliminar adquisicion
+    $('#tbl_detalle_adquisicion').on("click", "[id^='id_eliminar_']", function (e) {
+        e.preventDefault();
+        var id = $(this).attr("id_adquisicion_eliminar");
+        console.log(id);
+
+        const data = {
+            ad_eliminar: 'ad_eliminar',
+            id_ad_eliminar: id,
+        }
+        console.log(data);
+
+        Swal.fire({
+            title: "Estas seguro",
+            text: "¡No podrás revertir esto!!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, eliminar esto!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post("Assets/ajax/Ajax.adquisicion.php", data, function (response) {
+                    console.log(response);
+                    if (response.trim() != "ok") {
+                        Swal.fire({
+                            title: "Oppps....",
+                            text: response,
+                            icon: "error",
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Deleted",
+                            text: "Eliminado exitosamente",
+                            icon: "success",
+                        });
+                        // Eliminar la fila con transición
+                        var row = $(e.target).closest('tr');
+                        row.addClass('fade-out');
+                        setTimeout(function () {
+                            var table = $('#tbl_detalle_adquisicion').DataTable();
+                            table.row(row).remove().draw();
+                        }, 500); // Esperar a que la animación termine
+                    }
+                })
+            }
+        })
+    })
+
+    //buscar adquisicion
+    $('#tbl_detalle_adquisicion').on("click", "[id^='id_adquisicion_']", function (e) {
+        e.preventDefault();
+        var id = $(this).attr("id_adquisicion_buscar");
+        console.log(id);
+
+        const data = {
+            ad_buscar: 'ad_buscar',
+            id_ad_buscar: id,
+        }
+        console.log(data);
+
+        $.post('Assets/ajax/Ajax.adquisicion.php',data,function (response) {
+            console.log(response);
+            var js = JSON.parse(response);
+            $('#modal_id_ad').val(js.id);
+
+
+            js.l_area.forEach(function (area) {
+                $('#modal_edit_ad_selec_area').append($('<option>', {
+                    value: area.id_area_usuaria,
+                    text: area.nombres
+                }));
+            });
+            
+            js.l_bene.forEach(function (bene) {
+                $('#modal_edit_ad_selec_beneficiario').append($('<option>', {
+                    value: bene.idbeneficiario,
+                    text: bene.nombre
+                }));
+            });
+
+            js.l_equi.forEach(function (equi) {
+                $('#modal_edit_ad_selec_equipo').append($('<option>', {
+                    value: equi.idequipos,
+                    text:  equi.descripcion + " - " + equi.modelo + " - " + equi.nombre 
+                }));
+            });
+
+            js.l_meta.forEach(function (meta) {
+                $('#modal_edit_ad_selec_meta').append($('<option>', {
+                    value: meta.idmeta,
+                    text:  meta.nombre
+                }));
+            });
+
+            $('#modal_edit_ad_selec_beneficiario').val(js.bene_id);
+            $('#modal_edit_ad_selec_area').val(js.area_id);
+            $('#modal_edit_ad_selec_equipo').val(js.equi_id);
+            $('#modal_edit_ad_selec_meta').val(js.meta_id);
+            $('#modal_edit_ad_fecha').val(js.año);
+            $('#modal_edit_ad_cantidad').val(js.cantidad);
+        })
+    })
+
+    $('.btn_adq_editar').click(function (e) {
+        e.preventDefault();
+        var bene        =    $('#modal_edit_ad_selec_beneficiario').val();
+        var area        =    $('#modal_edit_ad_selec_area').val();
+        var equipo      =    $('#modal_edit_ad_selec_equipo').val();
+        var meta        =    $('#modal_edit_ad_selec_meta').val();
+        var fecha       =    $('#modal_edit_ad_fecha').val();
+        var cantidad    =    $('#modal_edit_ad_cantidad').val();
+        var id_ad       =    $('#modal_id_ad').val();
+
+        const data = {
+            ad_editar           : 'ad_editar',
+            ad_editar_id        : id_ad,
+            ad_editar_area      : area,
+            ad_editar_bene      : bene,
+            ad_editar_equipo    : equipo,
+            ad_editar_meta      : meta,
+            ad_editar_fecha     : fecha,
+            ad_editar_cantidad  : cantidad,
+        }
+
+        console.log(data);
+
+        $.post('Assets/ajax/Ajax.adquisicion.php',data , function (response) {
+            console.log(response);
+
+            if (response.trim() != 'ok') {
+                Swal.fire({
+                    title: "Oppps....",
+                    text: response,
+                    icon: "error",
+                });
+            }else{
+                Swal.fire({
+                    title: "Actualizado",
+                    text: "Actualizado exitosamente",
+                    icon: "success",
+                });
+            }
+        })
+
 
     })
 
