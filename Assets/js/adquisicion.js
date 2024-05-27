@@ -110,10 +110,10 @@ $(document).ready(function() {
             ad_buscar: 'ad_buscar',
             id_ad_buscar: id,
         }
-        console.log(data);
+        //console.log(data);
 
         $.post('Assets/ajax/Ajax.adquisicion.php',data,function (response) {
-            console.log(response);
+            //console.log(response);
             var js = JSON.parse(response);
             $('#modal_id_ad').val(js.id);
 

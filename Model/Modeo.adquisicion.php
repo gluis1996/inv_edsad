@@ -51,7 +51,7 @@ class modelo_adquisicion{
             $call->bindParam(2,$data['p_idbeneficiario'],PDO::PARAM_INT);
             $call->bindParam(3,$data['p_idequipos'],PDO::PARAM_INT);
             $call->bindParam(4,$data['p_idmeta'],PDO::PARAM_INT);
-            $call->bindParam(5,$data['p_anio_aquisicion'],PDO::PARAM_INT);
+            $call->bindParam(5,$data['p_anio_aquisicion'],PDO::PARAM_STR);
             $call->bindParam(6,$data['p_cantidad'],PDO::PARAM_INT);
             if ($call->execute()) {
                 return 'ok';
@@ -74,7 +74,7 @@ class modelo_adquisicion{
             $call->bindParam(3,$data['p_idbeneficiario'],PDO::PARAM_INT);
             $call->bindParam(4,$data['p_idequipos'],PDO::PARAM_INT);
             $call->bindParam(5,$data['p_idmeta'],PDO::PARAM_INT);
-            $call->bindParam(6,$data['p_anio_aquisicion'],PDO::PARAM_INT);
+            $call->bindParam(6,$data['p_anio_aquisicion'],PDO::PARAM_STR);
             $call->bindParam(7,$data['p_cantidad'],PDO::PARAM_INT);
             if ($call->execute()) {
                 return 'ok';

@@ -123,6 +123,22 @@ class ajax_adquisicion{
         }
     }
 
+    public function ajax_adquisicion_editar(){
+        if ($this->accion == 'ad_editar') {
+            $data = array(
+                'p_id_detalle_aquisicion'=>$this->id,
+                'p_id_area_usuaria'=>$this->area,
+                'p_idbeneficiario'=>$this->beneficiario,
+                'p_idequipos'=>$this->equipo,
+                'p_idmeta'=>$this->meta,
+                'p_anio_aquisicion'=>$this->añoadquisicion,
+                'p_cantidad'=>$this->cantidad
+            );
+            $response = controller_adquisicion::c_editar($data);
+            echo $response;
+        }
+    }
+
 
 
 }///final clase
@@ -193,14 +209,6 @@ if (isset($_POST['ad_buscar'])) {
 
 //EDITAR
 
-if (isset($_POST['ad_buscar'])) {
-    $res = new ajax_adquisicion();
-    $res->accion = $_POST['ad_buscar'];
-    $res->id = $_POST['id_ad_buscar'];
-    $res->ajax_adquisicion_buscar();
-}
-
-
 if (isset($_POST['ad_editar'])) {
     $res = new ajax_adquisicion();
     $res->accion = $_POST['ad_editar'];
@@ -208,8 +216,8 @@ if (isset($_POST['ad_editar'])) {
     $res->area = $_POST['ad_editar_area'];
     $res->beneficiario = $_POST['ad_editar_bene'];
     $res->equipo = $_POST['ad_editar_equipo'];
-    $res->meta = $_POST['ad_meta'];
-    $res->añoadquisicion = $_POST['ad_año'];
-    $res->cantidad = $_POST['ad_cantidad'];
-    $res->ajax_adquisicion_registrar();
+    $res->meta = $_POST['ad_editar_meta'];
+    $res->añoadquisicion = $_POST['ad_editar_fecha'];
+    $res->cantidad = $_POST['ad_editar_cantidad'];
+    $res->ajax_adquisicion_editar();
 }
