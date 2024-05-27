@@ -26,35 +26,38 @@
             </div>
 
             <div class="card-body">
-
-                <div class="row">
-                    <div class="col-2">
-                        <!-- Button trigger modal -->
-                        <!-- Button registrar equipo -->
-                        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modal_registrar_empleado">
-                            Registrar Empleado
-                        </button>
-                    </div>
-
-                </div>
-
-                <div class="col mt-5">
+    <div class="row">
+        <!-- Column for registro de empleado -->
+        <div class="col-md-8">
+            <div class="col-12 mb-2">
+                <!-- Button to open the modal for registering Empleado -->
+                <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modal_registrar_empleado">
+                    Registrar Empleado
+                </button>
+            </div>
+            <div class="card">
+                <div class="col">
                     <label for="Datos Local">Registro de Empleados</label>
-                    <table class="table table-bordered table-striped dt-responsive" id="tb_registrar_empleados" width="50%">
+                    <table class="table table-bordered table-striped dt-responsive" id="tb_registrar_empleados" width="100%">
                         <thead>
                             <tr>
                                 <th style="width: 5%; text-align: center;">ID EMPLEADO</th>
-                                <th style="width: 30; text-align: center;">NOMBRE DEL EMPLEADO</th>
-
+                                <th style="width: 30%; text-align: center;">NOMBRE DEL EMPLEADO</th>
                                 <th style="width: 15%; text-align: center;">ACCIÓN</th>
                                 <!-- donde iran los botones para cada fila eliminar Actualizar-->
                             </tr>
                         </thead>
                     </table>
-
                 </div>
-
             </div>
+        </div>
+        <!-- Column for other content -->
+        <div class="col-md-8">
+            <!-- Other content goes here -->
+        </div>
+    </div>
+</div>
+
         </div>
 
     </section>

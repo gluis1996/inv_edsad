@@ -116,3 +116,40 @@ BEGIN
 END 
 // DELIMITER ;
 ------------------------------------------------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_equipos_asignados_empleados`(
+    IN empleado_id INT
+)
+BEGIN
+    select 
+e.idempleado, 
+e.nombres as nombre_empleado, 
+e.nombres as nombre_equipo, 
+da.id_detalle_asignacion,
+da.cod_patrimonial as cod_patrimonial, 
+s.nombres as nombre_sede, 
+o.nombres as nombre_oficina
+from detalle_asignacion da
+inner join empleados e on e.idempleado = da.idempleado 
+inner join equipos eq on eq.idequipos = da.idequipos
+inner join sede s on s.idsedes = da.idsedes
+inner join oficina o on o.idoficinas = da.idsedes
+where e.idempleado = empleado_id;
+END
+---------------------------------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE sp_insertarUsuario(IN nombres VARCHAR(255))
+BEGIN
+    -- Verificar que el campo 'nombres' no esté vacío
+    IF nombres IS NULL OR nombres = '' THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'El campo "nombres" no puede estar vacío';
+    ELSE
+        -- Insertar el registro si 'nombres' no está vacío
+        INSERT INTO a_usuaria (nombres)
+        VALUES (nombres);
+    END IF;
+END 
+// DELIMITER ;
+------------------------------------------------------------------------
+
+

@@ -112,7 +112,7 @@ $(document).ready(function () {
 
     })
 
-    //Eliminar Empleado
+    //Eliminar equipo
     $('#tb_listar_equipos').on("click", "[id^='idequipoeliminar_']", function (e) {
         e.preventDefault();
         var idequipo = $(this).attr('id_eliminar_eqp');

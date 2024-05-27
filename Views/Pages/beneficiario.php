@@ -22,33 +22,58 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-
+                <!-- Card header can have content if needed -->
             </div>
             <div class="card-body">
+                <div class="row">
+                    <!-- Column for Beneficiario -->
+                    <div class="col-md-6">
+                        <div class="col-12 mb-2">
+                            <!-- Button para abrir el modal -->
+                            <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modal_registrar_beneficiario">
+                                Registrar Beneficiario
+                            </button>
+                        </div>
+                        <div class="card">
+                            <div class="col">
+                                <label for="Datos Local">Lista de Beneficiarios</label>
+                                <table class="table table-bordered table-striped dt-responsive" id="tb_lista_beneficiario" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 15%; text-align: center;">ID BENEFICIARIO</th>
+                                            <th style="width: 40%; text-align: center;">NOMBRES</th>
+                                            <th style="width: 45%; text-align: center;">ACCION</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="col-2">
-                    <!-- Button para abrir el modal -->
-                    <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modal_registrar_beneficiario">
-                        Registrar Beneficiario
-                    </button>
-                </div>
-
-
-                <div class="card">
-                    <div class="col">
-                        <label for="Datos Local">Lista de Beneficiarios</label>
-                        <table class="table table-bordered table-striped dt-responsive" id="tb_lista_beneficiario" width="100%">
-                            <thead>
-                                <tr>
-                                    <th style="width: 15%; text-align: center;">ID BENEFICIARIO</th>
-                                    <th style="width: 40%; text-align: center;">NOMBRES</th>
-                                    <th style="width: 45%; text-align: center;">ACCION</th>
-                                </tr>
-                            </thead>
-                        </table>
+                    <!-- Column for Meta -->
+                    <div class="col-md-6">
+                        <div class="col-12 mb-2">
+                            <!-- Button para abrir el modal -->
+                            <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modal_registrar_meta">
+                                Registrar Meta
+                            </button>
+                        </div>
+                        <div class="card">
+                            <div class="col">
+                                <label for="Datos Local">Registro de Metas</label>
+                                <table class="table table-bordered table-striped dt-responsive" id="tb_lista_meta" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10%; text-align: center;">ID META</th>
+                                            <th style="width: 50%; text-align: center;">NOMBRE</th>
+                                            <th style="width: 40%; text-align: center;">ACCIÓN</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
@@ -61,7 +86,6 @@
     </section>
     <!-- /.content -->
 </div>
-
 
 <!-- Modal registrar Sede -->
 <div id="modal_registrar_beneficiario" class="modal fade" role="dialog">

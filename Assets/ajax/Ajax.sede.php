@@ -60,14 +60,14 @@ class ajax_sede
 
 }
 
-//registrar
+//registrar SEDE
 if (isset($_POST['registro_sede'])) {
     $res = new ajax_sede();
     $res->accion = $_POST['registro_sede'];
     $res->nombre = $_POST['nombrexsede'];
     $res->ajax_registrar_sede();
 }
-//listar
+//listar SEDE
 if (isset($_POST['lista_sede'])) {
     $res = new ajax_sede();
     $res->accion = $_POST['lista_sede'];
@@ -75,7 +75,7 @@ if (isset($_POST['lista_sede'])) {
     
 }
 
-//eliminar
+//eliminar SEDE
 if (isset($_POST['eliminar_sede'])) { //
     $res = new ajax_sede();
     $res->accion = $_POST['eliminar_sede']; //accion= 'te quirerop',

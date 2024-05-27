@@ -45,7 +45,7 @@ class ajax_usuario{
             } else {
                 foreach ($response as $value) {
 
-                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_listar_equipo_empleado' id_usu='".$value['idusuario']."' data-toggle='modal' data-target='#modal_listar_empleado'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_usuario' id_usuario_ls='".$value['idusuario']."' ><i class='fas fa-trash-alt'></i></button></div>";
+                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_edit_usuario' editar_usu='".$value['idusuario']."' data-toggle='modal' data-target='#modal_editar_usuario'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_usuario' id_usuario_ls='".$value['idusuario']."' ><i class='fas fa-trash-alt'></i></button></div>";
 
                     $datosjason['data'][] = array(
                         "idusuario" => $value['idusuario'],

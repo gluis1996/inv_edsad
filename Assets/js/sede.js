@@ -80,7 +80,7 @@ function listarS() {
 
 
 //ELIMINAR
-    //llenar datos en el modal editar registro  /// captura los id de lo botones
+    //llenar datos en el modal eliminar /// captura los id de lo botones
     $('#tb_lista_sede').on("click", ".btn_eliminar_sede", function (e) {
         e.preventDefault();
         var id = $(this).attr('id_sedels');
