@@ -155,3 +155,46 @@ BEGIN
 END //
 
 DELIMITER ;
+///////////////////////////////////////////////
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_actualizar_detalle_adquisicion`(
+    IN p_id_detalle_aquisicion INT,
+    IN p_id_area_usuaria INT,
+    IN p_idbeneficiario INT,
+    IN p_idequipos INT,
+    IN p_idmeta INT,
+    IN p_anio_aquisicion DATE,
+    IN p_cantidad INT
+)
+BEGIN
+    -- Verificar si alguno de los campos está vacío
+    IF p_id_detalle_aquisicion IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo id_detalle_aquisicion está vacío';
+    ELSEIF p_id_area_usuaria IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo id_area_usuaria está vacío';
+    ELSEIF p_idbeneficiario IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idbeneficiario está vacío';
+    ELSEIF p_idequipos IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idequipos está vacío';
+    ELSEIF p_idmeta IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo idmeta está vacío';
+    ELSEIF p_anio_aquisicion IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo anio_aquisicion está vacío';
+    ELSEIF p_cantidad IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo cantidad está vacío';
+    ELSE
+        -- Si todos los campos están llenos, realizar la actualización
+        UPDATE `equipos_informaticos`.`detalle_adquisicion`
+        SET
+            `id_area_usuaria` = p_id_area_usuaria,
+            `idbeneficiario` = p_idbeneficiario,
+            `idequipos` = p_idequipos,
+            `idmeta` = p_idmeta,
+            `anio_aquisicion` = p_anio_aquisicion,
+            `cantidad` = p_cantidad
+        WHERE `id_detalle_aquisicion` = p_id_detalle_aquisicion;
+    END IF;
+END$$
+DELIMITER ;
