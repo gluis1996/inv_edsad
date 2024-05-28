@@ -50,15 +50,15 @@
                 <li class="nav-item">
                     <a href="empleado" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>
-                        <p>Empleados</p>
+                        <p>Usuarios y Empleados</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="usuario" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>
                         <p>Usuarios</p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="beneficiario" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>

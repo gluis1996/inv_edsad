@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>DASHBOARD</h1>
+                    <h1>REGISTROS DE UBICACIÓN Y ÁREA</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">DASHBOARD</li>
+                        <li class="breadcrumb-item active">Registros</li>
                     </ol>
                 </div>
             </div>
@@ -19,10 +19,10 @@
 
     <!-- Main content -->
     <section class="content">
-        <!-- Default box -->
+       
         <div class="card">
-            <div class="card-header">
-                <!-- Card header can have content if needed -->
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title">Formulario de registros</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -42,7 +42,7 @@
                                         <tr>
                                             <th style="width: 10%; text-align: center;">ID</th>
                                             <th style="width: 25%; text-align: center;">NOMBRE</th>
-                                            <th style="width: 25%; text-align: center;">SEDE</th>
+                                            <!-- <th style="width: 25%; text-align: center;">SEDE</th> -->
                                             <th style="width: 40%; text-align: center;">ACCION</th>
                                         </tr>
                                     </thead>
@@ -98,6 +98,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <!-- /.card-body -->
@@ -172,7 +173,7 @@
     </div>
 </div>
 
-<!-- Modal registrar are usuaria -->
+<!-- Modal registrar area usuaria -->
 <div id="modal_registrar_ausuaria" class="modal fade" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
 
@@ -185,7 +186,7 @@
             <div class="modal-body" style="padding: 20px;">
                 <div class="form-group">
                     <label for="nombre_marca">Nombre de Área</label>
-                    <input type="text" id="nonmbre_a_usuaria" class="form-control">
+                    <input type="text" id="nombre_a_usuaria" class="form-control">
                 </div>
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">

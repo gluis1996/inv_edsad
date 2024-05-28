@@ -95,7 +95,7 @@ class ajax_asignacion{
 
     public function ajax_listar_sede(){
         if ($this->accion == 'listar_sede_en_select') {
-            $response = controller_sede::controller_listar();
+            $response = controller_sede::controller_listar_sede();
             echo json_encode($response);
         }
     }

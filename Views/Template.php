@@ -146,7 +146,8 @@
 
     <script src="Assets/js/sede.js"></script>    
     <script src="Assets/js/usuario.js"></script>
-    <script src="Assets/js/oficina.js"></script>
+    <script src="Assets/js/oficina.js"></script>    
+    <script src="Assets/js/areausuaria.js"></script>
     <script src="Assets/js/beneficiario.js"></script>
     <script src="Assets/js/asignacion_equipo.js"></script>
     <script src="Assets/js/equipo.js"></script>

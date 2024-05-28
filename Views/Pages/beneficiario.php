@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>DASHBOARD</h1>
+                    <h1>REGISTRO DE BENEFICIARIOS Y METAS</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">DASHBOARD</li>
+                        <li class="breadcrumb-item active">Registros</li>
                     </ol>
                 </div>
             </div>
@@ -19,11 +19,13 @@
 
     <!-- Main content -->
     <section class="content">
-        <!-- Default box -->
+   
         <div class="card">
-            <div class="card-header">
-                <!-- Card header can have content if needed -->
+
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title">Formulario de registros</h3>
             </div>
+
             <div class="card-body">
                 <div class="row">
                     <!-- Column for Beneficiario -->

@@ -1,18 +1,19 @@
 
+
 $(document).ready(function () { 
 
-    listarS();
+    listarAU();
 
-    $('#btn_registrarSede').click(function (e) {
+    $('#btn_registrarAreaUsuaria').click(function (e) {
         e.preventDefault();
-        var nombre_sede = $('#nombre_sede').val();
+        var nombre_ausu = $('#nombre_a_usuaria').val();
         
         const data = {
-            registro_sede : 'registroSede',
-            nombrexsede : nombre_sede,
+            registro_ausuria : 'registroareausu',
+            nombrexareausu : nombre_ausu,
         }
 
-        $.post('Assets/ajax/Ajax.sede.php', data, function (response) {
+        $.post('Assets/ajax/Ajax.area.usuaria.php', data, function (response) {
             console.log(response);
             if (response.trim() !== "ok") {
                 Swal.fire({
@@ -23,10 +24,10 @@ $(document).ready(function () {
             } else {
                 Swal.fire({
                     title: "Success",
-                    text: "Sede registrado exitosamente",
+                    text: "Area usuaria registrado exitosamente",
                     icon: "success",
                 });
-                listarS();
+                listarAU();
             }  
 
         })
@@ -35,15 +36,25 @@ $(document).ready(function () {
 })
 
 //listara todo
-function listarS() {
+function listarAU() {
     const data = {
-        lista_sede: "listasede",
+        lista_area_usuaria: "lista_areausu",
     };
+    //verificar
+//    console.log(data);
+//     $.ajax({
+//         url: "Assets/ajax/Ajax.area.usuaria.php",
+//         data: data,
+//         type: 'POST',
+//         success: function (response) {
+//             console.log(response);
+//         }
+//     })
 
-    $("#tb_lista_sede_oficina").DataTable({
+    $("#tb_lista_area").DataTable({
         destroy: true,
         ajax: {
-            url: "Assets/ajax/Ajax.sede.php",
+            url: "Assets/ajax/Ajax.area.usuaria.php",
             type: "POST",
             data: data,
         },
@@ -55,8 +66,8 @@ function listarS() {
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [
-            { data: "idsede", className: "text-center", },
-            { data: "nombresed" },
+            { data: "idareausu", className: "text-center", },
+            { data: "nombreareausu" },
             {data: "acciones",className: "text-center",}, // Centrar el contenido de la columna
             
         ],
@@ -78,16 +89,15 @@ function listarS() {
     });
 }
 
-
 //ELIMINAR
-    //llenar datos en el modal eliminar /// captura los id de lo botones
-    $('#tb_lista_sede_oficina').on("click", ".btn_eliminar_sede", function (e) {
+    /// captura los id de lo botones
+    $('#tb_lista_area').on("click", ".btn_eliminar_area_usua", function (e) {
         e.preventDefault();
-        var id = $(this).attr('id_sedels');
-        //console.log(id);  ---> se utiliza para verificar si le esta asignando el id del empleado
+        var id = $(this).attr('id_area_u');
+        console.log(id); // ---> se utiliza para verificar si le esta asignando el id del empleado
         const data = {
-            eliminar_sede : 'eliminarsede',
-            idsede : id,
+            eliminar_Ausuaria : 'eliminar_areausu',
+            idareausua : id,
         }
         //una solicitud POS es lo que se envia al servidor 
         Swal.fire({
@@ -100,7 +110,7 @@ function listarS() {
             confirmButtonText: "Si, eliminar esto!"
         }).then((result) => {
             if (result.isConfirmed) {
-                $.post('Assets/ajax/Ajax.sede.php', data, function (response) {
+                $.post('Assets/ajax/Ajax.area.usuaria.php', data, function (response) {
                     if (response != "ok") {
                         Swal.fire({
                             title: "Oppps....",
@@ -117,7 +127,7 @@ function listarS() {
                         var row = $(e.target).closest('tr');
                         row.addClass('fade-out');
                         setTimeout(function () {
-                            var table = $('#tb_lista_sede_oficina').DataTable();
+                            var table = $('#tb_lista_area').DataTable();
                             table.row(row).remove().draw();
                         }, 500); // Esperar a que la animación termine
                     }            
@@ -125,4 +135,7 @@ function listarS() {
                 })
             }
         })
-    })
+     })
+
+
+

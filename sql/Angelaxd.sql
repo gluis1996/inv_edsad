@@ -137,16 +137,16 @@ where e.idempleado = empleado_id;
 END
 ---------------------------------------------------------------------------------
 DELIMITER //
-CREATE PROCEDURE sp_insertarUsuario(IN nombres VARCHAR(255))
+CREATE PROCEDURE sp_insertar_a_usuaria (
+    IN p_nombres TEXT
+)
 BEGIN
-    -- Verificar que el campo 'nombres' no esté vacío
-    IF nombres IS NULL OR nombres = '' THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'El campo "nombres" no puede estar vacío';
+    -- Verificar si el campo nombres está vacío o nulo
+    IF p_nombres IS NULL OR p_nombres = '' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El campo nombres no puede estar vacío';
     ELSE
-        -- Insertar el registro si 'nombres' no está vacío
-        INSERT INTO a_usuaria (nombres)
-        VALUES (nombres);
+        -- Insertar el registro si el campo es válido
+        INSERT INTO a_usuaria (nombres) VALUES (p_nombres);
     END IF;
 END 
 // DELIMITER ;

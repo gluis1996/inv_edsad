@@ -2,7 +2,8 @@
 
 class controller_sede{
 
-    public static function controller_listar(){
+    //SEDE
+    public static function controller_listar_sede(){
         $res = modelo_sede::model_listar();
         return $res;
     }
