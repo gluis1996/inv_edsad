@@ -31,6 +31,7 @@ $(document).ready(function () {
                     icon: "success",
                 });
                 listarO();
+                $('#nombre_oficina').val("");
             }
 
         })
@@ -45,15 +46,7 @@ function listarO() {
     const data = {
         lista_oficina: "listaoficina",
     };
-    // console.log(data);
-    // $.ajax({
-    //     url: "Assets/ajax/Ajax.oficina.php",
-    //     data: data,
-    //     type: 'POST',
-    //     success: function (response) {
-    //     console.log(response);
-    //     }
-    // })
+
 
     $("#tb_lista_oficina").DataTable({
         destroy: true,

@@ -145,7 +145,8 @@
     <script src="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/js/dataTables.responsive.min.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/js/responsive.bootstrap5.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/RowGroup-1.5.0/js/dataTables.rowGroup.min.js"></script>
-
+    
+    <script src="Assets/js/asignacion_equipo.js"></script>
     <script src="Assets/js/sede.js"></script>    
     <script src="Assets/js/usuario.js"></script>
     <script src="Assets/js/oficina.js"></script>    
@@ -158,7 +159,7 @@
     <script src="Assets/js/empleado.js"></script>
     <script src="Assets/js/meta.js"></script>
 
-     <script src="Assets/js/asignacion_equipo.js"></script>
+     
 
 </body>
 

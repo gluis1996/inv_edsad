@@ -27,6 +27,7 @@ $(document).ready(function () {
                     icon: "success",
                 });
                 listarS();
+                $('#nombre_sede').val('');
             }  
 
         })
@@ -39,6 +40,16 @@ function listarS() {
     const data = {
         lista_sede: "listasede",
     };
+
+       
+    // $.ajax({
+    //     url: "Assets/ajax/Ajax.sede.php",
+    //     data: data,
+    //     type: 'POST',
+    //     success: function (response) {
+    //     console.log(response);
+    //     }
+    // })
 
     $("#tb_lista_sede_oficina").DataTable({
         destroy: true,

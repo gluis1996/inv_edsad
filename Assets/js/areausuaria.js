@@ -28,6 +28,7 @@ $(document).ready(function () {
                     icon: "success",
                 });
                 listarAU();
+                $('#nombre_a_usuaria').val('');
             }  
 
         })
