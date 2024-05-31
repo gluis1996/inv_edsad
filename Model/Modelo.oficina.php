@@ -27,7 +27,7 @@ class modelo_oficina{
         
         
     }
-
+    // REGISTRAR OFICINA
     public static function model_agregar($data){
         try {
             $sql = "CALL insertar_oficina(?,?);";
@@ -59,7 +59,7 @@ class modelo_oficina{
             }
             
         } catch (PDOException $th) {
-            return "Modelo empleado ".$th->getMessage();
+            return "Modelo Oficina ".$th->getMessage();
         }
         
     }

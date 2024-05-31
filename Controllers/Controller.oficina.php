@@ -2,6 +2,8 @@
 
 class controller_oficina{
 
+    //OFICINA
+
     public static function controller_listar(){
         $response = modelo_oficina::model_listar();
         return $response;

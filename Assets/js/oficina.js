@@ -1,18 +1,19 @@
 
-$(document).ready(function () { 
+$(document).ready(function () {
 
     listarO();
     llenar_select_sede_oficina();
 
+    //registrar oficina
     $('#btn_registrarOficina').click(function (e) {
         e.preventDefault();
         var nombre_oficina = $('#nombre_oficina').val();
         var idsede = $('#id_oficina_select_2').val();
-        
+
         const data = {
-            registro_oficina : 'registroOficina',
-            nombre_oficina : nombre_oficina,
-            id_sede : idsede,
+            registro_oficina: 'registroOficina',
+            nombre_oficina: nombre_oficina,
+            id_sede: idsede,
         }
 
         $.post('Assets/ajax/Ajax.oficina.php', data, function (response) {
@@ -30,29 +31,29 @@ $(document).ready(function () {
                     icon: "success",
                 });
                 listarO();
-            } 
+            }
 
         })
     })
 
+
 })
 
 
-
-//listara todo
+//listara todo oficina
 function listarO() {
     const data = {
         lista_oficina: "listaoficina",
     };
-        // console.log(data);
-        // $.ajax({
-        //     url: "Assets/ajax/Ajax.oficina.php",
-        //     data: data,
-        //     type: 'POST',
-        //     success: function (response) {
-        //     console.log(response);
-        //     }
-        // })
+    // console.log(data);
+    // $.ajax({
+    //     url: "Assets/ajax/Ajax.oficina.php",
+    //     data: data,
+    //     type: 'POST',
+    //     success: function (response) {
+    //     console.log(response);
+    //     }
+    // })
 
     $("#tb_lista_oficina").DataTable({
         destroy: true,
@@ -65,15 +66,15 @@ function listarO() {
         searching: true, // Quitar barra de búsqueda
         info: true, // Quitar información de registros
         ordering: true, // Quitar la capacidad de ordenar
-        pageLength: 10, // Establecer el número de registros por página a 3
+        pageLength: 3, // Establecer el número de registros por página a 3
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [
             { data: "idofi", className: "text-center", },
             { data: "nombreofi" },
             { data: "nombresede" },
-            {data: "acciones",className: "text-center",}, // Centrar el contenido de la columna
-            
+            { data: "acciones", className: "text-center", }, // Centrar el contenido de la columna
+
         ],
         dom: "lfrtip", // Eliminar algunos elementos de la interfaz
         language: {
@@ -116,50 +117,52 @@ function llenar_select_sede_oficina() {
     });
 }
 
- //ELIMINAR
-    //llenar datos en el modal editar registro  /// captura los id de lo botones
-    $('#tb_lista_oficina').on("click", ".btn_eliminar_oficina", function (e) {
-        e.preventDefault();
-        var id = $(this).attr('id_ofi_el');
-        //console.log(id);  ---> se utiliza para verificar si le esta asignando el id del empleado
-        const data = {
-            eliminar_oficina : 'eliminaroficina',
-            id_ofi : id,
+//ELIMINAR
+//llenar datos en el modal editar registro  /// captura los id de lo botones
+$('#tb_lista_oficina').on("click", ".btn_eliminar_oficina", function (e) {
+    e.preventDefault();
+    var id = $(this).attr('id_ofi_el');
+    //console.log(id);  ---> se utiliza para verificar si le esta asignando el id del empleado
+    const data = {
+        eliminar_oficina: 'eliminaroficina',
+        id_ofi: id,
+    }
+    //una solicitud POS es lo que se envia al servidor 
+    Swal.fire({
+        title: "Estas seguro",
+        text: "¡No podrás revertir esto!!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar esto!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.post('Assets/ajax/Ajax.oficina.php', data, function (response) {
+                if (response != "ok") {
+                    Swal.fire({
+                        title: "Oppps....",
+                        text: response,
+                        icon: "error",
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Deleted",
+                        text: "Eliminado exitosamente",
+                        icon: "success",
+                    });
+                    // Eliminar la fila con transición
+                    var row = $(e.target).closest('tr');
+                    row.addClass('fade-out');
+                    setTimeout(function () {
+                        var table = $('#tb_lista_oficina').DataTable();
+                        table.row(row).remove().draw();
+                    }, 500); // Esperar a que la animación termine
+                }
+
+            })
         }
-        //una solicitud POS es lo que se envia al servidor 
-        Swal.fire({
-            title: "Estas seguro",
-            text: "¡No podrás revertir esto!!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Si, eliminar esto!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.post('Assets/ajax/Ajax.oficina.php', data, function (response) {
-                    if (response != "ok") {
-                        Swal.fire({
-                            title: "Oppps....",
-                            text: response,
-                            icon: "error",
-                        });
-                    } else {
-                        Swal.fire({
-                            title: "Deleted",
-                            text: "Eliminado exitosamente",
-                            icon: "success",
-                        });
-                        // Eliminar la fila con transición
-                        var row = $(e.target).closest('tr');
-                        row.addClass('fade-out');
-                        setTimeout(function () {
-                            var table = $('#tb_lista_oficina').DataTable();
-                            table.row(row).remove().draw();
-                        }, 500); // Esperar a que la animación termine
-                    }            
-        
-                })
-            }
-        })
     })
+});
+
+

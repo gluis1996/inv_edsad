@@ -1,20 +1,20 @@
 
 
 $(document).ready(function () { 
-    listarB ();
 
-    $('#btn_registrarBeneficiario').click(function (e) {
+    listarAU();
+
+    $('#btn_registrarAreaUsuaria').click(function (e) {
         e.preventDefault();
-        var nombre_beneficiario = $('#nombre_beneficiario').val();
+        var nombre_ausu = $('#nombre_a_usuaria').val();
         
         const data = {
-            registro_beneficiario : 'registro_beneficiario',
-            nombre_beneficiario : nombre_beneficiario,
+            registro_ausuria : 'registroareausu',
+            nombrexareausu : nombre_ausu,
         }
 
-        $.post('Assets/ajax/Ajax.beneficiario.php', data, function (response) {
+        $.post('Assets/ajax/Ajax.area.usuaria.php', data, function (response) {
             console.log(response);
-
             if (response.trim() !== "ok") {
                 Swal.fire({
                     title: "Oppps....",
@@ -24,10 +24,10 @@ $(document).ready(function () {
             } else {
                 Swal.fire({
                     title: "Success",
-                    text: "Beneficiario registrado exitosamente",
+                    text: "Area usuaria registrado exitosamente",
                     icon: "success",
                 });
-                listarB();
+                listarAU();
             }  
 
         })
@@ -35,25 +35,26 @@ $(document).ready(function () {
 
 })
 
-//listar beneficiario
-function listarB (){
-    const data={
-        listar_beneficiario: 'listar_beneficiario',
+//listara todo
+function listarAU() {
+    const data = {
+        lista_area_usuaria: "lista_areausu",
     };
+    //verificar
+//    console.log(data);
+//     $.ajax({
+//         url: "Assets/ajax/Ajax.area.usuaria.php",
+//         data: data,
+//         type: 'POST',
+//         success: function (response) {
+//             console.log(response);
+//         }
+//     })
 
-    $.ajax({
-        url: "Assets/ajax/Ajax.beneficiario.php",
-        data: data,
-        type: 'POST',
-        success: function (response) {
-            //console.log(response);
-        }
-    })
-    
-    $("#tb_lista_beneficiario").DataTable({
+    $("#tb_lista_area").DataTable({
         destroy: true,
         ajax: {
-            url: "Assets/ajax/Ajax.beneficiario.php",
+            url: "Assets/ajax/Ajax.area.usuaria.php",
             type: "POST",
             data: data,
         },
@@ -61,12 +62,12 @@ function listarB (){
         searching: true, // Quitar barra de búsqueda
         info: true, // Quitar información de registros
         ordering: true, // Quitar la capacidad de ordenar
-        pageLength: 5, // Establecer el número de registros por página a 3
+        pageLength: 3, // Establecer el número de registros por página a 3
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [
-            { data: "idbeneficiario", className: "text-center", },
-            { data: "nombre" },
+            { data: "idareausu", className: "text-center", },
+            { data: "nombreareausu" },
             {data: "acciones",className: "text-center",}, // Centrar el contenido de la columna
             
         ],
@@ -88,19 +89,17 @@ function listarB (){
     });
 }
 
-
 //ELIMINAR
-    //llenar datos en el modal editar registro  /// captura los id de lo botones
-    $('#tb_lista_beneficiario').on("click", ".btn_eliminar_benef", function (e) {
+    /// captura los id de lo botones
+    $('#tb_lista_area').on("click", ".btn_eliminar_area_usua", function (e) {
         e.preventDefault();
-        var id = $(this).attr('id_bf');
-        console.log(id);  //---> se utiliza para verificar si le esta asignando el id del empleado
-        
+        var id = $(this).attr('id_area_u');
+        console.log(id); // ---> se utiliza para verificar si le esta asignando el id del empleado
         const data = {
-            eliminar_beneficiario : 'eliminarB',
-            idbeneficiario : id,
+            eliminar_Ausuaria : 'eliminar_areausu',
+            idareausua : id,
         }
-       // una solicitud POS es lo que se envia al servidor 
+        //una solicitud POS es lo que se envia al servidor 
         Swal.fire({
             title: "Estas seguro",
             text: "¡No podrás revertir esto!!",
@@ -111,8 +110,8 @@ function listarB (){
             confirmButtonText: "Si, eliminar esto!"
         }).then((result) => {
             if (result.isConfirmed) {
-                $.post('Assets/ajax/Ajax.beneficiario.php', data, function (response) {
-                    if (response.trim() != "ok") {
+                $.post('Assets/ajax/Ajax.area.usuaria.php', data, function (response) {
+                    if (response != "ok") {
                         Swal.fire({
                             title: "Oppps....",
                             text: response,
@@ -128,7 +127,7 @@ function listarB (){
                         var row = $(e.target).closest('tr');
                         row.addClass('fade-out');
                         setTimeout(function () {
-                            var table = $('#tb_lista_beneficiario').DataTable();
+                            var table = $('#tb_lista_area').DataTable();
                             table.row(row).remove().draw();
                         }, 500); // Esperar a que la animación termine
                     }            
@@ -136,4 +135,7 @@ function listarB (){
                 })
             }
         })
-    })
+     })
+
+
+

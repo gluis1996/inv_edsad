@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     listar();
     $('#btn_registrarEmpleado').click(function (e) {
         e.preventDefault();
@@ -112,7 +113,7 @@ function listar() {
         searching: true, // Quitar barra de búsqueda
         info: true, // Quitar información de registros
         ordering: true, // Quitar la capacidad de ordenar
-        pageLength: 10, // Establecer el número de registros por página a 3
+        pageLength: 3, // Establecer el número de registros por página a 3
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [

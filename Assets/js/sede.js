@@ -40,7 +40,7 @@ function listarS() {
         lista_sede: "listasede",
     };
 
-    $("#tb_lista_sede").DataTable({
+    $("#tb_lista_sede_oficina").DataTable({
         destroy: true,
         ajax: {
             url: "Assets/ajax/Ajax.sede.php",
@@ -51,7 +51,7 @@ function listarS() {
         searching: true, // Quitar barra de búsqueda
         info: true, // Quitar información de registros
         ordering: true, // Quitar la capacidad de ordenar
-        pageLength: 10, // Establecer el número de registros por página a 3
+        pageLength: 3, // Establecer el número de registros por página a 3
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [
@@ -80,8 +80,8 @@ function listarS() {
 
 
 //ELIMINAR
-    //llenar datos en el modal editar registro  /// captura los id de lo botones
-    $('#tb_lista_sede').on("click", ".btn_eliminar_sede", function (e) {
+    //llenar datos en el modal eliminar /// captura los id de lo botones
+    $('#tb_lista_sede_oficina').on("click", ".btn_eliminar_sede", function (e) {
         e.preventDefault();
         var id = $(this).attr('id_sedels');
         //console.log(id);  ---> se utiliza para verificar si le esta asignando el id del empleado
@@ -117,7 +117,7 @@ function listarS() {
                         var row = $(e.target).closest('tr');
                         row.addClass('fade-out');
                         setTimeout(function () {
-                            var table = $('#tb_lista_sede').DataTable();
+                            var table = $('#tb_lista_sede_oficina').DataTable();
                             table.row(row).remove().draw();
                         }, 500); // Esperar a que la animación termine
                     }            

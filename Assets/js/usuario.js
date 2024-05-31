@@ -1,17 +1,17 @@
-$(document).ready(function () { 
-    listarU() ;
+$(document).ready(function () {
+    listarU();
 
     $('#btn_registrar_usuario').click(function (e) {
         e.preventDefault();
         var nombre_usuario = $('#nombre_usuario').val();
         var user = $('#user').val();
         var contraseña = $('#contraseña').val();
-        
+
         const data = {
-            registro_usuario : 'registro_usuario',
-            nombre_usuario : nombre_usuario,
-            user : user,
-            contra : contraseña,
+            registro_usuario: 'registro_usuario',
+            nombre_usuario: nombre_usuario,
+            user: user,
+            contra: contraseña,
 
         }
         $.post('Assets/ajax/Ajax.usuario.php', data, function (response) {
@@ -28,11 +28,69 @@ $(document).ready(function () {
                     text: "Usuario registrado exitosamente",
                     icon: "success",
                 });
-                listarU() ;
-            } 
+                listarU();
+            }
             // console.log(data);
         })
     })
+
+    //llenar datos en el modal editar usuario
+    $('#tb_lista_usuario').on("click", ".btn_edit_usuario", function (e) {
+        e.preventDefault();
+        var idusuario = $(this).attr('editar_usu');
+       // console.log(idusuario);  // ver el el id que captura
+        
+
+
+
+    })
+
+
+
+
+
+
+
+
+    //editar
+    $('#btn_modal_editar_usuario').click(function (e) {
+        e.preventDefault();
+        //INPUT
+        var e_idusuario = $('#modal_edit_id_usuario').val();
+        var e_nombreusu = $('#modal_edit_nombre_usuario').val();
+        var e_userusu = $('#modal_edit_user_usuario').val();
+        var e_contraseñausu = $('#modal_edit_user_contraseña').val();
+
+        const data = {
+            editar_usuario: 'editar_equipo',
+            idequipos: e_idequipo,
+            e_modelo: e_modelo,
+            e_descripcion: e_descripcion,
+            e_fecha: e_fecha,
+            e_marca: e_marca,
+        };
+
+        console.log(data);
+        $.post("Assets/ajax/Ajax.usuario.php", data, function (response) {
+            console.log(response);
+            if (response != "ok") {
+                Swal.fire({
+                    title: "Oppps....",
+                    text: response,
+                    icon: "error",
+                });
+            } else {
+                Swal.fire({
+                    title: "Success",
+                    text: "Editado exitosamente el equipo",
+                    icon: "success",
+                });
+                $("#modal_editar_usuario").modal('hide');
+            }
+        })
+    })
+
+
 
 })
 
@@ -62,8 +120,8 @@ function listarU() {
             { data: "nombres" },
             { data: "user" },
             { data: "contraseña" },
-            { data: "acciones", className: "text-center",}, // Centrar el contenido de la columna
-            
+            { data: "acciones", className: "text-center", }, // Centrar el contenido de la columna
+
         ],
         dom: "lfrtip", // Eliminar algunos elementos de la interfaz
         language: {
@@ -83,50 +141,50 @@ function listarU() {
     });
 }
 
-    //ELIMINAR
-    //llenar datos en el modal editar registro  /// captura los id de lo botones
-    $('#tb_lista_usuario').on("click", ".btn_eliminar_usuario", function (e) {
-        e.preventDefault();
-        var id = $(this).attr('id_usuario_ls');
-        //console.log(id);  ---> se utiliza para verificar si le esta asignando el id del empleado
-        const data = {
-            eliminar_usuario : 'eliminarUsuario',
-            idusuario : id,
+//ELIMINAR
+//llenar datos en el modal editar registro  /// captura los id de lo botones
+$('#tb_lista_usuario').on("click", ".btn_eliminar_usuario", function (e) {
+    e.preventDefault();
+    var id = $(this).attr('id_usuario_ls');
+    //console.log(id);  ---> se utiliza para verificar si le esta asignando el id del empleado
+    const data = {
+        eliminar_usuario: 'eliminarUsuario',
+        idusuario: id,
+    }
+    //una solicitud POS es lo que se envia al servidor 
+    Swal.fire({
+        title: "Estas seguro",
+        text: "¡No podrás revertir esto!!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar esto!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.post('Assets/ajax/Ajax.usuario.php', data, function (response) {
+                if (response != "ok") {
+                    Swal.fire({
+                        title: "Oppps....",
+                        text: response,
+                        icon: "error",
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Deleted",
+                        text: "Eliminado exitosamente",
+                        icon: "success",
+                    });
+                    // Eliminar la fila con transición
+                    var row = $(e.target).closest('tr');
+                    row.addClass('fade-out');
+                    setTimeout(function () {
+                        var table = $('#tb_lista_usuario').DataTable();
+                        table.row(row).remove().draw();
+                    }, 500); // Esperar a que la animación termine
+                }
+
+            })
         }
-        //una solicitud POS es lo que se envia al servidor 
-        Swal.fire({
-            title: "Estas seguro",
-            text: "¡No podrás revertir esto!!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Si, eliminar esto!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.post('Assets/ajax/Ajax.usuario.php', data, function (response) {
-                    if (response != "ok") {
-                        Swal.fire({
-                            title: "Oppps....",
-                            text: response,
-                            icon: "error",
-                        });
-                    } else {
-                        Swal.fire({
-                            title: "Deleted",
-                            text: "Eliminado exitosamente",
-                            icon: "success",
-                        });
-                        // Eliminar la fila con transición
-                        var row = $(e.target).closest('tr');
-                        row.addClass('fade-out');
-                        setTimeout(function () {
-                            var table = $('#tb_lista_usuario').DataTable();
-                            table.row(row).remove().draw();
-                        }, 500); // Esperar a que la animación termine
-                    }            
-        
-                })
-            }
-        })
     })
+})

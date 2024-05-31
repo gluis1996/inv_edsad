@@ -11,8 +11,7 @@ class ajax_sede
     public $nombre;
     public $accion;
 
-    public function ajax_registrar_sede()
-    {
+    public function ajax_registrar_sede(){
         if ($this->accion == 'registroSede') {
            $data = array(
             'nombre_sede' =>$this->nombre
@@ -24,7 +23,7 @@ class ajax_sede
     
     public function ajax_listar_sede(){
         if ($this->accion=='listasede') {
-           $response = controller_sede::controller_listar();
+           $response = controller_sede::controller_listar_sede();
            $datosjason = array();
 
             if (empty($response)) {
@@ -60,14 +59,14 @@ class ajax_sede
 
 }
 
-//registrar
+//registrar SEDE
 if (isset($_POST['registro_sede'])) {
     $res = new ajax_sede();
     $res->accion = $_POST['registro_sede'];
     $res->nombre = $_POST['nombrexsede'];
     $res->ajax_registrar_sede();
 }
-//listar
+//listar SEDE
 if (isset($_POST['lista_sede'])) {
     $res = new ajax_sede();
     $res->accion = $_POST['lista_sede'];
@@ -75,7 +74,7 @@ if (isset($_POST['lista_sede'])) {
     
 }
 
-//eliminar
+//eliminar SEDE
 if (isset($_POST['eliminar_sede'])) { //
     $res = new ajax_sede();
     $res->accion = $_POST['eliminar_sede']; //accion= 'te quirerop',

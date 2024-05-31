@@ -56,39 +56,39 @@
                 <li class="nav-item">
                     <a href="empleado" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>
-                        <p>Empleados</p>
+                        <p>Usuarios y Empleados</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="usuario" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>
                         <p>Usuarios</p>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="beneficiario" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>
-                        <p>Beneficiario</p>
+                        <p>Beneficiarios y Metas</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="oficina" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>
-                        <p>Oficina</p>
+                        <p>Ubicaciones y Áreas</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="Sede" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>
                         <p>Sede</p>
                     </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <a href="meta" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>
                         <p>Meta</p>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </nav>
     <!-- /.sidebar-menu -->

@@ -15,6 +15,7 @@ class ajax_oficina
     public $idsede;
     public $accion;
 
+//OFICINA
     public function ajax_registrar_oficina()
     {
         if ($this->accion == 'registroOficina') {
@@ -57,7 +58,7 @@ class ajax_oficina
 
     public function ajax_select_sede(){
         if ($this->accion == 'listarsedeofi') {
-            $response = controller_sede::controller_listar();
+            $response = controller_sede::controller_listar_sede();
             echo json_encode($response);
         }
     }
@@ -74,6 +75,7 @@ class ajax_oficina
 
 }
 
+//REGISTRAR OFICINA
 if (isset($_POST['registro_oficina'])) {
     $res = new ajax_oficina();
     $res->accion = $_POST['registro_oficina'];
