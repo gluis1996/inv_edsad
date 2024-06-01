@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gestion</title>
+    <title>Gestion de edsan</title>
     <link rel="stylesheet" href="Assets/css/global.css">
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
     <script src="Views/Resources/plugins/datatablesv2/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
@@ -96,7 +96,6 @@
     ?>
 
 
-    <?php include "Modules/foother.php"; ?>
     </div>
     <!-- ./wrapper -->
     <!-- <script src="Views/Resources/plugins/jquery/jquery.min.js"></script> -->

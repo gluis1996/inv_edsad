@@ -66,7 +66,7 @@
         <!-- Modal content -->
         <div class="modal-content" style="border-radius: 10px;">
             <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
-                <h5 class="modal-title">Registrar Sede</h5>
+                <h5 class="modal-title">Registrar Adquisición de Equipo</h5>
                 <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
             </div>
             <div class="modal-body" style="padding: 20px;">

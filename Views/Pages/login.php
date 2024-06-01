@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,14 @@
     <link rel="stylesheet" type="text/css" href="Assets/css/login.css">
 
 </head>
+
 <body>
     <div class="login-container">
         <div class="login-box">
-           
+
             <div class="login-logo">
-                <img src="Assets/images/user.png" alt="Icono de Usuario">
-    
+                <img src="Assets/images/logo2.png" alt="Icono de Usuario" style="width: 300px; padding-right: 70px;">
+
                 <!-- <i class="fas fa-user-circle fa-5x text-primary"></i>  -->
             </div>
             <h2>Iniciar Sesión</h2>
@@ -38,12 +40,13 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Ingresar</button>
-                <?php 
-                    $login = new ControllerLogin();
-                    $login->login();
+                <?php
+                $login = new ControllerLogin();
+                $login->login();
                 ?>
             </form>
         </div>
     </div>
 </body>
+
 </html>

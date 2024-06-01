@@ -26,6 +26,9 @@
             </div>
 
             <div class="card-body" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+
+                <button type="button" class="btn btn-primary btnRegistrar_asignacion" name="btnRegistrar_asignacion" style="margin-top: 20px;">Registrar</button>
+
                 <div class="row">
                     <!-- ASIGNACION DE EQUIPOS -->
                     <div class="row">
@@ -101,21 +104,6 @@
                                 </div>
                             </div>
 
-                            <!-- Usuarios
-                            <div class="form-group">
-                                <label for="id_usuario">Usuarios</label>
-                                <div class="input-group">
-                                    <select id="id_usuario" class="form-control custom-select">
-                                        <option value="1">Seleccione</option>
-                                        <option value="2">Usuario 1</option>
-                                        <option value="3">Usuario 2</option>
-                                    </select>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i class="fas fa-eye"></i></span>
-                                    </div>
-                                </div>
-                            </div> -->
-
                             <!-- Estados -->
                             <div class="form-group">
                                 <label for="id_estado">Estados</label>
@@ -163,7 +151,6 @@
                         </table>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary btnRegistrar_asignacion" name="btnRegistrar_asignacion" style="margin-top: 20px;">Registrar</button>
             </div>
         </div>
     </section>

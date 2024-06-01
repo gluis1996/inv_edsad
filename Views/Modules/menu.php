@@ -20,13 +20,13 @@
                 <li class="nav-header">GESTIONES</li>
                 <li class="nav-item">
                     <a href="asignacionequipos" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
+                        <i class="fas fa-laptop-code" ></i>
                         <p>Asignación de Equipos</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="adquisicionequipos" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
+                        <i class="fas fa-shopping-cart"></i>
                         <p>Adquisicion de Equipos</p>
                     </a>
                 </li>
@@ -39,7 +39,7 @@
 
                 <li class="nav-item">
                     <a href="historico" class="nav-link">
-                        <i class="fa-brands fa-instalod"></i>
+                        <i class="fas fa-history"></i>
                         <p>Historico de Equipo</p>
                     </a>
                 </li>
@@ -47,7 +47,7 @@
                 <li class="nav-header">REGISTRAR EQUIPOS</li>
                 <li class="nav-item">
                     <a href="registroequipos" class="nav-link">
-                        <i class="fa-brands fa-instalod"></i>
+                        <i class="fas fa-clipboard-list"></i>
                         <p>REGISTRAR EQUIPOS</p>
                     </a>
                 </li>
@@ -55,7 +55,7 @@
                 <li class="nav-header">Mantenimiento</li>
                 <li class="nav-item">
                     <a href="empleado" class="nav-link">
-                        <i class="fa-brands fa-instalod"></i>
+                        <i class="fas fa-users"></i>
                         <p>Usuarios y Empleados</p>
                     </a>
                 </li>
@@ -67,13 +67,13 @@
                 </li> -->
                 <li class="nav-item">
                     <a href="beneficiario" class="nav-link">
-                        <i class="fa-brands fa-instalod"></i>
+                        <i class="fas fa-chart-line"></i>
                         <p>Beneficiarios y Metas</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="oficina" class="nav-link">
-                        <i class="fa-brands fa-instalod"></i>
+                        <i class="fas fa-map-marker-alt"></i>
                         <p>Ubicaciones y Áreas</p>
                     </a>
                 </li>
