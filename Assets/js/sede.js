@@ -41,7 +41,7 @@ function listarS() {
         lista_sede: "listasede",
     };
 
-       
+
     // $.ajax({
     //     url: "Assets/ajax/Ajax.sede.php",
     //     data: data,

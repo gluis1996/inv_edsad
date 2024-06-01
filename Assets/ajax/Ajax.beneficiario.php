@@ -27,8 +27,8 @@ class ajax_beneficiario
     //listar
     public function ajax_listar_beneficiario(){
         if ($this->accion=='listar_beneficiario') {
-           $response = controller_beneficiario::controller_listar();
-           $datosjason = array();
+            $response = controller_beneficiario::controller_listar();
+            $datosjason = array();
 
             if (empty($response)) {
                 $datosjason['data'][] = array(
@@ -38,7 +38,7 @@ class ajax_beneficiario
                 );
             } else {
                 foreach ($response as $value) {
-                   $botones = "<div class='col'><button type='button' class='btn btn-primary btn_listar_equipo_empleado' idbeneficiario='".$value['idbeneficiario']."' data-toggle='modal' data-target='#modal_listar_empleado'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_benef' id_bf='".$value['idbeneficiario']."' ><i class='fas fa-trash-alt'></i></button></div>";
+                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_listar_equipo_empleado' idbeneficiario='".$value['idbeneficiario']."' data-toggle='modal' data-target='#modal_listar_empleado'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_benef' id_bf='".$value['idbeneficiario']."' ><i class='fas fa-trash-alt'></i></button></div>";
 
                     $datosjason['data'][] = array(
                         "idbeneficiario" => $value['idbeneficiario'],

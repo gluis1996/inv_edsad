@@ -6,6 +6,15 @@ class modelo_beneficario
 
     public static function model_buscar()
     {
+        try {
+            $sql = "SELECT * FROM beneficiario WHERE ID = ?;";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp -> execute();
+            return $stmp->fetchAll();
+
+        } catch (PDOException $th) {
+            return "Modelo Beneficiario ".$th->getMessage();
+        }
     }
 
     public static function model_listar()
@@ -56,7 +65,21 @@ class modelo_beneficario
         }
     }
 
-    public static function model_actualizar()
+    public static function model_actualizar($data)
     {
+        
+        try {
+            $sql = "CALL insertar_beneficiario(?);";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1,$data['nombre_beneficiario'],PDO::PARAM_STR);
+            if ($stmp->execute()) {
+                return 'ok';
+            } else {
+                return 'fallo';
+            }
+            
+        } catch (PDOException $th) {
+            return "Modelo Beneficiario ".$th->getMessage();
+        }
     }
 }

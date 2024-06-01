@@ -14,6 +14,12 @@ class controller_beneficiario
         return $res;
     }
 
+    public static function controller_editar_beneficiario($data)
+    {
+        $res = modelo_beneficario::model_actualizar($data);
+        return $res;
+    }
+
     public static function controller_eliminar_beneficiario($data){
         $res = modelo_beneficario::model_eliminar($data);
         return $res;

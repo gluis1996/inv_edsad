@@ -52,7 +52,12 @@ class ajax_asignacion{
                         $unique_id = "detalle_id_" . $value['id_detalle_asignacion'];
                         $elimianr_id = "eliminar_id_" . $value['id_detalle_asignacion'];
                         $botones = "<div class='col'><button type='button' class='btn btn-primary' id ='".$unique_id."' id_detalle_asignacion='".$value['id_detalle_asignacion']."' data-toggle='modal' data-target='#modal_asignacion_editar'><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_detalle_asignacion' id='".$elimianr_id."' id_detalle_asignacion='".$value['id_detalle_asignacion']."'><i class='fas fa-trash-alt'></i></button></div>";
-
+                        
+                        if ($value['estado'] == 'INOPERATIVA') {
+                            $badges = "<span class='badge badge-danger'>INOPERATIVA</span>";
+                        } elseif ($value['estado'] == 'OPERATIVO') {
+                            $badges = "<span class='badge badge-success'>OPERATIVO</span>";
+                        }
                         $datosjason['data'][] = array(
                             "id_detalle_asignacion" => $value['id_detalle_asignacion'],
                             "sede_nombres" => $value['sede_nombres'],
@@ -62,7 +67,7 @@ class ajax_asignacion{
                             "empleado_nombre" => $value['empleado_nombre'],
                             "cod_patrimonial" => $value['cod_patrimonial'],
                             "vida_util" => $value['vida_util'],
-                            "estado" => $value['estado'],
+                            "estado" => $badges,
                             "fecha_asignacion" => $value['fecha_asignacion'],
                             "acciones" => $botones
                         );

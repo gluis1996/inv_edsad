@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    listar();
+    listarEM();
     $('#btn_registrarEmpleado').click(function (e) {
         e.preventDefault();
         var nombre_empleado = $('#nombre_empleado').val();
@@ -26,12 +26,9 @@ $(document).ready(function () {
                     text: "Empleado registrado exitosamente",
                     icon: "success",
                 });
-                listar();
+                listarEM();
             }
         })
-
-
-
     })
 
 
@@ -97,7 +94,7 @@ $(document).ready(function () {
 })
 
 //listara todo
-function listar() {
+function listarEM() {
     const data = {
         lista_empleado: "lista_empleado",
     };
