@@ -14,6 +14,18 @@ class modelo_equipo{
             return "Erro: ".$e->getMessage();
         }
     }
+    
+    public static function model_buscar_por_marca($data){
+        try {
+            $sql = "SELECT *FROM equipos WHERE idmarca = ?;";
+            $call = conexion::conectar()->prepare($sql);
+            $call->bindParam(1,$data['idmarca'],PDO::PARAM_STR);
+            $call->execute();
+            return $call->fetchAll();
+        } catch (PDOException $e) {
+            return "Erro: ".$e->getMessage();
+        }
+    }
 
     public static function model_listar(){
         try {

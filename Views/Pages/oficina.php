@@ -196,3 +196,42 @@
         </div>
     </div>
 </div>
+
+
+///////////////////////////////////
+
+<!-- Modal Editar oficina -->
+<div id="modal_registrar_oficina" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title" id="m_editar_oficina_titulo">Registrar Oficina</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-group">
+                    <label for="nombre_marca">Nombre de la Oficina</label>
+                    <input type="text" id="m_editar_nombre_oficina" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="id_oficina_select">Sedes</label>
+                    <div class="input-group">
+                        <select id="m_editar_id_oficina_select_2" class="form-control custom-select">
+                            <option value="0">Selecccione</option>
+                        </select>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-eye"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_registrarOficina" style="background-color: #007bff; color: #fff;">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>

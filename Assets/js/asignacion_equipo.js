@@ -3,10 +3,27 @@ $(document).ready(function () {
     llenar_select_sede();
     llenar_select_equipo();
     llenar_select_empleado();
+    llenar_select_asigancion_marca();
+    
+    //mostrar modal registrar
+    $(".btn_modal_asignacion_mostrar").click(function () {
+        $("#modal_asignacion_registrar").modal('show');
+    });
+    
+    //mostrar modal registrar cerra
+    $(".close").click(function () {
+        $("#modal_asignacion_registrar").modal('hide');
+    });
+
 
     // Añadir evento change al select de sedes
     $("#id_sede").change(function () {
         llenar_select_oficina('id_sede', 'id_oficina');
+    });
+
+    // Añadir evento change al select de sedes
+    $("#id_equipo_marca").change(function () {
+        llenar_select_equipo();
     });
 
 
@@ -51,6 +68,7 @@ $(document).ready(function () {
                 });
                 listar();
                 limpiar();
+                $("#modal_asignacion_registrar").modal('hide');
             }
         });
         
@@ -327,9 +345,7 @@ function llenar_select_oficina(sede, ofi) {
                 var js = JSON.parse(response);
 
                 // Limpiar las opciones actuales del select de oficinas
-                $("#" + ofi)
-                    .empty()
-                    .append('<option value="">Seleccione una oficina</option>');
+                $("#" + ofi).empty().append('<option value="">Seleccione una oficina</option>');
 
                 $.each(js, function (index, fila) {
                     $("#" + ofi).append(
@@ -346,26 +362,49 @@ function llenar_select_oficina(sede, ofi) {
     }
 }
 
+//llenar select marca
+function llenar_select_asigancion_marca() {
+    const data = {
+        listar_equipo_marca: "listar_equipo_marca",
+    };
+// console.log(data);
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: "Assets/ajax/Ajax.asignacion.php",
+        success: function (response) {
+            //console.log(response);
+            var js = JSON.parse(response);
+            var $select = $("#id_equipo_marca");
+            $("#id_equipo_marca").empty().append('<option value="0">Seleccione una Marca</option>');
+            $.each(js, function (index, fila) {
+                $select.append('<option value="' + fila.idmarca + '">' + fila.nombre+ "</option>");
+            });
+
+        },
+    });
+}
+
 function llenar_select_equipo() {
+    const idmarca = $("#id_equipo_marca").val();
     const data = {
         listar_equipo: "listar_equipo",
+        id_marca: idmarca,
     };
     $.ajax({
         type: "POST",
         data: data,
         url: "Assets/ajax/Ajax.asignacion.php",
         success: function (response) {
+            console.log(response);
             var js = JSON.parse(response);
             var $select = $("#id_equipo");
-            $select.empty(); // Limpia cualquier opción previa
+            // Limpiar las opciones actuales del select de oficinas
+            $("#id_equipo").empty().append('<option value="0">Seleccione un equipo</option>');
             $.each(js, function (index, fila) {
-                $select.append('<option value="' + fila.idequipos + '">' + fila.descripcion + " - " + fila.modelo + " - " + fila.nombre + "</option>");
+                $select.append('<option value="' + fila.idequipos + '">' + fila.descripcion + " - " + fila.modelo + "</option>");
             });
 
-            // Inicializar select2 y establecer el dropdownParent
-            $select.select2({
-                dropdownParent: $('body') // Esto asegura que el dropdown no se superponga incorrectamente
-            });
         },
     });
 }
@@ -396,5 +435,7 @@ function limpiar() {
     $("#fecha").val("");
     $("#id_oficina").val(0);
     $("#id_estado").val(0);
+    $("#id_equipo").val(0);
+    $("#id_equipo_marca").val(0);
     $("#vid_util").val("");
 }

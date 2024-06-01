@@ -5,6 +5,7 @@ require_once ('../../Controllers/Controlller.sede.php');
 require_once ('../../Controllers/Controller.oficina.php');
 require_once ('../../Controllers/Controller.equipo.php');
 require_once ('../../Controllers/Controller.empleado.php');
+require_once ('../../Controllers/Controller.marca.php');
 
 //Modelo
 require_once ('../../Model/Modelo.detalleAsignacion.php');
@@ -12,10 +13,12 @@ require_once ('../../Model/Modelo.sede.php');
 require_once ('../../Model/Modelo.oficina.php');
 require_once ('../../Model/Modelo.equipo.php');
 require_once ('../../Model/Modelo.empleado.php');
+require_once ('../../Model/Modelo.marca.php');
 
 class ajax_asignacion{
 
     public $accion;
+    public $accion2;
     public $id_detalle_asignacion;
     public $id_sede;
     public $idoficinas;
@@ -26,6 +29,7 @@ class ajax_asignacion{
     public $vida_util;
     public $estado;
     public $fecha_asignacion;
+    public $id_marca;
 
     public function ajax_listar(){
         if ($this->accion == 'listarAE') {
@@ -53,8 +57,8 @@ class ajax_asignacion{
                         $elimianr_id = "eliminar_id_" . $value['id_detalle_asignacion'];
                         $botones = "<div class='col'><button type='button' class='btn btn-primary' id ='".$unique_id."' id_detalle_asignacion='".$value['id_detalle_asignacion']."' data-toggle='modal' data-target='#modal_asignacion_editar'><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_detalle_asignacion' id='".$elimianr_id."' id_detalle_asignacion='".$value['id_detalle_asignacion']."'><i class='fas fa-trash-alt'></i></button></div>";
                         
-                        if ($value['estado'] == 'INOPERATIVA') {
-                            $badges = "<span class='badge badge-danger'>INOPERATIVA</span>";
+                        if ($value['estado'] == 'INOPERATIVO') {
+                            $badges = "<span class='badge badge-danger'>INOPERATIVO</span>";
                         } elseif ($value['estado'] == 'OPERATIVO') {
                             $badges = "<span class='badge badge-success'>OPERATIVO</span>";
                         }
@@ -112,12 +116,24 @@ class ajax_asignacion{
         }
     }
 
-    public function ajax_lista_equipo(){
-        if ($this->accion == 'listar_equipo') {
-            $response = controller_equipo::c_listar();
+    public function ajax_lista_equipo_marca(){
+        if ($this->accion2 == 'listar_equipo_marca') {
+            $response = controller_marca::c_marca_listar();
             echo json_encode($response);
         }
     }
+
+    public function ajax_lista_equipo(){
+        if ($this->accion == 'listar_equipo') {
+            $data = array(
+                'idmarca' => $this->id_marca,
+            );
+            $response = controller_equipo::c_buscar_por_marca($data);
+            echo json_encode($response);
+        }
+    }
+
+  
 
     public function ajax_lista_empleado(){
         if ($this->accion == 'listar_empleado') {
@@ -189,9 +205,15 @@ if (isset($_POST['listar_oficinas_por_sede'])) {
     $res->ajax_listar_oficinas();
 }
 
+if (isset($_POST['listar_equipo_marca'])) {
+    $res = new ajax_asignacion();
+    $res->accion2 = $_POST['listar_equipo_marca'];
+    $res->ajax_lista_equipo_marca();
+}
 if (isset($_POST['listar_equipo'])) {
     $res = new ajax_asignacion();
     $res->accion = $_POST['listar_equipo'];
+    $res->id_marca = $_POST['id_marca'];
     $res->ajax_lista_equipo();
 }
 

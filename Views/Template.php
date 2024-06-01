@@ -147,10 +147,7 @@
     
     
     <script src="Assets/js/asignacion_equipo.js"></script>   
-    
-    <script src="Assets/js/adquisicion.js"></script>
-
-    
+    <script src="Assets/js/adquisicion.js"></script>    
     <script src="Assets/js/usuario.js"></script>       
 
     <script src="Assets/js/sede.js"></script>
@@ -161,6 +158,7 @@
     <script src="Assets/js/equipo.js"></script>
     <script src="Assets/js/historico.js"></script>
     <script src="Assets/js/meta.js"></script>
+    
 
 </body>
 

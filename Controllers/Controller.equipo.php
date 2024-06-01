@@ -35,6 +35,10 @@ class controller_equipo{
         $response = modelo_equipo::model_eliminar($data);
         return  $response;
     }
+    public static function c_buscar_por_marca($data) {
+        $response = modelo_equipo::model_buscar_por_marca($data);
+        return  $response;
+    }
 
 
 }
