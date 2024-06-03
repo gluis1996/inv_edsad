@@ -137,13 +137,13 @@
                 <table class="table table-bordered table-striped dt-responsive w-100" id="tb_listar_equipo_empleados" style="margin: auto;">
                     <thead>
                         <tr>
-                            <th style="width: 10%; text-align: center;">ID EMPLEADO</th>
-                            <th style="width: 20%; text-align: center;">NOMBRE DEL EMPLEADO</th>
-                            <th style="width: 10%; text-align: center;">NOMBRE EQUIPO</th>
-                            <th style="width: 10%; text-align: center;">ID DETALLE ASIGNACIÓN</th>
+                            <th style="width: 10%; text-align: center;">ID</th>
+                            <th style="width: 20%; text-align: center;">EMPLEADO</th>
+                            <th style="width: 10%; text-align: center;">EQUIPO</th>
+                            <th style="width: 10%; text-align: center;">ID ASIGNACIÓN</th>
                             <th style="width: 10%; text-align: center;">COD PATRIMONIAL</th>
-                            <th style="width: 20%; text-align: center;">NOMBRE SEDE</th>
-                            <th style="width: 20%; text-align: center;">NOMBRE OFICINA</th>
+                            <th style="width: 20%; text-align: center;">SEDE</th>
+                            <th style="width: 20%; text-align: center;">OFICINA</th>
                         </tr>
                     </thead>
                 </table>

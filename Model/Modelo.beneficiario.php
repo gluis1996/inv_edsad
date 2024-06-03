@@ -4,11 +4,12 @@ require_once('conexion.php');
 class modelo_beneficario
 {
 
-    public static function model_buscar()
+    public static function model_buscar($data)
     {
         try {
-            $sql = "SELECT * FROM beneficiario WHERE ID = ?;";
+            $sql = "SELECT * FROM beneficiario WHERE idbeneficiario = ?;";
             $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1,$data,PDO::PARAM_STR);
             $stmp -> execute();
             return $stmp->fetchAll();
 
@@ -67,11 +68,11 @@ class modelo_beneficario
 
     public static function model_actualizar($data)
     {
-        
         try {
-            $sql = "CALL insertar_beneficiario(?);";
+            $sql = "UPDATE beneficiario SET nombre = ? WHERE idbeneficiario = ?";
             $stmp = conexion::conectar()->prepare($sql);
-            $stmp->bindParam(1,$data['nombre_beneficiario'],PDO::PARAM_STR);
+            $stmp->bindParam(1,$data['editar_nombre_beneficiario'],PDO::PARAM_STR);
+            $stmp->bindParam(2,$data['id_beneficiario'],PDO::PARAM_STR);
             if ($stmp->execute()) {
                 return 'ok';
             } else {

@@ -25,8 +25,8 @@ class ajax_meta{
 
     public function ajax_listar_meta(){
         if ($this->accion=='listameta') {
-           $response = controller_meta::controller_listar();
-           $datosjason = array();
+            $response = controller_meta::controller_listar();
+            $datosjason = array();
 
             if (empty($response)) {
                 $datosjason['data'][] = array(
@@ -36,7 +36,7 @@ class ajax_meta{
                 );
             } else {
                 foreach ($response as $value) {
-                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_listar_equipo_empleado' id_mt='".$value['idmeta']."' data-toggle='modal' data-target='#modal_listar_empleado'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_empleado' id_meta_ls='".$value['idmeta']."' ><i class='fas fa-trash-alt'></i></button></div>";
+                    $botones = "<div class='col'><button type='button' class='btn btn-primary' mt_nombre='".$value['idmeta']."' id_mt='".$value['idmeta']."' data-toggle='modal' data-target='#modal_listar_empleado'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_empleado' id_meta_ls='".$value['idmeta']."' ><i class='fas fa-trash-alt'></i></button></div>";
 
                     $datosjason['data'][] = array(
                         "idmet" => $value['idmeta'],

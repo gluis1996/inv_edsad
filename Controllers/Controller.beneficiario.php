@@ -24,4 +24,9 @@ class controller_beneficiario
         $res = modelo_beneficario::model_eliminar($data);
         return $res;
     }
+
+    public static function controller_buscar_beneficiario($data){
+        $res = modelo_beneficario::model_buscar($data);
+        return $res;
+    }
 }

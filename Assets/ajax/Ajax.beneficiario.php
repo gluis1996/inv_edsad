@@ -38,7 +38,7 @@ class ajax_beneficiario
                 );
             } else {
                 foreach ($response as $value) {
-                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_listar_equipo_empleado' idbeneficiario='".$value['idbeneficiario']."' data-toggle='modal' data-target='#modal_listar_empleado'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_benef' id_bf='".$value['idbeneficiario']."' ><i class='fas fa-trash-alt'></i></button></div>";
+                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_buscar_editar_benef' idbeneficiario='".$value['idbeneficiario']."' data-toggle='modal' data-target='#modal_editar_beneficiario'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_benef' id_bf='".$value['idbeneficiario']."' ><i class='fas fa-trash-alt'></i></button></div>";
 
                     $datosjason['data'][] = array(
                         "idbeneficiario" => $value['idbeneficiario'],
@@ -62,6 +62,25 @@ class ajax_beneficiario
             echo $response;
         }
     }
+
+    public function ajax_buscar_beneficiario(){
+        if ($this->accion == 'buscar_beneficiario') {
+            $response = controller_beneficiario::controller_buscar_beneficiario($this->id);
+            echo json_encode($response);
+        }
+    }
+
+    public function ajax_editar_beneficiario(){
+        if ($this->accion == 'editar_beneficiario') {
+            $data = array(
+                'id_beneficiario'               => $this->id,
+                'editar_nombre_beneficiario'    => $this->nombre
+            );
+            $response = controller_beneficiario::controller_editar_beneficiario($data);
+            echo $response;
+        }
+    }
+
 }
 
 if (isset($_POST['registro_beneficiario'])) {
@@ -83,5 +102,24 @@ if (isset($_POST['eliminar_beneficiario'])) { //
     $res->accion = $_POST['eliminar_beneficiario']; //accion= 'te quirerop',
     $res->id = $_POST['idbeneficiario'];
     $res->ajax_eliminar_empleado();
+    
+}
+
+//BUSCAR
+if (isset($_POST['buscar_beneficiario'])) { //
+    $res = new ajax_beneficiario();
+    $res->accion = $_POST['buscar_beneficiario']; 
+    $res->id = $_POST['idbeneficiario'];
+    $res->ajax_buscar_beneficiario();
+    
+}
+
+//EDITAR   
+if (isset($_POST['editar_beneficiario'])) { //
+    $res = new ajax_beneficiario();
+    $res->accion = $_POST['editar_beneficiario']; //accion= 'te quirerop',
+    $res->id = $_POST['m_benef_edit_id'];
+    $res->nombre = $_POST['m_benef_edit_nombre'];
+    $res->ajax_editar_beneficiario();
     
 }

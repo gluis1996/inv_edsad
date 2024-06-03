@@ -19,9 +19,7 @@
 
     <!-- Main content -->
     <section class="content">
-   
         <div class="card">
-
             <div class="card-header bg-primary text-white">
                 <h3 class="card-title">Formulario de registros</h3>
             </div>
@@ -84,7 +82,6 @@
             <!-- /.card-footer-->
         </div>
         <!-- /.card -->
-
     </section>
     <!-- /.content -->
 </div>
@@ -108,6 +105,31 @@
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
                 <button type="button" class="btn btn-primary" id="btn_registrarBeneficiario" style="background-color: #007bff; color: #fff;">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal editar Beneficiario -->
+<div id="modal_editar_beneficiario" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">Registrar Beneficiario</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-group">
+                    <label for="nombre_marca">Nombre del Beneficiario</label>
+                    <input type="text" id="modal_beneficiario_editar_nombre" class="form-control">
+                    <input type="hidden" id="modal_beneficiario_id" value="">
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_editar_Beneficiario" style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
     </div>

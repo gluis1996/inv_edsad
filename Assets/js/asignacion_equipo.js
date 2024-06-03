@@ -396,7 +396,7 @@ function llenar_select_equipo() {
         data: data,
         url: "Assets/ajax/Ajax.asignacion.php",
         success: function (response) {
-            console.log(response);
+            //console.log(response);
             var js = JSON.parse(response);
             var $select = $("#id_equipo");
             // Limpiar las opciones actuales del select de oficinas

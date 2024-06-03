@@ -32,12 +32,12 @@
                 <table class="table table-bordered table-striped dt-responsive" id="tbl_detalle_adquisicion" width="100%">
                     <thead>
                         <tr>
-                            <th>ADQUISICION</th>
+                            <th>ID</th>
                             <th>AREA</th>
                             <th>BENEFICIARIO</th>
                             <th>EQUIPOS</th>
                             <th>META</th>
-                            <th>AÑO ADQUISICION</th>
+                            <th>AÑO</th>
                             <th>CANTIDAD</th>
                             <th>ACCIONES</th>
                         </tr>

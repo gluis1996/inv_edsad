@@ -5,8 +5,6 @@ $(document).ready(function () {
         e.preventDefault();
         var nombremeta = $('#nombre_meta').val();
 
-        // console.log(nombre_empleado);
-
         const data = {
             registro_meta: 'registrometa',
             nombre_meta: nombremeta,
@@ -44,9 +42,6 @@ $(document).ready(function () {
             idmeta : id,
         }
 
-      //  console.log(data); //verificar
-
-        //una solicitud POS es lo que se envia al servidor 
         Swal.fire({
             title: "Estas seguro",
             text: "¡No podrás revertir esto!!",
@@ -57,11 +52,8 @@ $(document).ready(function () {
             confirmButtonText: "Si, eliminar esto!"
         }).then((result) => {
             if (result.isConfirmed) {
-
                 $.post('Assets/ajax/Ajax.meta.php', data, function (response) {
-
                     //console.log(response); //para ver en la consola
-
                     if (response.trim() != "ok") {
                         Swal.fire({
                             title: "Oppps....",
@@ -81,8 +73,7 @@ $(document).ready(function () {
                             var table = $('#tb_lista_meta').DataTable();
                             table.row(row).remove().draw();
                         }, 500); // Esperar a que la animación termine
-                    }            
-        
+                    }
                 })
             }
         })
