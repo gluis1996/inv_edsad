@@ -7,6 +7,15 @@ $(document).ready(function () {
         e.preventDefault();
         var nombre_beneficiario = $('#nombre_beneficiario').val();
 
+        if (nombre_beneficiario == '') {
+            Swal.fire({
+                title: "Oppps....",
+                text: 'Nombre Beneficiario Vacio!!',
+                icon: "error",
+            });
+            return;
+        }
+
         const data = {
             registro_beneficiario: 'registro_beneficiario',
             nombre_beneficiario: nombre_beneficiario,
@@ -28,6 +37,7 @@ $(document).ready(function () {
                     icon: "success",
                 });
                 listarB();
+                $('#nombre_beneficiario').val('');
             }
 
         })
@@ -105,6 +115,15 @@ $(document).ready(function () {
         var modal_benef_id = $('#modal_beneficiario_id').val();
         var modal_benef_nombre = $('#modal_beneficiario_editar_nombre').val();
 
+        if (modal_benef_nombre == '') {
+            Swal.fire({
+                title: "Oppps....",
+                text: 'Nombre Beneficairio Vacio',
+                icon: "error",
+            });
+            return;
+        }
+
         const data = {
             editar_beneficiario: 'editar_beneficiario',
             m_benef_edit_id: modal_benef_id,
@@ -139,6 +158,7 @@ $(document).ready(function () {
                             icon: "success",
                         });
                         listarB();
+                        $('#modal_beneficiario_editar_nombre').val('');
                     }
                 })
             }

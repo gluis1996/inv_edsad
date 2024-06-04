@@ -47,6 +47,8 @@ $(document).ready(function() {
                     text: "registradi exitosamente",
                     icon: "success",
                 });
+                listar_adquisicion();
+                limpiar_adq();
             }
         })
     })
@@ -113,7 +115,7 @@ $(document).ready(function() {
         //console.log(data);
 
         $.post('Assets/ajax/Ajax.adquisicion.php',data,function (response) {
-            //console.log(response);
+            console.log(response);
             var js = JSON.parse(response);
             $('#modal_id_ad').val(js.id);
 
@@ -193,6 +195,8 @@ $(document).ready(function() {
                     text: "Actualizado exitosamente",
                     icon: "success",
                 });
+                listar_adquisicion();
+                limpiar_adq();
             }
         })
 

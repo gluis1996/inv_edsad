@@ -306,6 +306,37 @@ function listar() {
                 previous: "Anterior",
             },
         },
+        responsive: 'true',
+        dom: '<"top"iBfrtlp><"clear">', // Colocar información de registros al principio
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                text: '<i class="fas fa-file-excel"></i>',
+                tittleAttr: 'export a excel',
+                className: 'btn btn-success'
+            },
+            {
+                extend: 'pdfHtml5',
+                text: '<i class="fas fa-file-pdf"></i>',
+                titleAttr: 'Exportar a PDF',
+                className: 'btn btn-danger',
+                customize: function (doc) {
+                    // Personalizar título
+                    doc.content.splice(1, 0, {
+                        margin: [0, 0, 0, 12],
+                        alignment: 'center',
+                        text: 'Lista de Equipo adquiridos',
+                        fontSize: 20,
+                        bold: true
+                    });
+
+                    // Remover cualquier texto adicional que pudiera haberse añadido
+                    doc.content = doc.content.filter(function (item) {
+                        return !(typeof item.text === 'string' && item.text.includes('Gestion'));
+                    });
+                }
+            }
+        ]
     });
 }
 

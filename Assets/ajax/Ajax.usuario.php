@@ -45,7 +45,7 @@ class ajax_usuario{
             } else {
                 foreach ($response as $value) {
 
-                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_edit_usuario' editar_usu='".$value['idusuario']."' data-toggle='modal' data-target='#modal_editar_usuario'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_usuario' id_usuario_ls='".$value['idusuario']."' ><i class='fas fa-trash-alt'></i></button></div>";
+                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_edit_usuario' edit_pass='".$value['contraseña']."' edit_user='".$value['user']."' edit_nombre='".$value['nombre']."' edit_id='".$value['idusuario']."' data-toggle='modal' data-target='#modal_editar_usuario'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_usuario' id_usuario_ls='".$value['idusuario']."' ><i class='fas fa-trash-alt'></i></button></div>";
 
                     $datosjason['data'][] = array(
                         "idusuario" => $value['idusuario'],
@@ -66,6 +66,20 @@ class ajax_usuario{
                 'idusu'=>$this->id
             );
             $response = controller_usuario::controller_eliminar_usuario($data);
+            echo $response;
+        }
+    }
+    
+
+    public function ajax_editar_usuario(){
+        if ($this->accion=='editar_usuario') {
+            $data = array(
+                'p_idusuario'       =>$this->id,
+                'p_nombre'          =>$this->nombre,
+                'p_user'            =>$this->user,
+                'p_contraseña'      =>$this->contraseña
+            );
+            $response = controller_usuario::controller_editar_usuario($data);
             echo $response;
         }
     }
@@ -96,5 +110,17 @@ if (isset($_POST['eliminar_usuario'])) { //
     $res->accion = $_POST['eliminar_usuario']; //accion= 'te quirerop',
     $res->id = $_POST['idusuario'];
     $res->ajax_eliminar_usuario();
+    
+}
+
+//actualizar
+if (isset($_POST['editar_usuario'])) { //
+    $res = new ajax_usuario();
+    $res->accion = $_POST['editar_usuario']; //accion= 'te quirerop',
+    $res->id = $_POST['e_idusuario'];
+    $res->nombre = $_POST['e_nombreusu'];
+    $res->user = $_POST['e_userusu'];
+    $res->contraseña = $_POST['e_contraseñausu'];
+    $res->ajax_editar_usuario();
     
 }

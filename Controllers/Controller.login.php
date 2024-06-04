@@ -18,7 +18,7 @@ class ControllerLogin{
                         $_SESSION['pass'] = $response['contraseña'];
     
                         echo '<script>
-                                window.location="instalacionfo";
+                                window.location="asignacionequipos";
                             </script>';
                 }else {
                     echo '<br><div class="alert alert-danger">Error al ingresar, Vuelve a Intentarlo</div>';

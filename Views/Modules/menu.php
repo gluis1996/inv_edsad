@@ -10,13 +10,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="">
-                    <a href="dashboard" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>DashBoard</p>
-                    </a>
-                </li>
-
+                
                 <li class="nav-header">GESTIONES</li>
                 <li class="nav-item">
                     <a href="asignacionequipos" class="nav-link">

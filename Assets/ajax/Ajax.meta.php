@@ -36,7 +36,7 @@ class ajax_meta{
                 );
             } else {
                 foreach ($response as $value) {
-                    $botones = "<div class='col'><button type='button' class='btn btn-primary' mt_nombre='".$value['idmeta']."' id_mt='".$value['idmeta']."' data-toggle='modal' data-target='#modal_listar_empleado'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_empleado' id_meta_ls='".$value['idmeta']."' ><i class='fas fa-trash-alt'></i></button></div>";
+                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_modal_meta_editar' mt_nombre='".$value['nombre']."' id_mt='".$value['idmeta']."' data-toggle='modal' data-target='#modal_editar_meta'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger btn_eliminar_empleado' id_meta_ls='".$value['idmeta']."' ><i class='fas fa-trash-alt'></i></button></div>";
 
                     $datosjason['data'][] = array(
                         "idmet" => $value['idmeta'],
@@ -60,6 +60,18 @@ class ajax_meta{
             $response = controller_meta::controller_eliminar_meta($data);
            echo $response;
         //    echo $this->id;
+        
+        }
+    }
+    
+    public function ajax_editar_meta(){
+        if ($this->accion=='editarmeta') {
+            $data = array(
+                'nombre'=>$this->nombre,
+                'idmeta'=>$this->id
+            );
+            $response = controller_meta::controller_actualizar_meta($data);
+           echo $response;
         
         }
     }
@@ -90,5 +102,14 @@ if (isset($_POST['eliminar_meta'])) { //
     $res->id = $_POST['idmeta'];
     $res->ajax_eliminar_meta();
     
+}
+
+//eliminar
+if (isset($_POST['editarmeta'])) { //
+    $res = new ajax_meta();
+    $res->accion = $_POST['editarmeta']; //accion= 'te quirerop',
+    $res->id = $_POST['idmeta_editar'];
+    $res->nombre = $_POST['nombremeta_editar'];
+    $res->ajax_editar_meta();    
 }
 

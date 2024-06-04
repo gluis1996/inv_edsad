@@ -33,7 +33,7 @@ class modelo_adquisicion{
 
     public static function m_buscar($data) {
         try {
-            $sql = "call sp_buscar_detalle_adquisicion(?)";
+            $sql = "call obtener_detalle_adquisicion(?)";
             $call = conexion::conectar()->prepare($sql);
             $call->bindParam(1,$data,PDO::PARAM_STR);   
             $call->execute();

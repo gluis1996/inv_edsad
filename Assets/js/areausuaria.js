@@ -30,9 +30,12 @@ $(document).ready(function () {
                 listarAU();
                 $('#nombre_a_usuaria').val('');
             }  
-
         })
     })
+
+
+
+    
 
 })
 

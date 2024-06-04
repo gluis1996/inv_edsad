@@ -105,7 +105,6 @@ class ajax_adquisicion{
 
             $response = controller_adquisicion::c_registrar($data);
             echo $response;
-
         }
     }
 
@@ -135,6 +134,7 @@ class ajax_adquisicion{
                 'p_cantidad'=>$this->cantidad
             );
             $response = controller_adquisicion::c_editar($data);
+            //echo json_encode($data);
             echo $response;
         }
     }

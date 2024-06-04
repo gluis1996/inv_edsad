@@ -53,8 +53,22 @@ class modelo_meta{
         }
     }
 
-    public static function model_actualizar(){
-        
+    public static function model_actualizar($data){
+        try {
+            $sql = "UPDATE meta SET nombre = ? WHERE idmeta = ?";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1,$data['nombre'],PDO::PARAM_STR);
+            $stmp->bindParam(2,$data['idmeta'],PDO::PARAM_STR);
+            
+            if ($stmp->execute()) {
+                return 'ok';
+            } else {
+                return 'fallo';
+            }
+            
+        } catch (PDOException $th) {
+            return "Modelo Meta ".$th->getMessage();
+        }
     }
 
 }

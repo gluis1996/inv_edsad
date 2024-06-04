@@ -12,5 +12,10 @@ class controller_marca{
         return $response;
     }
 
+    public static function c_marca_editar($data){
+        $response = modelo_marca::model_actualizar($data);
+        return $response;
+    }
+
 
 }

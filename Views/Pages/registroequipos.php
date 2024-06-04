@@ -34,8 +34,11 @@
                                     <button type="button" class="btn btn-primary mr-2 btn_modal_registrar">
                                         Registrar Equipo
                                     </button>
-                                    <button type="button" class="btn btn-primary btn_equipo_rgistrar_marca">
+                                    <button type="button" class="btn btn-primary mr-2 btn_equipo_rgistrar_marca">
                                         Registrar Marca
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn_modal_marca_ver">
+                                        Lista
                                     </button>
                                 </div>
                             </div>
@@ -191,6 +194,62 @@
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
                 <button type="button" class="btn btn-primary btn_editar_equipo" style="background-color: #007bff; color: #fff;">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal listar empleado -->
+<div id="modal_listar_marca" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xs"> <!-- Cambiado a modal-lg para un tamaño más grande -->
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">MARCA</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <label for="Datos Local">Lista Marca</label>
+                <table class="table table-bordered table-striped dt-responsive w-100" id="tb_listar_marca" style="margin: auto;">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%; text-align: center;">ID</th>
+                            <th style="width: 20%; text-align: center;">NOMBRE MARCA</th>
+                            <th style="width: 20%; text-align: center;">ACCIONES</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal registrar marca -->
+<div id="modal_editar_marca" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">Editar Marca</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-group">
+                    <label for="modal_editar_nombre_marca">Nombre de la Marca</label>
+                    <input type="text" id="modal_editar_nombre_marca" class="form-control">
+                    <input type="hidden" id="modal_editar_marca_id">
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary btn_editar_marca" style="background-color: #007bff; color: #fff;">Editar</button>
             </div>
         </div>
     </div>

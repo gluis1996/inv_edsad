@@ -19,4 +19,9 @@ class controller_meta{
         return $res;
     }
 
+    public static function controller_actualizar_meta($data){
+        $res = modelo_meta::model_actualizar($data);
+        return $res;
+    }
+
 } 

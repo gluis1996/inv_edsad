@@ -140,17 +140,13 @@
                             <th style="width: 10%; text-align: center;">ID</th>
                             <th style="width: 20%; text-align: center;">EMPLEADO</th>
                             <th style="width: 10%; text-align: center;">EQUIPO</th>
-                            <th style="width: 10%; text-align: center;">ID ASIGNACIÓN</th>
-                            <th style="width: 10%; text-align: center;">COD PATRIMONIAL</th>
+                            <th style="width: 10%; text-align: center;">ID ASIG</th>
+                            <th style="width: 10%; text-align: center;">COD PATRI</th>
                             <th style="width: 20%; text-align: center;">SEDE</th>
                             <th style="width: 20%; text-align: center;">OFICINA</th>
                         </tr>
                     </thead>
                 </table>
-            </div>
-            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btn_registrarEmpleado" style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
     </div>

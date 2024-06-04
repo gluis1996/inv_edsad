@@ -5,6 +5,16 @@ $(document).ready(function () {
         e.preventDefault();
         var nombremeta = $('#nombre_meta').val();
 
+
+        if (nombremeta == '') {
+            Swal.fire({
+                title: "Oppps....",
+                text: 'Nombre Meta Vacio!',
+                icon: "error",
+            });
+            return;
+        }
+
         const data = {
             registro_meta: 'registrometa',
             nombre_meta: nombremeta,
@@ -25,6 +35,7 @@ $(document).ready(function () {
                     icon: "success",
                 });
                 listarM();
+                $('#nombre_meta').val('');
             }     
         })
 
@@ -41,7 +52,6 @@ $(document).ready(function () {
             eliminar_meta : 'eliminarmeta',
             idmeta : id,
         }
-
         Swal.fire({
             title: "Estas seguro",
             text: "¡No podrás revertir esto!!",
@@ -77,6 +87,74 @@ $(document).ready(function () {
                 })
             }
         })
+    })
+
+    //LISTAR MODAL
+    //llenar datos en el modal editar registro  /// captura los id de lo botones
+    $('#tb_lista_meta').on("click", ".btn_modal_meta_editar", function (e) {
+        e.preventDefault();
+        var meta_id = $(this).attr('id_mt');
+        var meta_nombre = $(this).attr('mt_nombre');
+        
+        $('#modal_meta_id').val(meta_id);
+        $('#modal_meta_editar_nombre').val(meta_nombre);
+       
+
+    })
+
+
+    $('#btn_editar_meta').click(function (e) {
+        e.preventDefault();
+        var nombre_meta =  $('#modal_meta_editar_nombre').val();
+        var id_meta =  $('#modal_meta_id').val();
+        
+        if (nombre_meta == '') {
+            Swal.fire({
+                title: "Oppps....",
+                text: 'Nombre Meta Vacio!',
+                icon: "error",
+            });
+            return;
+        }
+
+        const data = {
+            editarmeta          : 'editarmeta',
+            idmeta_editar       : id_meta,
+            nombremeta_editar   : nombre_meta,
+        }
+        console.log(data);
+        Swal.fire({
+            title: "Estas seguro",
+            text: "¡No podrás revertir esto!!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, editar esto!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post('Assets/ajax/Ajax.meta.php', data, function (response) {
+                    //console.log(response); //para ver en la consola
+                    if (response.trim() != "ok") {
+                        Swal.fire({
+                            title: "Oppps....",
+                            text: response,
+                            icon: "error",
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Editado",
+                            text: "Editado exitosamente!",
+                            icon: "success",
+                        });
+                        listarM();
+                        $('#modal_meta_editar_nombre').val('');
+                        $('#modal_meta_id').val('');
+                    }
+                })
+            }
+        })
+    
     })
 
 

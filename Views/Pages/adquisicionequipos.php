@@ -43,16 +43,7 @@
                         </tr>
                     </thead>
                 </table>
-
-
-
-
-
             </div>
-
-
-
-
         </div>
     </section>
 </div>

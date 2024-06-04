@@ -55,8 +55,24 @@ class modelo_usuario{
         
     }
 
-    public static function model_actualizar(){
-        
+    public static function model_actualizar($data){
+        try {
+            $sql = "call actualizar_usuario(?,?,?,?);";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1,$data['p_idusuario'],PDO::PARAM_STR);
+            $stmp->bindParam(2,$data['p_nombre'],PDO::PARAM_STR);
+            $stmp->bindParam(3,$data['p_user'],PDO::PARAM_STR);
+            $stmp->bindParam(4,$data['p_contraseña'],PDO::PARAM_STR);
+            
+            if ($stmp->execute()) {
+                return 'ok';
+            } else {
+                return 'fallo';
+            }
+            
+        } catch (PDOException $th) {
+            return "Modelo usuario".$th->getMessage();
+        }
     }
 
 }

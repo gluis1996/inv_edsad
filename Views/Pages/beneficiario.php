@@ -134,3 +134,53 @@
         </div>
     </div>
 </div>
+
+
+<!-- Modal registrar Meta -->
+<div id="modal_registrar_meta" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">Registrar Meta</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-group">
+                    <label for="nombre_marca">Nombre Meta</label>
+                    <input type="text" id="nombre_meta" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_registrar_meta" style="background-color: #007bff; color: #fff;">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal editar Meta -->
+<div id="modal_editar_meta" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">Editar Meta</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-group">
+                    <label for="">Nombre Meta</label>
+                    <input type="text" id="modal_meta_editar_nombre" class="form-control">
+                    <input type="hidden" id="modal_meta_id">
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_editar_meta" style="background-color: #007bff; color: #fff;">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>

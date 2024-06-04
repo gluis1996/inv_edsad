@@ -37,9 +37,15 @@ $(document).ready(function () {
     //llenar datos en el modal editar usuario
     $('#tb_lista_usuario').on("click", ".btn_edit_usuario", function (e) {
         e.preventDefault();
-        var idusuario = $(this).attr('editar_usu');
+        var idusuario = $(this).attr('edit_id');
+        var nombre = $(this).attr('edit_nombre');
+        var user = $(this).attr('edit_user');
+        var pass = $(this).attr('edit_pass');
        // console.log(idusuario);  // ver el el id que captura
-        
+        $('#modal_edit_id_usuario').val(idusuario);
+        $('#modal_edit_nombre_usuario').val(nombre);
+        $('#modal_edit_user_usuario').val(user);
+        $('#modal_edit_user_contraseña').val(pass);
 
 
 
@@ -62,15 +68,15 @@ $(document).ready(function () {
         var e_contraseñausu = $('#modal_edit_user_contraseña').val();
 
         const data = {
-            editar_usuario: 'editar_equipo',
-            idequipos: e_idequipo,
-            e_modelo: e_modelo,
-            e_descripcion: e_descripcion,
-            e_fecha: e_fecha,
-            e_marca: e_marca,
+            editar_usuario: 'editar_usuario',
+            e_idusuario: e_idusuario,
+            e_nombreusu: e_nombreusu,
+            e_userusu: e_userusu,
+            e_contraseñausu: e_contraseñausu,
         };
 
         console.log(data);
+
         $.post("Assets/ajax/Ajax.usuario.php", data, function (response) {
             console.log(response);
             if (response != "ok") {
@@ -88,6 +94,7 @@ $(document).ready(function () {
                 $("#modal_editar_usuario").modal('hide');
             }
         })
+
     })
 
 

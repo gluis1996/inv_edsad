@@ -18,5 +18,10 @@ class controller_usuario{
         return $res;
     }
 
+    public static function controller_editar_usuario($data){
+        $res = modelo_usuario::model_actualizar($data);
+        return $res;
+    }
+
 
 }
