@@ -3,32 +3,74 @@ $(document).ready(function () {
     listarEM();
     $('#btn_registrarEmpleado').click(function (e) {
         e.preventDefault();
-        var nombre_empleado = $('#nombre_empleado').val();
 
-        // console.log(nombre_empleado);
+        // Fecha de ejemplo
+        const dateString = '1990-08-20';
+        const date = new Date(dateString);
+
+        // Arrays con los nombres de los días y los meses
+        const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+        // Obtener el día del mes
+        const dayOfMonth = date.getDate()+1;
+
+
+        // Obtener el mes (número)
+        const monthNumber = date.getMonth();
+
+        // Obtener el nombre del mes
+        const monthName = months[monthNumber];
+
+        var p_nombres               = 'Juan';
+        var p_apellidos             = 'PRUEBAS';
+        var p_dni                   = '12345678';
+        var p_fecha_cumpleaños      =  dayOfMonth;
+        var p_mes_cumpleaños        =  monthName;
+        var p_numero_personal       = '987654321';
+        var p_correo_personal       = 'juan.perez@example.com';
+        var p_correo_institucional  = 'juan.perez@empresa.com';
+        var p_idcargo               = '1';
+        var p_iddireccion_oficina   = '2';
+        var p_idtipo_contrato       = '2';
+
+
+
 
         const data = {
-            registro_empleado: 'registro_empleado',
-            nombre_empleado: nombre_empleado,
+            registro_empleado               : 'registro_empleado',
+            p_nombres                       : p_nombres,
+            p_apellidos                     : p_apellidos,
+            p_dni                           : p_dni,
+            p_fecha_cumpleaños              : p_fecha_cumpleaños,
+            p_mes_cumpleaños                : p_mes_cumpleaños,
+            p_numero_personal               : p_numero_personal,
+            p_correo_personal               : p_correo_personal,
+            p_correo_institucional          : p_correo_institucional,
+            p_idcargo                       : p_idcargo,
+            p_iddireccion_oficina           : p_iddireccion_oficina,
+            p_idtipo_contrato               : p_idtipo_contrato,
         }
 
-        $.post('Assets/ajax/Ajax.empleado.php', data, function (response) {
-            console.log(response);
-            if (response.trim() !== "ok") {
-                Swal.fire({
-                    title: "Oppps....",
-                    text: response,
-                    icon: "error",
-                });
-            } else {
-                Swal.fire({
-                    title: "Success",
-                    text: "Empleado registrado exitosamente",
-                    icon: "success",
-                });
-                listarEM();
-            }
-        })
+        console.log(data);
+
+        // $.post('Assets/ajax/Ajax.empleado.php', data, function (response) {
+        //     console.log(response);
+        //     if (response.trim() !== "ok") {
+        //         Swal.fire({
+        //             title: "Oppps....",
+        //             text: response,
+        //             icon: "error",
+        //         });
+        //     } else {
+        //         Swal.fire({
+        //             title: "Success",
+        //             text: "Empleado registrado exitosamente",
+        //             icon: "success",
+        //         });
+        //         listarEM();
+        //     }
+        // })
     })
 
 

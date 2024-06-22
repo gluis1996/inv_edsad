@@ -45,7 +45,7 @@
                                     <table class="table table-bordered table-striped dt-responsive mx-auto" id="tb_lista_usuario" width="100%">
                                         <thead>
                                             <tr>
-                                                <th style="width: 5%; text-align: center;">ID USUARIO</th>
+                                                <th style="width: 5%; text-align: center;">ID</th>
                                                 <th style="width: 30%; text-align: center;">NOMBRE DEL USUARIO</th>
                                                 <th style="width: 15%; text-align: center;">USER</th>
                                                 <th style="width: 15%; text-align: center;">CONTRASEÑA</th>
@@ -73,7 +73,7 @@
                                 <table class="table table-bordered table-striped dt-responsive" id="tb_registrar_empleados" width="100%">
                                     <thead>
                                         <tr>
-                                            <th style="width: 5%; text-align: center;">ID EMPLEADO</th>
+                                            <th style="width: 5%; text-align: center;">ID</th>
                                             <th style="width: 30%; text-align: center;">NOMBRE DEL EMPLEADO</th>
                                             <th style="width: 15%; text-align: center;">ACCIÓN</th>
                                             <!-- donde iran los botones para cada fila eliminar Actualizar-->

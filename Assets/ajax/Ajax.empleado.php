@@ -9,12 +9,32 @@ require_once ('../../Model/Modelo.empleado.php');
 class ajax_empleado{
     public $id;
     public $nombre;
+    public $apellido;
+    public $dni;
+    public $fecha_cumpleaños;
+    public $mes_cumpleaños;
+    public $numero_personal;
+    public $correo_personal;
+    public $correo_institucional;
+    public $id_cargo;
+    public $id_direccion_oficiona;
+    public $id_tipo_contrato;
     public $accion;
 
     public function ajax_registrar_empleado(){
         if ($this->accion=='registro_empleado') {
             $data = array(
-                'empleado_nombre'=> $this->nombre
+                'p_nombres'                 => $this->nombre,
+                'p_apellidos'               => $this->apellido,
+                'p_dni'                     => $this->dni,
+                'p_fecha_cumpleaños'        => $this->fecha_cumpleaños,
+                'p_mes_cumpleaños'          => $this->mes_cumpleaños,
+                'p_numero_personal'         => $this->numero_personal,
+                'p_correo_personal'         => $this->correo_personal,
+                'p_correo_institucional'    => $this->correo_institucional,
+                'p_idcargo'                 => $this->id_cargo,
+                'p_iddireccion_oficina'     => $this->id_direccion_oficiona,
+                'p_idtipo_contrato'         => $this->id_tipo_contrato
             );
 
             $response = controller_empleado::c_insertar_empleado($data);
@@ -25,8 +45,8 @@ class ajax_empleado{
 
     public function ajax_listar_empleado(){
         if ($this->accion=='lista_empleado') {
-           $response = controller_empleado::c_listar();
-           $datosjason = array();
+            $response = controller_empleado::c_listar();
+            $datosjason = array();
 
             if (empty($response)) {
                 $datosjason['data'][] = array(
@@ -54,8 +74,8 @@ class ajax_empleado{
             $data = array(
                 'idempleado'=>$this->id
             );
-           $response = controller_empleado::c_listar_equipo_empleado($data);
-           $datosjason = array();
+            $response = controller_empleado::c_listar_equipo_empleado($data);
+            $datosjason = array();
 
             if (empty($response)) {
                 $datosjason['data'][] = array(
@@ -102,8 +122,18 @@ class ajax_empleado{
 
 if (isset($_POST['registro_empleado'])) {
     $res = new ajax_empleado();
-    $res->accion = $_POST['registro_empleado'];
-    $res->nombre = $_POST['nombre_empleado'];
+    $res->accion                        = $_POST['registro_empleado'];
+    $res->nombre                        = $_POST['p_nombres'];
+    $res->apellido                      = $_POST['p_apellidos'];
+    $res->dni                           = $_POST['p_dni'];
+    $res->fecha_cumpleaños              = $_POST['p_fecha_cumpleaños'];
+    $res->mes_cumpleaños                = $_POST['p_mes_cumpleaños'];
+    $res->numero_personal               = $_POST['p_numero_personal'];
+    $res->correo_personal               = $_POST['p_correo_personal'];
+    $res->correo_institucional          = $_POST['p_correo_institucional'];
+    $res->id_cargo                      = $_POST['p_idcargo'];
+    $res->id_direccion_oficiona         = $_POST['p_iddireccion_oficina'];
+    $res->id_tipo_contrato              = $_POST['p_idtipo_contrato'];
     $res->ajax_registrar_empleado();
     
 }
