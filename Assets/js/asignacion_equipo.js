@@ -429,7 +429,7 @@ function llenar_select_equipo() {
         success: function (response) {
             //console.log(response);
             var js = JSON.parse(response);
-            var $select = $("#id_equipo");
+            var $select = $("#id_equipo");  
             // Limpiar las opciones actuales del select de oficinas
             $("#id_equipo").empty().append('<option value="0">Seleccione un equipo</option>');
             $.each(js, function (index, fila) {

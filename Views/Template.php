@@ -61,42 +61,30 @@
 
     <?php
     if (isset($_SESSION['iniciarsesion']) && $_SESSION['iniciarsesion'] == 'ok') {
-        echo '<div class="wrapper"> ';
+        echo '<div class="wrapper">';
         include "Modules/header.php";
         include "Modules/menu.php";
-        if (isset($_GET['page'])) {
-            if (
-                $_GET['page'] == 'pageCambioEquipo'     ||
-                $_GET['page'] == 'asignacionequipos'    || 
-                $_GET['page'] == 'registroequipos'      ||
-                $_GET['page'] == 'perfiles'             ||
-                $_GET['page'] == 'Sede'                 ||
-                $_GET['page'] == 'empleado'             ||
-                $_GET['page'] == 'usuario'              ||
-                $_GET['page'] == 'oficina'              ||
-                $_GET['page'] == 'beneficiario'         ||
-                $_GET['page'] == 'meta'                 ||
-                $_GET['page'] == 'dashboard'            ||
-                $_GET['page'] == 'historico'            ||
-                $_GET['page'] == 'adquisicionequipos'   ||
-                $_GET["page"] == "salir"
-            ) {
-                include "Pages/" . $_GET['page'] . ".php";
-            } else {
-                include "Modules/error.php";
-            }
+
+        $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+        $validPages = [
+            'registroequipos', 'asignacionequipos', 'Sede', 'empleado', 'usuario',
+            'oficina', 'beneficiario', 'meta',  'dashboard',
+            'historico', 'adquisicionequipos', 'salir'
+        ];
+
+        if (in_array($page, $validPages)) {
+            include "Pages/" . $page . ".php";
         } else {
-            include 'Pages/dashboard.php';
+            include "Modules/error.php";
         }
         echo '</div>';
     } else {
-        include 'Pages/login.php';
+        include "Pages/login.php";
     }
 
     ?>
 
 
-    </div>
     <!-- ./wrapper -->
     <!-- <script src="Views/Resources/plugins/jquery/jquery.min.js"></script> -->
 
@@ -144,23 +132,34 @@
     <script src="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/js/dataTables.responsive.min.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/js/responsive.bootstrap5.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/RowGroup-1.5.0/js/dataTables.rowGroup.min.js"></script>
-    
-    
-    <script src="Assets/js/asignacion_equipo.js"></script>   
-    <script src="Assets/js/adquisicion.js"></script>    
-    <script src="Assets/js/usuario.js"></script>       
 
-    <script src="Assets/js/sede.js"></script>
-    <script src="Assets/js/empleado.js"></script> 
-    <script src="Assets/js/oficina.js"></script>
-    <script src="Assets/js/areausuaria.js"></script>
-    <script src="Assets/js/beneficiario.js"></script>
-    <script src="Assets/js/equipo.js"></script>
-    <script src="Assets/js/historico.js"></script>
-    <script src="Assets/js/meta.js"></script>
-    
-    <script src="Assets/js/marca.js"></script>
-    
+
+
+    <?php
+    $scripts = [
+        'asignacionequipos' => ['Assets/js/asignacion_equipo.js'],
+        'empleado' => [ 'Assets/js/jsEmpleado/empleado.js',                 'Assets/js/jsEmpleado/validaciones_empleado.js',    'Assets/js/jsEmpleado/listar.js',
+                        'Assets/js/jsEmpleado/listarequipoxEmpleado.js',    'Assets/js/jsEmpleado/registrar.js',                'Assets/js/jsEmpleado/usuario.js',
+                        'Assets/js/jsEmpleado/buscar.js',                   'Assets/js/jsEmpleado/editar.js'],
+        'oficina' => ['Assets/js/sede.js','Assets/js/oficina.js','Assets/js/areausuaria.js'],
+        'usuario' => ['Assets/js/usuario.js'],
+        'beneficiario' => ['Assets/js/beneficiario.js','Assets/js/meta.js'],
+        'historico' => ['Assets/js/historico.js'],
+        'registroequipos' => ['Assets/js/marca.js','Assets/js/equipo.js',],
+        'adquisicionequipos' => ['Assets/js/adquisicion.js',]
+        // Añade más mapeos según sea necesario
+    ];
+
+    if (isset($scripts[$page])) {
+        foreach ($scripts[$page] as $script) {
+            if (file_exists($script)) {
+                echo "<script src='{$script}'></script>";
+            }
+        }
+    }
+    ?>
+
+
 
 </body>
 
