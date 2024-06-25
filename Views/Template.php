@@ -67,9 +67,9 @@
 
         $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
         $validPages = [
-            'registroequipos', 'asignacionequipos', 'Sede', 'empleado', 'usuario',
-            'oficina', 'beneficiario', 'meta',  'dashboard',
-            'historico', 'adquisicionequipos', 'salir'
+            'registroequipos',  'asignacionequipos',    'Sede',     'empleado',     'usuario',
+            'oficina',          'beneficiario',         'meta',     'dashboard',    'incidencias',
+            'historico',        'adquisicionequipos',   'salir'
         ];
 
         if (in_array($page, $validPages)) {
@@ -146,7 +146,8 @@
         'beneficiario' => ['Assets/js/beneficiario.js','Assets/js/meta.js'],
         'historico' => ['Assets/js/historico.js'],
         'registroequipos' => ['Assets/js/marca.js','Assets/js/equipo.js',],
-        'adquisicionequipos' => ['Assets/js/adquisicion.js',]
+        'adquisicionequipos' => ['Assets/js/adquisicion.js'],
+        'incidencias' => ['Assets/js/jsIncidencias/buscar.js'],
         // Añade más mapeos según sea necesario
     ];
 

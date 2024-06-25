@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="incidencia" class="nav-link">
+                    <a href="incidencias" class="nav-link">
                         <i class="fa-brands fa-instalod"></i>
                         <p>Incidencia</p>
                     </a>
