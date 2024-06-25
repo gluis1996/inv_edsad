@@ -1,25 +1,12 @@
-<div class='col'>
-    <button type='button' class='btn btn-primary' id='".$idequipo."' id_detalle_asignacion='".$value['id_detalle_asignacion']."' data-toggle='modal' data-target='#modal_asignacion_editar'>
-        <iclass='fas fa-pencil-alt'></i>
-    </button>
-    <button type='button'class='btn btn-danger btn_eliminar_detalle_asignacion' id='".$elimianr_id."' id_detalle_asignacion='".$value['id_detalle_asignacion']."'>
-        <i class='fas fa-trash-alt'></i>
-    </button>
+<div class='form-row'>
+        <button type='button' class='btn btn-primary btn_buscar_empleado' id ='".$unique_id."' id_empleado='".$value['idempleado']."' data-toggle='modal' data-target='#modal_editar_empleado' >
+            <i class='fas fa-pencil-alt' aria-hidden='true'></i>
+        </button> 
+        <button type='button' class='btn btn-primary btn_listar_equipo_empleado' nombre_empleado ='".$value['nombres']."' id_empleado='" . $value['idempleado'] . "' data-toggle='modal' data-target='#modal_listar_empleado'  >
+            <i class='fas fa-list'></i>
+        </button>
+        <button type='button' class='btn btn-danger btn_eliminar_empleado' id_empleado_el='" . $value['idempleado'] . "' >
+            <i class='fas fa-trash-alt'></i>
+        </button>
 </div>
-
-
-<div class='col'>
-    <button type='button' class='btn btn-primary'><i class='fas fa-pencil-alt'></i></button>
-    <button type='button' class='btn btn-danger'><i class='fas fa-trash-alt'></i></button>
-</div>
-
-
-
-<div class='col'>
-    <button type='button' class='btn btn-primary' id='".$idequipo."' data-toggle='modal' data-target='#modal_equipo_editar'>
-        <i class='fas fa-pencil-alt'></i>
-    </button>
-    <button type='button' class='btn btn-danger'>
-        <i class='fas fa-trash-alt'></i>
-    </button>
-</div>
+                   

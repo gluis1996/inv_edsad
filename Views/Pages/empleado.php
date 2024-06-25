@@ -45,7 +45,7 @@
                                     <table class="table table-bordered table-striped dt-responsive mx-auto" id="tb_lista_usuario" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                <th>#</th>
                                                 <th>NOMBRE</th>
                                                 <th>USER</th>
                                                 <th>CONTRASEÑA</th>
@@ -73,13 +73,11 @@
                                 <table class="table table-bordered table-striped dt-responsive" id="tb_registrar_empleados" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>NOMBRE</th>
                                             <th>DNI</th>
                                             <th>NUMERO</th>
                                             <th>CORREO</th>
                                             <th>CARGO</th>
-                                            <th>DIRECCION</th>
                                             <th>CONTRATO</th>
                                             <th>#</th>
                                             <th>ACCIÓN</th>

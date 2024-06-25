@@ -34,13 +34,11 @@ function listarEM() {
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [
-            { data: "idempleado", className: "text-center" },
             { data: "nombres" },
             { data: "dni" },
             { data: "numero" },
             { data: "correo" },
             { data: "cargo" },
-            { data: "direccion" },
             { data: "contrato" },
             { data: "cantidad", className: "text-center" },
             { data: "acciones"},
