@@ -9,15 +9,15 @@ function listarEM() {
         lista_empleado: "lista_empleado",
     };
 
-    //    console.log(data);
-    // $.ajax({
-    //     url: "Assets/ajax/Ajax.empleado.php",
-    //     data: data,
-    //     type: 'POST',
-    //     success: function (response) {
-    //         console.log(response);
-    //     }
-    // })
+       console.log(data);
+    $.ajax({
+        url: "Assets/ajax/Ajax.empleado.php",
+        data: data,
+        type: 'POST',
+        success: function (response) {
+            console.log(response);
+        }
+    })
 
     $("#tb_registrar_empleados").DataTable({
         destroy: true,

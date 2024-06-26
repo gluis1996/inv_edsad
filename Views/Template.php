@@ -147,7 +147,7 @@
         'historico' => ['Assets/js/historico.js'],
         'registroequipos' => ['Assets/js/marca.js','Assets/js/equipo.js',],
         'adquisicionequipos' => ['Assets/js/adquisicion.js'],
-        'incidencias' => ['Assets/js/jsIncidencias/buscar.js'],
+        'incidencias' => ['Assets/js/jsIncidencias/buscar_incidencias.js'],
         // Añade más mapeos según sea necesario
     ];
 

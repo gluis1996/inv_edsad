@@ -21,6 +21,86 @@
     <!-- Main content -->
     <section class="content">
 
+        <div class="form-row">
+            <div class="col-md-3">
+                <div class="card">
+                    <!-- Titulo Usuario -->
+
+                    <div class="card-header bg-dark text-white">
+                        <h1 class="card-title">Usuario</h1>
+                    </div>
+
+                    <!-- Cuerpo usuario -->
+                    <div class="card-body">
+                        <!-- Button para abrir el modal -->
+                        <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
+                            data-target="#modal_registrar_usuario">
+                            Registrar Nuevo Usuario
+                        </button>
+
+                        <label for="Datos Local" class="d-block">Lista de Usuarios</label>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped dt-responsive mx-auto"
+                                id="tb_lista_usuario" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>NOMBRE</th>
+                                        <th>USER</th>
+                                        <th>CONTRASEÑA</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h1 class="card-title">Empleado</h1>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <!-- Button to open the modal for registering Empleado -->
+                    <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
+                        data-target="#modal_registrar_empleado">
+                        Registrar Empleado
+                    </button>
+
+                    <label for="Datos Local" class="d-block">Lista de Usuarios</label>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped dt-responsive" id="tb_registrar_empleados"
+                            width="100%">
+                            <thead>
+                                <tr>
+                                    <th>NOMBRE</th>
+                                    <th>DNI</th>
+                                    <th>NUMERO</th>
+                                    <th>CORREO</th>
+                                    <th>CARGO</th>
+                                    <th>CONTRATO</th>
+                                    <th>#</th>
+                                    <th>ACCIÓN</th>
+                                    <!-- donde iran los botones para cada fila eliminar Actualizar-->
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+
+                   
+
+                </div>
+            </div>
+
+        </div>
+
+
         <div class="card">
             <div class="card-header bg-primary text-white">
                 <h3 class="card-title">Formulario de registros</h3>
@@ -34,7 +114,8 @@
                     <div class="col-md-3">
                         <div class="col-12 mb-2">
                             <!-- Button para abrir el modal -->
-                            <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modal_registrar_usuario">
+                            <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
+                                data-target="#modal_registrar_usuario">
                                 Registrar Nuevo Usuario
                             </button>
                         </div>
@@ -42,7 +123,8 @@
                             <div class="col">
                                 <label for="Datos Local" class="d-block">Lista de Usuarios</label>
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-striped dt-responsive mx-auto" id="tb_lista_usuario" width="100%">
+                                    <table class="table table-bordered table-striped dt-responsive mx-auto"
+                                        id="tb_lista_usuario" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -63,14 +145,16 @@
                     <div class="col-md-9">
                         <div class="col-12 mb-2">
                             <!-- Button to open the modal for registering Empleado -->
-                            <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modal_registrar_empleado">
+                            <button type="button" class="btn btn-primary mb-2" data-toggle="modal"
+                                data-target="#modal_registrar_empleado">
                                 Registrar Empleado
                             </button>
                         </div>
                         <div class="card">
                             <div class="col">
                                 <label for="Datos Local">Registro de Empleados</label>
-                                <table class="table table-bordered table-striped dt-responsive" id="tb_registrar_empleados" width="100%">
+                                <table class="table table-bordered table-striped dt-responsive"
+                                    id="tb_registrar_empleados" width="100%">
                                     <thead>
                                         <tr>
                                             <th>NOMBRE</th>
@@ -199,8 +283,10 @@
 
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id="btn_registrarEmpleado" style="background-color: #007bff; color: #fff;" disabled>Registrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="btn_registrarEmpleado"
+                    style="background-color: #007bff; color: #fff;" disabled>Registrar</button>
             </div>
         </div>
     </div>
@@ -355,8 +441,10 @@
 
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id="btn_editarEmpleado" style="background-color: #007bff; color: #fff;">Registrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="btn_editarEmpleado"
+                    style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
     </div>
@@ -375,7 +463,8 @@
             </div>
             <div class="modal-body" style="padding: 20px;">
                 <label for="Datos Local">Registro de Empleados</label>
-                <table class="table table-bordered table-striped dt-responsive w-100" id="tb_listar_equipo_empleados" style="margin: auto;">
+                <table class="table table-bordered table-striped dt-responsive w-100" id="tb_listar_equipo_empleados"
+                    style="margin: auto;">
                     <thead>
                         <tr>
                             <th style="width: 10%; text-align: center;">EQUIPO</th>
@@ -419,8 +508,10 @@
 
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btn_registrar_usuario" style="background-color: #007bff; color: #fff;">Registrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_registrar_usuario"
+                    style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
     </div>
@@ -460,8 +551,10 @@
 
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btn_modal_editar_usuario" style="background-color: #007bff; color: #fff;">Registrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_modal_editar_usuario"
+                    style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
     </div>
