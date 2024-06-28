@@ -30,7 +30,7 @@ function listarEM() {
         searching: true, // Quitar barra de búsqueda
         info: true, // Quitar información de registros
         ordering: true, // Quitar la capacidad de ordenar
-        pageLength: 3, // Establecer el número de registros por página a 3
+        pageLength: 8, // Establecer el número de registros por página a 3
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [
@@ -38,7 +38,16 @@ function listarEM() {
             { data: "dni" },
             { data: "numero" },
             { data: "correo" },
-            { data: "cargo" },
+            { 
+                data: "cargo",
+                render: function(data, type, row) {
+                    if (type === 'display') {
+                        var words = data.split(' ');
+                        return words.slice(0, 3).join(' ');
+                    }
+                    return data;
+                }
+            },
             { data: "contrato" },
             { data: "cantidad", className: "text-center" },
             { data: "acciones"},
