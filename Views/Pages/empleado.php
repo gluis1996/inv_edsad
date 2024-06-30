@@ -1,5 +1,4 @@
 <!-- Content Wrapper. Contains page content -->
-
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -20,7 +19,6 @@
 
     <!-- Main content -->
     <section class="content">
-
         <div class="form-row">
             <div class="col-md-3">
                 <!-- tarjeta de usuario -->
@@ -32,11 +30,12 @@
                     <!-- Cuerpo usuario -->
                     <div class="card-body">
                         <!-- Button para abrir el modal -->
-                        <button type="button" class="btn btn-success mb-2 btn-sm"  data-toggle="modal"  data-target="#modal_registrar_usuario"> <i class="fa fa-plus" aria-hidden="true"></i></button>
-
+                        <button type="button" class="btn btn-success mb-2 btn-sm" data-toggle="modal" data-target="#modal_registrar_usuario">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
                         <!-- <label for="Datos Local" class="d-block">Lista de Usuarios</label> -->
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped dt-responsive mx-auto"  style="font-size: 12px;" id="tb_lista_usuario" width="100%">
+                            <table class="table table-bordered table-striped dt-responsive mx-auto" style="font-size: 12px;" id="tb_lista_usuario" width="100%">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -53,18 +52,19 @@
 
                 <!-- tarjeta de cargo -->
                 <div class="card">
-                    <!-- Titulo Usuario -->
+                    <!-- Titulo Cargo -->
                     <div class="card-header bg-dark text-white">
                         <h1 class="card-title">Cargo</h1>
                     </div>
-                    <!-- Cuerpo usuario -->
+                    <!-- Cuerpo cargo -->
                     <div class="card-body">
                         <!-- Button para abrir el modal -->
-                        <button type="button" class="btn btn-success mb-2 btn-sm" data-toggle="modal"  data-target="#modal_registrar_usuario"><i class="fa fa-plus" aria-hidden="true"></i></button>
-
-                        <!-- <label for="Datos Local" class="d-block">Lista de Usuarios</label> -->
+                        <button type="button" class="btn btn-success mb-2 btn-sm" data-toggle="modal" data-target="#modal_registrar_cargo">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                        <!-- <label for="Datos Local" class="d-block">Lista de Cargos</label> -->
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped dt-responsive mx-auto" style="font-size: 12px;" id="" width="100%">
+                            <table class="table table-bordered table-striped dt-responsive mx-auto" style="font-size: 12px;" id="tb_lista_cargo" width="100%">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -77,26 +77,45 @@
                     </div>
                 </div>
 
+                <!-- tarjeta de direccion -->
+                <div class="card">
+                    <!-- Titulo Direccion -->
+                    <div class="card-header bg-dark text-white">
+                        <h1 class="card-title">Direccion</h1>
+                    </div>
+                    <!-- Cuerpo direccion -->
+                    <div class="card-body">
+                        <!-- Button para abrir el modal -->
+                        <button type="button" class="btn btn-success mb-2 btn-sm" data-toggle="modal" data-target="#modal_registrar_direccion">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                        <!-- <label for="Datos Local" class="d-block">Lista de Direcciones</label> -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped dt-responsive mx-auto" style="font-size: 12px;" id="tb_lista_direccion" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>NOMBRE</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-
 
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header bg-dark text-white">
                         <h1 class="card-title">Empleado</h1>
                     </div>
-
                     <div class="card-body">
                         <!-- Button to open the modal for registering Empleado -->
-                        <button type="button" class="btn btn-primary mb-2 btn-sm" data-toggle="modal"
-                            data-target="#modal_registrar_empleado">
-                            Registrar Empleado
-                        </button>
-
-                        <!-- <label for="Datos Local" class="d-block">Lista de Usuarios</label> -->
+                        <button type="button" class="btn btn-primary mb-2 btn-sm" data-toggle="modal" data-target="#modal_registrar_empleado">Registrar Empleado</button>
+                        <!-- <label for="Datos Local" class="d-block">Lista de Empleados</label> -->
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped dt-responsive" style="font-size: 12px;" id="tb_registrar_empleados"
-                                width="100%">
+                            <table class="table table-bordered table-striped dt-responsive" style="font-size: 12px;" id="tb_registrar_empleados" width="100%">
                                 <thead>
                                     <tr>
                                         <th>NOMBRE</th>
@@ -114,11 +133,9 @@
                         </div>
                     </div>
                 </div>
-
-            </div>>
-
+            </div>
+        </div>
     </section>
-
 </div>
 
 
@@ -219,10 +236,8 @@
 
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                    style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id="btn_registrarEmpleado"
-                    style="background-color: #007bff; color: #fff;" disabled>Registrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="btn_registrarEmpleado" style="background-color: #007bff; color: #fff;" disabled>Registrar</button>
             </div>
         </div>
     </div>
@@ -377,10 +392,8 @@
 
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                    style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id="btn_editarEmpleado"
-                    style="background-color: #007bff; color: #fff;">Registrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="btn_editarEmpleado" style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
     </div>
@@ -399,8 +412,7 @@
             </div>
             <div class="modal-body" style="padding: 20px;">
                 <label for="Datos Local">Registro de Empleados</label>
-                <table class="table table-bordered table-striped dt-responsive w-100" id="tb_listar_equipo_empleados"
-                    style="margin: auto;">
+                <table class="table table-bordered table-striped dt-responsive w-100" id="tb_listar_equipo_empleados" style="margin: auto;">
                     <thead>
                         <tr>
                             <th style="width: 10%; text-align: center;">EQUIPO</th>
@@ -444,10 +456,8 @@
 
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                    style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btn_registrar_usuario"
-                    style="background-color: #007bff; color: #fff;">Registrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_registrar_usuario" style="background-color: #007bff; color: #fff;">Registrar</button>
             </div>
         </div>
     </div>
@@ -487,10 +497,105 @@
 
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                    style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btn_modal_editar_usuario"
-                    style="background-color: #007bff; color: #fff;">Registrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_modal_editar_usuario" style="background-color: #007bff; color: #fff;">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal registrar cargo -->
+<div id="modal_registrar_cargo" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">Registrar Cargo</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-group">
+                    <label for="txt_registrar_cargo">Nombre</label>
+                    <input type="text" id="txt_registrar_cargo" class="form-control" placeholder="Escriba el Nombre del Cargo">
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_registrar_cargo">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal editar cargo -->
+<div id="modal_editar_cargo" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">Registrar Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-group">
+                    <label for="txt_editar_cargo">Nombres</label>
+                    <input type="text" id="txt_editar_cargo" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_editar_cargo">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal registrar Direccion -->
+<div id="modal_registrar_direccion" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">Registrar Direccion</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-group">
+                    <label for="txt_registrar_direccion">Nombre</label>
+                    <input type="text" id="txt_registrar_direccion" class="form-control" placeholder="Escriba el Nombre de Direccion">
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_registrar_direccion">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal editar Direccion -->
+<div id="modal_editar_direccion" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title">Editar Direccion</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 20px;">
+                <div class="form-group">
+                    <label for="txt_editar_direccion">Nombres</label>
+                    <input type="text" id="txt_editar_direccion" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_editar_direccion">Registrar</button>
             </div>
         </div>
     </div>

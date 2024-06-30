@@ -1,28 +1,28 @@
 $(document).ready(function () {
 
-    listarEM();
+    listarcargo20();
 
 })
 //listara todo
-function listarEM() {
+function listarcargo20() {
     const data = {
-        lista_empleado: "lista_empleado",
+        listar_cargo: "listar_cargo",
     };
 
-    //    console.log(data);
-    // $.ajax({
-    //     url: "Assets/ajax/Ajax.empleado.php",
-    //     data: data,
-    //     type: 'POST',
-    //     success: function (response) {
-    //         console.log(response);
-    //     }
-    // })
+    console.log(data);
+    $.ajax({
+        url: "Assets/ajax/Ajax.cargo.php",
+        data: data,
+        type: 'POST',
+        success: function (response) {
+            console.log(response);
+        }
+    })
 
-    $("#tb_registrar_empleados").DataTable({
+    $("#tb_lista_cargo").DataTable({
         destroy: true,
         ajax: {
-            url: "Assets/ajax/Ajax.empleado.php",
+            url: "Assets/ajax/Ajax.cargo.php",
             type: "POST",
             data: data,
         },
@@ -34,23 +34,9 @@ function listarEM() {
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [
-            { data: "nombres" },
-            { data: "dni" },
-            { data: "numero" },
-            { data: "correo" },
-            { 
-                data: "cargo",
-                render: function(data, type, row) {
-                    if (type === 'display') {
-                        var words = data.split(' ');
-                        return words.slice(0, 3).join(' ');
-                    }
-                    return data;
-                }
-            },
-            { data: "contrato" },
-            { data: "cantidad", className: "text-center" },
-            { data: "acciones"},
+            { data: "idcargo" },
+            { data: "nombre_cargo" },
+            { data: "acciones", className: "text-center" },
         ],
         dom: "lfrtip", // Eliminar algunos elementos de la interfaz
         language: {

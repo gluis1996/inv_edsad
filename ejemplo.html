@@ -1,12 +1,1 @@
-<div class='form-row'>
-        <button type='button' class='btn btn-primary btn_buscar_empleado' id ='".$unique_id."' id_empleado='".$value['idempleado']."' data-toggle='modal' data-target='#modal_editar_empleado' >
-            <i class='fas fa-pencil-alt' aria-hidden='true'></i>
-        </button> 
-        <button type='button' class='btn btn-primary btn_listar_equipo_empleado' nombre_empleado ='".$value['nombres']."' id_empleado='" . $value['idempleado'] . "' data-toggle='modal' data-target='#modal_listar_empleado'  >
-            <i class='fas fa-list'></i>
-        </button>
-        <button type='button' class='btn btn-danger btn_eliminar_empleado' id_empleado_el='" . $value['idempleado'] . "' >
-            <i class='fas fa-trash-alt'></i>
-        </button>
-</div>
-                   
+<div class='form-row' style='display: flex; gap: 5px;' ><button type='button' class='btn btn-primary btn-sm btn_cargar_cargo' id ='".$unique_id."' id_cargo='".$value['idcargo']."' data-toggle='modal' data-target='#modal_editar_cargo' ><i class='fas fa-pencil-alt' aria-hidden='true'></i></button><button type='button' class='btn btn-danger btn_eliminar_cargo btn-sm' id_cargo_el='" . $value['idcargo'] . "' ><i class='fas fa-trash-alt'></i></button></div>

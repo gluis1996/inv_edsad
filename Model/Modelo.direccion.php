@@ -1,5 +1,7 @@
 <?php
 
+require_once ('conexion.php');
+
 class modelo_direccion{
 
     public static function model_listar(){
