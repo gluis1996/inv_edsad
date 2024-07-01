@@ -9,15 +9,15 @@ function listarcargo20() {
         listar_cargo: "listar_cargo",
     };
 
-    console.log(data);
-    $.ajax({
-        url: "Assets/ajax/Ajax.cargo.php",
-        data: data,
-        type: 'POST',
-        success: function (response) {
-            console.log(response);
-        }
-    })
+    // console.log(data);
+    // $.ajax({
+    //     url: "Assets/ajax/Ajax.cargo.php",
+    //     data: data,
+    //     type: 'POST',
+    //     success: function (response) {
+    //         console.log(response);
+    //     }
+    // })
 
     $("#tb_lista_cargo").DataTable({
         destroy: true,

@@ -37,9 +37,16 @@ class ajax_cargo{
     }
 
     //Editar
-
     public function ajax_editar_cargo(){
         
+    }
+
+    //Editar
+    public function ajax_registrar_cargo(){
+        if ($this->accion == 'registrar_cargo') {
+            $response = controller_cargo::c_registrar($this->nombre);
+            echo $response;
+        }    
     }
 
 }
@@ -52,6 +59,15 @@ if (isset($_POST['listar_cargo'])) {
     $res->listar_cargo_tbl();
 }
 
+//registrar
+if (isset($_POST['registrar_cargo'])) {
+    $res = new ajax_cargo();
+    $res->accion = $_POST['registrar_cargo'];
+    $res->nombre = $_POST['registrar_nombre'];
+    $res->ajax_registrar_cargo();
+}
+
+//Editar
 if (isset($_POST['eitar_cargo'])) {
     $res = new ajax_cargo();
     $res->accion = $_POST['eitar_cargo'];
