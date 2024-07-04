@@ -7,6 +7,7 @@ class ajax_cargo{
     public $id;
     public $nombre;
     public $accion;
+    public $registro;
 
 
 
@@ -23,8 +24,8 @@ class ajax_cargo{
                 );
             } else {
                 foreach ($response as $value) {
-                    $unique_id = "id_cargo_buscar_" . $value['idcargo'];
-                    $botones = "<div class='form-row' style='display: flex; gap: 5px;' ><button type='button' class='btn btn-primary btn-sm btn_cargar_cargo' id ='".$unique_id."' id_cargo='".$value['idcargo']."' data-toggle='modal' data-target='#modal_editar_cargo' ><i class='fas fa-pencil-alt' aria-hidden='true'></i></button><button type='button' class='btn btn-danger btn_eliminar_cargo btn-sm' id_cargo_el='" . $value['idcargo'] . "' ><i class='fas fa-trash-alt'></i></button></div>";
+                    //$unique_id = "id_cargo_buscar_" . $value['idcargo'];
+                    $botones = "<div class='form-row' style='display: flex; gap: 5px;' ><button type='button' class='btn btn-primary btn-sm btn_cargar_cargo' id ='id_cargo_buscar' nombre_cargo='".$value['nombre_cargo']."' id_cargo='".$value['idcargo']."' data-toggle='modal' data-target='#modal_editar_cargo' ><i class='fas fa-pencil-alt' aria-hidden='true'></i></button><button type='button' class='btn btn-danger btn-sm' id='btn_eliminar_cargo' id_cargo_el='" . $value['idcargo'] . "' ><i class='fas fa-trash-alt'></i></button></div>";
                     $datosjason['data'][] = array(
                         "idcargo" => $value['idcargo'],
                         "nombre_cargo" =>  $value['nombre_cargo'],
@@ -38,13 +39,24 @@ class ajax_cargo{
 
     //Editar
     public function ajax_editar_cargo(){
-        
+        if ($this->accion == 'editar_cargo') {
+            $response = controller_cargo::c_editar($this->registro);
+            echo $response;
+        }   
     }
 
     //Editar
     public function ajax_registrar_cargo(){
         if ($this->accion == 'registrar_cargo') {
             $response = controller_cargo::c_registrar($this->nombre);
+            echo $response;
+        }    
+    }
+    
+    //Editar
+    public function ajax_eliminar_cargo(){
+        if ($this->accion == 'eliminar_cargo') {
+            $response = controller_cargo::c_eliminar($this->id);
             echo $response;
         }    
     }
@@ -68,8 +80,17 @@ if (isset($_POST['registrar_cargo'])) {
 }
 
 //Editar
-if (isset($_POST['eitar_cargo'])) {
-    $res = new ajax_cargo();
-    $res->accion = $_POST['eitar_cargo'];
+if (isset($_POST['editar_cargo'])) {
+    $res            = new ajax_cargo();
+    $res->accion    = $_POST['editar_cargo'];
+    $res->registro  = $_POST['datos'];
     $res->ajax_editar_cargo();
+}
+
+//Eliminar
+if (isset($_POST['eliminar_cargo'])) {
+    $res            = new ajax_cargo();
+    $res->accion    = $_POST['eliminar_cargo'];
+    $res->id        = $_POST['id_cargo'];
+    $res->ajax_eliminar_cargo();
 }

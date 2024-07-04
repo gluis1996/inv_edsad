@@ -1,28 +1,19 @@
 $(document).ready(function () {
 
-    listarcargo20();
+    listardirecciones();
 
 })
+
 //listara todo
-function listarcargo20() {
+function listardirecciones() {
     const data = {
-        listar_cargo: "listar_cargo",
+        listar_direcciones: "listar_direcciones",
     };
 
-    // console.log(data);
-    // $.ajax({
-    //     url: "Assets/ajax/Ajax.cargo.php",
-    //     data: data,
-    //     type: 'POST',
-    //     success: function (response) {
-    //         console.log(response);
-    //     }
-    // })
-
-    $("#tb_lista_cargo").DataTable({
+    $("#tb_lista_direccion").DataTable({
         destroy: true,
         ajax: {
-            url: "Assets/ajax/Ajax.cargo.php",
+            url: "Assets/ajax/Ajax.direccion.php",
             type: "POST",
             data: data,
         },
@@ -34,8 +25,8 @@ function listarcargo20() {
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
         columns: [
-            { data: "idcargo" },
-            { data: "nombre_cargo" },
+            { data: "iddireccion_oficina" },
+            { data: "nombre_direccion" },
             { data: "acciones", className: "text-center" },
         ],
         order: [[0, "desc"]], // Ordenar por la columna 'idcargo' en forma descendente

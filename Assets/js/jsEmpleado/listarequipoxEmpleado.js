@@ -1,9 +1,6 @@
 $(document).ready(function () {
     //listar equipos por cada empleado
-    $("#tb_registrar_empleados").on(
-        "click",
-        ".btn_listar_equipo_empleado",
-        function (e) {
+    $("#tb_registrar_empleados").on( "click", ".btn_listar_equipo_empleado", function (e) {
             e.preventDefault();
             var id = $(this).attr("id_empleado");
             var nombre_empleado = $(this).attr("nombre_empleado");

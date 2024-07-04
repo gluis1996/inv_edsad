@@ -543,6 +543,7 @@
                 <div class="form-group">
                     <label for="txt_editar_cargo">Nombres</label>
                     <input type="text" id="txt_editar_cargo" class="form-control">
+                    <input type="hidden" id="txt_editar_id">
                 </div>
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
@@ -591,6 +592,7 @@
                 <div class="form-group">
                     <label for="txt_editar_direccion">Nombres</label>
                     <input type="text" id="txt_editar_direccion" class="form-control">
+                    <input type="hidden" id = 'txt_editar_id_direccion'>
                 </div>
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">

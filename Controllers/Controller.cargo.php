@@ -11,5 +11,15 @@ class controller_cargo{
         $res = modelo_cargo::registrar_cargo($data);
         return $res;
     }
+    
+    public static function c_editar($data){
+        $res = modelo_cargo::modelo_editar($data);
+        return $res;
+    }
+    
+    public static function c_eliminar($data){
+        $res = modelo_cargo::modelo_eliminar($data);
+        return $res;
+    }
 
 }

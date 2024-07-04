@@ -26,11 +26,12 @@ $(document).ready(function () {
                   });
             } else {
                 Swal.fire({
-                    title: "Oppsss...!",
+                    title: "Exito...!",
                     text: "Registro Exitoso!",
                     icon: "success"
                   });
                 listarcargo20();
+                $('#txt_registrar_cargo').val('');
             }
         })
 
