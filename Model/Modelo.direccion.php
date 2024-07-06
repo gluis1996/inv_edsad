@@ -17,7 +17,7 @@ class modelo_direccion{
         
     }
 
-    public static function registrar_cargo($data){
+    public static function registrar($data){
         try {
             $sql = "INSERT INTO direccion_oficina (nombre_direccion) VALUES(?);";
             $stmp = conexion::conectar()->prepare($sql);

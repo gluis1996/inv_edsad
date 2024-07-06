@@ -497,8 +497,8 @@
 
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btn_modal_editar_usuario" style="background-color: #007bff; color: #fff;">Registrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn_modal_editar_usuario" >Editar</button>
             </div>
         </div>
     </div>
@@ -548,7 +548,7 @@
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btn_editar_cargo">Registrar</button>
+                <button type="button" class="btn btn-primary" id="btn_editar_cargo">Editar</button>
             </div>
         </div>
     </div>
@@ -597,7 +597,7 @@
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btn_editar_direccion">Registrar</button>
+                <button type="button" class="btn btn-primary" id="btn_editar_direccion">Editar</button>
             </div>
         </div>
     </div>

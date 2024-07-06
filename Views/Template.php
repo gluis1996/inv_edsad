@@ -142,14 +142,14 @@
                         'Assets/js/jsEmpleado/listarequipoxEmpleado.js',    'Assets/js/jsEmpleado/registrar.js',                'Assets/js/jsEmpleado/usuario.js',
                         'Assets/js/jsEmpleado/buscar.js',                   'Assets/js/jsEmpleado/editar.js',                   'Assets/js/jsCargo/listar.js',
                         'Assets/js/jsCargo/registrar.js',                   'Assets/js/jsCargo/editar.js',                      'Assets/js/jsCargo/eliminar.js',
-                        'Assets/js/jsDirecciones/listar.js',                'Assets/js/jsDirecciones/editar.js',                'Assets/js/jsDirecciones/registrar.js'],
+                        'Assets/js/jsDirecciones/listar.js',                'Assets/js/jsDirecciones/editar.js',                'Assets/js/jsDirecciones/registrar.js', 'Assets/js/jsDirecciones/eliminar.js'],
         'oficina' => ['Assets/js/sede.js','Assets/js/oficina.js','Assets/js/areausuaria.js'],
         'usuario' => ['Assets/js/usuario.js'],
         'beneficiario' => ['Assets/js/beneficiario.js','Assets/js/meta.js'],
         'historico' => ['Assets/js/historico.js'],
         'registroequipos' => ['Assets/js/marca.js','Assets/js/equipo.js',],
         'adquisicionequipos' => ['Assets/js/adquisicion.js'],
-        'incidencias' => ['Assets/js/jsIncidencias/buscar_incidencias.js'],
+        'incidencias' => ['Assets/js/jsIncidencias/buscar_incidencias.js',  'Assets/js/jsIncidencias/registrar_incidencias.js'],
         // Añade más mapeos según sea necesario
     ];
 

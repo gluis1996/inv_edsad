@@ -8,7 +8,7 @@ class controller_direccion{
     }
 
     public static function c_registrar($data){
-        $res = modelo_direccion::registrar_cargo($data);
+        $res = modelo_direccion::registrar($data);
         return $res;
     }
     
