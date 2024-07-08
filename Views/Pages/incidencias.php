@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="col mt-5">
-                            <div class="form-row" id="contenedor_tarjetas">
+                            <div class="row row-cols-1 row-cols-md-4" id="contenedor_tarjetas">
                                                                 
                             </div>
                         </div>
