@@ -24,7 +24,7 @@ $(document).ready(function () {
                         <div class="card-body">
                             <h5 class="card-title">${reco.title}</h5>
                             <p class="card-text">${reco.description}</p>
-                            <button class="btn btn-primary btn_ver_detalles btn-sm" data-ticket-id="${reco.ticket_id}">Ver Detalles</button>
+                            <button class="btn btn-primary btn_ver_detalles btn-sm" data-toggle="modal" data-target="#modal_detalle_incidencia" data-ticket-id="${reco.ticket_id}">Ver Detalles</button>
                             <button class="btn btn-danger btn_eliminar btn-sm" data-ticket-id="${reco.ticket_id}">Eliminar</button>
                             <!-- Botón para asignar agente -->
                             <button class="btn btn-secondary btn_asignar_agente btn-sm" data-ticket-id="${reco.ticket_id}" data-toggle="modal" data-target="#modalAsignarAgente">Asignar Agente</button>
