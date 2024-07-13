@@ -29,11 +29,11 @@
                 <div class="card-body">
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control" id="h_id_historico" placeholder="Buscar equipo x Codigo Patrimonial">
+                            <input type="text" class="form-control form-control-sm" id="h_id_historico" placeholder="Buscar equipo x Codigo Patrimonial">
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-success mb-2 btn_buscar_historico">Buscar</button>
-                            <button type="button" class="btn btn-success mb-2 btn_buscar_historico" data-toggle="modal" data-target="#modal_registrar_incidencia">+</button>
+                            <button type="button" class="btn btn-success btn-sm mb-2 btn_buscar_historico">Buscar</button>
+                            <button type="button" class="btn btn-success btn-sm mb-2 btn_buscar_historico" data-toggle="modal" data-target="#modal_registrar_incidencia">+</button>
                         </div>
                     </div>
 
@@ -133,7 +133,7 @@
             </div>
             <div class="modal-body">
                 <div id="detalles_ticket">
-                    <p><strong>Título:</strong> Problema con el monitor</p>
+                    <!-- <p><strong>Título:</strong> Problema con el monitor</p>
                     <p><strong>Descripción:</strong> El monitor parpadea al encenderlo.</p>
                     <p><strong>Categoría:</strong> Hardware</p>
                     <p><strong>Prioridad:</strong> Alta</p>
@@ -148,6 +148,7 @@
                                 <label for="fecha" class="mr-2">2020-02-20</label>
                                 <div class="media-body">
                                     <p>All my girls vintage Chanel baby. So you can have your cake. Tonight, tonight, tonight.</p>
+                                </div>
                             </li>
                             <li class="media">
                                 <label for="fecha" class="mr-2">2020-02-20</label>
@@ -165,6 +166,7 @@
                                 <label for="fecha" class="mr-2">2020-02-20</label>
                                 <div class="media-body">
                                     <p>All my girls vintage Chanel baby. So you can have your cake. Tonight, tonight, tonight.</p>
+                                </div>
                             </li>
                             <li class="media">
                                 <label for="fecha" class="mr-2">2020-02-20</label>
@@ -184,12 +186,14 @@
                             <textarea name="comentario" class="form-group mr-2" required></textarea>
                             <button type="submit" class="btn btn-primary mb-2 btn-sm">Añadir Comentario</button>
                         </form>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary btn-sm" id="####">Registrar</button>
-                </div>
+            </div>
+            
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary btn-sm" id="####">Registrar</button>
             </div>
         </div>
     </div>
+</div>
