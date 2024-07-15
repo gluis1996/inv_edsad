@@ -26,18 +26,43 @@ $(document).ready(function () {
                     // console.log(element);
                     $("#detalles_ticket").empty();
                     var nuevoHtml = `
-                    <p><strong>Título:</strong> ${element.title}</p>
-                    <p><strong>Descripción:</strong>${element.description}</p>
-                    <p><strong>Asignado a:</strong> ${element.asignadoa}</p>
-                    <p><strong>Creado por:</strong> ${element.creadopor}</p>
-                    <p><strong>Estado:</strong>${element.status}</p>
+
+                    <form>
+                        <fieldset disabled>
+                            <div class="form-group">
+                            <label for="disabledTextInput">Titulo:</label>
+                            <input type="text" id="disabledTextInput" class="form-control form-control-sm" value= "${element.title}">
+                            </div>
+
+                            <div class="form-group">
+                            <label for="disabledTextInput">Descripción:</label>
+                            <input type="text" id="disabledTextInput" class="form-control form-control-sm" value= "${element.description}">
+                            </div>
+
+                            <div class="form-group">
+                            <label for="disabledTextInput">Asignado a:</label>
+                            <input type="text" id="disabledTextInput" class="form-control form-control-sm" value= "${element.asignadoa}">
+                            </div>
+
+                            <div class="form-group">
+                            <label for="disabledTextInput">Creado por:</label>
+                            <input type="text" id="disabledTextInput" class="form-control form-control-sm" value= "${element.creadopor}">
+                            </div>
+                           
+                            <div class="form-group">
+                            <label for="disabledTextInput">Estado:</label>
+                            <input type="text" id="disabledTextInput" class="form-control form-control-sm" value= "${element.status}">
+                            </div>
+                           
+                        </fieldset>
+                    </form>
 
                     <div class="card-comments" style="font-size: 12px;">
                         
                     </div>                    
 
                     <form class="form-inline">
-                        <textarea name="comentario" class="form-group mr-2" required></textarea>
+                        <textarea name="comentario" class="form-control form-group mr-2" style="width:300px" required></textarea>
                         <button type="submit" class="btn btn-primary mb-2 btn-sm">Añadir Comentario</button>
                     </form>
                 `;               

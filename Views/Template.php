@@ -149,7 +149,7 @@
         'historico' => ['Assets/js/historico.js'],
         'registroequipos' => ['Assets/js/marca.js','Assets/js/equipo.js',],
         'adquisicionequipos' => ['Assets/js/adquisicion.js'],
-        'incidencias' => ['Assets/js/jsIncidencias/buscar_incidencias.js',  'Assets/js/jsIncidencias/registrar_incidencias.js', 'Assets/js/jsIncidencias/listar_incidencias.js'],
+        'incidencias' => ['Assets/js/jsIncidencias/buscar_incidencias.js',  'Assets/js/jsIncidencias/registrar_incidencias.js', 'Assets/js/jsIncidencias/listar_incidencias.js' , 'Assets/js/jsIncidencias/buscar_ticket_activity.js'],
         // Añade más mapeos según sea necesario
     ];
 

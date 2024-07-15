@@ -128,71 +128,40 @@
         <!-- Modal content -->
         <div class="modal-content" style="border-radius: 10px;">
             <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
-                <h5 class="modal-title">Detalle incidencia Ticket #123 </h5>
+                <h5 class="modal-title" id="detalle_title">Detalle incidencia</h5>
                 <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
             </div>
             <div class="modal-body">
                 <div id="detalles_ticket">
-                    <!-- <p><strong>Título:</strong> Problema con el monitor</p>
-                    <p><strong>Descripción:</strong> El monitor parpadea al encenderlo.</p>
-                    <p><strong>Categoría:</strong> Hardware</p>
-                    <p><strong>Prioridad:</strong> Alta</p>
-                    <p><strong>Asignado a:</strong> Juan Pérez</p>
-                    <p><strong>Creado por:</strong> María López</p>
-                    <p><strong>Estado:</strong> En Proceso</p>
 
-                    <div class="card-comments" style="font-size: 11px;">
-                        <h5>Comentarios</h5>
-                        <ul class="list-unstyled">
-                            <li class="media">
-                                <label for="fecha" class="mr-2">2020-02-20</label>
-                                <div class="media-body">
-                                    <p>All my girls vintage Chanel baby. So you can have your cake. Tonight, tonight, tonight.</p>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <label for="fecha" class="mr-2">2020-02-20</label>
-                                <div class="media-body">
-                                    <p>Maybe a reason why all the doors are closed. Cause once you’re mine, once you’re mine.</p>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <label for="fecha" class="mr-2">2020-02-20</label>
-                                <div class="media-body">
-                                    <p>Are you brave enough to let me see your peacock? There’s no going back.</p>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <label for="fecha" class="mr-2">2020-02-20</label>
-                                <div class="media-body">
-                                    <p>All my girls vintage Chanel baby. So you can have your cake. Tonight, tonight, tonight.</p>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <label for="fecha" class="mr-2">2020-02-20</label>
-                                <div class="media-body">
-                                    <p>Maybe a reason why all the doors are closed. Cause once you’re mine, once you’re mine.</p>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <label for="fecha" class="mr-2">2020-02-20</label>
-                                <div class="media-body">
-                                    <p>Are you brave enough to let me see your peacock? There’s no going back.</p>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <form class="form-inline">
-                            <textarea name="comentario" class="form-group mr-2" required></textarea>
-                            <button type="submit" class="btn btn-primary mb-2 btn-sm">Añadir Comentario</button>
-                        </form>
-                    </div> -->
                 </div>
             </div>
-            
+
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary btn-sm" id="####">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal historial incidencia -->
+<div class="modal fade" id="modal_activity_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title" id="detalle_title">ACtividad incidencia</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="card-activity" style="font-size: 12px;">
+                    <!-- ------- -->
+                </div>
+            </div>
+
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>

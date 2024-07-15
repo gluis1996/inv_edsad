@@ -1,8 +1,10 @@
 <?php
 require_once('../../Controllers/Controller_Incidencias/Controller.Incidencias.Tickets.php');
+require_once('../../Controllers/Controller_Incidencias/Controller.Incidencias.activity.php');
 
 require_once('../../Model/Model_Incidencias/Modelo.Incidencias.tickets.php');
 require_once('../../Model/Model_Incidencias/Modelo.Incidencias.ticket_comments.php');
+require_once('../../Model/Model_Incidencias/Modelo.Incidencias.activity.php');
 
 
 class ajax_incidencias_tickets{
@@ -25,6 +27,14 @@ class ajax_incidencias_tickets{
             //echo "gonzalo";
         }
     }
+    
+    public function ajax_detalle_actividad_tickets() {
+        if ($this->accion == "listar_tickets_activity") {
+            $res = controller_tickets_activity::C_buscar($this->id_tickets);
+            echo json_encode($res);
+            //echo "gonzalo";
+        }
+    }
 
 }
 
@@ -39,4 +49,11 @@ if (isset($_POST["listar_tickets_detalle"])) {
     $res->accion        = $_POST["listar_tickets_detalle"];
     $res->id_tickets    = $_POST["detalle_id_tickets"];
     $res->ajax_detalle_incidencias();
+}
+
+if (isset($_POST["listar_tickets_activity"])) {
+    $res = new ajax_incidencias_tickets();
+    $res->accion        = $_POST["listar_tickets_activity"];
+    $res->id_tickets    = $_POST["detalle_id_tickets_activity"];
+    $res->ajax_detalle_actividad_tickets();
 }

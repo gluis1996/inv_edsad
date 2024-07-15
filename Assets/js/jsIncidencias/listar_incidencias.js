@@ -12,7 +12,7 @@ $(document).ready(function () {
             resultado.forEach(reco => {
     
             var estado = '<span class="badge badge-pill badge-primary">Primary</span>';
-    
+            
             if (reco.status == 'en proceso') {
                 estado = `<span class="badge badge-pill badge-danger">${reco.status}</span>`;
             } else if (reco.status == 'resuelto') {
@@ -36,9 +36,10 @@ $(document).ready(function () {
                         <h5 class="card-title">${reco.title}</h5>
                         <p class="card-text">${reco.description}</p>
                         <button class="btn btn-primary btn_ver_detalles btn-sm" data-toggle="modal" data-target="#modal_detalle_incidencia" data-ticket-id="${reco.ticket_id}">Ver</button>
-                        <button class="btn btn-danger btn_eliminar btn-sm"  data-ticket-id="${reco.ticket_id}">Eliminar</button>
+                        <button class="btn btn-danger btn_eliminar btn-sm"  data-ticket-id="${reco.ticket_id}"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         <!-- Botón para asignar agente -->
-                        <button class="btn btn-secondary btn_asignar_agente btn-sm" id="btn_buscar_id_incidencias" data-ticket-id="${reco.ticket_id}">Asignar</button>
+                        <button class="btn btn-secondary btn_asignar_agente btn-sm" id="btn_buscar_id_incidencias" data-ticket-id="${reco.ticket_id}"><i class="fa fa-users" aria-hidden="true"></i></button>
+                        <button class="btn btn-secondary btn_asignar_agente btn-sm btn_activity" data-toggle="modal" data-target="#modal_activity_incidencia" data-ticket-id="${reco.ticket_id}" ><i class="fa fa-history" aria-hidden="true"></i></button>
                     </div>
                     <div class="card-footer">
                         <p class="text-primary">Asignado: <span class="assigned_to">${reco.asignadoa}</span></p>
@@ -56,8 +57,9 @@ $(document).ready(function () {
                     </div>
                 </div>
             </div>
-        `;
-        $("#contenedor_tarjetas").append(nuevoHtml);
+            `;
+            $("#contenedor_tarjetas").append(nuevoHtml);
+            
         });
     
         }
