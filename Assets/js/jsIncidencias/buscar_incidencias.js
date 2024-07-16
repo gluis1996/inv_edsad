@@ -32,6 +32,7 @@ $(document).ready(function () {
                             <div class="form-group">
                             <label for="disabledTextInput">Titulo:</label>
                             <input type="text" id="disabledTextInput" class="form-control form-control-sm" value= "${element.title}">
+                            <input type="hidden" id="id_ticket_oculto" value="${element.ticket_id}">
                             </div>
 
                             <div class="form-group">
@@ -58,12 +59,14 @@ $(document).ready(function () {
                     </form>
 
                     <div class="card-comments" style="font-size: 12px;">
-                        
+                        <ul class="list-unstyled listas-comment">
+                            
+                        </ul>
                     </div>                    
 
                     <form class="form-inline">
-                        <textarea name="comentario" class="form-control form-group mr-2" style="width:300px" required></textarea>
-                        <button type="submit" class="btn btn-primary mb-2 btn-sm">Añadir Comentario</button>
+                        <textarea name="comentario" id="text_area_comentario" class="form-control form-group mr-2" style="width:300px" required></textarea>
+                        <button class="btn btn-primary mb-2 btn-sm btn_añadir_comentario" >Añadir Comentario</button>
                     </form>
                 `;               
                 
@@ -73,19 +76,16 @@ $(document).ready(function () {
                 j.comment.forEach(element => {
                     console.log(element);
                     var comments =`
-                        <h5>Comentarios</h5>
-                        <ul class="list-unstyled">
-                            <li class="media">
-                                <label for="fecha" class="mr-2"><i class="fa fa-circle" aria-hidden="true" style="margin-rigth = 10px"></i>${element.created_at}</label>
-                                <div class="media-body">
-                                    <p>${element.comment}</p>
-                                </div>
-                            </li>
-                        </ul>
-                ` ;
+                        <li class="media">
+                            <label for="fecha" class="mr-2"><i class="fa fa-caret-right" aria-hidden="true"></i> ${element.created_at}</label>
+                            <div class="media-body">
+                                <p>${element.comment}</p>
+                            </div>
+                        </li>
+                    ` ;
 
 
-                $(".card-comments").append(comments);
+                $(".listas-comment").append(comments);
                 });
                 
             }

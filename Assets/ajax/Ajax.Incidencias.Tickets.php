@@ -12,6 +12,9 @@ class ajax_incidencias_tickets{
     public $accion;
     public $id_tickets;
 
+
+    //comentario
+
     public function ajax_listar_incidencias() {
         if ($this->accion == "listar_tickets") {
             $res = controller_tickets::C_Listar();
@@ -57,3 +60,4 @@ if (isset($_POST["listar_tickets_activity"])) {
     $res->id_tickets    = $_POST["detalle_id_tickets_activity"];
     $res->ajax_detalle_actividad_tickets();
 }
+
