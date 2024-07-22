@@ -25,6 +25,13 @@ class ajax_incidencias_comment{
     }
 
 
+    public function ajax_listar_comment(){
+        if ($this->accion = 'event_buscar_comment') {
+            $response = controller_comment::c_buscar($this->ticket_id);
+            echo json_encode($response);
+        }
+    }
+
 }
 
 //comentario ticket
@@ -36,3 +43,12 @@ if (isset($_POST["event_registrar_comentario"])) {
     $res->ticket_id             = $_POST["content"];
     $res->ajax_registrar_comment();
 }
+
+//buscar comentario
+if (isset($_POST['event_buscar_comment'])) {
+    $res = new ajax_incidencias_comment();
+    $res->accion                = $_POST["event_buscar_comment"];
+    $res->ticket_id             = $_POST["ticket_id"];
+    $res->ajax_listar_comment();
+}
+

@@ -11,7 +11,7 @@ class ajax_incidencias_tickets{
 
     public $accion;
     public $id_tickets;
-
+    public $datos;
 
     //comentario
 
@@ -38,6 +38,14 @@ class ajax_incidencias_tickets{
             //echo "gonzalo";
         }
     }
+    
+    public function ajax_cambiar_estado_tickets() {
+        if ($this->accion == "event_actualizar_estado") {
+            $res = controller_tickets::C_actualizar_estado($this->datos);
+            echo json_encode($res);
+            //echo "gonzalo";
+        }
+    }
 
 }
 
@@ -59,5 +67,12 @@ if (isset($_POST["listar_tickets_activity"])) {
     $res->accion        = $_POST["listar_tickets_activity"];
     $res->id_tickets    = $_POST["detalle_id_tickets_activity"];
     $res->ajax_detalle_actividad_tickets();
+}
+
+if (isset($_POST["event_actualizar_estado"])) {
+    $res = new ajax_incidencias_tickets();
+    $res->accion        = $_POST["event_actualizar_estado"];
+    $res->datos         = $_POST["datos"];
+    $res->ajax_cambiar_estado_tickets();
 }
 

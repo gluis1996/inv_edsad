@@ -50,12 +50,95 @@ $(document).ready(function () {
                         icon: "success",
                     });
                     $("#text_area_comentario").val("");
-
+                    buscar_listar_comentario($("#id_ticket_oculto").val());
                 }
             }
         );
 
     });
 
+
+    //cambia estado de la incidencia:
+
+    $('#contenedor_tarjetas').on('change','#select_estado_incidencia',function (e) { 
+        e.preventDefault();
+        var id_usuario = $("#usuario_sesion").attr("id_lg_usuario");
+        var estado_nuevo = $("#select_estado_incidencia").val();
+        var id_ticket   =  $("#id_ticket_incidencia").val() ;
+
+        const data = {
+            event_actualizar_estado :       'event_actualizar_estado',
+            datos:                          {
+                                            id_usuario:                     id_usuario,
+                                            ticket_id:                      id_ticket,
+                                            status:                   estado_nuevo},
+        }
+
+        console.log(data);
+
+
+
+        Swal.fire({
+            title: "Estas seguro",
+            text: "De cambiar el estado a : "+estado_nuevo,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
+                        function (response) {
+                            console.log(response);
+                            // Swal.fire({
+                            //     title: "Deleted!",
+                            //     text: "Your file has been deleted.",
+                            //     icon: "success"
+                            // });
+                            // console.log(estado_nuevo);
+                        }
+                    );
+                }
+            });
+
+        
+    });
+
+
+
+
+    //evento buscar y listar comentario
+
+    function buscar_listar_comentario(ticket_id) {
+        const data = {
+            event_buscar_comment :      'event_buscar_comment',
+            ticket_id:                  ticket_id,
+        }
+
+        console.log(data);
+        $.post("Assets/ajax/Ajax.Incidencias.Comment.php", data,
+            function (response) { 
+                console.log(response);       
+                var j = JSON.parse(response);
+                $(".listas-comment").empty();
+                j.forEach(element => {
+                    
+                    var comments =`
+                        <li class="media">
+                            <label for="fecha" class="mr-2"><i class="fa fa-caret-right" aria-hidden="true"></i> ${element.created_at}</label>
+                            <div class="media-body">
+                                <p>${element.comment}</p>
+                            </div>
+                        </li>
+                    ` ;
+
+
+                $(".listas-comment").append(comments);
+                });
+
+            }
+        );
+    }
 
 })

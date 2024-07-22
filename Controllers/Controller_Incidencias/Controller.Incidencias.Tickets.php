@@ -18,4 +18,9 @@ class controller_tickets{
         return $res;
     }
 
+    public static function C_actualizar_estado($data){
+        $response           = modelo_incidencias_tickets::model_actualizar_estado($data);
+        return $response;
+    }
+    
 }

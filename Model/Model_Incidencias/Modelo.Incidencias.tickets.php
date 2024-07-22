@@ -57,8 +57,23 @@ class modelo_incidencias_tickets{
         
     }
 
-    public static function model_actualizar($data){
-        
+    public static function model_actualizar_estado($data){
+        try {
+            $sql = "
+                    UPDATE tickets SET status = ?,
+                    WHERE ticket_id = ? ;";
+            $call = conexion::conectar_incidencias()->prepare($sql);
+            $call->bindParam(1, $data['status'], PDO::PARAM_STR);
+            $call->bindParam(2, $data['ticket_id'], PDO::PARAM_STR);
+            if ($call->execute()) {
+                return "ok";
+            }else {
+                return "fallo";
+            }
+
+        } catch (PDOException $e) {
+            return "Erro: ".$e->getMessage();
+        }
     }
 
 

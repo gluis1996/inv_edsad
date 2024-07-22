@@ -9,7 +9,7 @@ class modelo_incidencias_ticket_comments{
     public static function buscar($data){
         try {
             $sql = "
-            SELECT * FROM sistemas_tikets.ticket_comments where ticket_id = ?;
+            SELECT * FROM ticket_comments  where ticket_id = ?;
             ";
             $call = conexion::conectar_incidencias()->prepare($sql);
             $call->bindParam(1, $data, PDO::PARAM_STR);
@@ -23,7 +23,7 @@ class modelo_incidencias_ticket_comments{
     public static function registrar($data){
         try {
             $sql = "
-            INSERT INTO `sistemas_tikets`.`ticket_comments`(`ticket_id`,`user_id`,`comment`,`created_at`)VALUES(?,?,?,?);
+            INSERT INTO  ticket_comments (`ticket_id`,`user_id`,`comment`,`created_at`)VALUES(?,?,?,?);
             ";
             $call = conexion::conectar_incidencias()->prepare($sql);
             $call->bindParam(1, $data['ticket_id'], PDO::PARAM_STR);

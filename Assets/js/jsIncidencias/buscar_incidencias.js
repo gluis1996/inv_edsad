@@ -9,7 +9,7 @@ $(document).ready(function () {
     // });
 
 
-    // Delegar el evento de click para los botones de eliminar
+    // evento para buscar y ver detalle de la incidencia
     $("#contenedor_tarjetas").on("click", ".btn_ver_detalles", function () {
         console.log($(this).attr('data-ticket-id'));
 

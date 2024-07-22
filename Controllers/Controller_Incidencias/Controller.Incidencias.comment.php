@@ -7,4 +7,9 @@ class controller_comment{
         return $response;
     }
 
+    public static function c_buscar($data){
+        $response = modelo_incidencias_ticket_comments::buscar($data);
+        return $response;
+    }
+
 }
