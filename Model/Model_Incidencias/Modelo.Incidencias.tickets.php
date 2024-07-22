@@ -78,3 +78,56 @@ class modelo_incidencias_tickets{
 
 
 }
+
+
+// DELIMITER $$
+
+// CREATE TRIGGER after_ticket_insert
+// AFTER INSERT ON tickets
+// FOR EACH ROW
+// BEGIN
+//     INSERT INTO ticket_activities (ticket_id, user_id, activity_type, description, created_at)
+//     VALUES (NEW.ticket_id, NEW.created_by, 'creado', CONCAT('Ticket creado con título: ', NEW.title), NEW.created_at);
+// END$$
+
+// DELIMITER ;
+
+
+// DELIMITER $$
+
+// CREATE TRIGGER after_ticket_assign
+// AFTER UPDATE ON tickets
+// FOR EACH ROW
+// BEGIN
+//     IF NEW.assigned_to <> OLD.assigned_to THEN
+//         INSERT INTO ticket_activities (ticket_id, user_id, activity_type, description, created_at)
+//         VALUES (NEW.ticket_id, NEW.assigned_to, 'asignado', CONCAT('Ticket asignado a usuario ID: ', NEW.assigned_to), NEW.updated_at);
+//     END IF;
+// END$$
+
+// DELIMITER ;
+
+
+// DELIMITER $$
+
+// CREATE TRIGGER after_ticket_status_update
+// AFTER UPDATE ON tickets
+// FOR EACH ROW
+// BEGIN
+//     IF NEW.status <> OLD.status THEN
+//         INSERT INTO ticket_activities (ticket_id, user_id, activity_type, description, created_at)
+//         VALUES (NEW.ticket_id, NEW.assigned_to, 'actualizado', CONCAT('Estado del ticket cambiado a: ', NEW.status), NEW.updated_at);
+//     END IF;
+
+//     IF NEW.status = 'resuelto' THEN
+//         INSERT INTO ticket_activities (ticket_id, user_id, activity_type, description, created_at)
+//         VALUES (NEW.ticket_id, NEW.assigned_to, 'resuelto', 'El ticket ha sido resuelto.', NEW.updated_at);
+//     END IF;
+
+//     IF NEW.status = 'cerrado' THEN
+//         INSERT INTO ticket_activities (ticket_id, user_id, activity_type, description, created_at)
+//         VALUES (NEW.ticket_id, NEW.assigned_to, 'cerrado', 'El ticket ha sido cerrado.', NEW.updated_at);
+//     END IF;
+// END$$
+
+// DELIMITER ;
