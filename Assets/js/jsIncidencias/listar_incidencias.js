@@ -1,9 +1,23 @@
 $(document).ready(function () {
 
-    listar_incidencias();
+   listar_incidencias();
+    //listar_incidencias_abiertas();
+
+    $('.btn_listar_ticket_abiertos').click(function (e) { 
+        e.preventDefault();
+        listar_incidencias('abierto');
+    });
+    $('.btn_listar_ticket_en_proceso').click(function (e) { 
+        e.preventDefault();
+        listar_incidencias('en proceso');
+    });
+    $('.btn_listar_ticket_cerrados').click(function (e) { 
+        e.preventDefault();
+        listar_incidencias('cerrado');
+    });
 
     
-    function listar_incidencias() {
+    function listar_incidencias(estado) {
         const data = {
             listar_tickets      :   "listar_tickets",
         }
@@ -11,11 +25,13 @@ $(document).ready(function () {
         $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data, function (response) {
                 var resultado = JSON.parse(response);
                 console.log(resultado);
-        
-                resultado.forEach(reco => {
-        
+                // Filtrar los tickets que están en estado 'abierto'
+                var tickets_abiertos = resultado.filter(reco => reco.status === estado);        
+                $("#contenedor_tarjetas").empty();
+                tickets_abiertos.forEach(reco => {
                 var estado = '<span class="badge badge-pill badge-primary">Primary</span>';
                 
+
                 if (reco.status == 'en proceso') {
                     estado = `<span class="badge badge-pill badge-danger">${reco.status}</span>`;
                 } else if (reco.status == 'resuelto') {
@@ -68,6 +84,9 @@ $(document).ready(function () {
             }
         );
     }
+
+
+
     
 })
 

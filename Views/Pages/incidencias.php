@@ -21,7 +21,7 @@
     <section class="content">
 
         <div class="form-row">
-            <div class="card">
+            <div class="card" style="width: 100%;">
                 <div class="card-header bg-primary text-white">
                     <h3 class="card-title">Lista de Incidencias</h3>
                 </div>
@@ -34,6 +34,9 @@
                         <div class="col">
                             <button type="button" class="btn btn-success btn-sm mb-2 btn_buscar_historico">Buscar</button>
                             <button type="button" class="btn btn-success btn-sm mb-2 btn_buscar_historico" data-toggle="modal" data-target="#modal_registrar_incidencia">+</button>
+                            <button type="button" class="btn btn-primary btn-sm mb-2 btn_listar_ticket_abiertos" >abierto</button>
+                            <button type="button" class="btn btn-danger btn-sm mb-2 btn_listar_ticket_en_proceso" >en proceso</button>
+                            <button type="button" class="btn btn-success btn-sm mb-2 btn_listar_ticket_cerrados" >cerrado</button>
                         </div>
                     </div>
 
