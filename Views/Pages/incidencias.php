@@ -68,17 +68,17 @@
             <div class="modal-body" style="padding: 20px;">
                 <div class="form-row">
                     <div class="col">
-                        <input type="text" class="form-control" id="h_id_historico" placeholder="Buscar equipo x Codigo Patrimonial" value="303030303030CD">
+                        <input type="text" class="form-control" id="codigo_patrimonial_buscar" placeholder="Buscar equipo x Codigo Patrimonial" >
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-success mb-2 btn_buscar_historico">Buscar</button>
+                        <button type="button" class="btn btn-success mb-2 btn_buscar_equipo_asigando">Buscar</button>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col mt-6">
                         <label for="nombre">Empleado</label> <br>
-                        <label for="nombre">Luis Miguel Gonzalo Valdez</label>
+                        <label for="nombre" id="incidencias_nombre_empleado">Luis Miguel Gonzalo Valdez</label>
                     </div>
                     <div class="col mt-6">
                         <label for="nombre">Area</label> <br>
@@ -165,6 +165,39 @@
 
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal asignar incidencia -->
+<div class="modal fade" id="modal_asignacion_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content -->
+        <div class="modal-content" style="border-radius: 10px;">
+            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
+                <h5 class="modal-title" id="detalle_title">Asignar a un personal</h5>
+                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="card-activity" style="font-size: 12px;">
+                    <div class="form-group">
+                        <label for="my-select">Seleccione a un encargado</label>
+                        <select id="my-select" class="form-control" name="">
+                            <option>Text</option>
+                            <option>A</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                            <option>Text</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary btn-sm" id="btn_asignar
+                ">Asignar</button>
             </div>
         </div>
     </div>

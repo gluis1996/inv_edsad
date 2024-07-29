@@ -60,12 +60,13 @@ $(document).ready(function () {
 
     //cambia estado de la incidencia:
 
-    $('#contenedor_tarjetas').on('change', '#select_estado_incidencia', function (e) {
+    $('#contenedor_tarjetas').on('change', '.select_estado_incidencia', function (e) {
         e.preventDefault();
         var id_usuario = $("#usuario_sesion").attr("id_lg_usuario");
-        var estado_nuevo = $("#select_estado_incidencia").val();
+        var estado_nuevo = $(this).val();
         var id_ticket = $(this).attr(("data-ticket-id"));
 
+        
         const data = {
             event_actualizar_estado: 'event_actualizar_estado',
             datos: {
@@ -98,7 +99,7 @@ $(document).ready(function () {
                                 //Actualizar visualmente el estado de la tarjeta
                                 var tarjeta = $("#ticket_" + id_ticket);
                                 tarjeta.find('.status span').removeClass('badge-danger badge-success badge-secondary badge-primary');
-
+                                console.log(estado_nuevo);
                                 if (estado_nuevo == 'en proceso') {
                                     tarjeta.find('.status span').addClass('badge-danger').text(estado_nuevo);
                                 } else if (estado_nuevo == 'resuelto') {
