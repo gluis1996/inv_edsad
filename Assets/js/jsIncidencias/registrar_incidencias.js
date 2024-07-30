@@ -39,7 +39,9 @@ $(document).ready(function () {
                         throw new Error('Employee not found');
                     }
         
-                    $("#incidencias_nombre_empleado").text(resul.nombres);
+                    $("#incidencias_nombre_empleado").val(resul.nombres);
+                    $("#incidencia_nombre_equipo").val(js.equipo);
+
                 } catch (error) {
                     // Captura el error y muestra un mensaje de error
                     console.error('Error:', error.message);

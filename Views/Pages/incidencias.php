@@ -34,9 +34,9 @@
                         <div class="col">
                             <button type="button" class="btn btn-success btn-sm mb-2 btn_buscar_historico">Buscar</button>
                             <button type="button" class="btn btn-success btn-sm mb-2 btn_buscar_historico" data-toggle="modal" data-target="#modal_registrar_incidencia">+</button>
-                            <button type="button" class="btn btn-primary btn-sm mb-2 btn_listar_ticket_abiertos" >abierto</button>
-                            <button type="button" class="btn btn-danger btn-sm mb-2 btn_listar_ticket_en_proceso" >en proceso</button>
-                            <button type="button" class="btn btn-success btn-sm mb-2 btn_listar_ticket_cerrados" >cerrado</button>
+                            <button type="button" class="btn btn-primary btn-sm mb-2 btn_listar_ticket_abiertos">abierto</button>
+                            <button type="button" class="btn btn-danger btn-sm mb-2 btn_listar_ticket_en_proceso">en proceso</button>
+                            <button type="button" class="btn btn-success btn-sm mb-2 btn_listar_ticket_cerrados">cerrado</button>
                         </div>
                     </div>
 
@@ -68,7 +68,7 @@
             <div class="modal-body" style="padding: 20px;">
                 <div class="form-row">
                     <div class="col">
-                        <input type="text" class="form-control" id="codigo_patrimonial_buscar" placeholder="Buscar equipo x Codigo Patrimonial" >
+                        <input type="text" class="form-control" id="codigo_patrimonial_buscar" placeholder="Buscar equipo x Codigo Patrimonial">
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-success mb-2 btn_buscar_equipo_asigando">Buscar</button>
@@ -76,34 +76,27 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="col mt-6">
-                        <label for="nombre">Empleado</label> <br>
-                        <label for="nombre" id="incidencias_nombre_empleado">Luis Miguel Gonzalo Valdez</label>
+                    <div class="input-group input-group-sm mb-1">
+                        <span class="input-group-text">Empleado</span>
+                        <input type="text" aria-label="Sizing example input"  id="incidencias_nombre_empleado" class="form-control">
                     </div>
-                    <div class="col mt-6">
-                        <label for="nombre">Area</label> <br>
-                        <label for="nombre">JEFATURA DE LA CARRERA PROFESIONAL DE FRMACIÓN ARTÍSTICA ,
-                            ESPECIALIDAD TEATRO MENCIÓN DISEÑO ESCENOGRÁFICO</label>
+                    <div class="input-group input-group-sm mb-1">
+                        <span class="input-group-text">Area</span>
+                        <input type="text" aria-label="Sizing example input"  class="form-control">
                     </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col mt-6">
-                        <label for="nombre">Equipo</label> <br>
-                        <label for="nombre">GWN7610 PUNTO DE ACCESO INALAMBRICO - ACCESS POINT WIRELESS GRANDSTREAM</label>
+                    <div class="input-group input-group-sm mb-1">
+                        <span class="input-group-text">Cod. Patri.</span>
+                        <input type="text" aria-label="Sizing example input"  class="form-control">
                     </div>
-                    <div class="col mt-6">
-                        <label for="fechas">Fechas</label>
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="incio">Inicio</label>
-                                <input type="date" class="form-control" name="" id="">
-                            </div>
-                        </div>
+                    <div class="input-group input-group-sm mb-1">
+                        <span class="input-group-text">Equipo</span>
+                        <input type="text" aria-label="Sizing example input"  id="incidencia_nombre_equipo" class="form-control">
+                    </div>
+                    <div class="input-group input-group-sm mb-1">
+                        <span class="input-group-text">Fecha</span>
+                        <input type="date" class="form-control">
                     </div>
                 </div>
-
-
 
                 <div class="col mt-5">
                     <label for="Datos Local">Detalle</label>
