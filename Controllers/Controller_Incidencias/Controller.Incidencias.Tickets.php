@@ -23,4 +23,14 @@ class controller_tickets{
         return $response;
     }
     
+    public static function C_agregar($data){
+        $response           = modelo_incidencias_tickets::model_agregar($data);
+        return $response;
+    }
+        
+    public static function C_eliminar($data){
+        $response           = modelo_incidencias_tickets::model_eliminar($data);
+        return $response;
+    }
+    
 }

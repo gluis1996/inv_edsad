@@ -78,39 +78,52 @@
                 <div class="form-row">
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Empleado</span>
-                        <input type="text" aria-label="Sizing example input"  id="incidencias_nombre_empleado" class="form-control">
-                    </div>
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text">Area</span>
-                        <input type="text" aria-label="Sizing example input"  class="form-control">
+                        <input type="text" aria-label="Sizing example input"  id="ticket_nombre_empleado" class="form-control">
                     </div>
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Cod. Patri.</span>
-                        <input type="text" aria-label="Sizing example input"  class="form-control">
+                        <input type="text" aria-label="Sizing example input" id="ticket_cod_patrimonial"  class="form-control">
                     </div>
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Equipo</span>
-                        <input type="text" aria-label="Sizing example input"  id="incidencia_nombre_equipo" class="form-control">
+                        <input type="text" aria-label="Sizing example input"  id="ticket_nombre_equipo" class="form-control">
                     </div>
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Fecha</span>
-                        <input type="date" class="form-control">
+                        <input type="date" class="form-control" id="ticket_fecha">
+                    </div>
+                    <div class="input-group input-group-sm mb-1">
+                        <span class="input-group-text">Titulo</span>
+                        <input type="text" class="form-control" id="ticket_titulo">
+                    </div>
+                    <div class="input-group input-group-sm mb-1">
+                        <span class="input-group-text">Descripcion</span>
+                        <input type="text" class="form-control" id="ticket_descripcion">
+                    </div>
+                    <div class="input-group input-group-sm mb-1">
+                        <span class="input-group-text">Asignar</span>
+                        <select class="form-control" name="" id="ticket_asignacion">
+                            <option value="" selected>seleccione</option>
+                            <option value="a">seleccion a</option>
+                            <option value="b">seleccion a</option>
+                            <option value="c">seleccion a</option>
+                            <option value="d">seleccion a</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="col mt-5">
-                    <label for="Datos Local">Detalle</label>
+                <!-- <div class="col mt-5">
                     <div class="form-group">
                         <label for="incidencia_detalle">Detalle</label>
                         <textarea id="incidencia_detalle" class="form-control" name="" rows="3"></textarea>
 
                         <button type="button" class="form-control btn btn-success btn_registrar_incidencias">Registrar</button>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="btn_registrar_incidencia">Registrar</button>
+                <button type="button" class="btn btn-primary" id="btn_registrar_ticket">Registrar</button>
             </div>
         </div>
     </div>

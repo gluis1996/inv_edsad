@@ -2,13 +2,13 @@ $(document).ready(function () {
 
     //buscar incidencia
 
-    $('.btn_buscar_equipo_asigando').click(function (e) { 
+    $('.btn_buscar_equipo_asigando').click(function (e) {
         e.preventDefault();
         var id_asignacion = $("#codigo_patrimonial_buscar").val();
 
-        
+
         const data = {
-            as_buscar : 'as_buscar',
+            as_buscar: 'as_buscar',
             id_detalle_asignacion: id_asignacion,
         }
 
@@ -18,29 +18,31 @@ $(document).ready(function () {
             function (response) {
                 try {
                     // Verifica si la respuesta no está vacía
+
                     if (!response) {
                         throw new Error('Response is empty');
                     }
-        
+
                     var js = JSON.parse(response);
                     console.log(js);
-        
+
                     // Verifica si js tiene la estructura esperada
                     if (!js.idempleado || !js.empleados) {
                         throw new Error('Invalid response structure');
                     }
-        
+
                     var id_empleado = js.idempleado;
                     var emp = js.empleados;
                     var resul = emp.find(item => item.idempleado == id_empleado);
-        
+
                     // Verifica si se encontró el empleado
                     if (!resul) {
                         throw new Error('Employee not found');
                     }
-        
-                    $("#incidencias_nombre_empleado").val(resul.nombres);
-                    $("#incidencia_nombre_equipo").val(js.equipo);
+
+                    $("#ticket_nombre_empleado").val(resul.nombres);
+                    $("#ticket_nombre_equipo").val(js.equipo);
+                    $("#ticket_cod_patrimonial").val(js.cod_patrimonial);
 
                 } catch (error) {
                     // Captura el error y muestra un mensaje de error
@@ -51,12 +53,46 @@ $(document).ready(function () {
 
     });
 
-    $(".btn_registrar_incidencias").click(function (e) {
+    $("#btn_registrar_ticket").click(function (e) {
         e.preventDefault();
 
-        
+        var titulo = $("#ticket_titulo").val();
+        var descripcion = $("#ticket_descripcion").val();
+
+        var creado_por = $("#usuario_sesion").attr("id_lg_usuario");
+        var equipo = $("#ticket_cod_patrimonial").val();
+        var fecha_creacion = $("#ticket_fecha").val();
+        var asignado_a = $("#ticket_asignacion").val();
+        var estado = '';
+        if (asignado_a != "") {
+            estado = 'en proceso';
+        } else {
+            estado = 'abierto';
+        }
+
+        const data = {
+            event_ticket_registrar: 'event_ticket_registrar',
+            datos: {
+                p_title: titulo,
+                p_description: descripcion,
+                p_status: estado,
+                p_created_by: creado_por,
+                p_assigned_to: asignado_a,
+                p_equipment_id: equipo,
+                p_fecha: fecha_creacion,
+            }
+        }
+        console.log(data);
+
+        $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
+            function (response) {
+                console.log(response);
+            }
+        );
+
+
 
     });
 
-    
+
 });

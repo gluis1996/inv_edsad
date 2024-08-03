@@ -44,7 +44,7 @@ $(document).ready(function () {
         
                 var nuevoHtml = `
                 <div class="col mb-4" style="font-size: 12px">
-                    <div class="card" style = "height: 350px" id="ticket_${reco.ticket_id}">
+                    <div class="card" style = "height: 350px" id="ticket_${reco.ticket_id}"  >
                         <div class="card-header">
                             <div class="form-row d-flex justify-content-between">
                                 <h5 class="flex-grow-1">#${reco.ticket_id}</h5>
@@ -84,8 +84,6 @@ $(document).ready(function () {
             }
         );
     }
-
-
 
     
 })

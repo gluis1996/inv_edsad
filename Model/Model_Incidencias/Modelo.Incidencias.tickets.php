@@ -11,12 +11,13 @@ class modelo_incidencias_tickets{
             select 
             t.ticket_id,t.title,t.description,t.status,t.priority,
             t.created_by,u.username as creadopor,t.assigned_to,u2.username as asignadoa,
-            t.equipment_id,e.description as nombreequipo,
+            t.equipment_id, 
+            (select concat(descripcion,' ', modelo) from equipos_informa.equipos where idequipos = eqasig.idequipos)  as nombreequipo,
             t.created_at, t.updated_at
             from tickets t
             inner join  users as u on t.created_by=u.user_id 
-            inner join  users as u2 on t.assigned_to=u2.user_id 
-            inner join equipment as e on t.equipment_id=e.equipment_id
+            inner join  users as u2 on t.assigned_to=u2.user_id
+            inner join equipos_informa.detalle_asignacion as eqasig on eqasig.cod_patrimonial=t.equipment_id
             where t.ticket_id = ?;
             ";
             $call = conexion::conectar_incidencias()->prepare($sql);
@@ -34,12 +35,11 @@ class modelo_incidencias_tickets{
             select 
             t.ticket_id,t.title,t.description,t.status,t.priority,
             t.created_by,u.username as creadopor,t.assigned_to,u2.username as asignadoa,
-            t.equipment_id,e.description as nombreequipo,
+            t.equipment_id,t.equipment_id as nombreequipo,
             t.created_at, t.updated_at
             from tickets t
             inner join  users as u on t.created_by=u.user_id 
-            inner join  users as u2 on t.assigned_to=u2.user_id 
-            inner join equipment as e on t.equipment_id=e.equipment_id;
+            LEFT JOIN users u2 ON t.assigned_to = u2.user_id;
             ";
             $call = conexion::conectar_incidencias()->prepare($sql);
             $call->execute();
@@ -50,11 +50,41 @@ class modelo_incidencias_tickets{
     }
 
     public static function model_agregar($data){
-        
+        try {
+            $sql = "CALL sp_regtistrar_tTicket(?,?,?,?,?,?,?)";
+            $call = conexion::conectar_incidencias()->prepare($sql);
+            $call->bindParam(1, $data['p_title'], PDO::PARAM_STR);
+            $call->bindParam(2, $data['p_description'], PDO::PARAM_STR);
+            $call->bindParam(3, $data['p_status'], PDO::PARAM_STR);
+            $call->bindParam(4, $data['p_created_by'], PDO::PARAM_STR);
+            $call->bindParam(5, $data['p_assigned_to'], PDO::PARAM_STR);
+            $call->bindParam(6, $data['p_equipment_id'], PDO::PARAM_STR);
+            $call->bindParam(7, $data['p_fecha'], PDO::PARAM_STR);
+            if ($call->execute()) {
+                return "ok";
+            }else {
+                return "fallo";
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
-    public static function model_eliminar(){
-        
+    public static function model_eliminar($data){
+        try {
+            $sql = "DELETE FROM `sistemas_tikets`.`tickets`
+                    WHERE ticket_id = ?;";
+            $call = conexion::conectar_incidencias()->prepare($sql);
+            $call->bindParam(1, $data, PDO::PARAM_STR);
+            if ($call->execute()) {
+                return "ok";
+            }else {
+                return "fallo";
+            }
+
+        } catch (PDOException $e) {
+            return "Erro: ".$e->getMessage();
+        }
     }
 
     public static function model_actualizar_estado($data){
@@ -130,3 +160,40 @@ class modelo_incidencias_tickets{
 // END$$
 
 // DELIMITER ;
+
+
+// 02/08_/09
+// DELIMITER $$
+
+// CREATE PROCEDURE sp_regtistrar_tTicket(
+//     IN p_title VARCHAR(100),
+//     IN p_description TEXT,
+//     IN p_status ENUM('abierto', 'en proceso', 'resuelto', 'cerrado'),
+//     IN p_created_by INT,
+//     IN p_assigned_to INT,
+//     IN p_equipment_id INT,
+//     in p_fecha	date
+// )
+// BEGIN
+//     INSERT INTO tickets (
+//         title, 
+//         description, 
+//         status, 
+//         created_by, 
+//         assigned_to, 
+//         equipment_id, 
+//         created_at
+//     ) VALUES (
+//         p_title, 
+//         p_description, 
+//         p_status, 
+//         p_created_by, 
+//         p_assigned_to, 
+//         p_equipment_id, 
+//         p_fecha
+//     );
+// END$$
+
+// DELIMITER ;
+
+
