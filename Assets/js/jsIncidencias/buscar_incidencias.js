@@ -17,11 +17,11 @@ $(document).ready(function () {
             listar_tickets_detalle : 'listar_tickets_detalle',
             detalle_id_tickets : $(this).attr('data-ticket-id'),
         }
-        
+        console.log(data);
         $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
             function (response) {
                 var j = JSON.parse(response);
-                //console.log(j);
+                console.log(j);
                 j.tickets.forEach(element => {
                     // console.log(element);
                     $("#detalles_ticket").empty();

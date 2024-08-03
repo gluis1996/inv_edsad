@@ -1,6 +1,4 @@
 $(document).ready(function () {
-
-
     //registrar Comentario
     $("#detalles_ticket").on('click', '.btn_añadir_comentario', function (e) {
         e.preventDefault();
@@ -66,7 +64,7 @@ $(document).ready(function () {
         var estado_nuevo = $(this).val();
         var id_ticket = $(this).attr(("data-ticket-id"));
 
-        
+
         const data = {
             event_actualizar_estado: 'event_actualizar_estado',
             datos: {
@@ -131,6 +129,44 @@ $(document).ready(function () {
 
     });
 
+    $("#contenedor_tarjetas").on('click', '.btn_asignar_agente', function (e) {
+        e.preventDefault();
+        var id_ticket = $(this).attr(("data-ticket-id"));
+        $("#id_oculto_canbio").val(id_ticket);
+        console.log(id_ticket);
+        llenar_select_empleado();
+    });
+
+
+
+    $("#btn_tiket_asignar").click(function (e) {
+        e.preventDefault();
+        var id_ticket = $('#id_oculto_canbio').val();
+        var empleado = $("#ticket_asignacion_empleado").val();
+
+        const data = {
+            event_asignar_ticket: 'event_asignar_ticket',
+            datos: {
+                id_ticket: id_ticket,
+                id_empleado: empleado,
+            }
+        }
+
+        console.log(data);
+
+        $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
+            function (response) {
+                console.log(response);
+            }
+        );
+    });
+
+
+
+
+
+
+
 
 
 
@@ -169,6 +205,28 @@ $(document).ready(function () {
 
             }
         );
+    }
+
+    //llenar combo box para asignacion
+
+    function llenar_select_empleado() {
+        const data = {
+            listar_empleado: "listar_empleado",
+        };
+        $.ajax({
+            type: "POST",
+            data: data,
+            url: "Assets/ajax/Ajax.asignacion.php",
+            success: function (respose) {
+                var js = JSON.parse(respose);
+                // Limpiar las opciones actuales del select de oficinas
+                $("#ticket_asignacion_empleado").empty().append('<option value="" selected>Seleccione un equipo</option>');
+                $.each(js, function (index, fila) {
+                    $("#ticket_asignacion_empleado").append('<option value="' + fila.idempleado + '">' + fila.nombres + ' ' + fila.apellidos + "</option>"
+                    );
+                });
+            },
+        });
     }
 
 })

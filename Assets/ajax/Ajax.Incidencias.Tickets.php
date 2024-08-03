@@ -60,6 +60,13 @@ class ajax_incidencias_tickets{
             echo json_encode($res);
         }
     }
+    
+    public function ajax_actualizar_tickets() {
+        if ($this->accion == "event_asignar_ticket") {
+            $res = controller_tickets::C_actualizar_estado($this->datos);
+            echo json_encode($res);
+        }
+    }
 
 }
 
@@ -102,4 +109,11 @@ if (isset($_POST['event_eliminar_ticket'])) {
     $res->accion    = $_POST['event_eliminar_ticket'];
     $res->datos     = $_POST['id_ticket'];
     $res->ajax_eliminar_tickets();
+}
+
+if (isset($_POST['event_asignar_ticket'])) {
+    $res            =   new ajax_incidencias_tickets();
+    $res->accion    = $_POST['event_asignar_ticket'];
+    $res->datos     = $_POST['datos'];
+    $res->ajax_actualizar_tickets();
 }

@@ -129,8 +129,6 @@
     </div>
 </div>
 
-
-
 <!-- Modal detalle incidencia -->
 <div class="modal fade" id="modal_detalle_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -189,21 +187,15 @@
                 <div class="card-activity" style="font-size: 12px;">
                     <div class="form-group">
                         <label for="my-select">Seleccione a un encargado</label>
-                        <select id="my-select" class="form-control" name="">
-                            <option>Text</option>
-                            <option>A</option>
-                            <option>Text</option>
-                            <option>Text</option>
-                            <option>Text</option>
-                        </select>
+                        <select id="ticket_asignacion_empleado" class="form-control" name=""> </select>
+                        <input type="hidden" id="id_oculto_canbio">
                     </div>
                 </div>
             </div>
 
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary btn-sm" id="btn_asignar
-                ">Asignar</button>
+                <button type="button" class="btn btn-primary btn-sm" id="btn_tiket_asignar">Asignar</button>
             </div>
         </div>
     </div>

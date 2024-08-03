@@ -9,17 +9,22 @@ class modelo_incidencias_tickets{
         try {
             $sql = "
             select 
-            t.ticket_id,t.title,t.description,t.status,t.priority,
-            t.created_by,u.username as creadopor,t.assigned_to,u2.username as asignadoa,
+            t.ticket_id,
+            t.title,
+            t.description,
+            t.status,
+            t.priority,
+            t.created_by,
+            (select nombres from equipos_informa.empleados where idempleado = t.created_by) as creadopor,
+            t.assigned_to,
+            (select nombres from equipos_informa.empleados where idempleado = t.assigned_to) as asignadoa,
             t.equipment_id, 
             (select concat(descripcion,' ', modelo) from equipos_informa.equipos where idequipos = eqasig.idequipos)  as nombreequipo,
             t.created_at, t.updated_at
             from tickets t
             inner join  users as u on t.created_by=u.user_id 
-            inner join  users as u2 on t.assigned_to=u2.user_id
             inner join equipos_informa.detalle_asignacion as eqasig on eqasig.cod_patrimonial=t.equipment_id
-            where t.ticket_id = ?;
-            ";
+            where t.ticket_id = ?;";
             $call = conexion::conectar_incidencias()->prepare($sql);
             $call->bindParam(1, $data, PDO::PARAM_STR);
             $call->execute();
@@ -33,13 +38,21 @@ class modelo_incidencias_tickets{
         try {
             $sql = "
             select 
-            t.ticket_id,t.title,t.description,t.status,t.priority,
-            t.created_by,u.username as creadopor,t.assigned_to,u2.username as asignadoa,
-            t.equipment_id,t.equipment_id as nombreequipo,
+            t.ticket_id,
+            t.title,
+            t.description,
+            t.status,
+            t.priority,
+            t.created_by,
+            (select nombres from equipos_informa.empleados where idempleado = t.created_by) as creadopor,
+            t.assigned_to,
+            (select nombres from equipos_informa.empleados where idempleado = t.assigned_to) as asignadoa,
+            t.equipment_id, 
+            (select concat(descripcion,' ', modelo) from equipos_informa.equipos where idequipos = eqasig.idequipos)  as nombreequipo,
             t.created_at, t.updated_at
             from tickets t
             inner join  users as u on t.created_by=u.user_id 
-            LEFT JOIN users u2 ON t.assigned_to = u2.user_id;
+            inner join equipos_informa.detalle_asignacion as eqasig on eqasig.cod_patrimonial=t.equipment_id;
             ";
             $call = conexion::conectar_incidencias()->prepare($sql);
             $call->execute();
@@ -89,17 +102,15 @@ class modelo_incidencias_tickets{
 
     public static function model_actualizar_estado($data){
         try {
-            $sql = "UPDATE tickets SET status = ?
-                    WHERE ticket_id = ? ;";
+            $sql = "call sp_asignacion_tTicket(?,?)";
             $call = conexion::conectar_incidencias()->prepare($sql);
-            $call->bindParam(1, $data['status'], PDO::PARAM_STR);
-            $call->bindParam(2, $data['ticket_id'], PDO::PARAM_STR);
+            $call->bindParam(1, $data['id_ticket'], PDO::PARAM_STR);
+            $call->bindParam(2, $data['id_empleado'], PDO::PARAM_STR);
             if ($call->execute()) {
                 return "ok";
             }else {
                 return "fallo";
             }
-
         } catch (PDOException $e) {
             return "Erro: ".$e->getMessage();
         }
@@ -196,4 +207,16 @@ class modelo_incidencias_tickets{
 
 // DELIMITER ;
 
+//actualizar estado
 
+// DELIMITER $$
+
+// CREATE PROCEDURE sp_asignacion_tTicket(
+//     in p_ticket_id	int(11),
+//     IN p_id_empleado text
+// )
+// BEGIN
+//     update tickets set assigned_to = p_id_empleado, status= 'en proceso' where ticket_id = p_ticket_id;
+// END$$
+
+// DELIMITER ;

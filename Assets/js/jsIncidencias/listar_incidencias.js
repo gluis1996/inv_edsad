@@ -59,7 +59,7 @@ $(document).ready(function () {
                             <button class="btn btn-danger btn_eliminar btn-sm"  data-ticket-id="${reco.ticket_id}"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             <!-- Botón para asignar agente -->
                             <button class="btn btn-secondary btn_asignar_agente btn-sm" data-toggle="modal" data-target="#modal_asignacion_incidencia" id="btn_buscar_id_incidencias" data-ticket-id="${reco.ticket_id}"><i class="fa fa-users" aria-hidden="true"></i></button>
-                            <button class="btn btn-secondary btn_asignar_agente btn-sm btn_activity" data-toggle="modal" data-target="#modal_activity_incidencia" data-ticket-id="${reco.ticket_id}" ><i class="fa fa-history" aria-hidden="true"></i></button>
+                            <button class="btn btn-secondary btn-sm btn_activity" data-toggle="modal" data-target="#modal_activity_incidencia" data-ticket-id="${reco.ticket_id}" ><i class="fa fa-history" aria-hidden="true"></i></button>
                         </div>
                         <div class="card-footer">
                             <p class="text-primary">Asignado: <span class="assigned_to">${reco.asignadoa}</span></p>
