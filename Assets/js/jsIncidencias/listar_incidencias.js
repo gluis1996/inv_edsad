@@ -69,7 +69,6 @@ $(document).ready(function () {
                             <select class="form-control select_estado_incidencia" id="select_estado_incidencia${reco.ticket_id}" data-ticket-id="${reco.ticket_id}">
                                 <option value="abierto" ${reco.status === 'abierto' ? 'selected' : ''}>Abierto</option>
                                 <option value="en proceso" ${reco.status === 'en proceso' ? 'selected' : ''}>En proceso</option>
-                                <option value="resuelto" ${reco.status === 'resuelto' ? 'selected' : ''}>Resuelto</option>
                                 <option value="cerrado" ${reco.status === 'cerrado' ? 'selected' : ''}>Cerrado</option>
                             </select>       
                             

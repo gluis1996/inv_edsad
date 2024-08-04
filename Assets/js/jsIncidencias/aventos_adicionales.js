@@ -162,18 +162,6 @@ $(document).ready(function () {
     });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     //evento buscar y listar comentario
 
     function buscar_listar_comentario(ticket_id) {

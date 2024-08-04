@@ -146,7 +146,8 @@
 
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary btn-sm" id="####">Registrar</button>
+                <button type="button" class="btn btn-primary btn-sm" id="####">Registrar</button>                
+                <button type="button" class="btn btn-primary btn-sm" id="btn_cerrar_ticket">Cerrar Ticket</button>
             </div>
         </div>
     </div>
