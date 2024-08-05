@@ -40,12 +40,39 @@
                         </div>
                     </div>
 
-                    <div class="col mt-5">
+                    <!-- <div class="col mt-5">
                         <div class="row row-cols-1 row-cols-md-4" id="contenedor_tarjetas">
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
+            </div>
+
+
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Lista de Incidencias</h5>
+                <table class="table table-striped table-bordered" style="width:100%; font-size: 12px;" id="tablaticket">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">ID</th>
+                            <th style="text-align: center;">TITULO</th>
+                            <th style="text-align: center;">DESCRIPCION</th>
+                            <th style="text-align: center;">ESTADO</th>
+                            <th style="text-align: center;">PRIORIDAD</th>
+                            <th style="text-align: center;">CREADO POR</th>
+                            <th style="text-align: center;">ASGINADO A</th>
+                            <th style="text-align: center;">EQUIPO</th>
+                            <th style="text-align: center;">F. CREADO</th>
+                            <th style="text-align: center;">F. ACTUALIZADO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -78,15 +105,15 @@
                 <div class="form-row">
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Empleado</span>
-                        <input type="text" aria-label="Sizing example input"  id="ticket_nombre_empleado" class="form-control">
+                        <input type="text" aria-label="Sizing example input" id="ticket_nombre_empleado" class="form-control">
                     </div>
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Cod. Patri.</span>
-                        <input type="text" aria-label="Sizing example input" id="ticket_cod_patrimonial"  class="form-control">
+                        <input type="text" aria-label="Sizing example input" id="ticket_cod_patrimonial" class="form-control">
                     </div>
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Equipo</span>
-                        <input type="text" aria-label="Sizing example input"  id="ticket_nombre_equipo" class="form-control">
+                        <input type="text" aria-label="Sizing example input" id="ticket_nombre_equipo" class="form-control">
                     </div>
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Fecha</span>
@@ -146,7 +173,7 @@
 
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary btn-sm" id="####">Registrar</button>                
+                <button type="button" class="btn btn-primary btn-sm" id="####">Registrar</button>
                 <button type="button" class="btn btn-primary btn-sm" id="btn_cerrar_ticket">Cerrar Ticket</button>
             </div>
         </div>

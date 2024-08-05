@@ -8,6 +8,7 @@
     <title>Gestion de edsan</title>
     <link rel="stylesheet" href="Assets/css/global.css">
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+    <script src="Views/Resources/plugins/datatablesv2/jQuery-3.7.0/jquery-3.7.0.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
 
 
@@ -44,6 +45,8 @@
     <link href="Views/Resources/plugins/datatablesv2/Buttons-3.0.1/css/buttons.bootstrap5.min.css" rel="stylesheet">
     <link href="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/css/responsive.bootstrap5.min.css" rel="stylesheet">
     <link href="Views/Resources/plugins/datatablesv2/RowGroup-1.5.0/css/rowGroup.bootstrap5.min.css" rel="stylesheet">
+    <link href="Views/Resources/plugins/datatablesv2/DataTables-2.0.3/css/dataTables.dataTables.css" rel="stylesheet">
+    
 
 
 
@@ -116,6 +119,7 @@
     <script src="Views/Resources/plugins/sweetalert2/sweetalert2.2.js"></script>
 
 
+    
     <!--Datatables JS-->
 
 
@@ -132,8 +136,9 @@
     <script src="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/js/dataTables.responsive.min.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/js/responsive.bootstrap5.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/RowGroup-1.5.0/js/dataTables.rowGroup.min.js"></script>
+    <script src="Views/Resources/plugins/datatablesv2/DataTables-2.0.3/js/dataTables.js"></script>
 
-
+    
 
     <?php
     $scripts = [
@@ -150,7 +155,7 @@
         'registroequipos' => ['Assets/js/marca.js','Assets/js/equipo.js',],
         'adquisicionequipos' => ['Assets/js/adquisicion.js'],
         'incidencias' => ['Assets/js/jsIncidencias/listar_incidencias.js' ,'Assets/js/jsIncidencias/buscar_incidencias.js',  'Assets/js/jsIncidencias/registrar_incidencias.js',  'Assets/js/jsIncidencias/buscar_ticket_activity.js',
-                          'Assets/js/jsIncidencias/aventos_adicionales.js', 'Assets/js/jsIncidencias/eliminar_incidencias.js'],
+                            'Assets/js/jsIncidencias/aventos_adicionales.js', 'Assets/js/jsIncidencias/eliminar_incidencias.js'],
         // Añade más mapeos según sea necesario
     ];
 
