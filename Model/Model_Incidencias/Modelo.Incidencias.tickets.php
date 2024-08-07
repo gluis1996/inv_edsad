@@ -1,40 +1,26 @@
 <?php
 
-require_once ('../../Model/conexion.php');
+require_once('../../Model/conexion.php');
 
-class modelo_incidencias_tickets{
+class modelo_incidencias_tickets
+{
 
 
-    public static function model_buscar($data){
+    public static function model_buscar($data)
+    {
         try {
-            $sql = "
-            select 
-            t.ticket_id,
-            t.title,
-            t.description,
-            t.status,
-            t.priority,
-            t.created_by,
-            (select nombres from equipos_informa.empleados where idempleado = t.created_by) as creadopor,
-            t.assigned_to,
-            (select nombres from equipos_informa.empleados where idempleado = t.assigned_to) as asignadoa,
-            t.equipment_id, 
-            (select concat(descripcion,' ', modelo) from equipos_informa.equipos where idequipos = eqasig.idequipos)  as nombreequipo,
-            t.created_at, t.updated_at
-            from tickets t
-            inner join  users as u on t.created_by=u.user_id 
-            inner join equipos_informa.detalle_asignacion as eqasig on eqasig.cod_patrimonial=t.equipment_id
-            where t.ticket_id = ?;";
+            $sql = "select  * from tickets  where ticket_id = ?;";
             $call = conexion::conectar_incidencias()->prepare($sql);
             $call->bindParam(1, $data, PDO::PARAM_STR);
             $call->execute();
             return $call->fetchAll();
         } catch (PDOException $e) {
-            return "Erro: ".$e->getMessage();
+            return "Erro: " . $e->getMessage();
         }
     }
 
-    public static function model_listar(){
+    public static function model_listar()
+    {
         try {
             $sql = "
             select 
@@ -58,32 +44,43 @@ class modelo_incidencias_tickets{
             $call->execute();
             return $call->fetchAll();
         } catch (PDOException $e) {
-            return "Erro: ".$e->getMessage();
+            return "Erro: " . $e->getMessage();
         }
     }
 
-    public static function model_agregar($data){
+    public static function model_agregar($data)
+    {
         try {
             $sql = "CALL sp_regtistrar_tTicket(?,?,?,?,?,?,?)";
             $call = conexion::conectar_incidencias()->prepare($sql);
             $call->bindParam(1, $data['p_title'], PDO::PARAM_STR);
             $call->bindParam(2, $data['p_description'], PDO::PARAM_STR);
             $call->bindParam(3, $data['p_status'], PDO::PARAM_STR);
-            $call->bindParam(4, $data['p_created_by'], PDO::PARAM_STR);
+            $call->bindParam(4, $data['p_created_by'], PDO::PARAM_INT);
             $call->bindParam(5, $data['p_assigned_to'], PDO::PARAM_STR);
             $call->bindParam(6, $data['p_equipment_id'], PDO::PARAM_STR);
             $call->bindParam(7, $data['p_fecha'], PDO::PARAM_STR);
+
             if ($call->execute()) {
-                return "ok";
-            }else {
-                return "fallo";
+                return 'ok';
+            } else {
+                return 'fallo';
             }
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (PDOException $e) {
+            // Extraer solo el mensaje personalizado
+            $errorMessage = $e->getMessage();
+            $parts = explode(':', $errorMessage, 2);
+            $cleanMessage = isset($parts[1]) ? trim($parts[1]) : $errorMessage;
+
+            return [
+                "status" => "error",
+                "message" => $cleanMessage
+            ];
         }
     }
 
-    public static function model_eliminar($data){
+    public static function model_eliminar($data)
+    {
         try {
             $sql = "DELETE FROM `sistemas_tikets`.`tickets`
                     WHERE ticket_id = ?;";
@@ -91,16 +88,16 @@ class modelo_incidencias_tickets{
             $call->bindParam(1, $data, PDO::PARAM_STR);
             if ($call->execute()) {
                 return "ok";
-            }else {
+            } else {
                 return "fallo";
             }
-
         } catch (PDOException $e) {
-            return "Erro: ".$e->getMessage();
+            return "Erro: " . $e->getMessage();
         }
     }
 
-    public static function model_actualizar_estado($data){
+    public static function model_actualizar_estado($data)
+    {
         try {
             $sql = "call sp_asignacion_tTicket(?,?)";
             $call = conexion::conectar_incidencias()->prepare($sql);
@@ -108,14 +105,31 @@ class modelo_incidencias_tickets{
             $call->bindParam(2, $data['id_empleado'], PDO::PARAM_STR);
             if ($call->execute()) {
                 return "ok";
-            }else {
+            } else {
                 return "fallo";
             }
         } catch (PDOException $e) {
-            return "Erro: ".$e->getMessage();
+            return "Erro: " . $e->getMessage();
         }
     }
 
+
+    //consulta adicionales o validaciones
+
+    public static function validar_existencia_estado($data){
+        try {
+            $sql = "SELECT COUNT(*) as cantidad
+                    FROM tickets
+                    WHERE equipment_id = ?
+                    AND status IN ('abierto', 'en proceso');";
+            $call = conexion::conectar_incidencias()->prepare($sql);
+            $call->bindParam(1, $data, PDO::PARAM_STR);
+            $call->execute();
+            return $call->fetchColumn();
+        } catch (PDOException $e) {
+            return "Erro: " . $e->getMessage();
+        }
+    }
 
 }
 

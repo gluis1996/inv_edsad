@@ -64,6 +64,11 @@ $(document).ready(function () {
         var fecha_creacion = $("#ticket_fecha").val();
         var asignado_a = $("#ticket_asignacion").val();
         var estado = '';
+
+        if (titulo == '' || descripcion == '' || fecha_creacion == '') {
+            return alert('campo vacio');
+        }
+
         if (asignado_a != "") {
             estado = 'en proceso';
         } else {
@@ -87,12 +92,34 @@ $(document).ready(function () {
         $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
             function (response) {
                 console.log(response);
+                
+                if (response != '"ok"') {
+                    alert(response);
+                } else {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "El ticket se registro con exito.",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    listarticket();
+                    limpiarCamposFormulario();
+                }
+                
             }
         );
-
-
-
     });
 
-
 });
+
+
+function limpiarCamposFormulario() {
+    $("#ticket_nombre_empleado").val('');
+    $("#ticket_cod_patrimonial").val('');
+    $("#ticket_nombre_equipo").val('');
+    $("#ticket_fecha").val('');
+    $("#ticket_titulo").val('');
+    $("#ticket_descripcion").val('');
+    $("#ticket_asignacion").val('').trigger('change'); // Resetea el select y notifica a Select2 si lo usas
+}

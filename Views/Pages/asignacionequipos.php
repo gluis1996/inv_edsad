@@ -30,8 +30,6 @@
                 <button type="button" class="btn btn-primary btn_modal_asignacion_mostrar" style="margin-top: 20px;">Registrar</button>
 
                 <div class="row">
-
-
                     <div class="col mt-5" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                         <label for="Datos Local" style="font-weight: bold; font-size: 18px;">Asignación de los Equipos</label>
                         <table class="table table-bordered table-striped dt-responsive" id="tb_asignacion_equipos" width="100%">

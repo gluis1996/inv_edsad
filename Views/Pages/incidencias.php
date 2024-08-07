@@ -53,26 +53,30 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Lista de Incidencias</h5>
-                <table class="table table-striped table-bordered" style="width:100%; font-size: 12px;" id="tablaticket">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center;">ID</th>
-                            <th style="text-align: center;">TITULO</th>
-                            <th style="text-align: center;">DESCRIPCION</th>
-                            <th style="text-align: center;">ESTADO</th>
-                            <th style="text-align: center;">PRIORIDAD</th>
-                            <th style="text-align: center;">CREADO POR</th>
-                            <th style="text-align: center;">ASGINADO A</th>
-                            <th style="text-align: center;">EQUIPO</th>
-                            <th style="text-align: center;">F. CREADO</th>
-                            <th style="text-align: center;">F. ACTUALIZADO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                
+                
+                    <table class="table table-bordered table-striped dt-responsive" style="width:100%; font-size: 12px;" id="tablaticket">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">ID</th>
+                                <th style="text-align: center;">TITULO</th>
+                                <th style="text-align: center;">DESCRIPCION</th>
+                                <th style="text-align: center;">ESTADO</th>
+                                <th style="text-align: center;">PRIORIDAD</th>
+                                <th style="text-align: center;">CREADO POR</th>
+                                <th style="text-align: center;">ASGINADO A</th>
+                                <th style="text-align: center;">EQUIPO</th>
+                                <th style="text-align: center;">F. CREADO</th>
+                                <th style="text-align: center;">F. ACTUALIZADO</th>
+                                <th style="text-align: center;">ACCIONES</th>
+                            </tr>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                
             </div>
         </div>
 
@@ -158,26 +162,111 @@
 
 <!-- Modal detalle incidencia -->
 <div class="modal fade" id="modal_detalle_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <!-- Modal content -->
-        <div class="modal-content" style="border-radius: 10px;">
-            <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
-                <h5 class="modal-title" id="detalle_title">Detalle incidencia</h5>
-                <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div id="detalles_ticket">
-
+<div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editTicketModalLabel">Editar Ticket de Atención</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="asunto">Asunto</label>
+                                <input type="text" class="form-control" id="asunto" value="12-018" disabled>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="codigoAbonado">Código del abonado</label>
+                                <input type="text" class="form-control" id="codigoAbonado">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="horaInicio">Hora de Inicio</label>
+                                <input type="text" class="form-control" id="horaInicio" value="11:03">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="area">Área <span class="text-danger">*</span></label>
+                                <select id="area" class="form-control">
+                                    <option selected>PE</option>
+                                    <!-- Otras opciones -->
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="motivo">Motivo <span class="text-danger">*</span></label>
+                                <select id="motivo" class="form-control">
+                                    <option selected>Avería</option>
+                                    <!-- Otras opciones -->
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="fecha">Fecha</label>
+                                <input type="text" class="form-control" id="fecha" value="02/08/2024">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="submotivo">Submotivo <span class="text-danger">*</span></label>
+                                <select id="submotivo" class="form-control">
+                                    <option selected>Caída de servicio</option>
+                                    <!-- Otras opciones -->
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="estado">Estado <span class="text-danger">*</span></label>
+                                <select id="estado" class="form-control">
+                                    <option selected>Pendiente</option>
+                                    <!-- Otras opciones -->
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="solicitante">Solicitante</label>
+                                <input type="text" class="form-control" id="solicitante">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="servicio">Servicio <span class="text-danger">*</span></label>
+                                <select id="servicio" class="form-control">
+                                    <option selected>EoC</option>
+                                    <!-- Otras opciones -->
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="operador">Operador</label>
+                                <input type="text" class="form-control" id="operador" value="Luis Gonzalo" disabled>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="lugar">Lugar <span class="text-danger">*</span></label>
+                                <select id="lugar" class="form-control">
+                                    <option selected>Chosica</option>
+                                    <!-- Otras opciones -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="detalle">Detalle <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="detalle" rows="3">Detalle del trabajo</textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label>Mensajes anteriores</label>
+                                <p>Carlos Sánchez dijo: CAIDA MASTER 12-018</p>
+                                <small>Escrito el 2024-08-02 11:03:56</small>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">EDITAR</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
-
-            <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary btn-sm" id="####">Registrar</button>
-                <button type="button" class="btn btn-primary btn-sm" id="btn_cerrar_ticket">Cerrar Ticket</button>
-            </div>
         </div>
-    </div>
 </div>
 
 <!-- Modal historial incidencia -->

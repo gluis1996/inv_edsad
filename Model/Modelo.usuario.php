@@ -3,8 +3,16 @@ require_once ('conexion.php');
 
 class modelo_usuario{
 
-    public static function model_buscar(){
-        
+    public static function model_buscar($data){
+        try {
+            $sql = "select *from usuario where idusuario = ?;";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1,$data,PDO::PARAM_STR);
+            $stmp->execute();
+            return $stmp->fetchAll();
+        } catch (PDOException $th) {
+            return "Modelo usuario ".$th->getMessage();
+        }
     }
 
     public static function model_listar(){
