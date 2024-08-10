@@ -12,14 +12,17 @@ class controller_tickets
     public static function C_buscar($data)
     {
         $response           = modelo_incidencias_tickets::model_buscar($data);
-        $usuario            = modelo_usuario::model_buscar(3);
+        $usuario            = modelo_usuario::model_buscar($response[0]['created_by']);
+        $usuario_asignado   = modelo_usuario::model_buscar($response[0]['assigned_to']);
         $response_comment   = modelo_incidencias_ticket_comments::buscar($data);
-
+        $equipamiento       = 
         $res = array(
-            'tickets' => $response,
-            'comment' => $response_comment,
-            'usuario' => $usuario,
-
+            'tickets'               => $response,
+            'comment'               => $response_comment,
+            'usuario_creador'       => $usuario,
+            'usuario_asginado'      => $usuario_asignado,
+            'equipamiento'          => $equipamiento,
+ 
         );
         return $res;
     }
