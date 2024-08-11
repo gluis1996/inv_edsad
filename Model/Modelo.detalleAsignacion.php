@@ -17,6 +17,19 @@ class modelo_detalleAsignacion{
         }
     }
 
+    public static function model_buscar_por_patrimonial($data){
+        
+        try {
+            $sql = "call sp_buscar_detalle_asginacion_cod_patrimonial(?);";
+            $call= conexion::conectar()->prepare($sql);
+            $call->bindParam(1,$data,PDO::PARAM_STR);
+            $call->execute();
+            return $call->fetchAll();
+        } catch (PDOException $e) {
+            return 'Error detalle asignacion : '.$e->getMessage();
+        }
+    }
+
     public static function model_listar(){
         try {
             $sql = "call sp_obtener_detalle_asignacion();";
@@ -94,3 +107,34 @@ class modelo_detalleAsignacion{
     }
 
 }
+
+
+
+// DELIMITER $$
+
+// CREATE PROCEDURE `sp_buscar_detalle_asginacion_cod_patrimonial`(IN `p_cod_patrimonial` VARCHAR(255))
+// BEGIN
+//     SELECT 
+//         da.id_detalle_asignacion,
+//         s.nombres AS sede_nombres,
+//         o.nombres AS oficina_nombres,
+//         CONCAT(e.descripcion, ' ', e.modelo) AS equipo,
+//         u.nombre AS usuario_nombre,
+//         da.cod_patrimonial,
+//         da.vida_util,
+//         da.estado,
+//         em.nombres AS empleado_nombre,
+//         da.idempleado,
+//         da.idsedes,
+//         da.idoficinas,
+//         da.fecha_asignacion
+//     FROM detalle_asignacion da
+//     INNER JOIN sede s ON s.idsedes = da.idsedes
+//     INNER JOIN oficina o ON o.idoficinas = da.idoficinas
+//     INNER JOIN equipos e ON e.idequipos = da.idequipos
+//     INNER JOIN usuario u ON u.idusuario = da.idusuario
+//     INNER JOIN empleados em ON em.idempleado = da.idempleado
+//     WHERE da.cod_patrimonial = p_cod_patrimonial;
+// END $$
+
+// DELIMITER ;

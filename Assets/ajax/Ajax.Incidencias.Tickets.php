@@ -5,7 +5,9 @@ require_once('../../Controllers/Controller_Incidencias/Controller.Incidencias.ac
 require_once('../../Model/Model_Incidencias/Modelo.Incidencias.tickets.php');
 require_once('../../Model/Model_Incidencias/Modelo.Incidencias.ticket_comments.php');
 require_once('../../Model/Model_Incidencias/Modelo.Incidencias.activity.php');
+require_once('../../Model/Modelo.detalleAsignacion.php');
 require_once('../../Model/Modelo.usuario.php');
+require_once('../../Model/Modelo.equipo.php');
 
 
 class ajax_incidencias_tickets{

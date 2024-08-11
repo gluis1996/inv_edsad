@@ -15,14 +15,13 @@ class controller_tickets
         $usuario            = modelo_usuario::model_buscar($response[0]['created_by']);
         $usuario_asignado   = modelo_usuario::model_buscar($response[0]['assigned_to']);
         $response_comment   = modelo_incidencias_ticket_comments::buscar($data);
-        $equipamiento       = 
+        $cod_patrimonial    = modelo_detalleAsignacion::model_buscar_por_patrimonial($response[0]['equipment_id']);
         $res = array(
             'tickets'               => $response,
             'comment'               => $response_comment,
             'usuario_creador'       => $usuario,
             'usuario_asginado'      => $usuario_asignado,
-            'equipamiento'          => $equipamiento,
- 
+            'detalle_asigando'      => $cod_patrimonial,
         );
         return $res;
     }

@@ -175,31 +175,28 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="asunto">Asunto</label>
-                                <input type="text" class="form-control" id="asunto" value="12-018" disabled>
+                                <input type="text" class="form-control" id="asunto" value="PROBLEMAS CON MONITOR" disabled>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="codigoAbonado">Código del abonado</label>
-                                <input type="text" class="form-control" id="codigoAbonado">
+                                <label for="codigoAbonado">Código Ticket</label>
+                                <input type="text" class="form-control" id="codigoAbonado" value="28">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="horaInicio">Hora de Inicio</label>
-                                <input type="text" class="form-control" id="horaInicio" value="11:03">
+                                <input type="text" class="form-control" id="horaInicio" value="16:47:55">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="area">Área <span class="text-danger">*</span></label>
+                                <label for="area">Sede/Oficina<span class="text-danger">*</span></label>
                                 <select id="area" class="form-control">
-                                    <option selected>PE</option>
+                                    <option selected>CABAÑA/PLANEAMIENTO Y PRESUPUESTO</option>
                                     <!-- Otras opciones -->
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="motivo">Motivo <span class="text-danger">*</span></label>
-                                <select id="motivo" class="form-control">
-                                    <option selected>Avería</option>
-                                    <!-- Otras opciones -->
-                                </select>
+                                <label for="motivo">Equipo <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="fecha" value="DESKTOP V03760">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="fecha">Fecha</label>
@@ -208,22 +205,16 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="submotivo">Submotivo <span class="text-danger">*</span></label>
-                                <select id="submotivo" class="form-control">
-                                    <option selected>Caída de servicio</option>
-                                    <!-- Otras opciones -->
-                                </select>
+                                <label for="submotivo">Creador<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="fecha" value="administrado">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="estado">Estado <span class="text-danger">*</span></label>
-                                <select id="estado" class="form-control">
-                                    <option selected>Pendiente</option>
-                                    <!-- Otras opciones -->
-                                </select>
+                                <label for="estado">Asginado<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="fecha" value="JULIA">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="solicitante">Solicitante</label>
-                                <input type="text" class="form-control" id="solicitante">
+                                <label for="solicitante">Estado</label>
+                                <input type="text" class="form-control" id="solicitante" value="en proceso">
                             </div>
                         </div>
                         <div class="form-row">
