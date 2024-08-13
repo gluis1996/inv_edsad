@@ -53,30 +53,30 @@
 
         <div class="card">
             <div class="card-body">
-                
-                
-                    <table class="table table-bordered table-striped dt-responsive" style="width:100%; font-size: 12px;" id="tablaticket">
-                        <thead>
-                            <tr>
-                                <th style="text-align: center;">ID</th>
-                                <th style="text-align: center;">TITULO</th>
-                                <th style="text-align: center;">DESCRIPCION</th>
-                                <th style="text-align: center;">ESTADO</th>
-                                <th style="text-align: center;">PRIORIDAD</th>
-                                <th style="text-align: center;">CREADO POR</th>
-                                <th style="text-align: center;">ASGINADO A</th>
-                                <th style="text-align: center;">EQUIPO</th>
-                                <th style="text-align: center;">F. CREADO</th>
-                                <th style="text-align: center;">F. ACTUALIZADO</th>
-                                <th style="text-align: center;">ACCIONES</th>
-                            </tr>
-                            </tr>
-                        </thead>
-                        <tbody>
 
-                        </tbody>
-                    </table>
-                
+
+                <table class="table table-bordered table-striped dt-responsive" style="width:100%; font-size: 12px;" id="tablaticket">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">ID</th>
+                            <th style="text-align: center;">TITULO</th>
+                            <th style="text-align: center;">DESCRIPCION</th>
+                            <th style="text-align: center;">ESTADO</th>
+                            <th style="text-align: center;">PRIORIDAD</th>
+                            <th style="text-align: center;">CREADO POR</th>
+                            <th style="text-align: center;">ASGINADO A</th>
+                            <th style="text-align: center;">EQUIPO</th>
+                            <th style="text-align: center;">F. CREADO</th>
+                            <th style="text-align: center;">F. ACTUALIZADO</th>
+                            <th style="text-align: center;">ACCIONES</th>
+                        </tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
             </div>
         </div>
 
@@ -162,102 +162,167 @@
 
 <!-- Modal detalle incidencia -->
 <div class="modal fade" id="modal_detalle_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editTicketModalLabel">Editar Ticket de Atención</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="asunto">Asunto</label>
-                                <input type="text" class="form-control" id="asunto" value="PROBLEMAS CON MONITOR" disabled>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="codigoAbonado">Código Ticket</label>
-                                <input type="text" class="form-control" id="codigoAbonado" value="28">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="horaInicio">Hora de Inicio</label>
-                                <input type="text" class="form-control" id="horaInicio" value="16:47:55">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editTicketModalLabel">Editar Ticket de Atención</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="asunto">Asunto</label>
+                            <input type="text" class="form-control" id="text_asunto" value="PROBLEMAS CON MONITOR" disabled>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="codigoAbonado">Código Ticket</label>
+                            <input type="text" class="form-control" id="text_codigo_ticket" value="28">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="horaInicio">Hora de Inicio</label>
+                            <input type="text" class="form-control" id="txt_hora_inicio" value="16:47:55">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="area">Sede/Oficina<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txt_sede_oficina" value="CABAÑA/PLANEAMIENTO Y PRESUPUESTO">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="motivo">Equipo <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txt_equipo" value="DESKTOP V03760">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="fecha">Fecha</label>
+                            <input type="text" class="form-control" id="txt_fecha" value="02/08/2024">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="submotivo">Creador<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txt_creado_por" value="administrado">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="estado">Asginado<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txt_asignado_a" value="JULIA">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="solicitante">Estado</label>
+                            <select name="" id="select_estado_ticket">
+                                <option value="">seleccione</option>
+                                <option value="en proceso" selected>en proceso</option>
+                                <option value="pendiente">pendiente</option>
+                                <option value="cerrado">cerrado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="detalle">Descripcion <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="txt_descripcion" value="lorem lorem lorem" disabled>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="detalle">Comentario <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="txt_comenatrio" rows="3">Detalle del trabajo</textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <p>Mensajes anteriores</p>
+                            <div class="timeline p-4 block mb-4 scrollable-timeline " >
+                                <div class="tl-item active">
+                                    <div class="tl-dot b-warning"></div>
+                                    <div class="tl-content">
+                                        <div class="">Carlos Sánchez dijo: CAIDA MASTER 12-018</div>
+                                        <div class="tl-date text-muted mt-1">2024-08-02 11:03:56</div>
+                                    </div>
+                                </div>
+                                <div class="tl-item">
+                                    <div class="tl-dot b-primary"></div>
+                                    <div class="tl-content">
+                                        <div class="">Do you know how Google search works.</div>
+                                        <div class="tl-date text-muted mt-1">45 minutes ago</div>
+                                    </div>
+                                </div>
+                                <div class="tl-item">
+                                    <div class="tl-dot b-danger"></div>
+                                    <div class="tl-content">
+                                        <div class="">Thanks to <a href="#" data-abc="true">@apple</a>, for iphone 7</div>
+                                        <div class="tl-date text-muted mt-1">1 day ago</div>
+                                    </div>
+                                </div>
+                                <div class="tl-item">
+                                    <div class="tl-dot b-danger"></div>
+                                    <div class="tl-content">
+                                        <div class="">Order placed <a href="#" data-abc="true">@eBay</a> you will get your products</div>
+                                        <div class="tl-date text-muted mt-1">1 Week ago</div>
+                                    </div>
+                                </div>
+                                <div class="tl-item">
+                                    <div class="tl-dot b-warning"></div>
+                                    <div class="tl-content">
+                                        <div class="">Learn how to use <a href="#" data-abc="true">Google Analytics</a> to discover vital information about your readers.</div>
+                                        <div class="tl-date text-muted mt-1">3 days ago</div>
+                                    </div>
+                                </div>
+                                <div class="tl-item">
+                                    <div class="tl-dot b-danger"></div>
+                                    <div class="tl-content">
+                                        <div class="">Thanks to <a href="#" data-abc="true">@apple</a>, for iphone 7</div>
+                                        <div class="tl-date text-muted mt-1">1 day ago</div>
+                                    </div>
+                                </div>
+                                <div class="tl-item">
+                                    <div class="tl-dot b-danger"></div>
+                                    <div class="tl-content">
+                                        <div class="">Order placed <a href="#" data-abc="true">@eBay</a> you will get your products</div>
+                                        <div class="tl-date text-muted mt-1">1 Week ago</div>
+                                    </div>
+                                </div>
+                                <div class="tl-item">
+                                    <div class="tl-dot b-warning"></div>
+                                    <div class="tl-content">
+                                        <div class="">Learn how to use <a href="#" data-abc="true">Google Analytics</a> to discover vital information about your readers.</div>
+                                        <div class="tl-date text-muted mt-1">3 days ago</div>
+                                    </div>
+                                </div>
+                                <div class="tl-item">
+                                    <div class="tl-dot b-danger"></div>
+                                    <div class="tl-content">
+                                        <div class="">Thanks to <a href="#" data-abc="true">@apple</a>, for iphone 7</div>
+                                        <div class="tl-date text-muted mt-1">1 day ago</div>
+                                    </div>
+                                </div>
+                                <div class="tl-item">
+                                    <div class="tl-dot b-danger"></div>
+                                    <div class="tl-content">
+                                        <div class="">Order placed <a href="#" data-abc="true">@eBay</a> you will get your products</div>
+                                        <div class="tl-date text-muted mt-1">1 Week ago</div>
+                                    </div>
+                                </div>
+                                <div class="tl-item">
+                                    <div class="tl-dot b-warning"></div>
+                                    <div class="tl-content">
+                                        <div class="">Learn how to use <a href="#" data-abc="true">Google Analytics</a> to discover vital information about your readers.</div>
+                                        <div class="tl-date text-muted mt-1">3 days ago</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="area">Sede/Oficina<span class="text-danger">*</span></label>
-                                <select id="area" class="form-control">
-                                    <option selected>CABAÑA/PLANEAMIENTO Y PRESUPUESTO</option>
-                                    <!-- Otras opciones -->
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="motivo">Equipo <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="fecha" value="DESKTOP V03760">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="fecha">Fecha</label>
-                                <input type="text" class="form-control" id="fecha" value="02/08/2024">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="submotivo">Creador<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="fecha" value="administrado">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="estado">Asginado<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="fecha" value="JULIA">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="solicitante">Estado</label>
-                                <input type="text" class="form-control" id="solicitante" value="en proceso">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="servicio">Servicio <span class="text-danger">*</span></label>
-                                <select id="servicio" class="form-control">
-                                    <option selected>EoC</option>
-                                    <!-- Otras opciones -->
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="operador">Operador</label>
-                                <input type="text" class="form-control" id="operador" value="Luis Gonzalo" disabled>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="lugar">Lugar <span class="text-danger">*</span></label>
-                                <select id="lugar" class="form-control">
-                                    <option selected>Chosica</option>
-                                    <!-- Otras opciones -->
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="detalle">Detalle <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="detalle" rows="3">Detalle del trabajo</textarea>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label>Mensajes anteriores</label>
-                                <p>Carlos Sánchez dijo: CAIDA MASTER 12-018</p>
-                                <small>Escrito el 2024-08-02 11:03:56</small>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">EDITAR</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">EDITAR</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
+    </div>
 </div>
 
 <!-- Modal historial incidencia -->

@@ -1,0 +1,161 @@
+/* Estilo general */
+body {
+    background-color: #f9f9fa;
+}
+
+@media (min-width: 992px) {
+    .page-container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
+    .page-sidenav {
+        display: block !important;
+    }
+}
+
+/* Padding general */
+.padding {
+    padding: 2rem;
+}
+
+/* Tamaño de iconos o elementos pequeños */
+.w-32 {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: .85em;
+}
+
+/* Estilos específicos para la línea de tiempo */
+.timeline {
+    position: relative;
+    border-color: rgba(160, 175, 185, .15);
+    padding: 0;
+    margin: 0;
+}
+
+/* Contenedor para hacer scroll en la línea de tiempo */
+.timeline-container {
+    height: 200px; /* Puedes ajustar la altura según sea necesario */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    padding-right: 15px; /* Añade espacio para el scroll */
+}
+
+/* Estilo base para los elementos de la línea de tiempo */
+.tl-item {
+    border-radius: 3px;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+/* Puntos de la línea de tiempo */
+.tl-dot {
+    position: relative;
+    border-color: rgba(160, 175, 185, .15);
+}
+
+/* Estilos adicionales para el contenido de la línea de tiempo */
+.tl-item > * {
+    padding: 10px;
+}
+
+.tl-item.active .tl-dot:before {
+    border-color: #448bff;
+    box-shadow: 0 0 0 4px rgba(68, 139, 255, .2);
+}
+
+.tl-dot:after,
+.tl-dot:before {
+    content: '';
+    position: absolute;
+    border-color: inherit;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tl-dot:after {
+    width: 0;
+    height: auto;
+    top: 25px;
+    bottom: -15px;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-radius: 0;
+}
+
+.tl-content p:last-child {
+    margin-bottom: 0;
+}
+
+.tl-date {
+    font-size: .85em;
+    margin-top: 2px;
+    min-width: 100px;
+    max-width: 100px;
+}
+
+/* Estilo para los avatares */
+.avatar {
+    position: relative;
+    line-height: 1;
+    border-radius: 500px;
+    white-space: nowrap;
+    font-weight: 700;
+    border-radius: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    border-radius: 500px;
+    box-shadow: 0 5px 10px 0 rgba(50, 50, 50, .15);
+}
+
+/* Estilos de color para los puntos de la línea de tiempo */
+.b-warning {
+    border-color: #f4c414 !important;
+}
+
+.b-primary {
+    border-color: #448bff !important;
+}
+
+.b-danger {
+    border-color: #f54394 !important;
+}
+
+/* Otros estilos generales */
+.block,
+.card {
+    background: #fff;
+    border-width: 0;
+    border-radius: .25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+    margin-bottom: 1.5rem;
+}
+
+.mb-4,
+.my-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.p-4 {
+    padding: 1.5rem !important;
+}
+
+
+.scrollable-timeline {
+    max-height: 200px; /* Ajusta la altura según sea necesario */
+    overflow-y: auto;  /* Habilita el desplazamiento vertical */
+}

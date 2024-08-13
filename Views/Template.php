@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gestion de edsan</title>
     <link rel="stylesheet" href="Assets/css/global.css">
+    <link rel="stylesheet" href="Assets/css/stylo_comentario.css">
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
     <script src="Views/Resources/plugins/datatablesv2/jQuery-3.7.0/jquery-3.7.0.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
