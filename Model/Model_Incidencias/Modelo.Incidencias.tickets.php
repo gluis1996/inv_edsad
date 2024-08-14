@@ -30,9 +30,9 @@ class modelo_incidencias_tickets
             t.status,
             t.priority,
             t.created_by,
-            (select nombres from equipos_informa.empleados where idempleado = t.created_by) as creadopor,
+            (select nombre from equipos_informa.usuario where idusuario = t.created_by) as creadopor,
             t.assigned_to,
-            (select nombres from equipos_informa.empleados where idempleado = t.assigned_to) as asignadoa,
+            (select nombre from equipos_informa.usuario where idusuario = t.assigned_to) as asignadoa,
             t.equipment_id, 
             (select concat(descripcion,' ', modelo) from equipos_informa.equipos where idequipos = eqasig.idequipos)  as nombreequipo,
             t.created_at, t.updated_at
@@ -221,7 +221,7 @@ class modelo_incidencias_tickets
 
 // DELIMITER ;
 
-//actualizar estado
+// actualizar estado
 
 // DELIMITER $$
 

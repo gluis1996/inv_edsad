@@ -13,6 +13,7 @@ class controller_tickets
     {
         $response           = modelo_incidencias_tickets::model_buscar($data);
         $usuario            = modelo_usuario::model_buscar($response[0]['created_by']);
+        $usuario_todo       = modelo_usuario::model_listar();
         $usuario_asignado   = modelo_usuario::model_buscar($response[0]['assigned_to']);
         $response_comment   = modelo_incidencias_ticket_comments::buscar($data);
         $cod_patrimonial    = modelo_detalleAsignacion::model_buscar_por_patrimonial($response[0]['equipment_id']);
@@ -22,6 +23,7 @@ class controller_tickets
             'usuario_creador'       => $usuario,
             'usuario_asginado'      => $usuario_asignado,
             'detalle_asigando'      => $cod_patrimonial,
+            'usuario_todo'          => $usuario_todo,
         );
         return $res;
     }

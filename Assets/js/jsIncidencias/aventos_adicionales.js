@@ -1,7 +1,9 @@
 $(document).ready(function () {
+
     //registrar Comentario
-    $("#detalles_ticket").on('click', '.btn_añadir_comentario', function (e) {
+    $(".btn_añadir_comentario").click( function (e) {
         e.preventDefault();
+
         //console.log($("#text_area_comentario").val());
 
         var fechaActual = new Date();
@@ -16,7 +18,7 @@ $(document).ready(function () {
             (hora < 10 ? "0" + hora : hora) + ":" + (minutos < 10 ? "0" + minutos : minutos) + ":" +
             (segundos < 10 ? "0" + segundos : segundos);
 
-        if ($("#text_area_comentario").val() == "") {
+        if ($("#txt_comenatrio").val() == "") {
             Swal.fire("Campo vacio..!!!");
             return "Campo vacio...";
         }
@@ -24,9 +26,9 @@ $(document).ready(function () {
         const data = {
             event_registrar_comentario: 'event_registrar_comentario',
             content: {
-                ticket_id: $("#id_ticket_oculto").val(),
+                ticket_id: $("#text_codigo_ticket").val(),
                 user_id: id_usuario,
-                comment: $("#text_area_comentario").val(),
+                comment: $("#txt_comenatrio").val(),
                 created_atmestamp: fechaHoraFormateada,
             },
         }
@@ -47,8 +49,8 @@ $(document).ready(function () {
                         text: "Beneficiario registrado exitosamente",
                         icon: "success",
                     });
-                    $("#text_area_comentario").val("");
-                    buscar_listar_comentario($("#id_ticket_oculto").val());
+                    $("#txt_comenatrio").val("");
+                    buscar_listar_comentario($("#text_codigo_ticket").val());
                 }
             }
         );
@@ -175,20 +177,33 @@ $(document).ready(function () {
             function (response) {
                 console.log(response);
                 var j = JSON.parse(response);
-                $(".listas-comment").empty();
+                $(".llenado_json").empty();
+                const dotClasses = ["b-warning", "b-primary", "b-danger", "b-success", "b-info"];
+                let lastUsedClass = ""; // Variable para rastrear la última clase usada
                 j.forEach(element => {
 
-                    var comments = `
-                        <li class="media">
-                            <label for="fecha" class="mr-2"><i class="fa fa-caret-right" aria-hidden="true"></i> ${element.created_at}</label>
-                            <div class="media-body">
-                                <p>${element.comment}</p>
+                    const tiempo = element.created_at;
+                    const [fecha, hora] = tiempo.split(' ');
+                    // Seleccionar una clase aleatoria
+                    let dotClass;
+
+                    do {
+                        // Seleccionar una clase aleatoria
+                        dotClass = dotClasses[Math.floor(Math.random() * dotClasses.length)];
+                    } while (dotClass === lastUsedClass); // Repetir si es la misma que la última usada
+
+                    lastUsedClass = dotClass; // Actualizar la última clase usada
+                    $(".llenado_json").append(`
+                        <div class="tl-item">
+                            <div class="tl-dot ${dotClass}"></div>
+                            <div class="tl-content">
+                                <div class="">${element.comment}</div>
+                                <div class="tl-date text-muted mt-1">${tiempo}</div>
                             </div>
-                        </li>
-                    ` ;
+                        </div>
+                        `
+                    );
 
-
-                    $(".listas-comment").append(comments);
                 });
 
             }

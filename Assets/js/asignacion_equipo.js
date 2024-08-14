@@ -169,7 +169,8 @@ $(document).ready(function () {
 
             // Iterar sobre los empleados y agregarlos al select
             jsonResponse.empleados.forEach(function (empleados) {
-                $('#modal_select_asig_empleado').append($('<option>', {
+                $('#modal_select_asig_empleado').append(
+                    $('<option>', {
                     value: empleados.idempleado,
                     text: empleados.nombres
                 }));

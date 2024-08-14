@@ -30,7 +30,8 @@ class ajax_incidencias_tickets{
     public function ajax_detalle_incidencias() {
         if ($this->accion == "listar_tickets_detalle") {
             $res = controller_tickets::C_buscar($this->id_tickets);
-            echo json_encode($res);
+            $data = array('data' => $res);
+            echo json_encode($data);
             //echo "gonzalo";
         }
     }

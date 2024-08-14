@@ -179,42 +179,45 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="codigoAbonado">Código Ticket</label>
-                            <input type="text" class="form-control" id="text_codigo_ticket" value="28">
+                            <input type="text" class="form-control" id="text_codigo_ticket" value="28" disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="horaInicio">Hora de Inicio</label>
-                            <input type="text" class="form-control" id="txt_hora_inicio" value="16:47:55">
+                            <input type="text" class="form-control" id="txt_hora_inicio" value="16:47:55" disabled>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="area">Sede/Oficina<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="txt_sede_oficina" value="CABAÑA/PLANEAMIENTO Y PRESUPUESTO">
+                            <input type="text" class="form-control" id="txt_sede_oficina" value="CABAÑA/PLANEAMIENTO Y PRESUPUESTO" disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="motivo">Equipo <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="txt_equipo" value="DESKTOP V03760">
+                            <input type="text" class="form-control" id="txt_equipo" value="DESKTOP V03760" disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="fecha">Fecha</label>
-                            <input type="text" class="form-control" id="txt_fecha" value="02/08/2024">
+                            <input type="text" class="form-control" id="txt_fecha" value="02/08/2024" disabled>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="submotivo">Creador<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="txt_creado_por" value="administrado">
+                            <input type="text" class="form-control" id="txt_creado_por" value="administrado" disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="estado">Asginado<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="txt_asignado_a" value="JULIA">
+                            <select class="form-control" id="select_asignado_a">
+                                <option value="">Seleccione</option>
+                            </select>
+                            <!-- <input type="text" class="form-control" id="txt_asignado_a" value="JULIA"> -->
                         </div>
                         <div class="form-group col-md-4">
                             <label for="solicitante">Estado</label>
-                            <select name="" id="select_estado_ticket">
+                            <select name="" class="form-control" id="select_estado_ticket">
                                 <option value="">seleccione</option>
                                 <option value="en proceso" selected>en proceso</option>
-                                <option value="pendiente">pendiente</option>
+                                <option value="abierto">abierto</option>
                                 <option value="cerrado">cerrado</option>
                             </select>
                         </div>
@@ -228,90 +231,15 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="detalle">Comentario <span class="text-danger">*</span></label>
-                            <textarea class="form-control" id="txt_comenatrio" rows="3">Detalle del trabajo</textarea>
+                            <input type="text" class="form-control" id="txt_comenatrio" placeholder="Detalle del trabajo">
+                            <input type="button" value="save" class="form-control btn_añadir_comentario">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <p>Mensajes anteriores</p>
-                            <div class="timeline p-4 block mb-4 scrollable-timeline " >
-                                <div class="tl-item active">
-                                    <div class="tl-dot b-warning"></div>
-                                    <div class="tl-content">
-                                        <div class="">Carlos Sánchez dijo: CAIDA MASTER 12-018</div>
-                                        <div class="tl-date text-muted mt-1">2024-08-02 11:03:56</div>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot b-primary"></div>
-                                    <div class="tl-content">
-                                        <div class="">Do you know how Google search works.</div>
-                                        <div class="tl-date text-muted mt-1">45 minutes ago</div>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot b-danger"></div>
-                                    <div class="tl-content">
-                                        <div class="">Thanks to <a href="#" data-abc="true">@apple</a>, for iphone 7</div>
-                                        <div class="tl-date text-muted mt-1">1 day ago</div>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot b-danger"></div>
-                                    <div class="tl-content">
-                                        <div class="">Order placed <a href="#" data-abc="true">@eBay</a> you will get your products</div>
-                                        <div class="tl-date text-muted mt-1">1 Week ago</div>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot b-warning"></div>
-                                    <div class="tl-content">
-                                        <div class="">Learn how to use <a href="#" data-abc="true">Google Analytics</a> to discover vital information about your readers.</div>
-                                        <div class="tl-date text-muted mt-1">3 days ago</div>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot b-danger"></div>
-                                    <div class="tl-content">
-                                        <div class="">Thanks to <a href="#" data-abc="true">@apple</a>, for iphone 7</div>
-                                        <div class="tl-date text-muted mt-1">1 day ago</div>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot b-danger"></div>
-                                    <div class="tl-content">
-                                        <div class="">Order placed <a href="#" data-abc="true">@eBay</a> you will get your products</div>
-                                        <div class="tl-date text-muted mt-1">1 Week ago</div>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot b-warning"></div>
-                                    <div class="tl-content">
-                                        <div class="">Learn how to use <a href="#" data-abc="true">Google Analytics</a> to discover vital information about your readers.</div>
-                                        <div class="tl-date text-muted mt-1">3 days ago</div>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot b-danger"></div>
-                                    <div class="tl-content">
-                                        <div class="">Thanks to <a href="#" data-abc="true">@apple</a>, for iphone 7</div>
-                                        <div class="tl-date text-muted mt-1">1 day ago</div>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot b-danger"></div>
-                                    <div class="tl-content">
-                                        <div class="">Order placed <a href="#" data-abc="true">@eBay</a> you will get your products</div>
-                                        <div class="tl-date text-muted mt-1">1 Week ago</div>
-                                    </div>
-                                </div>
-                                <div class="tl-item">
-                                    <div class="tl-dot b-warning"></div>
-                                    <div class="tl-content">
-                                        <div class="">Learn how to use <a href="#" data-abc="true">Google Analytics</a> to discover vital information about your readers.</div>
-                                        <div class="tl-date text-muted mt-1">3 days ago</div>
-                                    </div>
-                                </div>
+                            <div class="timeline p-4 block mb-4 scrollable-timeline llenado_json" >
+                                
                             </div>
                         </div>
                     </div>
