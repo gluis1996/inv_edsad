@@ -1,11 +1,12 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Equipos informáticos</h1>
+                    <h1>Asignacion de Equipos</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -17,44 +18,63 @@
         </div><!-- /.container-fluid -->
     </section>
 
+
     <!-- Main content -->
     <section class="content">
 
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h3 class="card-title">Formulario Asignación de Equipos</h3>
-            </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Default box -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Asignación de Equipos</h3>
 
-            <div class="card-body" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                <!-- ASIGNACION DE EQUIPOS -->
-                <button type="button" class="btn btn-primary btn_modal_asignacion_mostrar" style="margin-top: 20px;">Registrar</button>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <button type="button" class="btn btn-primary btn_modal_asignacion_mostrar">Registrar</button>
+                            <button type="button" class="btn btn-primary btn_exportar_asignacion">Exportar</button>
 
-                <div class="row">
-                    <div class="col mt-5" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                        <label for="Datos Local" style="font-weight: bold; font-size: 18px;">Asignación de los Equipos</label>
-                        <table class="table table-bordered table-striped dt-responsive" id="tb_asignacion_equipos" width="100%">
-                            <thead>
-                                <tr>
-                                    <th style="width: 5%; text-align: center;">ID</th>
-                                    <th style="width: 5%; text-align: center;">SEDES</th>
-                                    <th style="width: 15%; text-align: center;">OFICINAS</th>
-                                    <th style="width: 15%; text-align: center;">EQUIPOS</th>
-                                    <th style="width: 10%; text-align: center;">USUARIOS</th>
-                                    <th style="width: 10%; text-align: center;">EMPLEADOS</th>
-                                    <th style="width: 5%; text-align: center;">COD P.</th>
-                                    <th style="width: 5%; text-align: center;">VIDA UTÍL</th>
-                                    <th style="width: 10%; text-align: center;">ESTADOS</th>
-                                    <th style="width: 10%; text-align: center;">FECHA</th>
-                                    <th style="width: 10%; text-align: center;">ACCION</th>
-                                </tr>
-                            </thead>
-                            <!-- Contenido de la tabla -->
-                        </table>
+                            <div class="row">
+                                <div class="col " style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                    <table class="table table-bordered table-striped dt-responsive" id="tb_asignacion_equipos"style="width:100%; font-size: 12px;">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 5%; text-align: center;">ID</th>
+                                                <th style="width: 5%; text-align: center;">SEDES</th>
+                                                <th style="width: 15%; text-align: center;">OFICINAS</th>
+                                                <th style="width: 15%; text-align: center;">EQUIPOS</th>
+                                                <th style="width: 10%; text-align: center;">USUARIOS</th>
+                                                <th style="width: 10%; text-align: center;">EMPLEADOS</th>
+                                                <th style="width: 5%; text-align: center;">COD P.</th>
+                                                <th style="width: 5%; text-align: center;">VIDA UTÍL</th>
+                                                <th style="width: 10%; text-align: center;">ESTADOS</th>
+                                                <th style="width: 10%; text-align: center;">FECHA</th>
+                                                <th style="width: 10%; text-align: center;">ACCION</th>
+                                            </tr>
+                                        </thead>
+                                        <!-- Contenido de la tabla -->
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- /.card -->
                 </div>
             </div>
         </div>
     </section>
+
+
+
 </div>
 
 
@@ -203,7 +223,7 @@
                             <input type="text" id="cod_patrimonial" class="form-control">
                         </div>
 
-                        
+
                     </div>
 
                     <!-- Segunda columna -->

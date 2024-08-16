@@ -28,21 +28,10 @@
 
                 <div class="card-body">
                     <div class="form-row">
-                        <div class="col">
-                            <input type="text" class="form-control form-control-sm" id="h_id_historico"
-                                placeholder="Buscar equipo x Codigo Patrimonial">
-                        </div>
-                        <div class="col">
-                            <button type="button"
-                                class="btn btn-success btn-sm mb-2 btn_buscar_historico">Buscar</button>
+                        
+                        <div class="col">                            
                             <button type="button" class="btn btn-success btn-sm mb-2 btn_buscar_historico"
-                                data-toggle="modal" data-target="#modal_registrar_incidencia">+</button>
-                            <button type="button"
-                                class="btn btn-primary btn-sm mb-2 btn_listar_ticket_abiertos">abierto</button>
-                            <button type="button" class="btn btn-danger btn-sm mb-2 btn_listar_ticket_en_proceso">en
-                                proceso</button>
-                            <button type="button"
-                                class="btn btn-success btn-sm mb-2 btn_listar_ticket_cerrados">cerrado</button>
+                                data-toggle="modal" data-target="#modal_registrar_incidencia">Registrar Incidencia</button>
                         </div>
                     </div>
 

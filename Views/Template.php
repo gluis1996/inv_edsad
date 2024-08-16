@@ -150,7 +150,7 @@
     <script src="Views/Resources/plugins/datatablesv2/DataTables-2.0.3/js/dataTables.js"></script>
 
 
-
+    <script src="Assets/js/header.js"></script>
     <?php
     $scripts = [
         'asignacionequipos' => ['Assets/js/asignacion_equipo.js'],
