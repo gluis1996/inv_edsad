@@ -156,6 +156,6 @@ body {
 
 
 .scrollable-timeline {
-    max-height: 310px; /* Ajusta la altura según sea necesario */
+    max-height: 200px; /* Ajusta la altura según sea necesario */
     overflow-y: auto;  /* Habilita el desplazamiento vertical */
 }

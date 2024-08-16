@@ -1,14 +1,5 @@
 $(document).ready(function () {
 
-    //ver detalles
-
-    // $("#btn_buscar_id_incidencias").click(function (e) { 
-    //     e.preventDefault();
-    //     console.log('dadasd');
-    //     //console.log($(this).attr('data-ticket-id'));
-    // });
-
-
     // evento para buscar y ver detalle de la incidencia
     $("#tablaticket").on("click", "#btn_edit_val", function () {
         console.log($(this).attr('id_ticket_editar'));
@@ -80,14 +71,8 @@ $(document).ready(function () {
                     );
 
                 })
-
-
-
             }
         );
     });
-
-
-
 
 })

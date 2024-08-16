@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     //buscar incidencia
-
+    llenado_usuarios();
     $('.btn_buscar_equipo_asigando').click(function (e) {
         e.preventDefault();
         var id_asignacion = $("#codigo_patrimonial_buscar").val();
@@ -61,10 +61,22 @@ $(document).ready(function () {
 
         var creado_por = $("#usuario_sesion").attr("id_lg_usuario");
         var equipo = $("#ticket_cod_patrimonial").val();
-        var fecha_creacion = $("#ticket_fecha").val();
+        var fecha = $("#ticket_fecha").val();
         var asignado_a = $("#ticket_asignacion").val();
         var estado = '';
 
+        var dateObject = new Date(fecha);
+
+        // Paso 4: Formatear la fecha y hora en el formato deseado
+        var year = dateObject.getFullYear();
+        var month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Mes (0-11), así que añadimos 1 y rellenamos con ceros
+        var day = String(dateObject.getDate()).padStart(2, '0');
+        var hours = String(dateObject.getHours()).padStart(2, '0');
+        var minutes = String(dateObject.getMinutes()).padStart(2, '0');
+        var seconds = String(dateObject.getSeconds()).padStart(2, '0');
+
+        var fecha_creacion = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        
         if (titulo == '' || descripcion == '' || fecha_creacion == '') {
             return alert('campo vacio');
         }
@@ -113,6 +125,31 @@ $(document).ready(function () {
 
 });
 
+
+function llenado_usuarios(){
+    
+    const data = {
+        lista_usuario : 'listausuario',
+    }
+
+    $.post("Assets/ajax/Ajax.usuario.php", data,
+        function (response) {
+            console.log(response);
+            var js = JSON.parse(response);
+            
+            js.data.forEach(element => {
+                $("#ticket_asignacion").append(
+                    $('<option>', {
+                        value: element.idusuario,
+                        text: element.nombres
+                    })
+                );
+            });         
+
+        }
+    );
+
+}
 
 function limpiarCamposFormulario() {
     $("#ticket_nombre_empleado").val('');

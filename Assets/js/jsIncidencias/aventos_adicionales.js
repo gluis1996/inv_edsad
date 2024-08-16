@@ -59,7 +59,6 @@ $(document).ready(function () {
 
 
     //cambia estado de la incidencia:
-
     $('#contenedor_tarjetas').on('change', '.select_estado_incidencia', function (e) {
         e.preventDefault();
         var id_usuario = $("#usuario_sesion").attr("id_lg_usuario");

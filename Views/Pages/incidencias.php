@@ -29,14 +29,20 @@
                 <div class="card-body">
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control form-control-sm" id="h_id_historico" placeholder="Buscar equipo x Codigo Patrimonial">
+                            <input type="text" class="form-control form-control-sm" id="h_id_historico"
+                                placeholder="Buscar equipo x Codigo Patrimonial">
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-success btn-sm mb-2 btn_buscar_historico">Buscar</button>
-                            <button type="button" class="btn btn-success btn-sm mb-2 btn_buscar_historico" data-toggle="modal" data-target="#modal_registrar_incidencia">+</button>
-                            <button type="button" class="btn btn-primary btn-sm mb-2 btn_listar_ticket_abiertos">abierto</button>
-                            <button type="button" class="btn btn-danger btn-sm mb-2 btn_listar_ticket_en_proceso">en proceso</button>
-                            <button type="button" class="btn btn-success btn-sm mb-2 btn_listar_ticket_cerrados">cerrado</button>
+                            <button type="button"
+                                class="btn btn-success btn-sm mb-2 btn_buscar_historico">Buscar</button>
+                            <button type="button" class="btn btn-success btn-sm mb-2 btn_buscar_historico"
+                                data-toggle="modal" data-target="#modal_registrar_incidencia">+</button>
+                            <button type="button"
+                                class="btn btn-primary btn-sm mb-2 btn_listar_ticket_abiertos">abierto</button>
+                            <button type="button" class="btn btn-danger btn-sm mb-2 btn_listar_ticket_en_proceso">en
+                                proceso</button>
+                            <button type="button"
+                                class="btn btn-success btn-sm mb-2 btn_listar_ticket_cerrados">cerrado</button>
                         </div>
                     </div>
 
@@ -55,7 +61,8 @@
             <div class="card-body">
 
 
-                <table class="table table-bordered table-striped dt-responsive" style="width:100%; font-size: 12px;" id="tablaticket">
+                <table class="table table-bordered table-striped dt-responsive" style="width:100%; font-size: 12px;"
+                    id="tablaticket">
                     <thead>
                         <tr>
                             <th style="text-align: center;">ID</th>
@@ -99,7 +106,8 @@
             <div class="modal-body" style="padding: 20px;">
                 <div class="form-row">
                     <div class="col">
-                        <input type="text" class="form-control" id="codigo_patrimonial_buscar" placeholder="Buscar equipo x Codigo Patrimonial">
+                        <input type="text" class="form-control" id="codigo_patrimonial_buscar"
+                            placeholder="Buscar equipo x Codigo Patrimonial">
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-success mb-2 btn_buscar_equipo_asigando">Buscar</button>
@@ -109,19 +117,22 @@
                 <div class="form-row">
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Empleado</span>
-                        <input type="text" aria-label="Sizing example input" id="ticket_nombre_empleado" class="form-control">
+                        <input type="text" aria-label="Sizing example input" id="ticket_nombre_empleado"
+                            class="form-control">
                     </div>
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Cod. Patri.</span>
-                        <input type="text" aria-label="Sizing example input" id="ticket_cod_patrimonial" class="form-control">
+                        <input type="text" aria-label="Sizing example input" id="ticket_cod_patrimonial"
+                            class="form-control">
                     </div>
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Equipo</span>
-                        <input type="text" aria-label="Sizing example input" id="ticket_nombre_equipo" class="form-control">
+                        <input type="text" aria-label="Sizing example input" id="ticket_nombre_equipo"
+                            class="form-control">
                     </div>
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Fecha</span>
-                        <input type="date" class="form-control" id="ticket_fecha">
+                        <input type="datetime-local" class="form-control" id="ticket_fecha">
                     </div>
                     <div class="input-group input-group-sm mb-1">
                         <span class="input-group-text">Titulo</span>
@@ -135,10 +146,6 @@
                         <span class="input-group-text">Asignar</span>
                         <select class="form-control" name="" id="ticket_asignacion">
                             <option value="" selected>seleccione</option>
-                            <option value="a">seleccion a</option>
-                            <option value="b">seleccion a</option>
-                            <option value="c">seleccion a</option>
-                            <option value="d">seleccion a</option>
                         </select>
                     </div>
                 </div>
@@ -161,7 +168,8 @@
 </div>
 
 <!-- Modal detalle incidencia -->
-<div class="modal fade" id="modal_detalle_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_detalle_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -175,7 +183,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="asunto">Asunto</label>
-                            <input type="text" class="form-control" id="text_asunto" value="PROBLEMAS CON MONITOR" disabled>
+                            <input type="text" class="form-control" id="text_asunto" value="PROBLEMAS CON MONITOR"
+                                disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="codigoAbonado">Código Ticket</label>
@@ -189,7 +198,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="area">Sede/Oficina<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="txt_sede_oficina" value="CABAÑA/PLANEAMIENTO Y PRESUPUESTO" disabled>
+                            <input type="text" class="form-control" id="txt_sede_oficina"
+                                value="CABAÑA/PLANEAMIENTO Y PRESUPUESTO" disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="motivo">Equipo <span class="text-danger">*</span></label>
@@ -225,21 +235,23 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="detalle">Descripcion <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="txt_descripcion" value="lorem lorem lorem" disabled>
+                            <input type="text" class="form-control" id="txt_descripcion" value="lorem lorem lorem"
+                                disabled>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="detalle">Comentario <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="txt_comenatrio" placeholder="Detalle del trabajo">
+                            <input type="text" class="form-control" id="txt_comenatrio"
+                                placeholder="Detalle del trabajo">
                             <input type="button" value="save" class="form-control btn_añadir_comentario">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <p>Mensajes anteriores</p>
-                            <div class="timeline p-4 block mb-4 scrollable-timeline llenado_json" >
-                                
+                            <div class="timeline p-4 block mb-4 scrollable-timeline llenado_json">
+
                             </div>
                         </div>
                     </div>
@@ -254,7 +266,8 @@
 </div>
 
 <!-- Modal historial incidencia -->
-<div class="modal fade" id="modal_activity_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_activity_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <!-- Modal content -->
         <div class="modal-content" style="border-radius: 10px;">
@@ -276,7 +289,8 @@
 </div>
 
 <!-- Modal asignar incidencia -->
-<div class="modal fade" id="modal_asignacion_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_asignacion_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <!-- Modal content -->
         <div class="modal-content" style="border-radius: 10px;">

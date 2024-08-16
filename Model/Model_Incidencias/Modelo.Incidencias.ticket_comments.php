@@ -9,7 +9,7 @@ class modelo_incidencias_ticket_comments{
     public static function buscar($data){
         try {
             $sql = "
-            SELECT * FROM ticket_comments  where ticket_id = ?;
+            SELECT * FROM ticket_comments  where ticket_id = ? order by comment_id desc;
             ";
             $call = conexion::conectar_incidencias()->prepare($sql);
             $call->bindParam(1, $data, PDO::PARAM_STR);
