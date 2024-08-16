@@ -8,6 +8,7 @@ $(document).ready(function () {
             listar_tickets_detalle: 'listar_tickets_detalle',
             detalle_id_tickets: $(this).attr('id_ticket_editar'),
         }
+
         console.log(data);
         $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
             function (response) {
@@ -26,7 +27,6 @@ $(document).ready(function () {
                     );
                 });
 
-
                 //asignacion
                 json.data.tickets.forEach(element => {
                     $("#text_asunto").val(element.title);
@@ -38,7 +38,19 @@ $(document).ready(function () {
                     $("#txt_hora_inicio").val(time);
                     $("#select_estado_ticket").val(element.status);
                     $("#select_asignado_a").val(element.assigned_to);
+
+                    if (element.status == 'abierto') {
+                        $('#btn_asignar_incidencia').prop('disabled', false);
+                        $('#btn_cerrar_incidencia').prop('disabled', true);
+                    }else if(element.status == 'en proceso'){
+                        $('#btn_asignar_incidencia').prop('disabled', true);
+                        $('#btn_cerrar_incidencia').prop('disabled', false);
+                    }else if(element.status == 'cerrado'){
+                        $('#btn_asignar_incidencia').prop('disabled', true);
+                        $('#btn_cerrar_incidencia').prop('disabled', true);
+                    }
                 });
+
                 //usuartio crador
                 json.data.usuario_creador.forEach(element => {
                     $("#txt_creado_por").val(element.nombre);

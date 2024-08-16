@@ -30,7 +30,13 @@ class controller_tickets
 
     public static function C_actualizar_estado($data)
     {
-        $response           = modelo_incidencias_tickets::model_actualizar_estado($data);
+        $response           = modelo_incidencias_tickets::model_asignar_ticket($data);
+        return $response;
+    }
+
+    public static function C_actualizar_estado_cerrado($data)
+    {
+        $response           = modelo_incidencias_tickets::model_actulizar_estado_ticket($data);
         return $response;
     }
 

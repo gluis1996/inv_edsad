@@ -47,7 +47,7 @@
     <link href="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/css/responsive.bootstrap5.min.css" rel="stylesheet">
     <link href="Views/Resources/plugins/datatablesv2/RowGroup-1.5.0/css/rowGroup.bootstrap5.min.css" rel="stylesheet">
     <link href="Views/Resources/plugins/datatablesv2/DataTables-2.0.3/css/dataTables.dataTables.css" rel="stylesheet">
-    
+
 
 
 
@@ -71,9 +71,19 @@
 
         $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
         $validPages = [
-            'registroequipos',  'asignacionequipos',    'Sede',     'empleado',     'usuario',
-            'oficina',          'beneficiario',         'meta',     'dashboard',    'incidencias',
-            'historico',        'adquisicionequipos',   'salir'
+            'registroequipos',
+            'asignacionequipos',
+            'Sede',
+            'empleado',
+            'usuario',
+            'oficina',
+            'beneficiario',
+            'meta',
+            'dashboard',
+            'incidencias',
+            'historico',
+            'adquisicionequipos',
+            'salir'
         ];
 
         if (in_array($page, $validPages)) {
@@ -120,7 +130,7 @@
     <script src="Views/Resources/plugins/sweetalert2/sweetalert2.2.js"></script>
 
 
-    
+
     <!--Datatables JS-->
 
 
@@ -139,24 +149,44 @@
     <script src="Views/Resources/plugins/datatablesv2/RowGroup-1.5.0/js/dataTables.rowGroup.min.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/DataTables-2.0.3/js/dataTables.js"></script>
 
-    
+
 
     <?php
     $scripts = [
         'asignacionequipos' => ['Assets/js/asignacion_equipo.js'],
-        'empleado' => [ 'Assets/js/jsEmpleado/empleado.js',                 'Assets/js/jsEmpleado/validaciones_empleado.js',    'Assets/js/jsEmpleado/listar.js',
-                        'Assets/js/jsEmpleado/listarequipoxEmpleado.js',    'Assets/js/jsEmpleado/registrar.js',                'Assets/js/jsEmpleado/usuario.js',
-                        'Assets/js/jsEmpleado/buscar.js',                   'Assets/js/jsEmpleado/editar.js',                   'Assets/js/jsCargo/listar.js',
-                        'Assets/js/jsCargo/registrar.js',                   'Assets/js/jsCargo/editar.js',                      'Assets/js/jsCargo/eliminar.js',
-                        'Assets/js/jsDirecciones/listar.js',                'Assets/js/jsDirecciones/editar.js',                'Assets/js/jsDirecciones/registrar.js', 'Assets/js/jsDirecciones/eliminar.js'],
-        'oficina' => ['Assets/js/sede.js','Assets/js/oficina.js','Assets/js/areausuaria.js'],
+        'empleado' => [
+            'Assets/js/jsEmpleado/empleado.js',
+            'Assets/js/jsEmpleado/validaciones_empleado.js',
+            'Assets/js/jsEmpleado/listar.js',
+            'Assets/js/jsEmpleado/listarequipoxEmpleado.js',
+            'Assets/js/jsEmpleado/registrar.js',
+            'Assets/js/jsEmpleado/usuario.js',
+            'Assets/js/jsEmpleado/buscar.js',
+            'Assets/js/jsEmpleado/editar.js',
+            'Assets/js/jsCargo/listar.js',
+            'Assets/js/jsCargo/registrar.js',
+            'Assets/js/jsCargo/editar.js',
+            'Assets/js/jsCargo/eliminar.js',
+            'Assets/js/jsDirecciones/listar.js',
+            'Assets/js/jsDirecciones/editar.js',
+            'Assets/js/jsDirecciones/registrar.js',
+            'Assets/js/jsDirecciones/eliminar.js'
+        ],
+        'oficina' => ['Assets/js/sede.js', 'Assets/js/oficina.js', 'Assets/js/areausuaria.js'],
         'usuario' => ['Assets/js/usuario.js'],
-        'beneficiario' => ['Assets/js/beneficiario.js','Assets/js/meta.js'],
+        'beneficiario' => ['Assets/js/beneficiario.js', 'Assets/js/meta.js'],
         'historico' => ['Assets/js/historico.js'],
-        'registroequipos' => ['Assets/js/marca.js','Assets/js/equipo.js',],
+        'registroequipos' => ['Assets/js/marca.js', 'Assets/js/equipo.js',],
         'adquisicionequipos' => ['Assets/js/adquisicion.js'],
-        'incidencias' => ['Assets/js/jsIncidencias/listar_incidencias.js' ,'Assets/js/jsIncidencias/buscar_incidencias.js',  'Assets/js/jsIncidencias/registrar_incidencias.js',  'Assets/js/jsIncidencias/buscar_ticket_activity.js',
-                            'Assets/js/jsIncidencias/aventos_adicionales.js', 'Assets/js/jsIncidencias/eliminar_incidencias.js'],
+        'incidencias' => [
+            'Assets/js/jsIncidencias/listar_incidencias.js',
+            'Assets/js/jsIncidencias/buscar_incidencias.js',
+            'Assets/js/jsIncidencias/registrar_incidencias.js',
+            'Assets/js/jsIncidencias/buscar_ticket_activity.js',
+            'Assets/js/jsIncidencias/aventos_adicionales.js',
+            'Assets/js/jsIncidencias/eliminar_incidencias.js'
+        ],
+        'dashboard' => ['Assets/js/DashBoard/dash_ticket.js']
         // Añade más mapeos según sea necesario
     ];
 

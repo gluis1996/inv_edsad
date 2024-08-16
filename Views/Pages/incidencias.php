@@ -226,8 +226,8 @@
                             <label for="solicitante">Estado</label>
                             <select name="" class="form-control" id="select_estado_ticket">
                                 <option value="">seleccione</option>
-                                <option value="en proceso" selected>en proceso</option>
-                                <option value="abierto">abierto</option>
+                                <option value="en proceso" disabled>en proceso</option>
+                                <option value="abierto" disabled>abierto</option>
                                 <option value="cerrado">cerrado</option>
                             </select>
                         </div>
@@ -258,7 +258,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">EDITAR</button>
+                <button type="button" class="btn btn-primary" id="btn_asignar_incidencia">ASIGNAR</button>
+                <button type="button" class="btn btn-primary" id="btn_cerrar_incidencia">CERRAR</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
             </div>
         </div>

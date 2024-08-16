@@ -82,8 +82,7 @@ class modelo_incidencias_tickets
     public static function model_eliminar($data)
     {
         try {
-            $sql = "DELETE FROM `sistemas_tikets`.`tickets`
-                    WHERE ticket_id = ?;";
+            $sql = "CALL sp_eliminar_ticket(?);";
             $call = conexion::conectar_incidencias()->prepare($sql);
             $call->bindParam(1, $data, PDO::PARAM_STR);
             if ($call->execute()) {
@@ -96,13 +95,30 @@ class modelo_incidencias_tickets
         }
     }
 
-    public static function model_actualizar_estado($data)
+    public static function model_asignar_ticket($data)
     {
         try {
             $sql = "call sp_asignacion_tTicket(?,?)";
             $call = conexion::conectar_incidencias()->prepare($sql);
             $call->bindParam(1, $data['id_ticket'], PDO::PARAM_STR);
             $call->bindParam(2, $data['id_empleado'], PDO::PARAM_STR);
+            if ($call->execute()) {
+                return "ok";
+            } else {
+                return "fallo";
+            }
+        } catch (PDOException $e) {
+            return "Erro: " . $e->getMessage();
+        }
+    }
+    
+    public static function model_actulizar_estado_ticket($data)
+    {
+        try {
+            $sql = "UPDATE `sistemas_tikets`.`tickets` SET status = ?, updated_at = now() WHERE ticket_id = ?;";
+            $call = conexion::conectar_incidencias()->prepare($sql);
+            $call->bindParam(1, $data['estado'], PDO::PARAM_STR);
+            $call->bindParam(2, $data['id_ticket'], PDO::PARAM_STR);
             if ($call->execute()) {
                 return "ok";
             } else {

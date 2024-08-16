@@ -25,7 +25,20 @@ function listarticket() {
             { data: 'ticket_id' },
             { data: 'title' },
             { data: 'description' },
-            { data: 'status' },
+            { data: 'status',
+                render:  function(data, type , row){
+                    switch (data) {
+                        case 'abierto':
+                            return '<span class="badge badge-primary">abierto</span>';
+                        case 'en proceso':
+                            return '<span class="badge badge-warning">en proceso</span>';
+                        case 'cerrado':
+                            return '<span class="badge badge-danger">cerrado</span>';
+                        default:
+                            return data;
+                    }
+                }
+            },
             { 
                 data: 'priority',
                 render: function (data, type, row) {

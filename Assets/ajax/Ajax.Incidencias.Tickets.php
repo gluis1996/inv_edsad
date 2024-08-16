@@ -46,7 +46,7 @@ class ajax_incidencias_tickets{
     
     public function ajax_cambiar_estado_tickets() {
         if ($this->accion == "event_actualizar_estado") {
-            $res = controller_tickets::C_actualizar_estado($this->datos);
+            $res = controller_tickets::C_actualizar_estado_cerrado($this->datos);
             echo json_encode($res);
             //echo "gonzalo";
         }

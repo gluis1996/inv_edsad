@@ -26,7 +26,6 @@ $(document).ready(function () {
                         </ul>
                 ` ;
 
-
                 $(".card-activity").append(comments);
                 });
 

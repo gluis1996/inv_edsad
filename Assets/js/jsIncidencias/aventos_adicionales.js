@@ -57,110 +57,130 @@ $(document).ready(function () {
 
     });
 
-
-    //cambia estado de la incidencia:
-    $('#contenedor_tarjetas').on('change', '.select_estado_incidencia', function (e) {
+    $("#btn_asignar_incidencia").click(function (e) { 
         e.preventDefault();
-        var id_usuario = $("#usuario_sesion").attr("id_lg_usuario");
-        var estado_nuevo = $(this).val();
-        var id_ticket = $(this).attr(("data-ticket-id"));
-
+        var text_codigo_ticket      = $("#text_codigo_ticket").val();
+        var select_asignado_a       = $("#select_asignado_a").val();
 
         const data = {
-            event_actualizar_estado: 'event_actualizar_estado',
-            datos: {
-                id_usuario: id_usuario,
-                ticket_id: id_ticket,
-                status: estado_nuevo
+            event_asignar_ticket     :   'event_asignar_ticket',
+            datos                   : {
+                id_ticket  : text_codigo_ticket,
+                id_empleado   : select_asignado_a, 
             },
         }
 
         console.log(data);
-
+        
         Swal.fire({
-            title: "añade un comentario",
-            input: "text",
-            inputAttributes: {
-                autocapitalize: "off"
-            },
+            title: "Estas seguro?",
+            text: "¡No podrás revertir esto!",
+            icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Look up",
-            showLoaderOnConfirm: true,
-            preConfirm: async (comment) => {
-                if (!comment) {
-                    Swal.showValidationMessage("El comentario no puede estar vacío");
-                } else {
-                    try {
-                        // Aquí puedes añadir el código para manejar el comentario
-                        $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
-                            function (response) {
-                                console.log(response);
-                                //Actualizar visualmente el estado de la tarjeta
-                                var tarjeta = $("#ticket_" + id_ticket);
-                                tarjeta.find('.status span').removeClass('badge-danger badge-success badge-secondary badge-primary');
-                                console.log(estado_nuevo);
-                                if (estado_nuevo == 'en proceso') {
-                                    tarjeta.find('.status span').addClass('badge-danger').text(estado_nuevo);
-                                } else if (estado_nuevo == 'resuelto') {
-                                    tarjeta.find('.status span').addClass('badge-success').text(estado_nuevo);
-                                } else if (estado_nuevo == 'abierto') {
-                                    tarjeta.find('.status span').addClass('badge-primary').text(estado_nuevo);
-                                } else if (estado_nuevo == 'cerrado') {
-                                    tarjeta.find('.status span').addClass('badge-secondary').text(estado_nuevo);
-                                }
-
-                                tarjeta.find('#select_estado_incidencia').val(estado_nuevo);
-                            }
-                        );
-                        return comment; // Retorna el comentario si todo está bien
-                    } catch (error) {
-                        Swal.showValidationMessage(`Error: ${error}`);
-                    }
-                }
-            },
-            allowOutsideClick: () => !Swal.isLoading()
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡Sí, bórralo!"
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire({
-                    title: `actualizado`,
-                    text: `Comentario: ${result.value}`, // Mostrar el comentario ingresado
-                });
+
+                $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
+                    function (response) {
+                        console.log(response);
+
+                        if (response != '"ok"') {
+                            alert('Elemento no asignado ' + response);
+
+                        } else {
+
+                            Swal.fire({
+                                title: "Asignado!",
+                                text: "Su archivo ha sido eliminado.",
+                                icon: "success"
+                            });
+                            listarticket();
+                            buscar_listar_comentario(text_codigo_ticket);
+                            $('#btn_asignar_incidencia').prop('disabled', true);
+                            $('#btn_cerrar_incidencia').prop('disabled', false);
+                        }
+                    }
+                );
+
             }
         });
 
     });
 
-    $("#contenedor_tarjetas").on('click', '.btn_asignar_agente', function (e) {
+    $("#btn_cerrar_incidencia").click(function (e) { 
         e.preventDefault();
-        var id_ticket = $(this).attr(("data-ticket-id"));
-        $("#id_oculto_canbio").val(id_ticket);
-        console.log(id_ticket);
-        llenar_select_empleado();
-    });
-
-
-
-    $("#btn_tiket_asignar").click(function (e) {
-        e.preventDefault();
-        var id_ticket = $('#id_oculto_canbio').val();
-        var empleado = $("#ticket_asignacion_empleado").val();
+        var text_codigo_ticket      = $("#text_codigo_ticket").val();
+        var select_estado_ticket    = $("#select_estado_ticket").val();
 
         const data = {
-            event_asignar_ticket: 'event_asignar_ticket',
-            datos: {
-                id_ticket: id_ticket,
-                id_empleado: empleado,
-            }
+            event_actualizar_estado     :   'event_actualizar_estado',
+            datos                   : {
+                id_ticket  : text_codigo_ticket,
+                estado     : 'cerrado', 
+            },
         }
 
         console.log(data);
+        
+        Swal.fire({
+            title: "Estas seguro?",
+            text: "¡No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡Sí, actualizar!"
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
-            function (response) {
-                console.log(response);
+                $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
+                    function (response) {
+                        console.log(response);
+
+                        if (response != '"ok"') {
+                            alert('Elemento no asignado ' + response);
+
+                        } else {
+
+                            Swal.fire({
+                                title: "Asignado!",
+                                text: "Su archivo ha sido eliminado.",
+                                icon: "success"
+                            });
+                            listarticket();
+                            buscar_listar_comentario(text_codigo_ticket);
+                            $('#btn_asignar_incidencia').prop('disabled', true);
+                            $('#btn_cerrar_incidencia').prop('disabled', true);
+                        }
+                    }
+                );
+
             }
-        );
+        });
+
     });
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     //evento buscar y listar comentario
@@ -207,28 +227,6 @@ $(document).ready(function () {
 
             }
         );
-    }
-
-    //llenar combo box para asignacion
-
-    function llenar_select_empleado() {
-        const data = {
-            listar_empleado: "listar_empleado",
-        };
-        $.ajax({
-            type: "POST",
-            data: data,
-            url: "Assets/ajax/Ajax.asignacion.php",
-            success: function (respose) {
-                var js = JSON.parse(respose);
-                // Limpiar las opciones actuales del select de oficinas
-                $("#ticket_asignacion_empleado").empty().append('<option value="" selected>Seleccione un equipo</option>');
-                $.each(js, function (index, fila) {
-                    $("#ticket_asignacion_empleado").append('<option value="' + fila.idempleado + '">' + fila.nombres + ' ' + fila.apellidos + "</option>"
-                    );
-                });
-            },
-        });
     }
 
 })
