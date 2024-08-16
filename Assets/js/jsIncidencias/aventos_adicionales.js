@@ -79,7 +79,7 @@ $(document).ready(function () {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "¡Sí, bórralo!"
+            confirmButtonText: "¡Sí, Asignalo!"
         }).then((result) => {
             if (result.isConfirmed) {
 
@@ -132,7 +132,7 @@ $(document).ready(function () {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "¡Sí, actualizar!"
+            confirmButtonText: "¡Sí, Cerrar Ticket!"
         }).then((result) => {
             if (result.isConfirmed) {
 

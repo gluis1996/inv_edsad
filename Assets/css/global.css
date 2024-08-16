@@ -22,3 +22,39 @@
 .fade-in.show {
     opacity: 1;
 }
+
+.table{
+    font-size:  11px;
+}
+
+.btn {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    border-radius: 0.2rem !important;
+}
+
+
+/* menu */
+
+nav.mt-2 ul.nav-sidebar {
+    font-size: 11px;
+}
+
+nav.mt-2 ul.nav-sidebar i {
+    font-size: 14px; /* Esto es opcional, para ajustar el tamaño de los íconos si es necesario */
+}
+
+nav.mt-2 ul.nav-sidebar p {
+    margin: 0; /* Para ajustar el espaciado de los párrafos */
+}
+
+body {
+    font-size: 11px;
+}
+
+
+#ad_selec_equipo {
+    width: 100% !important;
+}
+

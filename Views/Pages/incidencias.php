@@ -217,7 +217,7 @@
                                 <option value="">seleccione</option>
                                 <option value="en proceso" disabled>en proceso</option>
                                 <option value="abierto" disabled>abierto</option>
-                                <option value="cerrado">cerrado</option>
+                                <option value="cerrado" disabled>cerrado</option>
                             </select>
                         </div>
                     </div>

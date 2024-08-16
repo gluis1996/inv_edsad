@@ -40,5 +40,8 @@ class controller_equipo{
         return  $response;
     }
 
-
+    public static function c_buscar_equipo_empleado($data) {
+        $response = modelo_equipo::model_buscar_equipo_empleado($data);
+        return $response;
+    }
 }

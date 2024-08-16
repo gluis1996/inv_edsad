@@ -15,9 +15,9 @@ class modelo_adquisicion{
         }
     }
 
-    public static function m_eliminar() {
+    public static function m_eliminar($data) {
         try {
-            $sql = "DELETE FROM `equipos_informaticos`.`detalle_adquisicion` WHERE  id_detalle_aquisicion = ?;";
+            $sql = "DELETE FROM `equipos_informa`.`detalle_adquisicion` WHERE  id_detalle_aquisicion = ?;";
             $call = conexion::conectar()->prepare($sql);
             $call->bindParam(1,$data,PDO::PARAM_STR);
             if ($call->execute()) {

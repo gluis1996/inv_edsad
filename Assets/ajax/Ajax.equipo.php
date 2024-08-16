@@ -28,6 +28,7 @@ class ajax_equipo{
                     "descripcion" => "--",
                     "fecha_registro" => "--",
                     "nombre" => "--", 
+                    "cantidad" => "--", 
                     "acciones" => "--"
                 );
             } else {
@@ -35,7 +36,8 @@ class ajax_equipo{
                     $idequipo = "idequipo_".$value['idequipos'];
                     $idequipo_eliminar = "idequipoeliminar_".$value['idequipos'];
 
-                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_modal_editar_equipo' id='".$idequipo."' idequipo ='".$value['idequipos']."'  ><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger' id ='".$idequipo_eliminar."' id_eliminar_eqp='".$value['idequipos']."'><i class='fas fa-trash-alt'></i></button></div>";
+                    $botones = "<div class='col'><button type='button' class='btn btn-primary btn_modal_editar_equipo' id='{$idequipo}' idequipo='{$value['idequipos']}'><i class='fas fa-pencil-alt'></i></button><button type='button' class='btn btn-danger' id='{$idequipo_eliminar}' id_eliminar_eqp='{$value['idequipos']}'><i class='fas fa-trash-alt'></i></button><button type='button' class='btn btn-info btn_buscar_equipo_empleado' idequipo='{$value['idequipos']}' data-toggle='modal' data-target='#modal_lista_usuario_equipo'><i class='fas fa-list'></i></button></div>";
+
 
                     $datosjason['data'][] = array(
                         "idequipos" => $value['idequipos'],
@@ -43,6 +45,7 @@ class ajax_equipo{
                         "descripcion" =>  $value['descripcion'],
                         "fecha_registro" =>  $value['fecha_registro'],
                         "nombre" =>  $value['nombre'],
+                        "cantidad" => $value['cantidad'],
                         "acciones" => $botones
                     );
                 }
@@ -120,6 +123,14 @@ class ajax_equipo{
         }
     }
 
+    public function ajax_equipo_empleado(){
+        if ($this->accion== 'buscar_equipo_empleado') {
+            $response = controller_equipo::c_buscar_equipo_empleado($this->id_equipo);
+            $data = array('data' => $response);
+            echo json_encode($data);
+        
+    }
+    }
 }
 
 
@@ -177,4 +188,12 @@ if (isset($_POST['eliminar_equipo'])) {
     $res->id_equipo = $_POST['idequipos'];
     $res->ajax_equipo_eliminar_equipo();
 }
+
+if (isset($_POST['buscar_equipo_empleado'])) {
+    $res = new ajax_equipo();
+    $res->accion = $_POST['buscar_equipo_empleado'];
+    $res->id_equipo = $_POST['idequipos'];
+    $res->ajax_equipo_empleado();
+}
+
 

@@ -40,19 +40,19 @@
                     <table class="table table-bordered table-striped dt-responsive" id="tb_listar_historico" width="100%">
                         <thead>
                             <tr>
-                                <th style="width: 5%;  text-align: center;">ID</th>
-                                <th style="width: 15%; text-align: center;">detalle_asignacion</th>
-                                <th style="width: 25%; text-align: center;">SEDE</th>
-                                <th style="width: 10%; text-align: center;">OFICINA</th>
-                                <th style="width: 15%; text-align: center;">EQUIPO</th>
-                                <th style="width: 40%; text-align: center;">USUARIO</th>
-                                <th style="width: 15%; text-align: center;">EMPLEADO</th>
-                                <th style="width: 40%; text-align: center;">PATRIMONIAL</th>
-                                <th style="width: 15%; text-align: center;">VIDA UTIL</th>
-                                <th style="width: 40%; text-align: center;">ESTADO</th>
-                                <th style="width: 15%; text-align: center;">FE. ASIGNACION</th>
-                                <th style="width: 40%; text-align: center;">ACCIÓN</th>
-                                <th style="width: 40%; text-align: center;">FECHA</th>
+                                <th >ID</th>
+                                <th >detalle_asignacion</th>
+                                <th >SEDE</th>
+                                <th >OFICINA</th>
+                                <th >EQUIPO</th>
+                                <th >USUARIO</th>
+                                <th >EMPLEADO</th>
+                                <th >PATRIMONIAL</th>
+                                <th >VIDA UTIL</th>
+                                <th >ESTADO</th>
+                                <th >FE. ASIGNACION</th>
+                                <th >ACCIÓN</th>
+                                <th >FECHA</th>
                             </tr>
                         </thead>
                     </table>

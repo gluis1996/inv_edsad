@@ -21,60 +21,52 @@
 
     <!-- Main content -->
     <section class="content">
+        <div class="form-row">
+            <div class="card" style="width: 100%;">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title">Asignación de Equipos</h3>
+                </div>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Default box -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Asignación de Equipos</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="col">
                             <button type="button" class="btn btn-primary btn_modal_asignacion_mostrar">Registrar</button>
                             <button type="button" class="btn btn-primary btn_exportar_asignacion">Exportar</button>
-
-                            <div class="row">
-                                <div class="col " style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                                    <table class="table table-bordered table-striped dt-responsive" id="tb_asignacion_equipos"style="width:100%; font-size: 12px;">
-                                        <thead>
-                                            <tr>
-                                                <th style="width: 5%; text-align: center;">ID</th>
-                                                <th style="width: 5%; text-align: center;">SEDES</th>
-                                                <th style="width: 15%; text-align: center;">OFICINAS</th>
-                                                <th style="width: 15%; text-align: center;">EQUIPOS</th>
-                                                <th style="width: 10%; text-align: center;">USUARIOS</th>
-                                                <th style="width: 10%; text-align: center;">EMPLEADOS</th>
-                                                <th style="width: 5%; text-align: center;">COD P.</th>
-                                                <th style="width: 5%; text-align: center;">VIDA UTÍL</th>
-                                                <th style="width: 10%; text-align: center;">ESTADOS</th>
-                                                <th style="width: 10%; text-align: center;">FECHA</th>
-                                                <th style="width: 10%; text-align: center;">ACCION</th>
-                                            </tr>
-                                        </thead>
-                                        <!-- Contenido de la tabla -->
-                                    </table>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    <!-- /.card -->
+
                 </div>
             </div>
         </div>
+
+
+
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered table-striped dt-responsive" id="tb_asignacion_equipos">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%; text-align: center;">ID</th>
+                            <th style="width: 5%; text-align: center;">SEDES</th>
+                            <th style="width: 15%; text-align: center;">OFICINAS</th>
+                            <th style="width: 15%; text-align: center;">EQUIPOS</th>
+                            <th style="width: 10%; text-align: center;">USUARIOS</th>
+                            <th style="width: 10%; text-align: center;">EMPLEADOS</th>
+                            <th style="width: 5%; text-align: center;">COD P.</th>
+                            <th style="width: 5%; text-align: center;">VIDA UTÍL</th>
+                            <th style="width: 10%; text-align: center;">ESTADOS</th>
+                            <th style="width: 10%; text-align: center;">FECHA</th>
+                            <th style="width: 10%; text-align: center;">ACCION</th>
+                        </tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </section>
-
-
-
 </div>
 
 

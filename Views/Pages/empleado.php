@@ -411,7 +411,6 @@
                 <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
             </div>
             <div class="modal-body" style="padding: 20px;">
-                <label for="Datos Local">Registro de Empleados</label>
                 <table class="table table-bordered table-striped dt-responsive w-100" id="tb_listar_equipo_empleados" style="margin: auto;">
                     <thead>
                         <tr>

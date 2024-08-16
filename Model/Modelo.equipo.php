@@ -15,6 +15,18 @@ class modelo_equipo{
         }
     }
     
+    public static function model_buscar_equipo_empleado($data){
+        try {
+            $sql = "call sp_buscar_detalle_asginacion_cod_idequipo(?)";
+            $call = conexion::conectar()->prepare($sql);
+            $call->bindParam(1,$data,PDO::PARAM_STR);
+            $call->execute();
+            return $call->fetchAll();
+        } catch (PDOException $e) {
+            return "Erro: ".$e->getMessage();
+        }
+    }
+    
     public static function model_buscar_por_marca($data){
         try {
             $sql = "SELECT *FROM equipos WHERE idmarca = ?;";

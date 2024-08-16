@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gestion de edsan</title>
+    <link rel="icon" href="Assets/images/logo_home.png">
     <link rel="stylesheet" href="Assets/css/global.css">
     <link rel="stylesheet" href="Assets/css/stylo_comentario.css">
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
@@ -46,16 +47,16 @@
     <link href="Views/Resources/plugins/datatablesv2/Buttons-3.0.1/css/buttons.bootstrap5.min.css" rel="stylesheet">
     <link href="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/css/responsive.bootstrap5.min.css" rel="stylesheet">
     <link href="Views/Resources/plugins/datatablesv2/RowGroup-1.5.0/css/rowGroup.bootstrap5.min.css" rel="stylesheet">
-    <link href="Views/Resources/plugins/datatablesv2/DataTables-2.0.3/css/dataTables.dataTables.css" rel="stylesheet">
 
 
-
+   
 
 
     <!-- select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
 
 
 
@@ -147,7 +148,10 @@
     <script src="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/js/dataTables.responsive.min.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/Responsive-3.0.1/js/responsive.bootstrap5.js"></script>
     <script src="Views/Resources/plugins/datatablesv2/RowGroup-1.5.0/js/dataTables.rowGroup.min.js"></script>
-    <script src="Views/Resources/plugins/datatablesv2/DataTables-2.0.3/js/dataTables.js"></script>
+
+
+
+
 
 
     <script src="Assets/js/header.js"></script>

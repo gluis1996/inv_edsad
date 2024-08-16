@@ -20,15 +20,27 @@
     <!-- Main content -->
     <section class="content">
 
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h3 class="card-title">Formulario Adquisicion de Equipos</h3>
+
+        <div class="form-row">
+            <div class="card" style="width: 100%;">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title">Formulario Adquisicion de Equipos</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-row">
+
+                        <div class="col">
+                            <button type="button" class="btn btn-success mb-1" data-toggle="modal" data-target="#modal_adquisicion_registrar">Registrar</button>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+        </div>
 
-            <div class="card-body" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
-                <button type="button" class="btn btn-success mb-1" data-toggle="modal" data-target="#modal_adquisicion_registrar">Registrar</button>
-
+        <div class="card">
+            <div class="card-body">
                 <table class="table table-bordered table-striped dt-responsive" id="tbl_detalle_adquisicion" width="100%">
                     <thead>
                         <tr>
@@ -45,6 +57,7 @@
                 </table>
             </div>
         </div>
+
     </section>
 </div>
 
@@ -77,10 +90,9 @@
                         </select>
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="equipo">Equipo</label>
+                        <label for="equipo">Marca</label>
                         <select id="ad_selec_equipo" class="form-control">
                             <option value="0" selected>Seleccionar</option>
-                            <!-- Add more options as needed -->
                         </select>
                     </div>
                     <div class="form-group col-md-3">
@@ -94,7 +106,13 @@
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label for="anioAdquisicion">Año Adquisición</label>
-                        <input type="date" class="form-control" id="ad_fecha" >
+                        <input type="date" class="form-control" id="ad_fecha">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="cantidad">Modelo</label>
+                        <select id="ad_selec_equipo_modelo" class="form-control">
+                            <option value="0" selected>Seleccionar</option>
+                        </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="cantidad">Cantidad</label>
@@ -131,7 +149,7 @@
             </div>
             <div class="modal-body" style="padding: 20px;">
                 <div class="form-row">
-                    
+
 
                     <div class="form-group col-md-3">
                         <label for="area">Area</label>
@@ -166,7 +184,7 @@
                 <div class="form-row justify-content-center">
                     <div class="form-group col-md-3">
                         <label for="anioAdquisicion">Año Adquisición</label>
-                        <input type="date" class="form-control" id="modal_edit_ad_fecha" >
+                        <input type="date" class="form-control" id="modal_edit_ad_fecha">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="cantidad">Cantidad</label>
@@ -186,4 +204,3 @@
         </div>
     </div>
 </div>
-        

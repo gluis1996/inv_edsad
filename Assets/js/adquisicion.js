@@ -1,9 +1,18 @@
 $(document).ready(function() {
+
+    
     listar_adquisicion();
     adq_llenar_select_area();
     adq_llenar_select_beneficiario();
     adq_llenar_select_equipo();
     adq_llenar_select_meta();
+
+    
+    // Añadir evento change al select de sedes
+    $("#ad_selec_equipo").change(function () {
+        llenar_modelo_adquisicion();
+    });
+
 
     $('.btn_adq_limpiar').click(function (e) {
         e.preventDefault();
@@ -16,7 +25,7 @@ $(document).ready(function() {
         e.preventDefault();
         var idarea = $('#ad_selec_area').val();
         var idbeneficiario = $('#ad_selec_beneficiario').val();
-        var idequipo = $('#ad_selec_equipo').val();
+        var idequipo = $('#ad_selec_equipo_modelo').val();
         var idmeta = $('#ad_selec_meta').val();
         var fecha = $('#ad_fecha').val();
         var cantidad = $('#ad_cantidad').val();
@@ -247,20 +256,67 @@ function adq_llenar_select_beneficiario() {
 }
 
 function adq_llenar_select_equipo() {
+
     const data = {
-        ad_equipo : "ad_equipo",
+        listar_equipo_marca: "listar_equipo_marca",
+    };
+// console.log(data);
+    $.ajax({
+        type: "POST",
+        data: data,
+        url: "Assets/ajax/Ajax.asignacion.php",
+        success: function (response) {
+            //console.log(response);
+            var js = JSON.parse(response);
+            var $select = $("#ad_selec_equipo");
+            $("#ad_selec_equipo").empty().append('<option value="0">Seleccione una Marca</option>');
+            $.each(js, function (index, fila) {
+                $select.append('<option value="' + fila.idmarca + '">' + fila.nombre+ "</option>");
+            });
+
+        },
+    });
+
+
+    // // const data = {
+    // //     ad_equipo : "ad_equipo",
+    // // };
+    // $.ajax({
+    //     type: "POST",
+    //     data: data,
+    //     url: "Assets/ajax/Ajax.adquisicion.php",
+    //     success: function (response) {
+    //         var js = JSON.parse(response);
+    //         var select = $("#ad_selec_equipo");
+    //         select.empty();  // Vacía las opciones anteriores
+    //         $.each(js, function (index, fila) {
+    //             select.append(
+    //                 '<option value="' + fila.idequipos + '">' + fila.descripcion + " - " + fila.modelo + " - " + fila.nombre + "</option>"
+    //             );
+    //         });
+    //     },
+    // });
+}
+
+function llenar_modelo_adquisicion(){
+    const idmarca = $("#ad_selec_equipo").val();
+    const data = {
+        listar_equipo: "listar_equipo",
+        id_marca: idmarca,
     };
     $.ajax({
         type: "POST",
         data: data,
-        url: "Assets/ajax/Ajax.adquisicion.php",
-        success: function (respose) {
-            //console.log(respose);
-            var js = JSON.parse(respose);
+        url: "Assets/ajax/Ajax.asignacion.php",
+        success: function (response) {
+            //console.log(response);
+            var js = JSON.parse(response);
+            console.log(js);            
+            var $select = $("#ad_selec_equipo_modelo");  
+            // Limpiar las opciones actuales del select de oficinas
+            $("#ad_selec_equipo_modelo").empty().append('<option value="0">Seleccione un equipo</option>');
             $.each(js, function (index, fila) {
-                $("#ad_selec_equipo").append(
-                    '<option value="' + fila.idequipos + '">' + fila.descripcion + " - " + fila.modelo + " - " + fila.nombre + "</option>"
-                );
+                $select.append('<option value="' + fila.idequipos + '">' + fila.descripcion + " - " + fila.modelo + "</option>");
             });
         },
     });

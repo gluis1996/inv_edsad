@@ -434,7 +434,7 @@ function llenar_select_equipo() {
             // Limpiar las opciones actuales del select de oficinas
             $("#id_equipo").empty().append('<option value="0">Seleccione un equipo</option>');
             $.each(js, function (index, fila) {
-                $select.append('<option value="' + fila.idequipos + '">' + fila.descripcion + " - " + fila.modelo + "</option>");
+                $select.append('<option value="' + fila.idequipos + '">' + fila.descripcion + " - " + fila.modelo + " - CANT:"+fila.cantidad+"</option>");
             });
 
         },

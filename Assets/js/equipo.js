@@ -12,6 +12,78 @@ $(document).ready(function () {
         $("#modal_registrar_marca").modal('show');
     });
 
+
+    $("#tb_listar_equipos").on('click', '.btn_buscar_equipo_empleado', function (e) {
+        e.preventDefault();
+        var idequipos = $(this).attr('idequipo');
+
+        console.log(idequipos);
+
+        const data = {
+            buscar_equipo_empleado: 'buscar_equipo_empleado',
+            idequipos: idequipos,
+        }
+
+        $.post("Assets/ajax/Ajax.equipo.php", data,
+            function (response) {
+                console.log(response);
+
+            }
+        );
+
+        $('#tb_equipo_empleado').DataTable({
+            destroy: true,
+            ajax: {
+                url: "Assets/ajax/Ajax.equipo.php",
+                type: "POST",
+                data: data,
+                dataSrc: 'data'
+            },
+            columns: [
+                { data: 'id_detalle_asignacion' },
+                { data: 'sede_nombres' },
+                { data: 'oficina_nombres' },
+                { data: 'equipo' },
+                { data: 'cod_patrimonial' },
+                { data: 'empleado_nombre' },
+                { data: 'estado' }
+            ],
+            responsive: 'true',
+            dom: '<"top"iBfrtlp><"clear">', // Colocar información de registros al principio
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    text: '<i class="fas fa-file-excel"></i>',
+                    tittleAttr: 'export a excel',
+                    className: 'btn btn-success'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="fas fa-file-pdf"></i>',
+                    titleAttr: 'Exportar a PDF',
+                    className: 'btn btn-danger',
+                    customize: function (doc) {
+                        // Personalizar título
+                        doc.content.splice(1, 0, {
+                            margin: [0, 0, 0, 12],
+                            alignment: 'center',
+                            text: 'Lista de Equipo adquiridos',
+                            fontSize: 20,
+                            bold: true
+                        });
+    
+                        // Remover cualquier texto adicional que pudiera haberse añadido
+                        doc.content = doc.content.filter(function (item) {
+                            return !(typeof item.text === 'string' && item.text.includes('Gestion'));
+                        });
+                    }
+                }
+            ]    
+        })
+
+
+    });
+
     //registar equipo
     $('.btn_regitrar_equipo').click(function (e) {
         e.preventDefault();
@@ -246,6 +318,7 @@ function listar_equipo() {
             { data: "descripcion" },
             { data: "fecha_registro" },
             { data: "nombre", className: "text-center", },
+            { data: "cantidad", className: "text-center", },
             {
                 data: "acciones",
                 className: "text-center", // Centrar el contenido de la columna
@@ -266,6 +339,37 @@ function listar_equipo() {
                 previous: "Anterior",
             },
         },
+        responsive: 'true',
+        dom: '<"top"iBfrtlp><"clear">', // Colocar información de registros al principio
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                text: '<i class="fas fa-file-excel"></i>',
+                tittleAttr: 'export a excel',
+                className: 'btn btn-success'
+            },
+            {
+                extend: 'pdfHtml5',
+                text: '<i class="fas fa-file-pdf"></i>',
+                titleAttr: 'Exportar a PDF',
+                className: 'btn btn-danger',
+                customize: function (doc) {
+                    // Personalizar título
+                    doc.content.splice(1, 0, {
+                        margin: [0, 0, 0, 12],
+                        alignment: 'center',
+                        text: 'Lista de Equipo adquiridos',
+                        fontSize: 20,
+                        bold: true
+                    });
+
+                    // Remover cualquier texto adicional que pudiera haberse añadido
+                    doc.content = doc.content.filter(function (item) {
+                        return !(typeof item.text === 'string' && item.text.includes('Gestion'));
+                    });
+                }
+            }
+        ]
     });
 }
 

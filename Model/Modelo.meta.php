@@ -48,8 +48,14 @@ class modelo_meta{
                 return 'fallo';
             }
             
-        } catch (PDOException $th) {
-            return "Modelo Meta ".$th->getMessage();
+        }  catch (PDOException $th) {
+            // Modificar el mensaje de error para que sea más entendible para el usuario final
+            $errorMessage = $th->getMessage();
+            if (strpos($errorMessage, 'Integrity constraint violation') !== false) {
+                return "No se puede eliminar el registro porque está siendo utilizado en otras partes del sistema. Por favor, revisa las dependencias y vuelve a intentarlo.";
+            }
+            // Puedes agregar más condiciones para otros tipos de errores si es necesario
+            return "Ocurrió un error al intentar eliminar el registro. Por favor, inténtalo nuevamente o contacta al soporte.";
         }
     }
 
