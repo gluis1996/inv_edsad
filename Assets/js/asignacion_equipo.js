@@ -314,7 +314,8 @@ function listar() {
                 extend: 'excelHtml5',
                 text: '<i class="fas fa-file-excel"></i>',
                 tittleAttr: 'export a excel',
-                className: 'btn btn-success'
+                className: 'btn btn-success',
+                title: 'REPORTE ENSAD'
             },
             {
                 extend: 'pdfHtml5',

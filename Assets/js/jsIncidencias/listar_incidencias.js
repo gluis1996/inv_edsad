@@ -8,8 +8,7 @@ function listarticket() {
     }
     $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
         function (response) {
-            var j = JSON.parse(response);
-            //console.log(j);            
+            var j = JSON.parse(response);          
         }
     );
     $("#tablaticket").DataTable({
@@ -74,7 +73,8 @@ function listarticket() {
                 extend: 'excelHtml5',
                 text: '<i class="fas fa-file-excel"></i>',
                 tittleAttr: 'export a excel',
-                className: 'btn btn-success'
+                className: 'btn btn-success',
+                title: 'REPORTE ENSAD'
             },
             {
                 extend: 'pdfHtml5',

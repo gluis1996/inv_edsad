@@ -72,6 +72,7 @@ function listar_equipo_empleado(id, nombre_empleado) {
                 text: '<i class="fas fa-file-excel"></i>',
                 tittleAttr: "export a excel",
                 className: "btn btn-success",
+                title: 'REPORTE ENSAD'
             },
             {
                 extend: "pdfHtml5",
