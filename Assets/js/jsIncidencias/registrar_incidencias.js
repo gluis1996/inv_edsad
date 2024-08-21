@@ -12,7 +12,7 @@ $(document).ready(function () {
             id_detalle_asignacion: id_asignacion,
         }
 
-        console.log(data);
+        //console.log(data);
 
         $.post("Assets/ajax/Ajax.asignacion.php", data,
             function (response) {
@@ -24,7 +24,7 @@ $(document).ready(function () {
                     }
 
                     var js = JSON.parse(response);
-                    //console.log(js);
+                    ////console.log(js);
 
                     // Verifica si js tiene la estructura esperada
                     if (!js.idempleado || !js.empleados) {
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
                 } catch (error) {
                     // Captura el error y muestra un mensaje de error
-                    console.error('Error:', error.message);
+                    //console.error('Error:', error.message);
                 }
             }
         );
@@ -63,14 +63,14 @@ $(document).ready(function () {
             dni_empleado: dni_empleado,
         }
     
-        console.log(data);
+        //console.log(data);
     
         $.post("Assets/ajax/Ajax.empleado.php", data,
             function (response) {
                 try {
                     // Parsear la respuesta
                     var js = JSON.parse(response);
-                    //console.log(js);
+                    ////console.log(js);
     
                     // Asegúrate de que la respuesta es un array y tiene al menos un elemento
                     if (Array.isArray(js) && js.length > 0) {
@@ -83,12 +83,12 @@ $(document).ready(function () {
                         
                     } else {
                         // Manejo en caso de que no se reciban datos válidos
-                        console.error('No se encontraron datos de empleado');
+                        //console.error('No se encontraron datos de empleado');
                     }
     
                 } catch (error) {
                     // Captura el error y muestra un mensaje de error
-                    console.error('Error:', error.message);
+                    //console.error('Error:', error.message);
                 }
             }
         );
@@ -141,11 +141,11 @@ $(document).ready(function () {
                 p_fecha: fecha_creacion,
             }
         }
-        console.log(data);
+        //console.log(data);
 
         $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
             function (response) {
-                console.log(response);
+                //console.log(response);
                 
                 if (response != '"ok"') {
                     alert(response);
@@ -176,7 +176,7 @@ function llenado_usuarios(){
 
     $.post("Assets/ajax/Ajax.usuario.php", data,
         function (response) {
-            console.log(response);
+            //console.log(response);
             var js = JSON.parse(response);
             
             js.data.forEach(element => {

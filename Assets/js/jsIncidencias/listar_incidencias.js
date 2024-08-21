@@ -9,7 +9,7 @@ function listarticket() {
     $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
         function (response) {
             var j = JSON.parse(response);
-            console.log(j);            
+            //console.log(j);            
         }
     );
     $("#tablaticket").DataTable({

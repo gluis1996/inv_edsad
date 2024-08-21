@@ -40,10 +40,10 @@ $(document).ready(function() {
             ad_año: fecha,
             ad_cantidad: cantidad
         };
-        console.log(data);
+        //console.log(data);
 
         $.post('Assets/ajax/Ajax.adquisicion.php',data, function (response) {
-            console.log(response);
+            //console.log(response);
             if (response.trim() != "ok") {
                 Swal.fire({
                     title: "Oppps....",
@@ -66,13 +66,13 @@ $(document).ready(function() {
     $('#tbl_detalle_adquisicion').on("click", "[id^='id_eliminar_']", function (e) {
         e.preventDefault();
         var id = $(this).attr("id_adquisicion_eliminar");
-        console.log(id);
+        //console.log(id);
 
         const data = {
             ad_eliminar: 'ad_eliminar',
             id_ad_eliminar: id,
         }
-        console.log(data);
+        //console.log(data);
 
         Swal.fire({
             title: "Estas seguro",
@@ -85,7 +85,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.post("Assets/ajax/Ajax.adquisicion.php", data, function (response) {
-                    console.log(response);
+                    //console.log(response);
                     if (response.trim() != "ok") {
                         Swal.fire({
                             title: "Oppps....",
@@ -115,16 +115,16 @@ $(document).ready(function() {
     $('#tbl_detalle_adquisicion').on("click", "[id^='id_adquisicion_']", function (e) {
         e.preventDefault();
         var id = $(this).attr("id_adquisicion_buscar");
-        console.log(id);
+        //console.log(id);
 
         const data = {
             ad_buscar: 'ad_buscar',
             id_ad_buscar: id,
         }
-        //console.log(data);
+        ////console.log(data);
 
         $.post('Assets/ajax/Ajax.adquisicion.php',data,function (response) {
-            console.log(response);
+            //console.log(response);
             var js = JSON.parse(response);
             $('#modal_id_ad').val(js.id);
 
@@ -187,10 +187,10 @@ $(document).ready(function() {
             ad_editar_cantidad  : cantidad,
         }
 
-        console.log(data);
+        //console.log(data);
 
         $.post('Assets/ajax/Ajax.adquisicion.php',data , function (response) {
-            console.log(response);
+            //console.log(response);
 
             if (response.trim() != 'ok') {
                 Swal.fire({
@@ -224,7 +224,7 @@ function adq_llenar_select_area() {
         data: data,
         url: "Assets/ajax/Ajax.adquisicion.php",
         success: function (respose) {
-            //console.log(respose);
+            ////console.log(respose);
             var js = JSON.parse(respose);
             $.each(js, function (index, fila) {
                 $("#ad_selec_area").append(
@@ -244,7 +244,7 @@ function adq_llenar_select_beneficiario() {
         data: data,
         url: "Assets/ajax/Ajax.adquisicion.php",
         success: function (respose) {
-            //console.log(respose);
+            ////console.log(respose);
             var js = JSON.parse(respose);
             $.each(js, function (index, fila) {
                 $("#ad_selec_beneficiario").append(
@@ -260,13 +260,13 @@ function adq_llenar_select_equipo() {
     const data = {
         listar_equipo_marca: "listar_equipo_marca",
     };
-// console.log(data);
+// //console.log(data);
     $.ajax({
         type: "POST",
         data: data,
         url: "Assets/ajax/Ajax.asignacion.php",
         success: function (response) {
-            //console.log(response);
+            ////console.log(response);
             var js = JSON.parse(response);
             var $select = $("#ad_selec_equipo");
             $("#ad_selec_equipo").empty().append('<option value="0">Seleccione una Marca</option>');
@@ -309,9 +309,9 @@ function llenar_modelo_adquisicion(){
         data: data,
         url: "Assets/ajax/Ajax.asignacion.php",
         success: function (response) {
-            //console.log(response);
+            ////console.log(response);
             var js = JSON.parse(response);
-            console.log(js);            
+            //console.log(js);            
             var $select = $("#ad_selec_equipo_modelo");  
             // Limpiar las opciones actuales del select de oficinas
             $("#ad_selec_equipo_modelo").empty().append('<option value="0">Seleccione un equipo</option>');
@@ -331,7 +331,7 @@ function adq_llenar_select_meta() {
         data: data,
         url: "Assets/ajax/Ajax.adquisicion.php",
         success: function (respose) {
-            //console.log(respose);
+            ////console.log(respose);
             var js = JSON.parse(respose);
             $.each(js, function (index, fila) {
                 $("#ad_selec_meta").append(
@@ -363,7 +363,7 @@ function listar_adquisicion() {
     //     data: data,
     //     type: 'POST',
     //     success: function (response) {
-    //         //console.log(response);
+    //         ////console.log(response);
     //     }
     // })
 
