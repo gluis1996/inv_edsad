@@ -41,7 +41,7 @@ class modelo_marca{
 
     public static function model_actualizar($data){
         try {
-            $sql = "UPDATE `equipos_informaticos`.`marca` SET `nombre` = ? WHERE `idmarca` = ?;";
+            $sql = "UPDATE `marca` SET `nombre` = ? WHERE `idmarca` = ?;";
             $call = conexion::conectar()->prepare($sql);
             $call->bindParam(1,$data['marca_nombre'],PDO::PARAM_STR);
             $call->bindParam(2,$data['marca_id'],PDO::PARAM_STR);

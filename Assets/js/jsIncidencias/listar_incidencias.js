@@ -60,6 +60,7 @@ function listarticket() {
                 }
             }
         ],
-        scrollX: false // Habilita el desplazamiento horizontal            
+        scrollX: false, 
+        order: [[8, 'desc']]
     });
 }

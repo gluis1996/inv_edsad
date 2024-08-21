@@ -393,7 +393,7 @@
             </div>
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id="btn_editarEmpleado" style="background-color: #007bff; color: #fff;">Registrar</button>
+                <button type="submit" class="btn btn-primary" id="btn_editarEmpleado" style="background-color: #007bff; color: #fff;">Editar</button>
             </div>
         </div>
     </div>

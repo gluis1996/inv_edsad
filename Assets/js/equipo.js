@@ -272,6 +272,7 @@ $(document).ready(function () {
                     icon: "success",
                 });
                 $("#modal_editar_equipo").modal('hide');
+                listar_equipo();
             }
         })
     })
@@ -312,6 +313,7 @@ function listar_equipo() {
         pageLength: 10, // Establecer el número de registros por página a 3
         lengthChange: false,
         responsive: true, // Hacer la tabla responsiva
+        order: [[3, 'desc']], 
         columns: [
             { data: "idequipos", className: "text-center", },
             { data: "modelo" },

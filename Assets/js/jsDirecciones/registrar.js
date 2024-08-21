@@ -29,7 +29,7 @@ $(document).ready(function () {
                     text: "Registro Exitoso!",
                     icon: "success"
                     });
-                listarcargo20();
+                    listardirecciones();
                 $('#txt_registrar_direccion').val('');
             }
             }

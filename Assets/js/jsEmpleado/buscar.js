@@ -55,7 +55,7 @@ $(document).ready(function () {
                 });
 
                 $('#em_edi_dia').val(res.fecha_cunpleaños);
-                $('#em_edi_mes').val(res.mes_cumpleaños);
+                $('#em_edi_mes').val(res.mes_cumpleaños.toUpperCase());
                 $('#em_edi_select_cargo').val(res.idcargo);
                 $('#em_edi_tipo_contrato').val(res.idtipo_contrato);
                 $('#em_edi_select_direccion').val(res.iddireccion_oficina);

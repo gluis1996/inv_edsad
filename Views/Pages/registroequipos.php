@@ -196,7 +196,7 @@
 
             <div class="modal-footer" style="border-top: none; padding: 10px 20px;">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #6c757d; color: #fff;">Cerrar</button>
-                <button type="button" class="btn btn-primary btn_editar_equipo" style="background-color: #007bff; color: #fff;">Registrar</button>
+                <button type="button" class="btn btn-primary btn_editar_equipo" style="background-color: #007bff; color: #fff;">Editar</button>
             </div>
         </div>
     </div>
@@ -235,7 +235,7 @@
 
 <!-- Modal editar marca -->
 <div id="modal_editar_marca" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-dialog modal-dialog-centered modal-xs">
 
         <!-- Modal content -->
         <div class="modal-content" style="border-radius: 10px;">
