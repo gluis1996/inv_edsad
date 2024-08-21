@@ -73,7 +73,7 @@ class modelo_equipo{
 
     public static function model_eliminar($data){
         try {
-            $sql = "DELETE FROM `equipos_informaticos`.`equipos`WHERE idequipos = ?;";
+            $sql = "DELETE FROM `equipos`WHERE idequipos = ?;";
             $call = conexion::conectar()->prepare($sql);
             $call->bindParam(1,$data['idequipos'],PDO::PARAM_STR);
             if ($call->execute()) {

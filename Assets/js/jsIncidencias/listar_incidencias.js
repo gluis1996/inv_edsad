@@ -39,21 +39,7 @@ function listarticket() {
                     }
                 }
             },
-            { 
-                data: 'priority',
-                render: function (data, type, row) {
-                    switch (data) {
-                        case "alta":
-                            return '<span style="color: red;">Alta</span>';
-                        case "media":
-                            return '<span style="color: orange;">Media</span>';
-                        case "baja":
-                            return '<span style="color: green;">Baja</span>';
-                        default:
-                            return data;
-                    }
-                }
-            },
+            { data: 'equipment_id' },
             { data: 'creadopor' },
             { data: 'asignadoa' },
             { data: 'nombreequipo' },

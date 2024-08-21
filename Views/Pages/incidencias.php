@@ -58,7 +58,7 @@
                             <th style="text-align: center;">TITULO</th>
                             <th style="text-align: center;">DESCRIPCION</th>
                             <th style="text-align: center;">ESTADO</th>
-                            <th style="text-align: center;">PRIORIDAD</th>
+                            <th style="text-align: center;">COD. PATRIMO.</th>
                             <th style="text-align: center;">CREADO POR</th>
                             <th style="text-align: center;">ASGINADO A</th>
                             <th style="text-align: center;">EQUIPO</th>
