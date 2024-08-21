@@ -2,18 +2,18 @@ $(document).ready(function () {
 
     // evento para buscar y ver detalle de la incidencia
     $("#tablaticket").on("click", "#btn_edit_val", function () {
-        console.log($(this).attr('id_ticket_editar'));
+        //console.log($(this).attr('id_ticket_editar'));
 
         const data = {
             listar_tickets_detalle: 'listar_tickets_detalle',
             detalle_id_tickets: $(this).attr('id_ticket_editar'),
         }
 
-        console.log(data);
+        //console.log(data);
         $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
             function (response) {
                 var json = JSON.parse(response);
-                console.log(response);
+                //console.log(response);
                 $("#select_asignado_a").empty();
                 $(".llenado_json").empty();
 

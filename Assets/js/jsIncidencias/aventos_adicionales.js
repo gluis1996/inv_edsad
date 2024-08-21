@@ -33,10 +33,10 @@ $(document).ready(function () {
             },
         }
 
-        console.log(data);
+        //console.log(data);
         $.post("Assets/ajax/Ajax.Incidencias.Comment.php", data,
             function (response) {
-                console.log(response);
+                //console.log(response);
                 if (response.trim() !== '"ok"') {
                     Swal.fire({
                         title: "Oppps....",
@@ -82,7 +82,7 @@ $(document).ready(function () {
             },
         }
 
-        console.log(data);
+        //console.log(data);
         
         Swal.fire({
             title: "Estas seguro?",
@@ -97,7 +97,7 @@ $(document).ready(function () {
 
                 $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
                     function (response) {
-                        console.log(response);
+                        //console.log(response);
 
                         if (response != '"ok"') {
                             alert('Elemento no asignado ' + response);
@@ -135,7 +135,7 @@ $(document).ready(function () {
             },
         }
 
-        console.log(data);
+        //console.log(data);
         
         Swal.fire({
             title: "Estas seguro?",

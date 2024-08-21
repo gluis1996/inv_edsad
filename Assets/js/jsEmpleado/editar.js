@@ -22,7 +22,7 @@ $(document).ready(function () {
 
         $.post('Assets/ajax/Ajax.empleado.php', data, function (response) {
             var js = JSON.parse(response);
-            console.log(js);
+            //console.log(js);
             if (response.trim() !== '"ok"') {
                 Swal.fire({
                     title: "Oppps....",

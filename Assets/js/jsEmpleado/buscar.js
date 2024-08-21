@@ -4,7 +4,7 @@ $(document).ready(function () {
     $("#tb_registrar_empleados").on("click", "[id^='id_empleado_buscar_']", function (e) {
             e.preventDefault();
             var id = $(this).attr("id_empleado");
-            console.log(id);
+            //console.log(id);
             
             const data = {
                 buscar_empleado_codigo: 'buscar_empleado_codigo',
@@ -13,7 +13,7 @@ $(document).ready(function () {
 
             $.post('Assets/ajax/Ajax.empleado.php',data,function (response) {
                 var res = JSON.parse(response);
-                console.log(res);
+                //console.log(res);
                 $('#em_edi_titulo').text('Editar Empleado : #'+res.idempleado);
                 $('#em_edit_codigo').val(res.idempleado);
                 $('#em_edi_nombre_empleado').val(res.nombres);

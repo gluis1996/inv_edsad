@@ -8,13 +8,13 @@ $(document).ready(function () {
                 title: "Oppsss...!",
                 text: "Campo Vacio!",
                 icon: "error"
-              });
-              return;
+            });
+            return;
         }
 
         const data = {
-            registrar_cargo     : 'registrar_cargo',
-            registrar_nombre    : $('#txt_registrar_cargo').val(),
+            registrar_cargo: 'registrar_cargo',
+            registrar_nombre: $('#txt_registrar_cargo').val(),
         }
 
         $.post('Assets/ajax/Ajax.cargo.php', data, function (response) {
@@ -23,13 +23,13 @@ $(document).ready(function () {
                     title: "Oppsss...!",
                     text: response,
                     icon: "error"
-                  });
+                });
             } else {
                 Swal.fire({
                     title: "Exito...!",
                     text: "Registro Exitoso!",
                     icon: "success"
-                  });
+                });
                 listarcargo20();
                 $('#txt_registrar_cargo').val('');
             }

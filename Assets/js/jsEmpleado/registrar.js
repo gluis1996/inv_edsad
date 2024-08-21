@@ -50,12 +50,12 @@ $(document).ready(function () {
             p_idtipo_contrato: p_idtipo_contrato,
         };
     
-        console.log(data);
+        //console.log(data);
     
         limpiarcampos_empleado();
     
         $.post('Assets/ajax/Ajax.empleado.php', data, function (response) {
-            console.log(response);
+            //console.log(response);
             if (response.trim() !== "ok") {
                 Swal.fire({
                     title: "Oppps....",

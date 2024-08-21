@@ -17,7 +17,7 @@ $(document).ready(function () {
             txt_editar_id: $("#txt_editar_id").val(),
         },
         };
-        console.log(data);
+        //console.log(data);
 
         $.post("Assets/ajax/Ajax.cargo.php", data, function (response) {
             if (response != "ok") {

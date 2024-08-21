@@ -7,7 +7,7 @@ $(document).ready(function () {
             detalle_id_tickets_activity : $(this).attr('data-ticket-id'),
         }
 
-        console.log(data);
+        //console.log(data);
         $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
             function (response) {
                 console.log(response);

@@ -2,14 +2,14 @@ $(document).ready(function () {
 
     $("#tablaticket").on('click', '#btn_delet_val', function () {
         var id_ticket = $(this).attr(("id_ticket_eliminar"));
-        console.log(id_ticket);
+        //console.log(id_ticket);
 
         const data = {
             event_eliminar_ticket: 'event_eliminar_ticket',
             id_ticket: id_ticket,
         }
 
-        console.log(data);
+        //console.log(data);
 
         Swal.fire({
             title: "Estas seguro?",
@@ -24,7 +24,7 @@ $(document).ready(function () {
 
                 $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
                     function (response) {
-                        console.log(response);
+                        //console.log(response);
 
                         if (response != '"ok"') {
                             alert('Elemento no removido ' + response);

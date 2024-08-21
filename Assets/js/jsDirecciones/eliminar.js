@@ -2,14 +2,14 @@ $(document).ready(function () {
     //cargar cargo en modal
     $("#tb_lista_direccion").on("click", "#btn_eliminar_direccion", function (e) {
         e.preventDefault();
-        console.log($(this).attr("iddireccion_oficina_el"));
+        //console.log($(this).attr("iddireccion_oficina_el"));
 
         const data = {
             eliminar_direccion          :   'eliminar_direccion',
             id_direccion                :   $(this).attr("iddireccion_oficina_el"),
         }
 
-        console.log(data);
+        //console.log(data);
 
         //una solicitud POS es lo que se envia al servidor
         Swal.fire({

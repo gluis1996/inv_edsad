@@ -4,7 +4,7 @@ $(document).ready(function () {
             e.preventDefault();
             var id = $(this).attr("id_empleado");
             var nombre_empleado = $(this).attr("nombre_empleado");
-            console.log(id);
+            //console.log(id);
             listar_equipo_empleado(id, nombre_empleado);
         }
     );

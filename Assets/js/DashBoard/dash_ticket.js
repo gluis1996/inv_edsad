@@ -10,7 +10,7 @@ $(document).ready(function () {
 
         $.post("Assets/ajax/Ajax.DashBoard.php", data,
             function (response) {
-                console.log(response);
+                //console.log(response);
 
 
                 // Selecciona el contenedor donde deseas insertar los elementos
