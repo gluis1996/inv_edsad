@@ -27,7 +27,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3 id="ticket_total">150</h3>
+                            <h3 id="ticket_total">0</h3>
 
                             <p>Total de Ticket</p>
                         </div>
@@ -42,7 +42,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3 id="ticket_abiertos">53</h3>
+                            <h3 id="ticket_abiertos">0</h3>
 
                             <p>Abiertos</p>
                         </div>
@@ -57,7 +57,7 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3 id="ticket_en_proceso">44</h3>
+                            <h3 id="ticket_en_proceso">0</h3>
 
                             <p>En proceso</p>
                         </div>
@@ -72,7 +72,7 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3 id="ticket_cerrado">65</h3>
+                            <h3 id="ticket_cerrado">0</h3>
 
                             <p>Cerrados</p>
                         </div>

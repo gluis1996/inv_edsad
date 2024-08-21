@@ -24,7 +24,7 @@ $(document).ready(function () {
                     }
 
                     var js = JSON.parse(response);
-                    console.log(js);
+                    //console.log(js);
 
                     // Verifica si js tiene la estructura esperada
                     if (!js.idempleado || !js.empleados) {
@@ -52,6 +52,48 @@ $(document).ready(function () {
         );
 
     });
+
+
+    $('.btn_buscar_empleado').click(function (e) {
+        e.preventDefault();
+        var dni_empleado = $("#txt_cod_empleado").val();
+    
+        const data = {
+            buscar_empleado_dni: 'buscar_empleado_dni',
+            dni_empleado: dni_empleado,
+        }
+    
+        console.log(data);
+    
+        $.post("Assets/ajax/Ajax.empleado.php", data,
+            function (response) {
+                try {
+                    // Parsear la respuesta
+                    var js = JSON.parse(response);
+                    //console.log(js);
+    
+                    // Asegúrate de que la respuesta es un array y tiene al menos un elemento
+                    if (Array.isArray(js) && js.length > 0) {
+                        var empleado = js[0]; // Obtener el primer elemento del array
+                        
+                        // Asignar los valores a los campos del formulario
+                        $("#ticket_nombre_empleado").val(empleado.nombres + ' '+ empleado.apellidos);
+                        $("#ticket_cod_patrimonial").val(empleado.dni);
+                        $("#ticket_nombre_equipo").val('otros');
+                        
+                    } else {
+                        // Manejo en caso de que no se reciban datos válidos
+                        console.error('No se encontraron datos de empleado');
+                    }
+    
+                } catch (error) {
+                    // Captura el error y muestra un mensaje de error
+                    console.error('Error:', error.message);
+                }
+            }
+        );
+    });
+    
 
     $("#btn_registrar_ticket").click(function (e) {
         e.preventDefault();

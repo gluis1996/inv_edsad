@@ -176,6 +176,14 @@ class ajax_empleado
 
     }
 
+    public function ajax_buscar_empleado_dni(){            
+        if ($this->accion == 'buscar_empleado_dni') {           
+            $response = controller_empleado::c_buscar_empleado_dni($this->id);
+            echo json_encode($response);
+        }
+
+    }
+
     public function ajax_editar_empleado(){            
         if ($this->accion == 'empleado_editar') {           
             $response = controller_empleado::c_editar_empleado($this->varp);
@@ -252,6 +260,14 @@ if (isset($_POST['buscar_empleado_codigo'])) {
     $res->accion = $_POST['buscar_empleado_codigo'];
     $res->id     = $_POST['codigo_empleado'];
     $res->ajax_buscar_empleado();
+}
+
+//buscar empleado por codigo
+if (isset($_POST['buscar_empleado_dni'])) { 
+    $res = new ajax_empleado();
+    $res->accion = $_POST['buscar_empleado_dni'];
+    $res->id     = $_POST['dni_empleado'];
+    $res->ajax_buscar_empleado_dni();
 }
 
 //editar empleado por codigo

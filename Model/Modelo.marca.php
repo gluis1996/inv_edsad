@@ -35,8 +35,20 @@ class modelo_marca{
         }
     }
 
-    public static function model_eliminar(){
-        
+    public static function model_eliminar($data){
+        try {
+            $sql = "DELETE FROM `marca`WHERE idmarca = ?;";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1, $data, PDO::PARAM_STR);
+
+            if ($stmp->execute()) {
+                return 'ok';
+            } else {
+                return 'fallo';
+            }
+        } catch (PDOException $th) {
+            return "Modelo empleado " . $th->getMessage();
+        }
     }
 
     public static function model_actualizar($data){

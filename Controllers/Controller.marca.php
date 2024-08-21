@@ -17,5 +17,10 @@ class controller_marca{
         return $response;
     }
 
+    public static function c_marca_eliminar($data){
+        $response = modelo_marca::model_eliminar($data);
+        return $response;
+    }
+
 
 }

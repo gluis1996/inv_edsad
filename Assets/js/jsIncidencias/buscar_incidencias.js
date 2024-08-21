@@ -13,7 +13,7 @@ $(document).ready(function () {
         $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
             function (response) {
                 var json = JSON.parse(response);
-                //console.log(response);
+                console.log(response);
                 $("#select_asignado_a").empty();
                 $(".llenado_json").empty();
 
@@ -55,6 +55,11 @@ $(document).ready(function () {
                 json.data.usuario_creador.forEach(element => {
                     $("#txt_creado_por").val(element.nombre);
                 })
+
+                json.data.detalle_asigando.forEach(element => {
+                    $("#txt_equipo").val(element.equipo);
+                    $("#txt_sede_oficina").val(element.sede_nombres + '/' + element.oficina_nombres);
+                });
 
                 const dotClasses = ["b-warning", "b-primary", "b-danger", "b-success", "b-info"];
                 let lastUsedClass = ""; // Variable para rastrear la última clase usada

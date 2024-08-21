@@ -120,7 +120,7 @@ CREATE TABLE `ticket_comments` (
   `comment` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`comment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +129,7 @@ CREATE TABLE `ticket_comments` (
 
 LOCK TABLES `ticket_comments` WRITE;
 /*!40000 ALTER TABLE `ticket_comments` DISABLE KEYS */;
-INSERT INTO `ticket_comments` VALUES (78,53,1,'ticket creado','2024-08-16 06:50:00'),(79,53,1,'se verifica de que el puerto es sulfatado','2024-08-16 06:50:43'),(80,53,1,'se enviara al proveedor para que lo revise','2024-08-16 06:51:04'),(81,53,1,'se gestionara con el area competenete','2024-08-16 06:51:17'),(82,53,3,'asignado','2024-08-16 06:51:30'),(83,53,3,'se cerró el ticket','2024-08-16 07:08:47'),(84,54,1,'ticket creado','2024-08-16 07:09:00'),(85,55,1,'ticket creado','2024-08-16 07:09:00'),(86,55,2,'asignado','2024-08-16 07:09:00'),(87,56,1,'ticket creado','2024-08-16 07:10:00'),(88,56,3,'asignado','2024-08-16 07:10:00'),(89,55,1,'se cierra por temas de no respuesta del proveedor.','2024-08-16 15:50:11'),(90,55,2,'se cerró el ticket','2024-08-16 15:50:14'),(91,57,1,'ticket creado','2024-08-16 15:52:00'),(92,54,2,'asignado','2024-08-16 17:21:25'),(93,58,1,'ticket creado','2024-08-16 20:06:00'),(94,56,1,'se gestion termiando','2024-08-16 21:29:35'),(95,56,3,'se cerró el ticket','2024-08-16 21:29:43'),(96,57,2,'asignado','2024-08-16 21:30:33'),(97,57,1,'se gestiona asignacion','2024-08-16 21:30:45'),(98,57,1,'se culmino ','2024-08-16 21:31:02'),(99,57,2,'se cerró el ticket','2024-08-16 21:31:04');
+INSERT INTO `ticket_comments` VALUES (78,53,1,'ticket creado','2024-08-16 06:50:00'),(79,53,1,'se verifica de que el puerto es sulfatado','2024-08-16 06:50:43'),(80,53,1,'se enviara al proveedor para que lo revise','2024-08-16 06:51:04'),(81,53,1,'se gestionara con el area competenete','2024-08-16 06:51:17'),(82,53,3,'asignado','2024-08-16 06:51:30'),(83,53,3,'se cerró el ticket','2024-08-16 07:08:47'),(84,54,1,'ticket creado','2024-08-16 07:09:00'),(85,55,1,'ticket creado','2024-08-16 07:09:00'),(86,55,2,'asignado','2024-08-16 07:09:00'),(89,55,1,'se cierra por temas de no respuesta del proveedor.','2024-08-16 15:50:11'),(90,55,2,'se cerró el ticket','2024-08-16 15:50:14'),(92,54,2,'asignado','2024-08-16 17:21:25');
 /*!40000 ALTER TABLE `ticket_comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +152,7 @@ CREATE TABLE `tickets` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`ticket_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +161,7 @@ CREATE TABLE `tickets` (
 
 LOCK TABLES `tickets` WRITE;
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
-INSERT INTO `tickets` VALUES (53,'problemas con el ups','el puertyo no enciendo','cerrado','baja',1,'3','003847','2024-08-16 06:50:00','2024-08-16 07:08:47'),(54,'problemas con el ups','el ups no da energia','en proceso','baja',1,'2','02240 (INV.2021)','2024-08-16 07:09:00','2024-08-16 17:21:25'),(55,'problemas con el ups','no da imagen','cerrado','baja',1,'2','000545','2024-08-16 07:09:00','2024-08-16 15:50:14'),(56,'problemas con el ups','se visualiza en la patalla una linea','cerrado','baja',1,'3','000540','2024-08-16 07:10:00','2024-08-16 21:29:43'),(57,'problemas con la pantallar','el ups no da energia','cerrado','baja',1,'2','003847','2024-08-16 15:52:00','2024-08-16 21:31:04'),(58,'problemas con la pantallar','no da imagen','abierto','baja',1,'','20240816','2024-08-16 20:06:00','2024-08-16 20:07:05');
+INSERT INTO `tickets` VALUES (53,'problemas con el ups','el puertyo no enciendo','cerrado','baja',1,'3','003847','2024-08-16 06:50:00','2024-08-16 07:08:47'),(54,'problemas con el ups','el ups no da energia','en proceso','baja',1,'2','02240 (INV.2021)','2024-08-16 07:09:00','2024-08-16 17:21:25'),(55,'problemas con el ups','no da imagen','cerrado','baja',1,'2','000545','2024-08-16 07:09:00','2024-08-16 15:50:14');
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -375,4 +375,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-16 17:06:48
+-- Dump completed on 2024-08-21 17:55:00

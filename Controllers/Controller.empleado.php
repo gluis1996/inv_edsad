@@ -52,4 +52,9 @@ class controller_empleado{
         return $response;
     }
 
+    public static function c_buscar_empleado_dni($data){
+        $response = modelo_empleado::model_buscar_dni($data);
+        return $response;
+    }
+
 } 

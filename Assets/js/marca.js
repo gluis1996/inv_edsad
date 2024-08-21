@@ -20,6 +20,65 @@ $(document).ready(function () {
         $('#modal_editar_marca').modal('show');
     });
 
+
+    // eliminar 
+    $('#tb_listar_marca').on("click", ".btn_eliminar_marca", function (e) {
+        e.preventDefault();
+        var marca_id = $(this).attr('id_marca_del');
+
+        console.log(marca_id);
+        const data ={
+            evnt_eliminar_marca : 'evnt_eliminar_marca',
+            marca_id: marca_id,
+        }
+
+        Swal.fire({
+            title: "Estas seguro?",
+            text: "¡No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡Sí, bórralo!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.post("Assets/ajax/Ajax.marca.php", data,
+                    function (response) {
+                        console.log(response);
+
+                        if (response != 'ok') {
+                            alert('Elemento no removido ' + response);
+
+                        } else {
+
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Su archivo ha sido eliminado.",
+                                icon: "success"
+                            });
+                            listar_marca();
+                        }
+                    }
+                );
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    });
+
     
 
     $('.btn_editar_marca').click(function (e) {

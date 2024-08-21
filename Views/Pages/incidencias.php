@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Historico Equipos</li>
+                        <li class="breadcrumb-item active">Incidencias</li>
                     </ol>
                 </div>
             </div>
@@ -101,6 +101,13 @@
                     <div class="col">
                         <button type="button" class="btn btn-success mb-2 btn_buscar_equipo_asigando">Buscar</button>
                     </div>
+                    <div class="col">
+                        <input type="text" class="form-control" id="txt_cod_empleado"
+                            placeholder="Id empleado">
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-success mb-2 btn_buscar_empleado">Buscar</button>
+                    </div>
                 </div>
 
                 <div class="form-row">
@@ -181,22 +188,22 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="horaInicio">Hora de Inicio</label>
-                            <input type="text" class="form-control" id="txt_hora_inicio" value="16:47:55" disabled>
+                            <input type="text" class="form-control" id="txt_hora_inicio" value="00:00:00" disabled>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="area">Sede/Oficina<span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="txt_sede_oficina"
-                                value="CABAÑA/PLANEAMIENTO Y PRESUPUESTO" disabled>
+                                value="OTROS" disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="motivo">Equipo <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="txt_equipo" value="DESKTOP V03760" disabled>
+                            <input type="text" class="form-control" id="txt_equipo" value="OTROS" disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="fecha">Fecha</label>
-                            <input type="text" class="form-control" id="txt_fecha" value="02/08/2024" disabled>
+                            <input type="text" class="form-control" id="txt_fecha" value="00/00/0000" disabled>
                         </div>
                     </div>
                     <div class="form-row">
@@ -207,7 +214,7 @@
                         <div class="form-group col-md-4">
                             <label for="estado">Asginado<span class="text-danger">*</span></label>
                             <select class="form-control" id="select_asignado_a">
-                                <option value="">Seleccione</option>
+                                <option value="" selected>Seleccione</option>
                             </select>
                             <!-- <input type="text" class="form-control" id="txt_asignado_a" value="JULIA"> -->
                         </div>

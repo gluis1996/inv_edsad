@@ -62,6 +62,18 @@ $(document).ready(function () {
         var text_codigo_ticket      = $("#text_codigo_ticket").val();
         var select_asignado_a       = $("#select_asignado_a").val();
 
+        // Validación de que se ha seleccionado un valor
+        if (!select_asignado_a) {
+            Swal.fire({
+                title: "Selección requerida",
+                text: "Debe seleccionar un empleado para asignar el ticket.",
+                icon: "error",
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "Entendido"
+            });
+            return; // Salir de la función si no se ha seleccionado un empleado
+        }
+
         const data = {
             event_asignar_ticket     :   'event_asignar_ticket',
             datos                   : {
@@ -146,8 +158,8 @@ $(document).ready(function () {
                         } else {
 
                             Swal.fire({
-                                title: "Asignado!",
-                                text: "Su archivo ha sido eliminado.",
+                                title: "Cerrado!",
+                                text: "Su archivo ha sido cerrado.",
                                 icon: "success"
                             });
                             listarticket();

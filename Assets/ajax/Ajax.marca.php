@@ -48,6 +48,15 @@ class   ajax_marca{
 
     }
 
+    public function ajax_marca_eliminar() {
+        
+        if ($this->acciones == 'evnt_eliminar_marca') {
+            $response = controller_marca::c_marca_eliminar($this->id);
+            echo $response;
+        }
+
+    }
+
 }
 
 
@@ -63,4 +72,11 @@ if (isset($_POST['marca_editar'])) {
     $res -> nombre  =$_POST['marca_nombre'];
     $res -> id  =$_POST['marca_id'];
     $res->ajax_marca_editar();
+}
+
+if (isset($_POST['evnt_eliminar_marca'])) {
+    $res = new ajax_marca();
+    $res -> acciones  =$_POST['evnt_eliminar_marca'];
+    $res -> id  =$_POST['marca_id'];
+    $res->ajax_marca_eliminar();
 }

@@ -42,6 +42,19 @@ class modelo_empleado
         }
     }
 
+    public static function model_buscar_dni($data)
+    {
+        try {
+            $sql = "SELECT * FROM equipos_informa.empleados where dni = ?;";
+            $stmp = conexion::conectar()->prepare($sql);
+            $stmp->bindParam(1, $data,  PDO::PARAM_STR);
+            $stmp->execute();
+            return $stmp->fetchAll();
+        } catch (PDOException $th) {
+            return "Modelo empleado " . $th->getMessage();
+        }
+    }
+
     public static function model_agregar($data)
     {
         try {

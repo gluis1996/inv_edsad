@@ -31,7 +31,6 @@
                     <div class="form-row">
                         <div class="col">
                             <button type="button" class="btn btn-primary btn_modal_asignacion_mostrar">Registrar</button>
-                            <button type="button" class="btn btn-primary btn_exportar_asignacion">Exportar</button>
                         </div>
                     </div>
 

@@ -37,8 +37,8 @@ class modelo_incidencias_tickets
             (select concat(descripcion,' ', modelo) from equipos_informa.equipos where idequipos = eqasig.idequipos)  as nombreequipo,
             t.created_at, t.updated_at
             from tickets t
-            inner join  users as u on t.created_by=u.user_id 
-            inner join equipos_informa.detalle_asignacion as eqasig on eqasig.cod_patrimonial=t.equipment_id;
+            left join  users as u on t.created_by=u.user_id 
+            left join equipos_informa.detalle_asignacion as eqasig on eqasig.cod_patrimonial=t.equipment_id;
             ";
             $call = conexion::conectar_incidencias()->prepare($sql);
             $call->execute();
