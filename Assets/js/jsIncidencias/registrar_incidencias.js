@@ -2,6 +2,29 @@ $(document).ready(function () {
 
     //buscar incidencia
     llenado_usuarios();
+
+    $("#select_tipo_ticket").change(function (e) {
+        e.preventDefault();
+        var tipo_ticket = $("#select_tipo_ticket").val();
+        console.log(tipo_ticket);
+
+        if (tipo_ticket == 'SISTEMAS') {
+
+            var div = `
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="codigo_patrimonial_buscar" placeholder="Buscar equipo x Codigo Patrimonial" aria-label="Buscar equipo x Codigo Patrimonial" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary btn_buscar_equipo_asigando" type="button" >Buscar</button>
+                    </div>
+                </div>
+            `;
+
+
+            $("#contenedor_imput").append(div);
+        }
+
+    });
+
     $('.btn_buscar_equipo_asigando').click(function (e) {
         e.preventDefault();
         var id_asignacion = $("#codigo_patrimonial_buscar").val();
@@ -57,35 +80,35 @@ $(document).ready(function () {
     $('.btn_buscar_empleado').click(function (e) {
         e.preventDefault();
         var dni_empleado = $("#txt_cod_empleado").val();
-    
+
         const data = {
             buscar_empleado_dni: 'buscar_empleado_dni',
             dni_empleado: dni_empleado,
         }
-    
+
         //console.log(data);
-    
+
         $.post("Assets/ajax/Ajax.empleado.php", data,
             function (response) {
                 try {
                     // Parsear la respuesta
                     var js = JSON.parse(response);
                     ////console.log(js);
-    
+
                     // Asegúrate de que la respuesta es un array y tiene al menos un elemento
                     if (Array.isArray(js) && js.length > 0) {
                         var empleado = js[0]; // Obtener el primer elemento del array
-                        
+
                         // Asignar los valores a los campos del formulario
-                        $("#ticket_nombre_empleado").val(empleado.nombres + ' '+ empleado.apellidos);
+                        $("#ticket_nombre_empleado").val(empleado.nombres + ' ' + empleado.apellidos);
                         $("#ticket_cod_patrimonial").val(empleado.dni);
                         $("#ticket_nombre_equipo").val('otros');
-                        
+
                     } else {
                         // Manejo en caso de que no se reciban datos válidos
                         //console.error('No se encontraron datos de empleado');
                     }
-    
+
                 } catch (error) {
                     // Captura el error y muestra un mensaje de error
                     //console.error('Error:', error.message);
@@ -93,7 +116,7 @@ $(document).ready(function () {
             }
         );
     });
-    
+
 
     $("#btn_registrar_ticket").click(function (e) {
         e.preventDefault();
@@ -118,7 +141,7 @@ $(document).ready(function () {
         var seconds = String(dateObject.getSeconds()).padStart(2, '0');
 
         var fecha_creacion = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-        
+
         if (titulo == '' || descripcion == '' || fecha_creacion == '') {
             return alert('campo vacio');
         }
@@ -146,7 +169,7 @@ $(document).ready(function () {
         $.post("Assets/ajax/Ajax.Incidencias.Tickets.php", data,
             function (response) {
                 //console.log(response);
-                
+
                 if (response != '"ok"') {
                     alert(response);
                 } else {
@@ -160,7 +183,7 @@ $(document).ready(function () {
                     listarticket();
                     limpiarCamposFormulario();
                 }
-                
+
             }
         );
     });
@@ -168,17 +191,17 @@ $(document).ready(function () {
 });
 
 
-function llenado_usuarios(){
-    
+function llenado_usuarios() {
+
     const data = {
-        lista_usuario : 'listausuario',
+        lista_usuario: 'listausuario',
     }
 
     $.post("Assets/ajax/Ajax.usuario.php", data,
         function (response) {
             //console.log(response);
             var js = JSON.parse(response);
-            
+
             js.data.forEach(element => {
                 $("#ticket_asignacion").append(
                     $('<option>', {
@@ -186,7 +209,7 @@ function llenado_usuarios(){
                         text: element.nombres
                     })
                 );
-            });         
+            });
 
         }
     );

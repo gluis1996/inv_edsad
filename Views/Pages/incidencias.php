@@ -89,14 +89,13 @@
         <!-- Modal content -->
         <div class="modal-content" style="border-radius: 10px;">
             <div class="modal-header" style="background-color: #343a40; color: #fff; border-bottom: none;">
-                <h5 class="modal-title">Registrar Cargo</h5>
+                <h5 class="modal-title">Registrar Ticket</h5>
                 <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
             </div>
             <div class="modal-body" style="padding: 20px;">
                 <div class="form-row">
-                    <div class="col">
-                        <input type="text" class="form-control" id="codigo_patrimonial_buscar"
-                            placeholder="Buscar equipo x Codigo Patrimonial">
+                    <!-- <div class="col">
+                        <input type="text" class="form-control" id="codigo_patrimonial_buscar" placeholder="Buscar equipo x Codigo Patrimonial">
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-success mb-2 btn_buscar_equipo_asigando">Buscar</button>
@@ -107,7 +106,17 @@
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-success mb-2 btn_buscar_empleado">Buscar</button>
+                    </div> -->
+                    <select class="form-control" id="select_tipo_ticket">
+                        <option value="" selected >Seleccione</option>
+                        <option value="EQUIPO">EQUIPO</option>
+                        <option value="SISTEMAS">SISTEMAS</option>
+                        <option value="OTROS">OTROS</option>
+                    </select>
+                    <div class="col" id="contenedor_imput">
+
                     </div>
+
                 </div>
 
                 <div class="form-row">
@@ -164,7 +173,7 @@
 </div>
 
 <!-- Modal detalle incidencia -->
-<div class="modal fade" id="modal_detalle_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="modal_detalle_incidencia" tabindex="-1" aria-labelledby="exampleModalLabel" 
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
         <div class="modal-content">
